@@ -1,0 +1,1103 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="题目112345678910下列window方法中，可以显示对话框的一项是（）A: confirm()B: alert()C: prompt()D: open()   答案 C   解析 A: 弹出一个判断对话框(有确认,取消按钮和提示文本),返回值为用户所按下的,为真返回true,为假返回false B: 弹出一个对话框 C: 弹出一个用户输入对话框,返回值为用户输入的值,没有输入则返回值为nu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor">
+<meta property="og:url" content="http://example.com/2022/05/11/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8811%E6%97%A5%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="题目112345678910下列window方法中，可以显示对话框的一项是（）A: confirm()B: alert()C: prompt()D: open()   答案 C   解析 A: 弹出一个判断对话框(有确认,取消按钮和提示文本),返回值为用户所按下的,为真返回true,为假返回false B: 弹出一个对话框 C: 弹出一个用户输入对话框,返回值为用户输入的值,没有输入则返回值为nu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205110929707.jpg">
+<meta property="article:published_time" content="2022-05-11T01:23:40.000Z">
+<meta property="article:modified_time" content="2022-05-11T01:24:00.000Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="刷刷刷">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205110929707.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-11 09:23" pubdate>
+          2022年5月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="刷题"
+        id="heading-fdacafc46605602f778fa704d63aa71b" role="tab" data-toggle="collapse" href="#collapse-fdacafc46605602f778fa704d63aa71b"
+        aria-expanded="true"
+      >
+        刷题
+        <span class="list-group-count">(22)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-fdacafc46605602f778fa704d63aa71b"
+           role="tabpanel" aria-labelledby="heading-fdacafc46605602f778fa704d63aa71b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/01/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8801%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-CMD和AMD的模块化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-CMD和AMD的模块化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/23/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8823%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-JavaScript的身份证正则和内置可迭代对象"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-JavaScript的身份证正则和内置可迭代对象</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/11/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8811%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/02/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8802%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-decodeURI"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-decodeURI</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/22/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8822%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-js的call,apply为null,undefined的情况和日期的注意点"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-js的call,apply为null,undefined的情况和日期的注意点</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/25/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8825%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-let的暂时性死锁"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-let的暂时性死锁</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-try...catch...finally"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-try...catch...finally</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/07/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8807%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-原型链"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-原型链</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/05/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8805%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-变量的回收和reduce的使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-变量的回收和reduce的使用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/04/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8804%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-四舍五入等于..."
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-四舍五入等于...</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-微任务和宏任务"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-微任务和宏任务</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/27/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8827%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-数组的splice和map方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-数组的splice和map方法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/24/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8824%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意let"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-注意let</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/30/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8830%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意优先级"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-注意优先级</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/26/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8826%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意数组的一些方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-注意数组的一些方法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/29/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8829%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-温故而知新"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-温故而知新</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/03/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8803%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-类型转换</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换必须解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-类型转换必须解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/28/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8828%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-请求头和响应头有必要了解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-请求头和响应头有必要了解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/06/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8806%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-重写的ValueOf"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-重写的ValueOf</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/20/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8820%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-隐式转换和String和new String"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-隐式转换和String和new String</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" title="前端真题刷题-注意基础知识不要忘了基本原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">前端真题刷题-注意基础知识不要忘了基本原理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月11日 上午
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下列<span class="hljs-variable language_">window</span>方法中，可以显示对话框的一项是（）<br><br><span class="hljs-attr">A</span>: <span class="hljs-title function_">confirm</span>()<br><br><span class="hljs-attr">B</span>: <span class="hljs-title function_">alert</span>()<br><br><span class="hljs-attr">C</span>: <span class="hljs-title function_">prompt</span>()<br><br><span class="hljs-attr">D</span>: <span class="hljs-title function_">open</span>()<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>C</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>A: 弹出一个判断对话框(有确认,取消按钮和提示文本),返回值为用户所按下的,为<code>真</code>返回true,为<code>假</code>返回false</li>
+<li>B: 弹出一个对话框</li>
+<li>C: 弹出一个用户输入对话框,返回值为用户输入的值,没有输入则返回值为<code>null</code></li>
+<li>D: 打开一个指定的窗口并指定打开方式<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> s = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&#x27;key&#x27;</span>); ...①<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(s + <span class="hljs-string">&#x27;123&#x27;</span>); ...②<br><span class="hljs-keyword">var</span> obj = &#123;<br>    [s]:<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>);&#125; ...③<br>&#125;<br><span class="hljs-keyword">var</span> b = <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">ownKeys</span>(obj); ...④<br><span class="hljs-attr">A</span>: ①<br><br><span class="hljs-attr">B</span>: ②<br><br><span class="hljs-attr">C</span>: ③<br><br><span class="hljs-attr">D</span>: ④<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>B</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>Symbol是ES6新增的基本数据类型之一(全部基本数据类型为<strong>undefined string symbol number null boolean</strong>) ‘记忆:usnb,你如此牛逼’</p>
+</li>
+<li><p>Symbol不可以发生类型转换(发生就报错)</p>
+</li>
+<li><p>Symbol的值不能与其他类型进行运算</p>
+</li>
+<li><p>在对象内部使用Symbol 值作为属性名的时候，必须要将值放在方括号中</p>
+</li>
+<li><p>Symbol 值如果想要作为属性名，那就不能再用点运算符，因为点运算符后面跟的总是字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> <span class="hljs-keyword">let</span> id = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;id&quot;</span>);<br> <span class="hljs-keyword">let</span> obj = &#123;<br>  [id]:<span class="hljs-string">&#x27;symbol&#x27;</span><br> &#125;;<br><span class="hljs-keyword">let</span> array = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertySymbols</span>(obj);<br> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array); <span class="hljs-comment">//[Symbol(id)]</span><br> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj[array[<span class="hljs-number">0</span>]]);  <span class="hljs-comment">//&#x27;symbol&#x27;</span><br><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205110915371.png" srcset="/img/loading.gif" lazyload alt="image-20220511091545286"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = &#123;<span class="hljs-attr">brand</span>:<span class="hljs-string">&#x27;华为&#x27;</span>,<span class="hljs-attr">price</span>:<span class="hljs-number">1999</span>&#125;;<br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj,<span class="hljs-string">&#x27;id&#x27;</span>,&#123;<span class="hljs-attr">value</span>:<span class="hljs-number">1</span>&#125;)<br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj,<span class="hljs-string">&#x27;price&#x27;</span>,&#123;<span class="hljs-attr">configurable</span>:<span class="hljs-literal">false</span>&#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(obj).<span class="hljs-property">length</span>); ...①<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> obj)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj[k]); ...②<br>&#125;<br>obj.<span class="hljs-property">price</span> = <span class="hljs-number">999</span>;<br><span class="hljs-keyword">delete</span> obj[<span class="hljs-string">&#x27;price&#x27;</span>]<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj); ...③<br><span class="hljs-attr">A</span>: ①式输出结果为<span class="hljs-number">3</span><br><br><span class="hljs-attr">B</span>: ②式输出结果为华为 <span class="hljs-number">1999</span> <span class="hljs-number">1</span><br><br><span class="hljs-attr">C</span>: ③式输出结果为&#123;<span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;华为&#x27;</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">999</span>, <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>&#125;<br><br><span class="hljs-attr">D</span>: ③式输出结果为&#123;<span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;华为&#x27;</span>, <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>C</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>Object.defineProperty注意点</p>
+<ul>
+<li>通过其添加的属性值,如果没有设置该属性的描述符(比如writeable,configurable,和enumberable)那么默认为false</li>
+<li>可以使用**Object.getOwnPropertyDescriptor(obj,key)**来查看</li>
+</ul>
+</li>
+<li><p>查看</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = &#123;<br>    <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;华为&#x27;</span>,<br>    <span class="hljs-attr">price</span>: <span class="hljs-number">1999</span><br>&#125;;<br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj, <span class="hljs-string">&#x27;id&#x27;</span>, &#123;<br>    <span class="hljs-attr">value</span>: <span class="hljs-number">1</span><br>&#125;)<br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj, <span class="hljs-string">&#x27;price&#x27;</span>, &#123;<br>    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span><br>&#125;)<br><br><span class="hljs-comment">// 下面一行代码输出结果</span><br><span class="hljs-comment">// 新添加的属性,未设置其他属性,则默认为false</span><br><span class="hljs-comment">// configurable: false</span><br><span class="hljs-comment">// enumerable: false          </span><br><span class="hljs-comment">// value: 1</span><br><span class="hljs-comment">// writable: false</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyDescriptor</span>(obj,<span class="hljs-string">&#x27;id&#x27;</span>));<br><br><span class="hljs-comment">//下面一行代码输出结果</span><br><span class="hljs-comment">// 本来就有的属性,上方只是对值做了修改,并不是新增加的</span><br><span class="hljs-comment">// configurable: false</span><br><span class="hljs-comment">// enumerable: true</span><br><span class="hljs-comment">// value: 1999</span><br><span class="hljs-comment">// writable: true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyDescriptor</span>(obj,<span class="hljs-string">&#x27;price&#x27;</span>));<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor</div>
+      <div>http://example.com/2022/05/11/刷题/JavaScript/2022年5月11日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="canvas基本使用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">canvas基本使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" title="前端真题刷题-注意基础知识不要忘了基本原理">
+                        <span class="hidden-mobile">前端真题刷题-注意基础知识不要忘了基本原理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

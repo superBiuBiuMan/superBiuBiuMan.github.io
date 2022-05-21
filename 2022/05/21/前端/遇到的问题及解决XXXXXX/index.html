@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="vue使用echarts报错Error in mounted hook: “TypeError: this.dom.getContext is not a function” 解决 一开始是this.$refs.dom获取节点的,后面使用在&lt;el-row&gt;标签上就不可以,所以如果使用this.$refs进行echarts的初始化操作会报错,就使用原生dom获取节点后初始化即可    e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术小站-属于你我的小天地">
+<meta property="og:url" content="http://example.com/2022/05/21/%E5%89%8D%E7%AB%AF/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3XXXXXX/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="vue使用echarts报错Error in mounted hook: “TypeError: this.dom.getContext is not a function” 解决 一开始是this.$refs.dom获取节点的,后面使用在&lt;el-row&gt;标签上就不可以,所以如果使用this.$refs进行echarts的初始化操作会报错,就使用原生dom获取节点后初始化即可    e">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142023476.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142025700.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142039084.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151026036.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151028728.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151028128.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205170917227.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205210926510.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205210940806.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205071135167.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205211003513.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205211004107.png">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205211140036.png">
+<meta property="article:published_time" content="2022-05-21T08:00:34.759Z">
+<meta property="article:modified_time" content="2022-05-21T07:31:41.182Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="前端,JavaScript,nodejs,es5,es6,vue">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142023476.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-21 16:00" pubdate>
+          2022年5月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          105 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月21日 下午
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h4 id="vue使用echarts报错Error-in-mounted-hook-“TypeError-this-dom-getContext-is-not-a-function”"><a href="#vue使用echarts报错Error-in-mounted-hook-“TypeError-this-dom-getContext-is-not-a-function”" class="headerlink" title="vue使用echarts报错Error in mounted hook: “TypeError: this.dom.getContext is not a function”"></a>vue使用echarts报错Error in mounted hook: “TypeError: this.dom.getContext is not a function”</h4><ul>
+<li>解决<ul>
+<li>一开始是this.$refs.dom获取节点的,后面使用在<code>&lt;el-row&gt;</code>标签上就不可以,所以如果使用this.$refs进行echarts的初始化操作会报错,就<strong>使用原生dom获取节点后初始化</strong>即可</li>
+</ul>
+</li>
+</ul>
+<h4 id="elementUI-日期选择器在vue-admin中设置中文显示"><a href="#elementUI-日期选择器在vue-admin中设置中文显示" class="headerlink" title="elementUI 日期选择器在vue-admin中设置中文显示"></a>elementUI 日期选择器在vue-admin中设置中文显示</h4><ul>
+<li><p><strong>方法</strong></p>
+<ul>
+<li><p>main.js文件当中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// import locale from &#x27;element-ui/lib/locale/lang/en&#x27; // lang i18n 注释掉</span><br><span class="hljs-keyword">import</span> locale <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui/lib/locale/lang/zh-CN&#x27;</span> <span class="hljs-comment">//添加</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ElementUI</span>, &#123; locale &#125;);<span class="hljs-comment">//添加</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>设置前</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142023476.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>设置后</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142025700.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h4 id="moment日期插件输出格式错误"><a href="#moment日期插件输出格式错误" class="headerlink" title="moment日期插件输出格式错误"></a>moment日期插件输出格式错误</h4><ul>
+<li>之前输出<code>console.log(moment().format(&quot;yyyy-MM-dd&quot;));</code></li>
+<li>原来是字母问题,改为大写就可以了</li>
+<li>之后改为<code>console.log(moment().format(&quot;YYYY-MM-DD&quot;));</code></li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142039084.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="moment获取本周-本月"><a href="#moment获取本周-本月" class="headerlink" title="moment获取本周-本月"></a>moment获取本周-本月</h4><ul>
+<li>获取本周<ul>
+<li><code>moment().day(1)</code>即可设置为星期一</li>
+<li><code>moment().day(1).format(&#39;YYYY-MM-DD&#39;) </code>;&#x2F;&#x2F;输出本周星期一的日期也就是2022&#x2F;05&#x2F;09</li>
+<li><code>moment().day(7)</code>即可设置为星期天</li>
+<li><code>moment().day(7).format(&quot;YYYY-MM-DD&quot;)</code>;&#x2F;&#x2F;输出本周星期一的日期也就是2022&#x2F;05&#x2F;15</li>
+</ul>
+</li>
+<li>获取本月1日<ul>
+<li><code>moment().startOf(&#39;month&#39;)</code>即可获取本月一日</li>
+<li><code>moment().startOf(&#39;month&#39;).format(&quot;YYYY-MM-DD&quot;)</code>&#x2F;&#x2F;输出本月1日也就是 2022-05-01</li>
+</ul>
+</li>
+<li>获取本月结尾<ul>
+<li><code>moment().endOf(&#39;month&#39;)</code>即可获取本月最后一天的日期</li>
+<li><code>moment().endOf(&#39;month&#39;).format(&quot;YYYY-MM-DD&quot;)</code>&#x2F;&#x2F;输出本月最后一天,也就是 2022-05-31</li>
+</ul>
+</li>
+<li>获取本日<ul>
+<li><code>moment().startOf(&#39;day&#39;)</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="明明组件是复用的-为什么echarts图表只显示一个"><a href="#明明组件是复用的-为什么echarts图表只显示一个" class="headerlink" title="明明组件是复用的,为什么echarts图表只显示一个?"></a>明明组件是复用的,为什么echarts图表只显示一个?</h4><ul>
+<li>如图,只有左边有,为什么会这样子?</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151026036.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>解决</strong></p>
+<ul>
+<li>原来初始化的时候获取dom是<code>document.querySelector(xxxx)</code>改为<code>this.$refs.xxxx</code>即可</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151028728.png" srcset="/img/loading.gif" lazyload alt="如图"></p>
+<ul>
+<li><p>成功解决</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151028128.png" srcset="/img/loading.gif" lazyload alt="成功解决"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="支付的轮询"><a href="#支付的轮询" class="headerlink" title="支付的轮询"></a>支付的轮询</h4><p>代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//开始轮询</span><br><span class="hljs-keyword">if</span>(!<span class="hljs-variable language_">this</span>.<span class="hljs-property">timer</span>)&#123;<br><span class="hljs-variable language_">this</span>.<span class="hljs-property">timer</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>	<span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$API</span>.<span class="hljs-title function_">queryPayStatus</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">orderNo</span>)<br>	<span class="hljs-keyword">if</span>(result.<span class="hljs-property">code</span> == <span class="hljs-number">200</span>)&#123;<br>	  <span class="hljs-comment">//说明支付成功了</span><br>	  <span class="hljs-comment">//清除定时器</span><br>	  <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">timer</span>);<br>	  <span class="hljs-comment">//置空timer</span><br>	  <span class="hljs-variable language_">this</span>.<span class="hljs-property">timer</span> = <span class="hljs-literal">null</span>;<br>	  <span class="hljs-comment">//更改支付状态记录表  </span><br>	  <span class="hljs-variable language_">this</span>.<span class="hljs-property">payStatu</span> = result.<span class="hljs-property">code</span>;<br>	  <span class="hljs-comment">//关闭信息弹窗</span><br>	  <span class="hljs-variable language_">this</span>.<span class="hljs-property">$msgbox</span>.<span class="hljs-title function_">close</span>();<br>	  <span class="hljs-comment">//跳转路由</span><br>	  <span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&quot;/paysuccess&quot;</span>);<br>	&#125;<br>&#125;, <span class="hljs-number">2000</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>流程图</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205170917227.png" srcset="/img/loading.gif" lazyload alt="轮询支付流程图"></p>
+<h4 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h4><ul>
+<li>set构造函数去重</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>	<span class="hljs-keyword">var</span> tempArray = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>];<br>	<span class="hljs-comment">//转化为set</span><br>	<span class="hljs-keyword">var</span> tempSet = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>(tempArray);<br>	<span class="hljs-comment">//set转换回来数组 - 方法1</span><br>	<span class="hljs-keyword">var</span> tempAfterArray1 = [...tempSet];<br>	<span class="hljs-comment">///set转换回来数组 - 方法2</span><br>	<span class="hljs-keyword">var</span> tempAfterArray2 = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(tempSet);<br>	<span class="hljs-comment">//[1, 2, 3, 4, 5, 6, 7]</span><br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(tempAfterArray1);<br>	<span class="hljs-comment">//[1, 2, 3, 4, 5, 6, 7]</span><br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(tempAfterArray2);<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>普通方法(这里就说一个~)</li>
+</ul>
+<p><code>filter</code>和<code>indexOf</code>结合,filter为真的时候才会返回,indexOf如果找到第一个会停止寻找</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> tempArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>];<br><br><span class="hljs-comment">//item为当前遍历的项</span><br><span class="hljs-comment">//index为当前遍历项的索引</span><br><span class="hljs-keyword">var</span> a = tempArray.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> tempArray.<span class="hljs-title function_">indexOf</span>(item) == index;<br>&#125;)<br><span class="hljs-comment">//[1, 2, 5, 6, 7]</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br><span class="hljs-comment">//遍历过程</span><br>item = <span class="hljs-number">1</span>,index=<span class="hljs-number">0</span><br>tempArray.<span class="hljs-title function_">indexOf</span>(item) 返回 <span class="hljs-number">0</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span> == <span class="hljs-number">0</span> ;<span class="hljs-comment">//为true,存储&#x27;1&#x27;</span><br><br>item = <span class="hljs-number">2</span>,index=<span class="hljs-number">1</span><br>tempArray.<span class="hljs-title function_">indexOf</span>(item) 返回 <span class="hljs-number">1</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">1</span> == <span class="hljs-number">1</span> ;<span class="hljs-comment">//为true,存储&#x27;2&#x27;</span><br><br><br>item = <span class="hljs-number">5</span>,index=<span class="hljs-number">2</span><br>tempArray.<span class="hljs-title function_">indexOf</span>(item) 返回 <span class="hljs-number">2</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">2</span> == <span class="hljs-number">2</span> ;<span class="hljs-comment">//为true,存储&#x27;5&#x27;</span><br><br>item = <span class="hljs-number">5</span>,index=<span class="hljs-number">3</span><br>tempArray.<span class="hljs-title function_">indexOf</span>(item) 返回 <span class="hljs-number">2</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">2</span> == <span class="hljs-number">3</span> ;<span class="hljs-comment">//为false,不存储</span><br><br><br>item = <span class="hljs-number">6</span>,index=<span class="hljs-number">4</span><br>tempArray.<span class="hljs-title function_">indexOf</span>(item) 返回 <span class="hljs-number">4</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">4</span> == <span class="hljs-number">4</span> ;<span class="hljs-comment">//为true,存储&#x27;6&#x27;</span><br><br>item = <span class="hljs-number">6</span>,index=<span class="hljs-number">5</span><br>tempArray.<span class="hljs-title function_">indexOf</span>(item) 返回 <span class="hljs-number">4</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">4</span> == <span class="hljs-number">5</span> ;<span class="hljs-comment">//为false,不存储</span><br><br>item = <span class="hljs-number">7</span>,index=<span class="hljs-number">6</span><br>tempArray.<span class="hljs-title function_">indexOf</span>(item) 返回 <span class="hljs-number">6</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">6</span> == <span class="hljs-number">6</span> ;<span class="hljs-comment">//为true,存储&#x27;7&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="element-ui当中-lt-el-table-gt-lt-x2F-el-table-gt-索引自定义"><a href="#element-ui当中-lt-el-table-gt-lt-x2F-el-table-gt-索引自定义" class="headerlink" title="element-ui当中&lt;el-table&gt;&lt;&#x2F;el-table&gt;索引自定义"></a>element-ui当中&lt;el-table&gt;&lt;&#x2F;el-table&gt;索引自定义</h4><p>关键在于为<code>type=&#39;index&#39;</code>的绑定<code>:index=&quot;自定义函数&quot;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">el-table</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;objects&quot;</span> <span class="hljs-attr">border</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">el-table-column</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;center&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;80&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;index&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">:index</span>=<span class="hljs-string">&quot;indexMethod&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;索引&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">el-table-column</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">el-table-column</span> <span class="hljs-attr">prop</span>=<span class="hljs-string">&quot;prop&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;工作地址&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">el-table-column</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">el-table</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">objects</span>: [</span></span><br><span class="language-javascript"><span class="language-xml">        &#123;</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">ID</span>: <span class="hljs-string">&quot;1&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">JobTitle</span>: <span class="hljs-string">&quot;Front Desk Coordinator&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">EmailAddress</span>: <span class="hljs-string">&quot;Sofie_Jennson149@deons.tech&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">FirstNameLastName</span>: <span class="hljs-string">&quot;Sofie Jennson&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">        &#123;</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">ID</span>: <span class="hljs-string">&quot;2&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">JobTitle</span>: <span class="hljs-string">&quot;Global Logistics Supervisor&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">EmailAddress</span>: <span class="hljs-string">&quot;Wade_Gallacher1821@elnee.tech&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">FirstNameLastName</span>: <span class="hljs-string">&quot;Wade Gallacher&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">      ],</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//自定义索引,转化为0001,0002,0003的这种</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">indexMethod</span>(<span class="hljs-params">index</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//转字符串</span></span></span><br><span class="language-javascript"><span class="language-xml">      index = index.<span class="hljs-title function_">toString</span>();</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">while</span> (index.<span class="hljs-property">length</span> &lt; <span class="hljs-number">4</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        index = <span class="hljs-string">&quot;0&quot;</span> + index;</span></span><br><span class="language-javascript"><span class="language-xml">      &#125;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">return</span> index;</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;less&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205210926510.png" srcset="/img/loading.gif" lazyload alt="element-ui当中&lt;el-table&gt;&lt;/el-table&gt;索引自定义"></p>
+<h4 id="el-table-column使用插槽并将数据绑定在v-model为什么可以实现双向绑定影响到原来数据"><a href="#el-table-column使用插槽并将数据绑定在v-model为什么可以实现双向绑定影响到原来数据" class="headerlink" title="el-table-column使用插槽并将数据绑定在v-model为什么可以实现双向绑定影响到原来数据"></a>el-table-column使用插槽并将数据绑定在v-model为什么可以实现双向绑定影响到原来数据</h4><p><strong>当初学的时候很懵懵懂懂,觉得既然把数据传递给了组件去显示,那应该影响不到原来的数据呢,为什么还会影响到原来数据</strong></p>
+<p>例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">el-table</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;attrForm&quot;</span> <span class="hljs-attr">border</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">el-table-column</span> <span class="hljs-attr">prop</span>=<span class="hljs-string">&quot;EmailAddress&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;邮箱地址&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot-scope</span>=<span class="hljs-string">&quot;&#123; row &#125;&quot;</span>&gt;</span></span><br><span class="language-xml">          <span class="hljs-comment">&lt;!-- 为什么可以实现用户输入后data当中的数据也改变? --&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.EmailAddress&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-input</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">el-table-column</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">el-table</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">attrForm</span>: [</span></span><br><span class="language-javascript"><span class="language-xml">        &#123;</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">ID</span>: <span class="hljs-string">&quot;1&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">JobTitle</span>: <span class="hljs-string">&quot;Front Desk Coordinator&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">EmailAddress</span>: <span class="hljs-string">&quot;Sofie_Jennson149@deons.tech&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">FirstNameLastName</span>: <span class="hljs-string">&quot;Sofie Jennson&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">        &#123;</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">ID</span>: <span class="hljs-string">&quot;2&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">JobTitle</span>: <span class="hljs-string">&quot;Global Logistics Supervisor&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">EmailAddress</span>: <span class="hljs-string">&quot;Wade_Gallacher1821@elnee.tech&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-title class_">FirstNameLastName</span>: <span class="hljs-string">&quot;Wade Gallacher&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">      ],</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205210940806.png" srcset="/img/loading.gif" lazyload alt="当初的疑问"></p>
+<h5 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h5><p>因为element-ui当中,是按照列来传递数据的,也就是当<code>element-ui</code>遍历<code>attrForm</code>的时候,会将当前遍历项目传递给每一个<code>&lt;el-table-column&gt;</code>,所以为什么输入框当中输入的数据会影响到data</p>
+<ul>
+<li>首先是v-model的原因</li>
+<li>其次就是传递的是引用数据类型<del>使用指向同一个数据</del></li>
+</ul>
+<p>差不多这样子图过程吧</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205071135167.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="数组哪些方法的使用不会影响数组的响应式"><a href="#数组哪些方法的使用不会影响数组的响应式" class="headerlink" title="数组哪些方法的使用不会影响数组的响应式?"></a>数组哪些方法的使用不会影响数组的响应式?</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">push</span><span class="hljs-params">()</span></span><br><span class="hljs-function"><span class="hljs-title">pop</span><span class="hljs-params">()</span></span><br><span class="hljs-function"><span class="hljs-title">shift</span><span class="hljs-params">()</span></span><br><span class="hljs-function"><span class="hljs-title">unshift</span><span class="hljs-params">()</span></span><br><span class="hljs-function"><span class="hljs-title">splice</span><span class="hljs-params">()</span></span><br><span class="hljs-function"><span class="hljs-title">sort</span><span class="hljs-params">()</span></span><br><span class="hljs-function"><span class="hljs-title">reverse</span><span class="hljs-params">()</span></span><br></code></pre></td></tr></table></figure>
+
+<p>再加上一个整体替换也不会</p>
+<p>比如<code>data</code>当中的<code>a</code>数组是响应式的,整体替换,<code>this.a</code> &#x3D; b;(b也为一个数组),也不会影响数组的响应式</p>
+<h4 id="获取输入框的焦点"><a href="#获取输入框的焦点" class="headerlink" title="获取输入框的焦点"></a>获取输入框的焦点</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">xxx</span>.<span class="hljs-title function_">focus</span>();获取焦点<br></code></pre></td></tr></table></figure>
+
+<h4 id="el-dialog的显示隐藏的控制"><a href="#el-dialog的显示隐藏的控制" class="headerlink" title="el-dialog的显示隐藏的控制"></a>el-dialog的显示隐藏的控制</h4><p><code>&lt;el-dialog&gt;&lt;/el-dialog&gt;</code>是支持.sync的写法的,比如<code>&lt;el-dialog :visible.sync=&quot;xxxx&quot;&gt;&lt;/el-dialog&gt;</code><br>    由这个<code>xxx</code>来决定这个<code>dialog</code>是否是显示还是隐藏</p>
+<h4 id="el-form当中的el-form-item占据一行问题"><a href="#el-form当中的el-form-item占据一行问题" class="headerlink" title="el-form当中的el-form-item占据一行问题"></a>el-form当中的el-form-item占据一行问题</h4><p><code>el-form-item</code>添加下属性<code>label-width:&quot;80px&quot;</code>或者80px自己改为其他的即可</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205211003513.png" srcset="/img/loading.gif" lazyload alt="前后效果"></p>
+<p>顺带一提</p>
+<p><code>&lt;el-input&gt;</code>改为输入框设置<code>type=&quot;textarea&quot;</code>再添加下<code>row=&quot;4&quot;即可多行输入</code></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205211004107.png" srcset="/img/loading.gif" lazyload alt="type=&quot;textarea&quot;"></p>
+<h4 id="可以使用混入mixin解决export-default过长"><a href="#可以使用混入mixin解决export-default过长" class="headerlink" title="可以使用混入mixin解决export default过长"></a>可以使用混入mixin解决export default过长</h4><p>混入,说简单就是将一个东西和另外一个东西混合在一起,注意是混合,不是替换!,比如我在一个文件里面有方法A,我混入在另外一个文件夹里面,那么另外一个文件夹就可以使用A了</p>
+<p><strong>使用:</strong>  </p>
+<ul>
+<li>引入要混入的对象</li>
+<li>配置对象添加<code>mixins:[],</code>数组当中填写引入的混入对象的名称即可</li>
+</ul>
+<p><strong>例子:</strong></p>
+<p><strong>com.js</strong>(可以看到,和组件传入的配置对象基本一样)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-attr">address</span>:<span class="hljs-string">&quot;地球村&quot;</span><br>        &#125;<br>    &#125;,<br>    <span class="hljs-attr">methods</span>: &#123;<br>        <span class="hljs-title function_">sayOther</span>(<span class="hljs-params"></span>)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;回收装备,没区别&quot;</span>);<br>        &#125;<br>    &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Home.vue</strong>(混入使用com.js)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> com <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/other/com.js&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">mixins</span>:[com],</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;李白&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//调用自己的方法</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">show</span>();</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//调用混入其中的方法</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sayOther</span>();</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>);<span class="hljs-comment">//李白</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">address</span>);<span class="hljs-comment">//地球村</span></span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">show</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;大家好,我叫&quot;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="watch和-nextTick结合使用"><a href="#watch和-nextTick结合使用" class="headerlink" title="watch和$nextTick结合使用"></a>watch和$nextTick结合使用</h4><ul>
+<li><strong>watch</strong>只能监视数据的变化,而因为数据变化导致的dom更新是否已经完成watch并不知道(相当于你数据一发生变化,我就执行你设置的回调函数)</li>
+<li>而如果我们希望等待dom更新完成后在执行回调,我们就需要结合<code>$nextTick</code>使用</li>
+<li><strong>$nextTick</strong>意思是等待下一次DOM更新后在执行回调</li>
+<li>比如说轮播图,如果我们轮播图数据发生了变化,<code>watch</code>监视到了,如果我们立马执行操作使得轮播图重新绘制生成,<strong>那么肯定是不行的,因为dom都没有生成,轮播图怎么重新获取dom进行生成</strong>,所以我们就可以在里面添加<code>$nextTick</code>等下次DOM更新完成后执行即可</li>
+<li><strong>顺带一提:</strong> watch支持异步请求,并且支持深度监视,computed不支持</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js&quot;</span>&gt;&lt;/script&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">	<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">data</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">		&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">	vm.<span class="hljs-property">name</span> = <span class="hljs-string">&quot;汤姆&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-comment">//设置新名字后立马输出里面的文本,发现输出的依旧是&#x27;tom&#x27;,而不是&#x27;汤姆&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-comment">//因为dom还没有更新完成</span></span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(vm.<span class="hljs-property">$refs</span>.<span class="hljs-property">title</span>.<span class="hljs-property">textContent</span>); <span class="hljs-comment">// tom</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-comment">//下一次dom更新完成后输出,发送输出的是&#x27;汤姆&#x27;了</span></span></span><br><span class="language-javascript"><span class="language-xml">	vm.$nextTick(<span class="hljs-function">()=&gt;</span>&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(vm.<span class="hljs-property">$refs</span>.<span class="hljs-property">title</span>.<span class="hljs-property">textContent</span>); <span class="hljs-comment">// tom</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="解构赋值-和"><a href="#解构赋值-和" class="headerlink" title="解构赋值 { } 和 [ ]"></a>解构赋值 { } 和 [ ]</h4><ul>
+<li><p><code>&#123;  &#125; </code>不多说</p>
+</li>
+<li><p><code>[ ]</code> 按顺序解构赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span>[,attr] = <span class="hljs-string">&quot;v-on:text&quot;</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;:&quot;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(attr);<span class="hljs-comment">//输出text</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="vue-router配置对象当中的scrollBehavior"><a href="#vue-router配置对象当中的scrollBehavior" class="headerlink" title="vue-router配置对象当中的scrollBehavior"></a>vue-router配置对象当中的scrollBehavior</h4><p>可以使得切换路由的时候,路由滚动条可以滚动到我们想滚动的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;<br>    <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;history&quot;</span>,<br>    routes,<br>    <span class="hljs-comment">//每次路由切换的时候,就将滚动条滚动到最顶端</span><br>    <span class="hljs-title function_">scrollBehavior</span>(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, savedPosition</span>)&#123;<br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">x</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">y</span>:<span class="hljs-number">0</span>&#125;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="getters当中要用一个-的用处"><a href="#getters当中要用一个-的用处" class="headerlink" title="getters当中要用一个||[]  ||{} 的用处"></a>getters当中要用一个||[]  ||{} 的用处</h4><ul>
+<li>因为有些项目需要从后台发送请求来渲染页面,但是这些数据因为网络延迟的问题肯定不能及时到达,所以就需要在到达之前使用<code>[]</code>或者<code>&#123;&#125;</code>(依据返回数据是数组还是对象来选择),来进行填充,不然你一个空字符串去参与遍历(比如<code>v-for</code>)那肯定会报错的</li>
+<li>再者,有人会说getters的事情和我组件有什么关系,一个是仓库,一个是组件,还是有关系的,(因为组件调用了<code>mapGetters</code>来获取仓库的数据),当数据不存在的时候或者遍历一个不可以遍历的数据的时候,就会报错(虽然报错后数据显示依旧正常,是因为后期数据返回,重新渲染了~)(这叫<strong>假报错</strong>)</li>
+<li>所以有时候为了避免假报错,就需要使用<code>||[]  ||&#123;&#125; </code></li>
+</ul>
+<p>比如这个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> getters = &#123;<br>    <span class="hljs-comment">// 面包屑</span><br>    <span class="hljs-title function_">categoryView</span>(<span class="hljs-params">state</span>)&#123;<br>        <span class="hljs-keyword">return</span> state.<span class="hljs-property">skuDetailInfo</span>.<span class="hljs-property">categoryView</span>||&#123;&#125;;<br>    &#125;,<br>    <span class="hljs-comment">// 商品详情</span><br>    <span class="hljs-title function_">skuInfo</span>(<span class="hljs-params">state</span>)&#123;<br>        <span class="hljs-keyword">return</span> state.<span class="hljs-property">skuDetailInfo</span>.<span class="hljs-property">skuInfo</span>||&#123;&#125;;<br>    &#125;,<br>    <span class="hljs-comment">// 商品售卖属性</span><br>    <span class="hljs-title function_">spuSaleAttrList</span>(<span class="hljs-params">state</span>)&#123;<br>        <span class="hljs-keyword">return</span> state.<span class="hljs-property">skuDetailInfo</span>.<span class="hljs-property">spuSaleAttrList</span>||[]<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>还有就是有时候我们多层嵌套读取数据,比如<code>a.b.c</code>通过a读取b,又通过b读取c,假如读取到b的时候,b是<code>undefined</code>,那么在读取c就会报错,所以这个时候就可以考虑使用<code>||[] 或者 ||&#123;&#125;</code>了</li>
+</ul>
+<h4 id="localStorage-getItem-如果获取不到指定的key-返回的是null不是返回undefined"><a href="#localStorage-getItem-如果获取不到指定的key-返回的是null不是返回undefined" class="headerlink" title="localStorage.getItem();如果获取不到指定的key,返回的是null不是返回undefined"></a>localStorage.getItem();如果获取不到指定的key,返回的是null不是返回undefined</h4><h4 id="axios的请求头-Content-Type"><a href="#axios的请求头-Content-Type" class="headerlink" title="axios的请求头(Content-Type)"></a>axios的请求头(Content-Type)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 1 默认的格式请求体中的数据会以json字符串的形式发送到后端(默认)</span><br>  <span class="hljs-string">&#x27;Content-Type: application/json &#x27;</span><br><br><span class="hljs-comment">// 2 请求体中的数据会以普通表单形式（键值对）发送到后端</span><br>  <span class="hljs-string">&#x27;Content-Type: application/x-www-form-urlencoded&#x27;</span><br><br><span class="hljs-comment">// 3 它会将请求体的数据处理为一条消息，以标签为单元，用分隔符分开。既可以上传键值对，也可以上传文件</span><br>  <span class="hljs-string">&#x27;Content-Type: multipart/form-data&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong></p>
+<p>jQuery当中的<code>$.post</code>默认请求头(<code>Content-Type</code>)为 <code>application/x-www-form-urlencoded; charset=UTF-8</code></p>
+<h4 id="当不使用vuex的时候-我们可以把接口请求函数全部封装在对象当中并挂载Vue原型上"><a href="#当不使用vuex的时候-我们可以把接口请求函数全部封装在对象当中并挂载Vue原型上" class="headerlink" title="当不使用vuex的时候,我们可以把接口请求函数全部封装在对象当中并挂载Vue原型上"></a>当不使用vuex的时候,我们可以把接口请求函数全部封装在对象当中并挂载Vue原型上</h4><p>如:在main.js当中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 也就是先导入封装所有ajax请求的api.js</span><br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-variable constant_">API</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/api.js&quot;</span><br><span class="hljs-comment">// 挂载到vue原型上,和全局事件总线挂载一样</span><br><span class="hljs-comment">// 都是在vue生命周期的beforeCreate挂载</span><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>    ...<br>	<span class="hljs-title function_">beforeCreate</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-comment">//全局事件总线</span><br>    	<span class="hljs-comment">//Vue.prototype.$bus = this;</span><br>    	<span class="hljs-comment">//ajax请求</span><br>		<span class="hljs-title class_">Vue</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">$API</span> = <span class="hljs-variable constant_">API</span>;<br>	&#125;,<br>    ...<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="Vue注册全局注册的二种方式"><a href="#Vue注册全局注册的二种方式" class="headerlink" title="Vue注册全局注册的二种方式"></a>Vue注册全局注册的二种方式</h4><ul>
+<li><code>Vue.use()</code></li>
+</ul>
+<p><strong>main.js文件(主入口文件)使用Vue.use方法全局注册</strong></p>
+<p>其实element-ui官方也是使用Vue.use()来注册全局组件的~</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><span class="hljs-comment">//引入element-ui组件</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">ElementUI</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-ui&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;element-ui/lib/theme-chalk/index.css&quot;</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ElementUI</span>);<br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">productionTip</span> = <span class="hljs-literal">false</span><br><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> <span class="hljs-title function_">h</span>(<span class="hljs-title class_">App</span>),<br>&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Vue.component()</code></li>
+</ul>
+<p>一般我们用<code>Vue.componet()</code>比较多,因为使用<code>Vue.use()</code>注册全局组件使用起来麻烦点,element-ui看起来使用简单是因为内部封装好了</p>
+<ul>
+<li>Vue.componet(参数1,参数2)<ul>
+<li>参数1:注册的组件名</li>
+<li>参数2:注册的组件</li>
+</ul>
+</li>
+</ul>
+<p><strong>main.js文件(主入口文件)使用Vue.component方法全局注册</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><span class="hljs-comment">//引入自定义组件</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">MyButton</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/components/MyButton&#x27;</span><br><br><span class="hljs-comment">//全局组成element-ui组件</span><br><span class="hljs-comment">//参数1: 注册的组件名字为 &#x27;MyButton&#x27;</span><br><span class="hljs-comment">//参数2: 注册的组件为 MyButton</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;MyButton&#x27;</span>,<span class="hljs-title class_">MyButton</span>);<br><br><span class="hljs-comment">//或者如果组件配置了name属性,可以直接使用组件的name当中的值</span><br><span class="hljs-comment">//Vue.component(MyButton.name,MyButton);</span><br><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> <span class="hljs-title function_">h</span>(<span class="hljs-title class_">App</span>),<br>&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Vue当中的watch"><a href="#Vue当中的watch" class="headerlink" title="Vue当中的watch"></a>Vue当中的watch</h4><h5 id="直接就一个监视回调函数"><a href="#直接就一个监视回调函数" class="headerlink" title="直接就一个监视回调函数"></a>直接就一个监视回调函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;name = &#x27;我是渣渣辉&#x27;&quot;</span>&gt;</span>这是按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; name &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;MyButton&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;李白&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">watch</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 监视name值的变化</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">name</span>(<span class="hljs-params">newValue, oldValue</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;值发生了变化&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//代码等同于</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// name: &#123;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//   handler(newValue, oldValue) &#123;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//     console.log(&quot;值发生了变化&quot;);</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//   &#125;,</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// &#125;,</span></span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;less&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>如果需要监视对象当中某一个值的变化的话,就需要用到这种形式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">eat</span>:&#123;<br>        <span class="hljs-attr">vegetable</span>:<span class="hljs-string">&quot;西红柿&quot;</span>,<br>        <span class="hljs-attr">meat</span>:<span class="hljs-string">&quot;牛肉&quot;</span><br>    &#125;<br>  &#125;;<br>&#125;,<br><span class="hljs-attr">watch</span>: &#123;<br>  <span class="hljs-comment">// 监视eat对象当中meat值的变化</span><br>  <span class="hljs-string">&#x27;eat.meat&#x27;</span>(newValue, oldValue) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;值发生了变化&quot;</span>);<br>  &#125;,<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+<h5 id="书写配置项-比如是否深度监视"><a href="#书写配置项-比如是否深度监视" class="headerlink" title="书写配置项(比如是否深度监视)"></a>书写配置项(比如是否深度监视)</h5><p>如果我们想监视一个对象当中所有值的变化,包括内部对象的值的变化,我们不可以一个个去书写监听回调吧?我们可以使用配置项当中的<code>deep</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;eat.meat = &#x27;和牛&#x27;&quot;</span>&gt;</span>改变肉类<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;eat.vegetable = &#x27;青菜&#x27;&quot;</span>&gt;</span>改变蔬菜<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;eat.other.fruit = &#x27;苹果&#x27;&quot;</span>&gt;</span>改变水果<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; eat.meat &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; eat.vegetable &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; eat.other.fruit &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;MyButton&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">eat</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">vegetable</span>: <span class="hljs-string">&quot;西红柿&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">meat</span>: <span class="hljs-string">&quot;牛肉&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">other</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;草莓&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">      &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">watch</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//深度监听eat当中值的变化,嵌套多少层都会监听到</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">eat</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>,</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;值发生了变化&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">      &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;less&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="npm-run-build-prod-或者-npm-run-build-stage"><a href="#npm-run-build-prod-或者-npm-run-build-stage" class="headerlink" title="npm run build:prod 或者 npm run build:stage"></a>npm run build:prod 或者 npm run build:stage</h4><ul>
+<li><strong>npm run build:prod:</strong> 构建生产环境<ul>
+<li>打包的时候会读取<code>.env.development</code>文件的,所以不需要前缀可以编辑下这个文件</li>
+</ul>
+</li>
+<li><strong>npm run build:stage:</strong> 构建测试环境<ul>
+<li>打包的时候会读取<code>.env.production</code>文件的,所以不需要前缀可以编辑下这个文件</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205211140036.png" srcset="/img/loading.gif" lazyload alt="npm run build:prod 或者 npm run build:stage"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2022/05/21/前端/遇到的问题及解决XXXXXX/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)">
+                        <span class="hidden-mobile">vue源码分析-快速版(DMQ的MVVM为例)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

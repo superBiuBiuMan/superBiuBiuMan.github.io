@@ -1,0 +1,949 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="前言 为什么要制作一个启动盘才能重装系统?  通俗点来说就是你自己生病了，自己一般不能自己帮自己看病，一般都是别人看病。电脑也是如此，需要一个第三方来“治疗”。  为什么使用EasyU？而不使用老毛_，巴拉巴拉。。。。。  因为其他的很多启动盘制作工具有广告，会在系统安装的时候安装第三方软件。 资源下载 启动盘制作工具(任选一个下载地址)：  下载地址1:123盘(不限速) 下载地址2:百度网盘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用优启通(EasyU)重装系统教程(详细)">
+<meta property="og:url" content="http://example.com/2022/03/23/%E7%B3%BB%E7%BB%9F/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="前言 为什么要制作一个启动盘才能重装系统?  通俗点来说就是你自己生病了，自己一般不能自己帮自己看病，一般都是别人看病。电脑也是如此，需要一个第三方来“治疗”。  为什么使用EasyU？而不使用老毛_，巴拉巴拉。。。。。  因为其他的很多启动盘制作工具有广告，会在系统安装的时候安装第三方软件。 资源下载 启动盘制作工具(任选一个下载地址)：  下载地址1:123盘(不限速) 下载地址2:百度网盘">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323210821.png">
+<meta property="article:published_time" content="2022-03-23T13:11:26.000Z">
+<meta property="article:modified_time" content="2022-03-26T02:29:29.718Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="系统">
+<meta property="article:tag" content="重装系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323210821.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>使用优启通(EasyU)重装系统教程(详细) - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="使用优启通(EasyU)重装系统教程(详细)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-23 21:11" pubdate>
+          2022年3月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="系统"
+        id="heading-8a8b895fcc504b75f45b6c8e4d15cc4d" role="tab" data-toggle="collapse" href="#collapse-8a8b895fcc504b75f45b6c8e4d15cc4d"
+        aria-expanded="true"
+      >
+        系统
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-8a8b895fcc504b75f45b6c8e4d15cc4d"
+           role="tabpanel" aria-labelledby="heading-8a8b895fcc504b75f45b6c8e4d15cc4d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/23/%E7%B3%BB%E7%BB%9F/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/" title="使用优启通(EasyU)重装系统教程(详细)"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">使用优启通(EasyU)重装系统教程(详细)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用优启通(EasyU)重装系统教程(详细)</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年3月26日 上午
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li>为什么要制作一个启动盘才能重装系统?</li>
+</ul>
+<p>通俗点来说就是你自己生病了，自己一般不能自己帮自己看病，一般都是别人看病。电脑也是如此，需要一个第三方来“治疗”。</p>
+<ul>
+<li>为什么使用EasyU？而不使用老毛_，巴拉巴拉。。。。。</li>
+</ul>
+<p>因为其他的很多启动盘制作工具有广告，会在系统安装的时候安装第三方软件。</p>
+<h3 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h3><ul>
+<li>启动盘制作工具(任选一个下载地址)：</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.123pan.com/s/9biA-hNeHh">下载地址1:123盘(不限速)</a></p>
+<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HF1BuiAY39FPDlQNM1yk3w">下载地址2:百度网盘</a></p>
+<ul>
+<li>系统镜像：</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://y-os.net/">http://y-os.net/(第三方修改镜像)</a></p>
+<p><a target="_blank" rel="noopener" href="https://next.itellyou.cn/Original/#">ITELLYOU.CN.(官方原版镜像)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.winos.me/">https://www.winos.me/(第三方修改镜像)</a></p>
+<ul>
+<li>激活工具：</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/YcbwkhiGMFM">EasyActivate(阿里云盘下载)</a></p>
+<h3 id="第一步-制作启动盘"><a href="#第一步-制作启动盘" class="headerlink" title="第一步:制作启动盘"></a>第一步:制作启动盘</h3><ol>
+<li>下载后解压文件夹，选中这个<strong>EasyU</strong></li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323192507.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li><p>选中自己的u盘，然后点击全新制作</p>
+<p class="note note-danger">U盘会格式化！！！！，在制作启动盘之前先备份U盘文件！！！</p></li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323192615.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>单击确定</li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323192816.png" srcset="/img/loading.gif" lazyload></p>
+<p class="note note-info">注意看是否是自己的u盘，比如说金士顿的，一般里面会有kingston，闪迪的SanDisk等等，注意看自己有没有选错了U盘</p>
+
+<ol start="4">
+<li>等待制作完成</li>
+</ol>
+<p><code>（这个是EasyU Vip版本的，功能更多点，使用制作起来会比较慢）</code></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323192925.png" srcset="/img/loading.gif" lazyload></p>
+<p><em>等啊等</em></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323192950.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>制作启动盘完成</li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193017.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="6">
+<li>单击退出</li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193040.png" srcset="/img/loading.gif" lazyload></p>
+<p>7.制作好后的启动盘在磁盘当中是这样子的</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193104.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="第二步-下载镜像并存入u盘"><a href="#第二步-下载镜像并存入u盘" class="headerlink" title="第二步:下载镜像并存入u盘"></a>第二步:下载镜像并存入u盘</h3><p class="note note-info">这里随便找了一个别人封装好的系统镜像</p>
+
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193151.png" srcset="/img/loading.gif" lazyload></p>
+<p>好了,放进去了</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193232.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="第三步-正式开始重装"><a href="#第三步-正式开始重装" class="headerlink" title="第三步:正式开始重装"></a>第三步:正式开始重装</h3><ol>
+<li>进入启动盘，很多笔记本是电脑开机后，一直按ESC，等到出现,就像这样子(各个品牌不同,有的F2 F12,具体可以百度搜索品牌+进入启动项快捷键)</li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193402.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li>我们选择UEFIXXXXX开头的,如果 UEFI:Generic STORAGE DEVICE 1404,Partition 1启动失败,那么我们选择 UEFI:Generic STORAGE DEVICE 1404,Partition 2</li>
+<li>选择一个进入mini系统~，我选择的是[3] UEFI WINDOWS 10 PE X64</li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193457.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>进入mini系统后,我们选择红色圈圈(EIX系统安装)</li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193550.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>我们点击这方框这三个(<strong>按照1,2,3顺序点击</strong>)<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193608.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<p class="note note-danger">最后才点击一键恢复！！！</p>
+
+<ol start="6">
+<li>关闭 <strong>恢复完成后自动运行万能驱动</strong> 选择, 之后再次点击<strong>确定</strong></li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193737.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="7">
+<li><p>等待安装完成<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193753.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>安装完后过段时间会自动启动系统，等待系统安装完成</p>
+</li>
+</ol>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193817.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="第四步-激活系统"><a href="#第四步-激活系统" class="headerlink" title="第四步:激活系统"></a>第四步:激活系统</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323193903.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="完成系统激活"><a href="#完成系统激活" class="headerlink" title="完成系统激活"></a>完成系统激活</h3><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>系统安装完成后系统会自动联网安装驱动,比如显卡驱动</li>
+<li>以防万一,最好自己用软件装下驱动,比如360驱动大师,驱动总裁</li>
+<li>下面二个必装运行库(不装后面很多软件会报错导致打不开)</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/G7qgfBuZCcs">微软常用运行库合集提取码1fa4 解压密码yrxitong.com</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.123pan.com/s/9biA-9NeHh">DirectX.Repair</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%B3%BB%E7%BB%9F/" class="category-chain-item">系统</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%B3%BB%E7%BB%9F/">#系统</a>
+      
+        <a href="/tags/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/">#重装系统</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>使用优启通(EasyU)重装系统教程(详细)</div>
+      <div>http://example.com/2022/03/23/系统/重装系统教程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" title="js当中的图片懒加载,懒加载的一些概念和相关知识点">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">js当中的图片懒加载,懒加载的一些概念和相关知识点</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/22/%E5%89%8D%E7%AB%AF/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" title="ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑">
+                        <span class="hidden-mobile">ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1110 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="先安装基本的模块$ npm init -y  $ npm install express –save $ npm install multer –save 附上multer的github当中别人汉化的API文档github地址 我这使用的nodemon,如果那么使用node运行,修改记得重启  开始创建基本express(上传图片)当前目录下创建fileup.js文件 12345678910111">
+<meta property="og:type" content="article">
+<meta property="og:title" content="express,multer,jQuery前端后端上传单个文件">
+<meta property="og:url" content="http://example.com/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="先安装基本的模块$ npm init -y  $ npm install express –save $ npm install multer –save 附上multer的github当中别人汉化的API文档github地址 我这使用的nodemon,如果那么使用node运行,修改记得重启  开始创建基本express(上传图片)当前目录下创建fileup.js文件 12345678910111">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/124124124.png">
+<meta property="article:published_time" content="2022-03-29T14:18:47.000Z">
+<meta property="article:modified_time" content="2022-03-29T14:18:47.000Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="NodeJs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/124124124.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>express,multer,jQuery前端后端上传单个文件 - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="express,multer,jQuery前端后端上传单个文件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-29 22:18" pubdate>
+          2022年3月29日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
+        id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
+        aria-expanded="true"
+      >
+        javscript
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ef149587124f3e10cde7322bbd9d3f01"
+           role="tabpanel" aria-labelledby="heading-ef149587124f3e10cde7322bbd9d3f01">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/04/23/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%AF%86%E5%90%8E%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90%E5%8F%8D%E7%BC%96%E8%AF%91%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序加密后抓包分析反编译抢位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我来图书馆小程序加密后抓包分析反编译抢位置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/06/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序抓包抢位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我来图书馆小程序抓包抢位置</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="html"
+        id="heading-fc35fdc70d5fc69d269883a822c7a53e" role="tab" data-toggle="collapse" href="#collapse-fc35fdc70d5fc69d269883a822c7a53e"
+        aria-expanded="false"
+      >
+        html
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-fc35fdc70d5fc69d269883a822c7a53e"
+           role="tabpanel" aria-labelledby="heading-fc35fdc70d5fc69d269883a822c7a53e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/04/03/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%88%86%E9%A1%B5%E5%99%A8/" title="纯css+html实现的分页器功能"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">纯css+html实现的分页器功能</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="jQuery"
+        id="heading-f590b4fda2c30be28dd3c8c3caf5c77b" role="tab" data-toggle="collapse" href="#collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+        aria-expanded="true"
+      >
+        jQuery
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+           role="tabpanel" aria-labelledby="heading-f590b4fda2c30be28dd3c8c3caf5c77b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" title="express,multer,jQuery前端后端上传单个文件"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">express,multer,jQuery前端后端上传单个文件</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/02/28/%E5%89%8D%E7%AB%AF/jQuery%E4%B8%ADAPI,post%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%AE%B0%E5%BD%95/" title="jQuery中API,post上传文件到阿里云OSS记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jQuery中API,post上传文件到阿里云OSS记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="jQuery"
+        id="heading-f590b4fda2c30be28dd3c8c3caf5c77b" role="tab" data-toggle="collapse" href="#collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+        aria-expanded="true"
+      >
+        jQuery
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+           role="tabpanel" aria-labelledby="heading-f590b4fda2c30be28dd3c8c3caf5c77b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" title="express,multer,jQuery前端后端上传单个文件"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">express,multer,jQuery前端后端上传单个文件</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/02/28/%E5%89%8D%E7%AB%AF/jQuery%E4%B8%ADAPI,post%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%AE%B0%E5%BD%95/" title="jQuery中API,post上传文件到阿里云OSS记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jQuery中API,post上传文件到阿里云OSS记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">express,multer,jQuery前端后端上传单个文件</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年3月29日 晚上
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h3 id="先安装基本的模块"><a href="#先安装基本的模块" class="headerlink" title="先安装基本的模块"></a>先安装基本的模块</h3><p>$ npm init -y </p>
+<p>$ npm install express –save</p>
+<p>$ npm install multer –save</p>
+<h4 id="附上multer的github当中别人汉化的API文档"><a href="#附上multer的github当中别人汉化的API文档" class="headerlink" title="附上multer的github当中别人汉化的API文档"></a>附上multer的github当中别人汉化的API文档</h4><p><a target="_blank" rel="noopener" href="https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md">github地址</a></p>
+<p class="note note-info">我这使用的nodemon,如果那么使用node运行,修改记得重启</p>
+
+<h3 id="开始创建基本express-上传图片"><a href="#开始创建基本express-上传图片" class="headerlink" title="开始创建基本express(上传图片)"></a>开始创建基本express(上传图片)</h3><p>当前目录下创建fileup.js文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">const</span> multer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;multer&quot;</span>);<br><span class="hljs-keyword">var</span> app = <span class="hljs-title function_">express</span>();<span class="hljs-comment">//创建express实例</span><br><br><span class="hljs-comment">//这里是为了后期没有跨域问题设置的静态资源目录</span><br><span class="hljs-comment">//__dirname为NodeJS全局变量: 返回运行当前js的文件夹的绝对路径</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;/&quot;</span>,express.<span class="hljs-title function_">static</span>(__dirname));<br><br><span class="hljs-comment">//后期ajax提交地址就为:http://localhost:3000/file 端口号可在下方自行设置</span><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/file&quot;</span>,<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">//前期测试接口发送数据,没有问题再进行下一步</span><br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;file ok&quot;</span>);<br>&#125;)<br><br><span class="hljs-comment">//设置在本地端口3000</span><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-string">&quot;3000&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;-------------server start-------------------&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="测试是否正常"><a href="#测试是否正常" class="headerlink" title="测试是否正常"></a>测试是否正常</h4><p class="note note-info">这里使用postman测试</p>
+
+<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329212333.png" srcset="/img/loading.gif" lazyload  />
+
+<p class="note note-info">测试没有问题再继续,不然后期很难改</p>
+
+<h3 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h3><p>当前目录下创建up.html </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fileInput&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>上传文件<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-comment">//这里不用jQuery获取是后期需要用到DOM元素,用jQuery也可以,用get或则[]就可以转为DOM元素</span></span><br><span class="language-javascript">        <span class="hljs-keyword">var</span> fileInput = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;fileInput&quot;</span>);</span><br><span class="language-javascript">        <span class="hljs-keyword">var</span> $btn = $(<span class="hljs-string">&quot;#btn&quot;</span>);</span><br><span class="language-javascript">        $btn.<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-comment">//创建表单</span></span><br><span class="language-javascript">            <span class="hljs-comment">//这里new FormData不传入参数,因为这里只是上传一个图片,不存在其他数据,如果要传,传入form标签对应的DOM元素</span></span><br><span class="language-javascript">            <span class="hljs-keyword">var</span> formData = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>();</span><br><span class="language-javascript">            <span class="hljs-comment">//传入文件的key和value</span></span><br><span class="language-javascript">            <span class="hljs-comment">//fileInput.files[0]获取第一个文件,为什么是数组的我猜是因为开发js的为了和多文件上传一样用</span></span><br><span class="language-javascript">            formData.<span class="hljs-title function_">append</span>(<span class="hljs-string">&quot;fileusers&quot;</span>, fileInput.<span class="hljs-property">files</span>[<span class="hljs-number">0</span>]); </span><br><span class="language-javascript">            <span class="hljs-comment">//注意formData.append和formData.set区别,</span></span><br><span class="language-javascript">            $.<span class="hljs-title function_">ajax</span>(&#123;</span><br><span class="language-javascript">                <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;post&quot;</span>,</span><br><span class="language-javascript">                <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:3000/file&quot;</span>,</span><br><span class="language-javascript">                <span class="hljs-comment">//contentType:true;默认值,值为application/x-www-form-urlencoded</span></span><br><span class="language-javascript">				<span class="hljs-comment">//contentType:false;值为multipart/form-data</span></span><br><span class="language-javascript">                <span class="hljs-comment">//重要!!!!!!!!!!!!!!!!!!!!!!!!</span></span><br><span class="language-javascript">                <span class="hljs-string">&quot;contentType&quot;</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">               	<span class="hljs-comment">//重要!!!!!!!!!!!!!!!!!!!!!!!!</span></span><br><span class="language-javascript">                <span class="hljs-string">&quot;processData&quot;</span>: <span class="hljs-literal">false</span>,</span><br><span class="language-javascript">                <span class="hljs-string">&quot;data&quot;</span>: formData,</span><br><span class="language-javascript">                <span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;</span><br><span class="language-javascript">                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);</span><br><span class="language-javascript">                &#125;,</span><br><span class="language-javascript">                <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;</span><br><span class="language-javascript">                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;错误了&quot;</span>, error);</span><br><span class="language-javascript">                &#125;</span><br><span class="language-javascript">            &#125;);</span><br><span class="language-javascript">        &#125;);</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="前端需要注意的"><a href="#前端需要注意的" class="headerlink" title="前端需要注意的"></a>前端需要注意的</h4><ol>
+<li><p>注意formData.append和formData.set区别</p>
+<ol>
+<li>formData.append是如果存在值则会添加到后面,就像[{…},{…}]一样</li>
+<li>formData.set是会覆盖前面的,只保留一个</li>
+</ol>
+</li>
+<li><p><strong>jQuery上传数据的时候,记得设置下面二点</strong></p>
+<ol>
+<li>“processData”: false</li>
+<li>“contentType”: false</li>
+</ol>
+</li>
+<li><p>formData.append(“<strong>fileusers</strong>“, fileInput.files[0]); 当中<strong>fileusers</strong>在这里的作用</p>
+<ol>
+<li>后端multer需要通过用户定义的key,在这里也就是<strong>fileusers</strong>来设置数据</li>
+</ol>
+</li>
+<li><p>new FormData();如果需要传入参数,是传入form标签对应的DOM元素</p>
+</li>
+</ol>
+<h3 id="multer使用"><a href="#multer使用" class="headerlink" title="multer使用"></a>multer使用</h3><ul>
+<li>大体分为而部分<ul>
+<li>根据multer({})创建一个变量(对文件的一些设置和过滤),比如说 var <strong>fileOption</strong> &#x3D; multer({})</li>
+<li>依据这个变量创建单例fileOption.single(key)或者fileOption.array(key,maxcount)</li>
+<li>使用这个单例作为过滤器来对文件进行过滤和操作(也就是中间件)</li>
+</ul>
+</li>
+</ul>
+<h4 id="multer-创建一个变量当中一些可以设置的-具体可以参考官网"><a href="#multer-创建一个变量当中一些可以设置的-具体可以参考官网" class="headerlink" title="multer({})创建一个变量当中一些可以设置的(具体可以参考官网)"></a>multer({})创建一个变量当中一些可以设置的(具体可以参考官网)</h4><ol>
+<li><p><strong>limits</strong>{对象}(一个对象，指定一些数据大小的限制)</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fieldNameSize</code></td>
+<td>field 名字最大长度</td>
+<td>100 bytes</td>
+</tr>
+<tr>
+<td><code>fieldSize</code></td>
+<td>field 值的最大长度</td>
+<td>1MB</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>非文件 field 的最大数量</td>
+<td>无限</td>
+</tr>
+<tr>
+<td><code>fileSize</code></td>
+<td>在 multipart 表单中，文件最大长度 (字节单位)</td>
+<td>无限</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td>在 multipart 表单中，文件最大数量</td>
+<td>无限</td>
+</tr>
+<tr>
+<td><code>parts</code></td>
+<td>在 multipart 表单中，part 传输的最大数量(fields + files)</td>
+<td>无限</td>
+</tr>
+<tr>
+<td><code>headerPairs</code></td>
+<td>在 multipart 表单中，键值对最大组数</td>
+<td>2000</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>fileFilter</strong>{函数}设置一个函数来控制什么文件可以上传以及什么文件应该跳过</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fileFilter</span> (req, file, cb) &#123;<br><br>  <span class="hljs-comment">// 这个函数应该调用 `cb` 用boolean值来</span><br>  <span class="hljs-comment">// 指示是否应接受该文件</span><br><br>  <span class="hljs-comment">// 拒绝这个文件，使用`false`，像这样:</span><br>  <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, <span class="hljs-literal">false</span>)<br><br>  <span class="hljs-comment">// 接受这个文件，使用`true`，像这样:</span><br>  <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, <span class="hljs-literal">true</span>)<br><br>  <span class="hljs-comment">// 如果有问题，你可以总是这样发送一个错误:</span><br>  <span class="hljs-title function_">cb</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;I don\&#x27;t have a clue!&#x27;</span>))<br><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>storage</strong>{返回值} 为运行multer.diskStorage({设置参数})的返回值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> storage = multer.<span class="hljs-title function_">diskStorage</span>(&#123;<br>  <span class="hljs-comment">//定义文件存储位置</span><br>  <span class="hljs-attr">destination</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>    <span class="hljs-comment">//回调函数file当中 </span><br>    <span class="hljs-comment">/* file对象的内容&#123;</span><br><span class="hljs-comment">       fieldname: &#x27;fileusers&#x27;,//通过formData.append(key,value)添加的key值</span><br><span class="hljs-comment">       originalname: &#x27;_1464815392_.bmp&#x27;,//文件名</span><br><span class="hljs-comment">       encoding: &#x27;7bit&#x27;,//编码</span><br><span class="hljs-comment">       mimetype: &#x27;image/bmp&#x27;  //mimeType类型</span><br><span class="hljs-comment">     &#125; */</span><br>    <span class="hljs-comment">//cb(null,存储路径)</span><br>    <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;./myfile&#x27;</span>);<span class="hljs-comment">//可能是以fileup.js在哪里运行为基准的参考的</span><br>  &#125;,<br>  <span class="hljs-comment">//重定义上传的文件</span><br>  <span class="hljs-attr">filename</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>    <span class="hljs-comment">//cb(null,新文件名称)</span><br>    <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, file.<span class="hljs-property">fieldname</span> + <span class="hljs-string">&#x27;-&#x27;</span> + <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>())<br>  &#125;<br>&#125;)<br><br><span class="hljs-keyword">const</span> upload = <span class="hljs-title function_">multer</span>(&#123; <span class="hljs-attr">storage</span>: storage &#125;)<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="multer代码"><a href="#multer代码" class="headerlink" title="multer代码"></a>multer代码</h4><p>当前目录下创建fileup.js文件和myfile文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">const</span> multer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;multer&quot;</span>);<br><span class="hljs-keyword">var</span> app = <span class="hljs-title function_">express</span>(); <span class="hljs-comment">//创建express实例</span><br><br><span class="hljs-comment">//这里是为了后期没有跨域问题设置的静态资源目录</span><br><span class="hljs-comment">//__dirname为NodeJS全局变量: 返回运行当前js的文件夹的绝对路径</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;/&quot;</span>, express.<span class="hljs-title function_">static</span>(__dirname));<br><br><span class="hljs-comment">//根据multer(&#123;&#125;)创建一个变量(对文件的一些设置和过滤)</span><br><span class="hljs-keyword">var</span> fileOption = <span class="hljs-title function_">multer</span>(&#123;<br>    <span class="hljs-comment">//上传限制</span><br>    <span class="hljs-attr">limits</span>: &#123;<br>        <span class="hljs-attr">fileSize</span>: <span class="hljs-number">5</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>,<br>        <span class="hljs-attr">files</span>: <span class="hljs-number">1</span><br>    &#125;,<br>    <span class="hljs-comment">//存储位置</span><br>    <span class="hljs-attr">storage</span>: multer.<span class="hljs-title function_">diskStorage</span>(&#123;<br>        <span class="hljs-attr">destination</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>            <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;./myfile&#x27;</span>);<br>        &#125;,<br>        <span class="hljs-comment">//重定义上传的文件</span><br>        <span class="hljs-attr">filename</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>            <span class="hljs-comment">//cb(null,新文件名称)</span><br>            <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, file.<span class="hljs-property">fieldname</span> + <span class="hljs-string">&#x27;-&#x27;</span> + <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()+<span class="hljs-string">&quot;-&quot;</span>+file.<span class="hljs-property">originalname</span>);<br>        &#125;<br>    &#125;),<br>    <span class="hljs-comment">//过滤</span><br>    <span class="hljs-attr">fileFilter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>        <span class="hljs-comment">//这里就不写了~,如果添加了这个对象,一定要设置cb(null,true);不然数据过不去</span><br>        <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>,<span class="hljs-literal">true</span>);<br>    &#125;<br>&#125;);<br><br><span class="hljs-comment">//依据这个变量创建单例multer.single(key)或者multer.array(key,maxcount)</span><br><span class="hljs-keyword">var</span> fileOptionFunction=fileOption.<span class="hljs-title function_">single</span>(<span class="hljs-string">&quot;fileusers&quot;</span>);<span class="hljs-comment">//传入通过formData.append(key,value)添加的key值</span><br><span class="hljs-comment">//后期ajax提交地址就为:http://localhost:3000/file 端口号可在下方自行设置</span><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/file&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">//这里传入的是app.post当中的req,和res</span><br>    <span class="hljs-title function_">fileOptionFunction</span>(req,res,<span class="hljs-function">(<span class="hljs-params">error</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span> (error) &#123;<br>            <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">err</span>:-<span class="hljs-number">1</span>,<span class="hljs-attr">msg</span>:<span class="hljs-string">&#x27;上传图片不能大于5M&#x27;</span>&#125;)<br>        &#125;<br>        res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">error</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">msg</span>:<span class="hljs-string">&quot;文件上传成功&quot;</span>&#125;)<br>    &#125;)<br>&#125;)<br><br><span class="hljs-comment">//设置在本地端口3000</span><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-string">&quot;3000&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;-------------server start-------------------&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329220433.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="multer部分需要注意的"><a href="#multer部分需要注意的" class="headerlink" title="multer部分需要注意的"></a>multer部分需要注意的</h4><ol>
+<li>如果使用app.post(“&#x2F;file”, uploadOption.single(“fileusers”),(req, res) &#x3D;&gt; {      });好像无法处理文件过大时候的异常</li>
+<li>如果使用上面fileup.js文件当中的方式,可以在回调当中处理文件过大时候的异常</li>
+<li>如果设置了文件过滤,那么遇到不符合的文件扩展名,req.file的值会为undefined</li>
+<li>如果设置了fileFilter文件过滤,一定要设置cb(null,true)(通过),或者cb(null,false);(不通过),不然留空的话数据会一直处于”pending”状态</li>
+</ol>
+<h3 id="具体文件目录结构和参考完整代码下载"><a href="#具体文件目录结构和参考完整代码下载" class="headerlink" title="具体文件目录结构和参考完整代码下载"></a>具体文件目录结构和参考完整代码下载</h3><p>启动后浏览器输入<a target="_blank" rel="noopener" href="http://localhost:3000/up.html">http://localhost:3000/up.html</a></p>
+<h4 id="目录文件结构"><a href="#目录文件结构" class="headerlink" title="目录文件结构"></a>目录文件结构</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329220518.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="参考完整代码下载"><a href="#参考完整代码下载" class="headerlink" title="参考完整代码下载"></a>参考完整代码下载</h4><p><a target="_blank" rel="noopener" href="https://github.com/superBiuBiuMan/demonForUpFile">express+multer+jQuery前端后端上传单个文件演示</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/javscript/" class="category-chain-item">javscript</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/javscript/jQuery/" class="category-chain-item">jQuery</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/NodeJs/">#NodeJs</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>express,multer,jQuery前端后端上传单个文件</div>
+      <div>http://example.com/2022/03/29/前端/express+multer+jQuery前端后端上传单个文件/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月29日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/31/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/" title="防抖节流的使用和封装成函数">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">防抖节流的使用和封装成函数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" title="js当中的图片懒加载,懒加载的一些概念和相关知识点">
+                        <span class="hidden-mobile">js当中的图片懒加载,懒加载的一些概念和相关知识点</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
