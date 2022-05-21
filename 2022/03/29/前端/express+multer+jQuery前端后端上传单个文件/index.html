@@ -19,7 +19,7 @@
     <meta name="description" content="先安装基本的模块$ npm init -y  $ npm install express –save $ npm install multer –save 附上multer的github当中别人汉化的API文档github地址 我这使用的nodemon,如果那么使用node运行,修改记得重启  开始创建基本express(上传图片)当前目录下创建fileup.js文件 12345678910111">
 <meta property="og:type" content="article">
 <meta property="og:title" content="express,multer,jQuery前端后端上传单个文件">
-<meta property="og:url" content="http://example.com/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="先安装基本的模块$ npm init -y  $ npm install express –save $ npm install multer –save 附上multer的github当中别人汉化的API文档github地址 我这使用的nodemon,如果那么使用node运行,修改记得重启  开始创建基本express(上传图片)当前目录下创建fileup.js文件 12345678910111">
 <meta property="og:locale" content="zh_CN">
@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -490,7 +490,7 @@
 
 <h4 id="测试是否正常"><a href="#测试是否正常" class="headerlink" title="测试是否正常"></a>测试是否正常</h4><p class="note note-info">这里使用postman测试</p>
 
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329212333.png" srcset="/img/loading.gif" lazyload  />
+<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329212333.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload  />
 
 <p class="note note-info">测试没有问题再继续,不然后期很难改</p>
 
@@ -582,7 +582,7 @@
 <h4 id="multer代码"><a href="#multer代码" class="headerlink" title="multer代码"></a>multer代码</h4><p>当前目录下创建fileup.js文件和myfile文件夹</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">const</span> multer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;multer&quot;</span>);<br><span class="hljs-keyword">var</span> app = <span class="hljs-title function_">express</span>(); <span class="hljs-comment">//创建express实例</span><br><br><span class="hljs-comment">//这里是为了后期没有跨域问题设置的静态资源目录</span><br><span class="hljs-comment">//__dirname为NodeJS全局变量: 返回运行当前js的文件夹的绝对路径</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;/&quot;</span>, express.<span class="hljs-title function_">static</span>(__dirname));<br><br><span class="hljs-comment">//根据multer(&#123;&#125;)创建一个变量(对文件的一些设置和过滤)</span><br><span class="hljs-keyword">var</span> fileOption = <span class="hljs-title function_">multer</span>(&#123;<br>    <span class="hljs-comment">//上传限制</span><br>    <span class="hljs-attr">limits</span>: &#123;<br>        <span class="hljs-attr">fileSize</span>: <span class="hljs-number">5</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>,<br>        <span class="hljs-attr">files</span>: <span class="hljs-number">1</span><br>    &#125;,<br>    <span class="hljs-comment">//存储位置</span><br>    <span class="hljs-attr">storage</span>: multer.<span class="hljs-title function_">diskStorage</span>(&#123;<br>        <span class="hljs-attr">destination</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>            <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;./myfile&#x27;</span>);<br>        &#125;,<br>        <span class="hljs-comment">//重定义上传的文件</span><br>        <span class="hljs-attr">filename</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>            <span class="hljs-comment">//cb(null,新文件名称)</span><br>            <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>, file.<span class="hljs-property">fieldname</span> + <span class="hljs-string">&#x27;-&#x27;</span> + <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()+<span class="hljs-string">&quot;-&quot;</span>+file.<span class="hljs-property">originalname</span>);<br>        &#125;<br>    &#125;),<br>    <span class="hljs-comment">//过滤</span><br>    <span class="hljs-attr">fileFilter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">req, file, cb</span>) &#123;<br>        <span class="hljs-comment">//这里就不写了~,如果添加了这个对象,一定要设置cb(null,true);不然数据过不去</span><br>        <span class="hljs-title function_">cb</span>(<span class="hljs-literal">null</span>,<span class="hljs-literal">true</span>);<br>    &#125;<br>&#125;);<br><br><span class="hljs-comment">//依据这个变量创建单例multer.single(key)或者multer.array(key,maxcount)</span><br><span class="hljs-keyword">var</span> fileOptionFunction=fileOption.<span class="hljs-title function_">single</span>(<span class="hljs-string">&quot;fileusers&quot;</span>);<span class="hljs-comment">//传入通过formData.append(key,value)添加的key值</span><br><span class="hljs-comment">//后期ajax提交地址就为:http://localhost:3000/file 端口号可在下方自行设置</span><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/file&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">//这里传入的是app.post当中的req,和res</span><br>    <span class="hljs-title function_">fileOptionFunction</span>(req,res,<span class="hljs-function">(<span class="hljs-params">error</span>)=&gt;</span>&#123;<br>        <span class="hljs-keyword">if</span> (error) &#123;<br>            <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">err</span>:-<span class="hljs-number">1</span>,<span class="hljs-attr">msg</span>:<span class="hljs-string">&#x27;上传图片不能大于5M&#x27;</span>&#125;)<br>        &#125;<br>        res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">error</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">msg</span>:<span class="hljs-string">&quot;文件上传成功&quot;</span>&#125;)<br>    &#125;)<br>&#125;)<br><br><span class="hljs-comment">//设置在本地端口3000</span><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-string">&quot;3000&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;-------------server start-------------------&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329220433.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329220433.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="multer部分需要注意的"><a href="#multer部分需要注意的" class="headerlink" title="multer部分需要注意的"></a>multer部分需要注意的</h4><ol>
 <li>如果使用app.post(“&#x2F;file”, uploadOption.single(“fileusers”),(req, res) &#x3D;&gt; {      });好像无法处理文件过大时候的异常</li>
 <li>如果使用上面fileup.js文件当中的方式,可以在回调当中处理文件过大时候的异常</li>
@@ -590,7 +590,7 @@
 <li>如果设置了fileFilter文件过滤,一定要设置cb(null,true)(通过),或者cb(null,false);(不通过),不然留空的话数据会一直处于”pending”状态</li>
 </ol>
 <h3 id="具体文件目录结构和参考完整代码下载"><a href="#具体文件目录结构和参考完整代码下载" class="headerlink" title="具体文件目录结构和参考完整代码下载"></a>具体文件目录结构和参考完整代码下载</h3><p>启动后浏览器输入<a target="_blank" rel="noopener" href="http://localhost:3000/up.html">http://localhost:3000/up.html</a></p>
-<h4 id="目录文件结构"><a href="#目录文件结构" class="headerlink" title="目录文件结构"></a>目录文件结构</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329220518.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="目录文件结构"><a href="#目录文件结构" class="headerlink" title="目录文件结构"></a>目录文件结构</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220329220518.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="参考完整代码下载"><a href="#参考完整代码下载" class="headerlink" title="参考完整代码下载"></a>参考完整代码下载</h4><p><a target="_blank" rel="noopener" href="https://github.com/superBiuBiuMan/demonForUpFile">express+multer+jQuery前端后端上传单个文件演示</a></p>
 
               
@@ -644,7 +644,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>express,multer,jQuery前端后端上传单个文件</div>
-      <div>http://example.com/2022/03/29/前端/express+multer+jQuery前端后端上传单个文件/</div>
+      <div>https://dreamlove.top/2022/03/29/前端/express+multer+jQuery前端后端上传单个文件/</div>
     </div>
     <div class="license-meta">
       
@@ -867,7 +867,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

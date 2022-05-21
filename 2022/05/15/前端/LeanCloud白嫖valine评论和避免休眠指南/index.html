@@ -19,7 +19,7 @@
     <meta name="description" content="由于白嫖原因,LenCloud会自动休眠导致valine评论通知邮箱发送不了,所以这里记录了下我解决的过程 这里用服务器的cron解决,其他方法可以看这个博主的 另外一种直接在valine添加定时器的方式失败(如下图),所以就用另外一种   绑定域名1. 添加云引擎、ClientEngine 域名假设你的域名为example.com，为Valine后端分配的二级域名是xxx.example.com">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeanCloud白嫖valine评论和避免休眠指南">
-<meta property="og:url" content="http://example.com/2022/05/15/%E5%89%8D%E7%AB%AF/LeanCloud%E7%99%BD%E5%AB%96valine%E8%AF%84%E8%AE%BA%E5%92%8C%E9%81%BF%E5%85%8D%E4%BC%91%E7%9C%A0%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/05/15/%E5%89%8D%E7%AB%AF/LeanCloud%E7%99%BD%E5%AB%96valine%E8%AF%84%E8%AE%BA%E5%92%8C%E9%81%BF%E5%85%8D%E4%BC%91%E7%9C%A0%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="由于白嫖原因,LenCloud会自动休眠导致valine评论通知邮箱发送不了,所以这里记录了下我解决的过程 这里用服务器的cron解决,其他方法可以看这个博主的 另外一种直接在valine添加定时器的方式失败(如下图),所以就用另外一种   绑定域名1. 添加云引擎、ClientEngine 域名假设你的域名为example.com，为Valine后端分配的二级域名是xxx.example.com">
 <meta property="og:locale" content="zh_CN">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -198,7 +198,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -511,21 +511,21 @@
 <li>这里用服务器的cron解决,<a target="_blank" rel="noopener" href="https://www.aimtao.net/slef-wake-leancloud/">其他方法可以看这个博主的</a></li>
 <li>另外一种直接在valine添加定时器的方式失败(如下图),所以就用另外一种</li>
 </ul>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151504716.png" srcset="/img/loading.gif" lazyload alt="另外一种直接在valine添加定时器的方式失败,所以就用另外一种"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151504716.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="另外一种直接在valine添加定时器的方式失败,所以就用另外一种"></p>
 <h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><h4 id="1-添加云引擎、ClientEngine-域名"><a href="#1-添加云引擎、ClientEngine-域名" class="headerlink" title="1. 添加云引擎、ClientEngine 域名"></a>1. 添加云引擎、ClientEngine 域名</h4><p>假设你的域名为<strong>example.com</strong>，为Valine后端分配的二级域名是<strong>xxx.example.com</strong>，那么就在域名栏内填入<strong>xxx.example.com</strong></p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141554117.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2-去域名管理添加CNAME解析"><a href="#2-去域名管理添加CNAME解析" class="headerlink" title="2.去域名管理添加CNAME解析"></a>2.去域名管理添加CNAME解析</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141556663.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="3-等待一会-会自动部署"><a href="#3-等待一会-会自动部署" class="headerlink" title="3.等待一会,会自动部署"></a>3.等待一会,会自动部署</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141558803.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141554117.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h4 id="2-去域名管理添加CNAME解析"><a href="#2-去域名管理添加CNAME解析" class="headerlink" title="2.去域名管理添加CNAME解析"></a>2.去域名管理添加CNAME解析</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141556663.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h4 id="3-等待一会-会自动部署"><a href="#3-等待一会-会自动部署" class="headerlink" title="3.等待一会,会自动部署"></a>3.等待一会,会自动部署</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141558803.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="4-部署完成-添加管理员账号密码"><a href="#4-部署完成-添加管理员账号密码" class="headerlink" title="4.部署完成,添加管理员账号密码"></a>4.部署完成,添加管理员账号密码</h4><ul>
 <li>添加你的账号密码</li>
 <li>添加一行后记得添加下你的email</li>
 </ul>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141621208.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141622910.png" srcset="/img/loading.gif" lazyload alt="添加Email"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141621208.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141622910.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="添加Email"></p>
 <h3 id="避免休眠-免费的原因"><a href="#避免休眠-免费的原因" class="headerlink" title="避免休眠(免费的原因~)"></a>避免休眠(免费的原因~)</h3><p><strong>注意: !!!一定要等绑定域名显示完成后才有效果</strong></p>
 <p><strong>注意: !!!一定要等绑定域名显示完成后才有效果</strong></p>
 <p><strong>注意: !!!一定要等绑定域名显示完成后才有效果</strong></p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151133868.png" srcset="/img/loading.gif" lazyload alt="一定要等绑定域名显示完成后才有效果"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151133868.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="一定要等绑定域名显示完成后才有效果"></p>
 <ul>
 <li><p>因为是免费的,所以每天必须休眠 6 小时~~~</p>
 </li>
@@ -538,11 +538,11 @@
 <li><p><a target="_blank" rel="noopener" href="https://www.aimtao.net/slef-wake-leancloud/">其他避免休眠方法可以看这个博主的</a></p>
 </li>
 </ul>
-<h5 id="服务器命令提示行输入crontab-e-由于没有选择默认编辑器-所以我就会出现这个提示"><a href="#服务器命令提示行输入crontab-e-由于没有选择默认编辑器-所以我就会出现这个提示" class="headerlink" title="服务器命令提示行输入crontab -e(由于没有选择默认编辑器,所以我就会出现这个提示)"></a>服务器命令提示行输入crontab -e(由于没有选择默认编辑器,所以我就会出现这个提示)</h5><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141626766.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="服务器命令提示行输入crontab-e-由于没有选择默认编辑器-所以我就会出现这个提示"><a href="#服务器命令提示行输入crontab-e-由于没有选择默认编辑器-所以我就会出现这个提示" class="headerlink" title="服务器命令提示行输入crontab -e(由于没有选择默认编辑器,所以我就会出现这个提示)"></a>服务器命令提示行输入crontab -e(由于没有选择默认编辑器,所以我就会出现这个提示)</h5><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141626766.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h5 id="添加下方代码"><a href="#添加下方代码" class="headerlink" title="添加下方代码"></a>添加下方代码</h5><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">*<span class="hljs-regexp">/29 7-23 * * * curl https:/</span><span class="hljs-regexp">/your_site &amp;&gt; /</span>dev/<span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-built_in">date</span> <span class="hljs-string">&quot;+\%D \%H:\%M:\%S&quot;</span> &gt;&gt; ~/wakeup.<span class="hljs-built_in">log</span><br>https:<span class="hljs-comment">//your_site为后台评论的地址</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141629065.png" srcset="/img/loading.gif" lazyload alt="接下来只需保存退出，按Ctrl键和O键保存，然后回车确定。"></p>
-<h4 id="测试可用"><a href="#测试可用" class="headerlink" title="测试可用"></a>测试可用</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151453461.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205141629065.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="接下来只需保存退出，按Ctrl键和O键保存，然后回车确定。"></p>
+<h4 id="测试可用"><a href="#测试可用" class="headerlink" title="测试可用"></a>测试可用</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205151453461.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 
               
             </div>
@@ -606,7 +606,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>LeanCloud白嫖valine评论和避免休眠指南</div>
-      <div>http://example.com/2022/05/15/前端/LeanCloud白嫖valine评论和避免休眠指南/</div>
+      <div>https://dreamlove.top/2022/05/15/前端/LeanCloud白嫖valine评论和避免休眠指南/</div>
     </div>
     <div class="license-meta">
       
@@ -829,7 +829,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

@@ -19,7 +19,7 @@
     <meta name="description" content="前景提示 在利用FormData上传文件的时候,新建实例化对象如果有参数,需要的是DOM元素,而不是其他的! FormData的实例化对象调用get()方法获取属性的时候,返回值(FormDataEntryValue)包括下面二种 string数据  File对象 File对象当中的属性 lastModified:格林威治时间	 lastModifiedDate:可识别时间 name:文件名 si">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery中API,post上传文件到阿里云OSS记录">
-<meta property="og:url" content="http://example.com/2022/02/28/%E5%89%8D%E7%AB%AF/jQuery%E4%B8%ADAPI,post%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/02/28/%E5%89%8D%E7%AB%AF/jQuery%E4%B8%ADAPI,post%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="前景提示 在利用FormData上传文件的时候,新建实例化对象如果有参数,需要的是DOM元素,而不是其他的! FormData的实例化对象调用get()方法获取属性的时候,返回值(FormDataEntryValue)包括下面二种 string数据  File对象 File对象当中的属性 lastModified:格林威治时间	 lastModifiedDate:可识别时间 name:文件名 si">
 <meta property="og:locale" content="zh_CN">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -198,7 +198,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -484,7 +484,7 @@
               <h2 id="前景提示"><a href="#前景提示" class="headerlink" title="前景提示"></a>前景提示</h2><ol>
 <li>在利用FormData上传文件的时候,新建实例化对象如果有参数,需要的是DOM元素,而不是其他的!</li>
 <li>FormData的实例化对象调用get()方法获取属性的时候,返回值(FormDataEntryValue)包括下面二种<ol>
-<li><h3 id="string数据"><a href="#string数据" class="headerlink" title="string数据"></a>string数据</h3> <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220225163854.png" srcset="/img/loading.gif" lazyload></li>
+<li><h3 id="string数据"><a href="#string数据" class="headerlink" title="string数据"></a>string数据</h3> <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220225163854.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></li>
 <li><h3 id="File对象"><a href="#File对象" class="headerlink" title="File对象"></a>File对象</h3><ol>
 <li>File对象当中的属性<ol>
 <li>lastModified:格林威治时间	</li>
@@ -492,7 +492,7 @@
 <li>name:文件名</li>
 <li>size :文件大小(字节)</li>
 <li>type:类型</li>
-<li>webkitRelativePath(非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！)<br> <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220225164419.png" srcset="/img/loading.gif" lazyload></li>
+<li>webkitRelativePath(非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！)<br> <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220225164419.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></li>
 </ol>
 </li>
 </ol>
@@ -517,22 +517,22 @@
 
 <h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p class="note note-info">成功上传</p>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226135656.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="测试过程中遇到的问题"><a href="#测试过程中遇到的问题" class="headerlink" title="测试过程中遇到的问题"></a>测试过程中遇到的问题</h2><h3 id="总说缺少content参数但data里面有了"><a href="#总说缺少content参数但data里面有了" class="headerlink" title="总说缺少content参数但data里面有了"></a>总说缺少content参数但data里面有了</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226105015.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226135656.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h2 id="测试过程中遇到的问题"><a href="#测试过程中遇到的问题" class="headerlink" title="测试过程中遇到的问题"></a>测试过程中遇到的问题</h2><h3 id="总说缺少content参数但data里面有了"><a href="#总说缺少content参数但data里面有了" class="headerlink" title="总说缺少content参数但data里面有了"></a>总说缺少content参数但data里面有了</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226105015.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>将processData设置为false的时候,表示不将data参数中的数据进行序列化,传输的是blob对象,DOM树,文件等数据的时候就是不需要将传输的数据序列化</p>
 <h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>将processData设置为true即可,即默认情况下会将发送的数据序列化(也就是data当中的数据,以适应默认的内容类型application&#x2F;x-www-form-urlencoded</p>
 <ol>
-<li><h5 id="解决之后传送的数据"><a href="#解决之后传送的数据" class="headerlink" title="解决之后传送的数据"></a>解决之后传送的数据</h5><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226110026.png" srcset="/img/loading.gif" lazyload></li>
-<li><h5 id="解决之前传送的数据"><a href="#解决之前传送的数据" class="headerlink" title="解决之前传送的数据"></a>解决之前传送的数据</h5><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226110157.png" srcset="/img/loading.gif" lazyload></li>
+<li><h5 id="解决之后传送的数据"><a href="#解决之后传送的数据" class="headerlink" title="解决之后传送的数据"></a>解决之后传送的数据</h5><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226110026.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></li>
+<li><h5 id="解决之前传送的数据"><a href="#解决之前传送的数据" class="headerlink" title="解决之前传送的数据"></a>解决之前传送的数据</h5><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220226110157.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></li>
 </ol>
 <h4 id="区分下"><a href="#区分下" class="headerlink" title="区分下"></a>区分下</h4><h4 id="processData参数在jQuery当中"><a href="#processData参数在jQuery当中" class="headerlink" title="processData参数在jQuery当中"></a>processData参数在jQuery当中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//测试代码</span><br>$.<span class="hljs-title function_">ajax</span>(&#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;some.php&quot;</span>,<br>    <span class="hljs-attr">data</span>: &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,<br>        <span class="hljs-attr">location</span>: <span class="hljs-string">&quot;Boston&quot;</span><br>    &#125;,<br>    <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>        <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Data Saved: &quot;</span> + msg);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <ol>
 <li><p>当processData&#x3D;true;(默认值)</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331212507.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331212507.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 </li>
 <li><p>当processData&#x3D;false;</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331212522.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331212522.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 </li>
 </ol>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
@@ -603,7 +603,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>jQuery中API,post上传文件到阿里云OSS记录</div>
-      <div>http://example.com/2022/02/28/前端/jQuery中API,post上传文件到阿里云OSS记录/</div>
+      <div>https://dreamlove.top/2022/02/28/前端/jQuery中API,post上传文件到阿里云OSS记录/</div>
     </div>
     <div class="license-meta">
       
@@ -826,7 +826,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

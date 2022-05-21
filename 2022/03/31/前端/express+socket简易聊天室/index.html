@@ -19,7 +19,7 @@
     <meta name="description" content="简易聊天室前置知识 在我们平常的时候,ajax发送的都是短连接,get完成或者post完成之后连接就断开,并且当服务器数据更新的时候,必须再次发送ajax请求才可以获取到最新的数据 在没有socket之前,要实时获取服务器的数据,必须要轮询,也就是每隔一段时间发送ajax 所以现在有了服务端主动向前端推送消息的东东——长连接socket 实现的二种方式 socket.io websocket(H5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="express+socket简易聊天室">
-<meta property="og:url" content="http://example.com/2022/03/31/%E5%89%8D%E7%AB%AF/express+socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A4/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/03/31/%E5%89%8D%E7%AB%AF/express+socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A4/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="简易聊天室前置知识 在我们平常的时候,ajax发送的都是短连接,get完成或者post完成之后连接就断开,并且当服务器数据更新的时候,必须再次发送ajax请求才可以获取到最新的数据 在没有socket之前,要实时获取服务器的数据,必须要轮询,也就是每隔一段时间发送ajax 所以现在有了服务端主动向前端推送消息的东东——长连接socket 实现的二种方式 socket.io websocket(H5">
 <meta property="og:locale" content="zh_CN">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -197,7 +197,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -287,7 +287,7 @@
         aria-expanded="true"
       >
         HTML
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(21)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -308,13 +308,50 @@
     
     
     <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="css"
+        id="heading-c7a628cba22e28eb17b5f5c6ae2a266a" role="tab" data-toggle="collapse" href="#collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+        aria-expanded="false"
+      >
+        css
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+           role="tabpanel" aria-labelledby="heading-c7a628cba22e28eb17b5f5c6ae2a266a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%9D%97%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%B8%83%E5%B1%80/" title="盒子模型及块元素水平垂直定位和绝对元素的定位布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">盒子模型及块元素水平垂直定位和绝对元素的定位布局</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
       <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
         id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -392,24 +429,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -476,6 +495,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -490,6 +536,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -572,7 +622,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -590,6 +640,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -635,7 +712,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -713,24 +790,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -797,6 +856,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -811,6 +897,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -893,7 +983,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -911,6 +1001,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -1090,7 +1207,7 @@
 <li><p>emit就用来用户向服务器发送信息(服务端当中的理解就是向用户发送信息)</p>
 <p class="note note-info">socket.io大概过程</p>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/1a6439038e343b8fe18f9612fbcd4cb.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/1a6439038e343b8fe18f9612fbcd4cb.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 </li>
 </ol>
 <h3 id="前端设置"><a href="#前端设置" class="headerlink" title="前端设置"></a>前端设置</h3><ol>
@@ -1107,8 +1224,8 @@
 <h3 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h3><p>server.js</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><span class="hljs-comment">//这里是为了解决跨域</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&quot;/&quot;</span>, express.<span class="hljs-title function_">static</span>(__dirname));<br><span class="hljs-keyword">const</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;http&quot;</span>).<span class="hljs-title class_">Server</span>(app);<br><span class="hljs-keyword">const</span> websocket = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;socket.io&quot;</span>)(server);<br><span class="hljs-comment">//上面的可以说的固定的~</span><br><br><span class="hljs-keyword">var</span> clientCache = []; <span class="hljs-comment">//用户暂存列表,为了后面可以向所有用户发送数据</span><br><span class="hljs-comment">//连接监听</span><br>websocket.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;connection&quot;</span>, <span class="hljs-function">(<span class="hljs-params">client</span>) =&gt;</span> &#123;<br>    clientCache.<span class="hljs-title function_">push</span>(client); <span class="hljs-comment">//添加用户到缓存列表</span><br>    <span class="hljs-comment">//监听用户请求 key为userMessage</span><br>    client.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;userMessage&quot;</span>, <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">//收到用户发送的信息,批量发送给其他人</span><br>        clientCache.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">ele</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">if</span> (ele != client) &#123;<br>                <span class="hljs-comment">//避免自己收到</span><br>                ele.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&quot;serverInfo&quot;</span>, data);<br>            &#125;<br>        &#125;)<br>    &#125;)<br><br>&#125;)<br><br><span class="hljs-comment">//服务启动</span><br>server.<span class="hljs-title function_">listen</span>(<span class="hljs-string">&quot;8888&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;---------server start--------------&quot;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/1648698057(1).jpg" srcset="/img/loading.gif" lazyload></p>
-<h3 id="娱乐一刻"><a href="#娱乐一刻" class="headerlink" title="娱乐一刻"></a>娱乐一刻</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E8%88%94%E7%8B%97%E6%97%A5%E8%AE%B0.png" srcset="/img/loading.gif" lazyload alt="舔狗日记"></p>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/1648698057(1).jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h3 id="娱乐一刻"><a href="#娱乐一刻" class="headerlink" title="娱乐一刻"></a>娱乐一刻</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E8%88%94%E7%8B%97%E6%97%A5%E8%AE%B0.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="舔狗日记"></p>
 <p><code>&quot;今天你约我去陪你买衣服，尽管我知道只是因为我的身形像你异地的男朋友，比较好试衣服而已。买完衣服，寄快递写他名字的时候，看见你嘴角翘起幸福的笑来。那一刻，我多希望我可以也叫那个名字，哪怕只有一分钟！！&quot;</code></p>
 
               
@@ -1178,7 +1295,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>express+socket简易聊天室</div>
-      <div>http://example.com/2022/03/31/前端/express+socket简易聊天室/</div>
+      <div>https://dreamlove.top/2022/03/31/前端/express+socket简易聊天室/</div>
     </div>
     <div class="license-meta">
       
@@ -1401,7 +1518,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

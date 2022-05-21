@@ -19,7 +19,7 @@
     <meta name="description" content="题目1123456789下列正确定义函数的是A: function foo() &amp;#123;&amp;#125;B: Function foo() &amp;#123;&amp;#125;C: var foo &#x3D; new Function() &amp;#123;&amp;#125;D: var foo &#x3D; new function() &amp;#123;&amp;#125;   答案 A   解析 B当中的 ‘Function’ 写错了,应该是 ‘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="今日刷题-decodeURI">
-<meta property="og:url" content="http://example.com/2022/05/02/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8802%E6%97%A5%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/05/02/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8802%E6%97%A5%E5%88%B7%E9%A2%98/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="题目1123456789下列正确定义函数的是A: function foo() &amp;#123;&amp;#125;B: Function foo() &amp;#123;&amp;#125;C: var foo &#x3D; new Function() &amp;#123;&amp;#125;D: var foo &#x3D; new function() &amp;#123;&amp;#125;   答案 A   解析 B当中的 ‘Function’ 写错了,应该是 ‘">
 <meta property="og:locale" content="zh_CN">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -197,7 +197,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -553,7 +553,7 @@
 <li><p>解析</p>
 <ul>
 <li><p>A: decodeURIComponent(字符串),对字符串进行解码,此时这里传入的字符串应该是使用encodeURI或者是encodeURIComponent编码后的字符串进行解码,直接传入%是一个没有编码的字符串（ ‘%’ 编码后为 ‘ %25’ ）</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220428204031.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220428204031.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 </li>
 <li><p>B: 函数提升和变量提升同时存在，<strong>函数提升优先级 高于 变量提升</strong>，所以变量a被函数所覆盖</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo); <br><span class="hljs-keyword">var</span> foo = <span class="hljs-number">1</span>  <span class="hljs-comment">//变量提升</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo)<br><span class="hljs-title function_">foo</span>()<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-comment">//函数提升</span><br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;函数&#x27;</span>)<br>&#125;<br>=========等价于=============&gt;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-comment">//提到顶端</span><br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;函数&#x27;</span>)<br>&#125;<br><span class="hljs-keyword">var</span> foo  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo) <span class="hljs-comment">//输出foo这个函数，因为上面foo没有被赋值，foo还是原来的值 </span><br>foo = <span class="hljs-number">1</span>;  <span class="hljs-comment">//赋值不会提升,赋值后 foo就不再是函数类型了，而是number类型</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo) <span class="hljs-comment">//输出1</span><br><span class="hljs-title function_">foo</span>() <span class="hljs-comment">//这里会报错，因为foo不是函数了</span><br></code></pre></td></tr></table></figure>
@@ -593,7 +593,7 @@
 <li><p>题目意思</p>
 <ul>
 <li><p><strong>相当于URI当中输入了网站，比如说baidu.com,然后会发现只有后退没有前进按钮的操作，这种情况下从ABCD选</strong></p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220502161507.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220502161507.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 </li>
 </ul>
 </li>
@@ -675,7 +675,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>今日刷题-decodeURI</div>
-      <div>http://example.com/2022/05/02/刷题/JavaScript/2022年5月02日刷题/</div>
+      <div>https://dreamlove.top/2022/05/02/刷题/JavaScript/2022年5月02日刷题/</div>
     </div>
     <div class="license-meta">
       
@@ -898,7 +898,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

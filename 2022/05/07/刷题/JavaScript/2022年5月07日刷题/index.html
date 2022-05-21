@@ -19,7 +19,7 @@
     <meta name="description" content="题目1123456789101112请问以下两次检测对象constructor是否拥有属性名1的结果分别是什么？1 in Object(1.0).constructor;Number[1] &#x3D; 123;1 in Object(1.0).constructor;A: false,falseB: false,trueC: true,trueD: true,false   答案  B   解析  in用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="今日刷题-原型链">
-<meta property="og:url" content="http://example.com/2022/05/07/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8807%E6%97%A5%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/05/07/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8807%E6%97%A5%E5%88%B7%E9%A2%98/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="题目1123456789101112请问以下两次检测对象constructor是否拥有属性名1的结果分别是什么？1 in Object(1.0).constructor;Number[1] &#x3D; 123;1 in Object(1.0).constructor;A: false,falseB: false,trueC: true,trueD: true,false   答案  B   解析  in用">
 <meta property="og:locale" content="zh_CN">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -197,7 +197,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -562,7 +562,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 看代码~</span><br><span class="hljs-keyword">var</span> F = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><span class="hljs-keyword">var</span> f = <span class="hljs-keyword">new</span> <span class="hljs-title function_">F</span>();<br>F.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br>f.<span class="hljs-property">__proto__</span> === F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br>F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br><br>F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> == <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
 
 <p>图形演示</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205070910644.png" srcset="/img/loading.gif" lazyload alt="原型链"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205070910644.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="原型链"></p>
 </li>
 </ul>
 <h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下面哪些语句可以 在<span class="hljs-variable constant_">JS</span>里判断一个对象是否为<span class="hljs-title class_">String</span>类型？<br><span class="hljs-attr">A</span>: oStringObject <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">String</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-keyword">typeof</span> oStringObject == <span class="hljs-string">&#x27;string&#x27;</span><br><br><span class="hljs-attr">C</span>: oStringObject is <span class="hljs-title class_">String</span> (没见过这个语法~)<br><br><span class="hljs-attr">D</span>: 以上答案都不正确<br><br></code></pre></td></tr></table></figure>
@@ -623,7 +623,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>今日刷题-原型链</div>
-      <div>http://example.com/2022/05/07/刷题/JavaScript/2022年5月07日刷题/</div>
+      <div>https://dreamlove.top/2022/05/07/刷题/JavaScript/2022年5月07日刷题/</div>
     </div>
     <div class="license-meta">
       
@@ -846,7 +846,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

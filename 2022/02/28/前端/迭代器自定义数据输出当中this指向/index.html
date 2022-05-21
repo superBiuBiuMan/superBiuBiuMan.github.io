@@ -19,7 +19,7 @@
     <meta name="description" content="前置知识 在箭头函数当中,this的指向为函数声明时所在作用域下this的值  代码next为普通函数代码123456789101112131415161718192021222324252627282930313233343536373839var resultGet &#x3D; &amp;#123;            &quot;code&quot;: &quot;1&quot;,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="迭代器自定义数据输出当中this指向">
-<meta property="og:url" content="http://example.com/2022/02/28/%E5%89%8D%E7%AB%AF/%E8%BF%AD%E4%BB%A3%E5%99%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E5%BD%93%E4%B8%ADthis%E6%8C%87%E5%90%91/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/02/28/%E5%89%8D%E7%AB%AF/%E8%BF%AD%E4%BB%A3%E5%99%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E5%BD%93%E4%B8%ADthis%E6%8C%87%E5%90%91/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="前置知识 在箭头函数当中,this的指向为函数声明时所在作用域下this的值  代码next为普通函数代码123456789101112131415161718192021222324252627282930313233343536373839var resultGet &#x3D; &amp;#123;            &quot;code&quot;: &quot;1&quot;,">
 <meta property="og:locale" content="zh_CN">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -197,7 +197,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -287,7 +287,7 @@
         aria-expanded="true"
       >
         HTML
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(21)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -308,13 +308,50 @@
     
     
     <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="css"
+        id="heading-c7a628cba22e28eb17b5f5c6ae2a266a" role="tab" data-toggle="collapse" href="#collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+        aria-expanded="false"
+      >
+        css
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+           role="tabpanel" aria-labelledby="heading-c7a628cba22e28eb17b5f5c6ae2a266a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%9D%97%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%B8%83%E5%B1%80/" title="盒子模型及块元素水平垂直定位和绝对元素的定位布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">盒子模型及块元素水平垂直定位和绝对元素的定位布局</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
       <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
         id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -392,24 +429,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -476,6 +495,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -490,6 +536,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -572,7 +622,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -590,6 +640,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -635,7 +712,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -713,24 +790,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -797,6 +856,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -811,6 +897,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -893,7 +983,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -911,6 +1001,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -972,13 +1089,13 @@
 </ol>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="next为普通函数"><a href="#next为普通函数" class="headerlink" title="next为普通函数"></a>next为普通函数</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> resultGet = &#123;<br>            <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-string">&quot;1&quot;</span>,<br>            <span class="hljs-string">&quot;day&quot;</span>: <span class="hljs-string">&quot;02/ 27&quot;</span>,<br>            <span class="hljs-string">&quot;result&quot;</span>: [&#123;<br>                    <span class="hljs-string">&quot;date&quot;</span>: <span class="hljs-string">&quot;272年02月27日&quot;</span>,<br>                    <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;罗马帝国皇帝君士坦丁大帝出生&quot;</span><br>                &#125;,<br>                &#123;<br>                    <span class="hljs-string">&quot;date&quot;</span>: <span class="hljs-string">&quot;684年02月27日&quot;</span>,<br>                    <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;唐中宗李显被母亲武则天废为庐陵王，驱离京师&quot;</span><br>                &#125;,<br>            ]<br>        &#125;;<br>        resultGet[<span class="hljs-title class_">Symbol</span>.<span class="hljs-property">iterator</span>] = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;外面的&#x27;</span>, <span class="hljs-variable language_">this</span>);<span class="hljs-comment">//普通函数--指向的是要处理的数据,在这里也就是resultGet</span><br>            <span class="hljs-keyword">return</span> &#123;<br>                <span class="hljs-comment">//这里改为箭头函数,其他的不变</span><br>                <span class="hljs-string">&#x27;next&#x27;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>                    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">1</span>) &#123;<br>                        i++;<br>                        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;里面的&#x27;</span>, <span class="hljs-variable language_">this</span>);<span class="hljs-comment">//普通--指向的指向的是刚刚return创建的指针对象</span><br>                        <span class="hljs-keyword">return</span> &#123;<br>                            <span class="hljs-string">&#x27;value&#x27;</span>: <span class="hljs-string">&#x27;测试&#x27;</span>,<br>                            <span class="hljs-string">&#x27;done&#x27;</span>: <span class="hljs-literal">false</span><br>                        &#125;;<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-keyword">return</span> &#123;<br>                            <span class="hljs-string">&#x27;value&#x27;</span>: <span class="hljs-string">&#x27;测试&#x27;</span>,<br>                            <span class="hljs-string">&#x27;done&#x27;</span>: <span class="hljs-literal">true</span><br>                        &#125;;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//调用迭代器,测试里面的console.log()</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> resultGet) &#123;<br><br>        &#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228084551.png" srcset="/img/loading.gif" lazyload alt="next为普通函数运行结果截图"></p>
+<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228084551.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="next为普通函数运行结果截图"></p>
 <h3 id="next为箭头函数"><a href="#next为箭头函数" class="headerlink" title="next为箭头函数"></a>next为箭头函数</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> resultGet = &#123;<br>    <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-string">&quot;1&quot;</span>,<br>    <span class="hljs-string">&quot;day&quot;</span>: <span class="hljs-string">&quot;02/ 27&quot;</span>,<br>    <span class="hljs-string">&quot;result&quot;</span>: [&#123;<br>            <span class="hljs-string">&quot;date&quot;</span>: <span class="hljs-string">&quot;272年02月27日&quot;</span>,<br>            <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;罗马帝国皇帝君士坦丁大帝出生&quot;</span><br>        &#125;,<br>        &#123;<br>            <span class="hljs-string">&quot;date&quot;</span>: <span class="hljs-string">&quot;684年02月27日&quot;</span>,<br>            <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;唐中宗李显被母亲武则天废为庐陵王，驱离京师&quot;</span><br>        &#125;,<br>    ]<br>&#125;;<br>resultGet[<span class="hljs-title class_">Symbol</span>.<span class="hljs-property">iterator</span>] = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;外面的&#x27;</span>, <span class="hljs-variable language_">this</span>);<span class="hljs-comment">//普通函数--指向的是要处理的数据,在这里也就是resultGet</span><br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-comment">//这里改为箭头函数,其他的不变</span><br>        <span class="hljs-string">&#x27;next&#x27;</span>: <span class="hljs-function">()=&gt;</span> &#123;<br>            <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">1</span>) &#123;<br>                i++;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;里面的&#x27;</span>, <span class="hljs-variable language_">this</span>);<span class="hljs-comment">//箭头函数--指向的依旧是要处理的数据,在这里也就是resultGet</span><br>                <span class="hljs-keyword">return</span> &#123;<br>                    <span class="hljs-string">&#x27;value&#x27;</span>: <span class="hljs-string">&#x27;测试&#x27;</span>,<br>                    <span class="hljs-string">&#x27;done&#x27;</span>: <span class="hljs-literal">false</span><br>                &#125;;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> &#123;<br>                    <span class="hljs-string">&#x27;value&#x27;</span>: <span class="hljs-string">&#x27;测试&#x27;</span>,<br>                    <span class="hljs-string">&#x27;done&#x27;</span>: <span class="hljs-literal">true</span><br>                &#125;;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//调用迭代器,测试里面的console.log()</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> resultGet) &#123;<br><br></code></pre></td></tr></table></figure>
 
-<h4 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228085213.png" srcset="/img/loading.gif" lazyload alt="next为箭头函数运行结果截图"></p>
+<h4 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228085213.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="next为箭头函数运行结果截图"></p>
 <h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么?"></a>为什么?</h2><p class='note note-warning'>个人理解,可能有误</p>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228091737.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228091737.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h3 id="证明个人理解"><a href="#证明个人理解" class="headerlink" title="证明个人理解"></a>证明个人理解</h3><h4 id="实例1代码及运行结果"><a href="#实例1代码及运行结果" class="headerlink" title="实例1代码及运行结果"></a>实例1代码及运行结果</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> p = &#123;<br>    <span class="hljs-attr">a</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">var</span> obj = &#123;<br>            <span class="hljs-attr">i</span>: <span class="hljs-number">10</span>,<br>            <span class="hljs-attr">b</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">i</span>, <span class="hljs-variable language_">this</span>);<br>            &#125;,<br>        &#125;<br>        obj.<span class="hljs-title function_">b</span>();<br>    &#125;<br>&#125;<br>p.<span class="hljs-title function_">a</span>(); <span class="hljs-comment">//undefined &#123;a: ƒ&#125;</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="实例2代码及运行结果"><a href="#实例2代码及运行结果" class="headerlink" title="实例2代码及运行结果"></a>实例2代码及运行结果</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> objSelf = &#123;<br>    <span class="hljs-attr">i</span>: <span class="hljs-number">10</span>,<br><br>    <span class="hljs-attr">b</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">i</span>, <span class="hljs-variable language_">this</span>)<br>    &#125;,<br><br>    <span class="hljs-attr">c</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">i</span>, <span class="hljs-variable language_">this</span>)<br>    &#125;<br><br>&#125;<br><br>objSelf.<span class="hljs-title function_">b</span>(); <span class="hljs-comment">// undefined window&#123;...&#125;</span><br><br>objSelf.<span class="hljs-title function_">c</span>(); <span class="hljs-comment">// 10 &#123;i: 10, b: ƒ, c: ƒ&#125;  </span><br></code></pre></td></tr></table></figure>
@@ -1039,7 +1156,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>迭代器自定义数据输出当中this指向</div>
-      <div>http://example.com/2022/02/28/前端/迭代器自定义数据输出当中this指向/</div>
+      <div>https://dreamlove.top/2022/02/28/前端/迭代器自定义数据输出当中this指向/</div>
     </div>
     <div class="license-meta">
       
@@ -1262,7 +1379,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

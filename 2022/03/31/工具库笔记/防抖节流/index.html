@@ -19,7 +19,7 @@
     <meta name="description" content="前置知识关于this指向问题，防抖函数中的fn.apply(this,arguments)作用防抖函数中的fn.apply(this,arguments)作用 this指向问题 节流 一定时间内只执行一项任务  节流原理 执行一个函数 执行这个函数的时候看看前面有没有执行过 如果前面有执行过这个函数并且没有完成,那么本次任务就不执行  节流前可以看到&quot;move&quot;疯狂输出   节流后程序输出move">
 <meta property="og:type" content="article">
 <meta property="og:title" content="防抖节流的使用和封装成函数">
-<meta property="og:url" content="http://example.com/2022/03/31/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/03/31/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="前置知识关于this指向问题，防抖函数中的fn.apply(this,arguments)作用防抖函数中的fn.apply(this,arguments)作用 this指向问题 节流 一定时间内只执行一项任务  节流原理 执行一个函数 执行这个函数的时候看看前面有没有执行过 如果前面有执行过这个函数并且没有完成,那么本次任务就不执行  节流前可以看到&quot;move&quot;疯狂输出   节流后程序输出move">
 <meta property="og:locale" content="zh_CN">
@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -286,7 +286,7 @@
         aria-expanded="true"
       >
         HTML
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(21)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -307,13 +307,50 @@
     
     
     <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="css"
+        id="heading-c7a628cba22e28eb17b5f5c6ae2a266a" role="tab" data-toggle="collapse" href="#collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+        aria-expanded="false"
+      >
+        css
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+           role="tabpanel" aria-labelledby="heading-c7a628cba22e28eb17b5f5c6ae2a266a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%9D%97%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%B8%83%E5%B1%80/" title="盒子模型及块元素水平垂直定位和绝对元素的定位布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">盒子模型及块元素水平垂直定位和绝对元素的定位布局</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
       <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
         id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -391,24 +428,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -475,6 +494,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -489,6 +535,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -571,7 +621,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -589,6 +639,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -634,7 +711,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -712,24 +789,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -796,6 +855,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -810,6 +896,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -892,7 +982,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -910,6 +1000,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -978,10 +1095,10 @@
 </ol>
 <h4 id="节流前"><a href="#节流前" class="headerlink" title="节流前"></a>节流前</h4><p class="note note-warning">可以看到"move"疯狂输出</p>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E9%98%B2%E6%8A%96%E4%B9%8B20220331144311156%E5%89%8D.gif" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E9%98%B2%E6%8A%96%E4%B9%8B20220331144311156%E5%89%8D.gif" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="节流后"><a href="#节流后" class="headerlink" title="节流后"></a>节流后</h4><p class="note note-info">程序输出move的次数明显减少</p>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E9%98%B2%E6%8A%9620220331144308919%E5%90%8E.gif" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E9%98%B2%E6%8A%9620220331144308919%E5%90%8E.gif" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="节流函数"><a href="#节流函数" class="headerlink" title="节流函数"></a>节流函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 节流</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">function</span>&#125; fn 要节流的函数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number</span>&#125; delay 延迟(类似于fps一样~)</span><br><span class="hljs-comment"> * return 执行函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">throttleMy</span>(<span class="hljs-params">fn, delay</span>) &#123;<br>	<span class="hljs-comment">//这样子建立了一个闭包,timer始终存在</span><br>	<span class="hljs-keyword">var</span> timer=<span class="hljs-literal">null</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) &#123;<br>		<span class="hljs-keyword">if</span> (timer) &#123;<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br>		timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>			<span class="hljs-comment">//传入的为[30,40,50....这种形式],所以不能单纯fn(args)</span><br>			<span class="hljs-comment">//不确定参数,加上参数形式为[....],就使用fn.apply(this.args);</span><br>			fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);<br>			timer=<span class="hljs-literal">null</span>;<br>		&#125;, delay);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="节流函数使用示例代码"><a href="#节流函数使用示例代码" class="headerlink" title="节流函数使用示例代码"></a>节流函数使用示例代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">        <span class="hljs-selector-class">.box</span> &#123;</span><br><span class="language-css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="language-css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="language-css">            <span class="hljs-attribute">background-color</span>: red;</span><br><span class="language-css">            <span class="hljs-attribute">position</span>: relative;</span><br><span class="language-css">            <span class="hljs-attribute">top</span>: <span class="hljs-number">100px</span>;</span><br><span class="language-css">        &#125;</span><br><span class="language-css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-keyword">var</span> box = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.box&quot;</span>);</span><br><span class="language-javascript">        <span class="hljs-variable language_">window</span>.<span class="hljs-property">onmousemove</span>=<span class="hljs-title function_">throttleMy</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;</span><br><span class="language-javascript">            box.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = e.<span class="hljs-property">pageX</span> - (box.<span class="hljs-property">clientWidth</span>) / <span class="hljs-number">2</span> + <span class="hljs-string">&quot;px&quot;</span>;</span><br><span class="language-javascript">            box.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = e.<span class="hljs-property">pageY</span> - (box.<span class="hljs-property">clientHeight</span>) / <span class="hljs-number">2</span> + <span class="hljs-string">&quot;px&quot;</span>;</span><br><span class="language-javascript">        &#125;,<span class="hljs-number">40</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-comment">/**</span></span><br><span class="hljs-comment"><span class="language-javascript">         * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">function</span>&#125; fn 要防抖的函数</span></span><br><span class="hljs-comment"><span class="language-javascript">         * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number</span>&#125; delay 延迟(类似于fps一样~)</span></span><br><span class="hljs-comment"><span class="language-javascript">         * return 执行函数</span></span><br><span class="hljs-comment"><span class="language-javascript">         */</span></span><br><span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">throttleMy</span>(<span class="hljs-params">fn, delay</span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-comment">//这样子建立了一个闭包,timer始终存在</span></span><br><span class="language-javascript">            <span class="hljs-keyword">var</span> timer=<span class="hljs-literal">null</span>;</span><br><span class="language-javascript">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) &#123;</span><br><span class="language-javascript">                <span class="hljs-keyword">if</span> (timer) &#123;</span><br><span class="language-javascript">                    <span class="hljs-keyword">return</span>;</span><br><span class="language-javascript">                &#125;</span><br><span class="language-javascript">                timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                    <span class="hljs-comment">//传入的为[30,40,50....这种形式],所以不能单纯fn(args)</span></span><br><span class="language-javascript">                    <span class="hljs-comment">//不确定参数,加上参数形式为[....],就使用fn.apply(this.args);</span></span><br><span class="language-javascript">                    fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);</span><br><span class="language-javascript">                    timer=<span class="hljs-literal">null</span>;</span><br><span class="language-javascript">                &#125;, delay);</span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -992,17 +1109,17 @@
 </ol>
 <h4 id="防抖前"><a href="#防抖前" class="headerlink" title="防抖前"></a>防抖前</h4><p class="note note-info">输入框输入"你好"</p>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331154303.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331154303.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="防抖后"><a href="#防抖后" class="headerlink" title="防抖后"></a>防抖后</h4><p class="note note-info">输入框再次输入"你好"</p>
 
 <p class="note note-info">可以看到少了很多次</p>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331154405.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220331154405.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <h4 id="防抖函数"><a href="#防抖函数" class="headerlink" title="防抖函数"></a>防抖函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 防抖</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">function</span>&#125; fn 要防抖的函数</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number</span>&#125; delay 延迟(类似于fps一样~)</span><br><span class="hljs-comment">* return 执行函数</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn, delay</span>) &#123;<br><span class="hljs-comment">//这样子建立了一个闭包,timer始终存在</span><br><span class="hljs-keyword">var</span> timer = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) &#123;<br>	<span class="hljs-keyword">if</span> (timer) &#123;<br>		<span class="hljs-built_in">clearTimeout</span>(timer); <span class="hljs-comment">//清除上一次的</span><br>	&#125;<br>	timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>		<span class="hljs-comment">//传入的为[30,40,50....这种形式],所以不能单纯fn(args)</span><br>		<span class="hljs-comment">//不确定参数,加上参数形式为[....],就使用fn.apply(this.args);</span><br>		fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);<br>		timer = <span class="hljs-literal">null</span>;<br>	&#125;, delay);<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="防抖函数使用示例代码"><a href="#防抖函数使用示例代码" class="headerlink" title="防抖函数使用示例代码"></a>防抖函数使用示例代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    账户：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;useript&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-keyword">var</span> ipt = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;useript&quot;</span>);</span><br><span class="language-javascript">        ipt.<span class="hljs-property">onkeyup</span>=<span class="hljs-title function_">debounce</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e);</span><br><span class="language-javascript">        &#125;,<span class="hljs-number">40</span>);</span><br><span class="language-javascript">        <span class="hljs-comment">/**</span></span><br><span class="hljs-comment"><span class="language-javascript">         * 防抖</span></span><br><span class="hljs-comment"><span class="language-javascript">         * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">function</span>&#125; fn 要防抖的函数</span></span><br><span class="hljs-comment"><span class="language-javascript">         * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number</span>&#125; delay 延迟(类似于fps一样~)</span></span><br><span class="hljs-comment"><span class="language-javascript">         * return 执行函数</span></span><br><span class="hljs-comment"><span class="language-javascript">         */</span></span><br><span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn, delay</span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-comment">//这样子建立了一个闭包,timer始终存在</span></span><br><span class="language-javascript">            <span class="hljs-keyword">var</span> timer = <span class="hljs-literal">null</span>;</span><br><span class="language-javascript">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) &#123;</span><br><span class="language-javascript">                <span class="hljs-keyword">if</span> (timer) &#123;</span><br><span class="language-javascript">                    <span class="hljs-built_in">clearTimeout</span>(timer); <span class="hljs-comment">//清除上一次的</span></span><br><span class="language-javascript">                &#125;</span><br><span class="language-javascript">                timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                    <span class="hljs-comment">//传入的为[30,40,50....这种形式],所以不能单纯fn(args)</span></span><br><span class="language-javascript">                    <span class="hljs-comment">//不确定参数,加上参数形式为[....],就使用fn.apply(this.args);</span></span><br><span class="language-javascript">                    fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);</span><br><span class="language-javascript">                    timer = <span class="hljs-literal">null</span>;</span><br><span class="language-javascript">                &#125;, delay);</span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="娱乐一刻"><a href="#娱乐一刻" class="headerlink" title="娱乐一刻"></a>娱乐一刻</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E8%88%94%E7%8B%97%E6%97%A5%E8%AE%B0.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="娱乐一刻"><a href="#娱乐一刻" class="headerlink" title="娱乐一刻"></a>娱乐一刻</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E8%88%94%E7%8B%97%E6%97%A5%E8%AE%B0.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 <p><code>&quot;昨晚你终于回我信息了，你回了一句谢谢还加了一个爱心。当时我在工地上激动的差点把隔壁的吊塔阿姨给亲了。不过我想了想你笑起来的样子我还是忍住了。你给我发爱心，一定是已经爱上我了吧，放心，我连咱们的孩子名字都想好了。XX等我，我一定会继续努力挣钱，给你买更多的化妆品，发更多的红包！！&quot;</code></p>
 
               
@@ -1056,7 +1173,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>防抖节流的使用和封装成函数</div>
-      <div>http://example.com/2022/03/31/工具库笔记/防抖节流/</div>
+      <div>https://dreamlove.top/2022/03/31/工具库笔记/防抖节流/</div>
     </div>
     <div class="license-meta">
       
@@ -1279,7 +1396,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>

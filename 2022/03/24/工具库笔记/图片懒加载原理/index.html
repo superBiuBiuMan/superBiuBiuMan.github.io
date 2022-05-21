@@ -19,7 +19,7 @@
     <meta name="description" content="知道什么是懒加载说通俗点就是轮到我我再出现,而不是一进入页面就出现为什么需要 节省资源 加快网页打开 提升用户体育 巴拉巴拉  懒加载原理红色为我们实际看到的浏览器窗口,黑色的为实际网页的长度  我们刚进入主页的时候  用户拖动滚动条,看到绿色的框框,这些绿色的框框才开始加载出来   必要知道的知识 获取元素距离顶部(body)的距离:元素.offsetTop  注意:如果元素的父元素(不管是祖父">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js当中的图片懒加载,懒加载的一些概念和相关知识点">
-<meta property="og:url" content="http://example.com/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:url" content="https://dreamlove.top/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
 <meta property="og:description" content="知道什么是懒加载说通俗点就是轮到我我再出现,而不是一进入页面就出现为什么需要 节省资源 加快网页打开 提升用户体育 巴拉巴拉  懒加载原理红色为我们实际看到的浏览器窗口,黑色的为实际网页的长度  我们刚进入主页的时候  用户拖动滚动条,看到绿色的框框,这些绿色的框框才开始加载出来   必要知道的知识 获取元素距离顶部(body)的距离:元素.offsetTop  注意:如果元素的父元素(不管是祖父">
 <meta property="og:locale" content="zh_CN">
@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -286,7 +286,7 @@
         aria-expanded="true"
       >
         HTML
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(21)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -307,13 +307,50 @@
     
     
     <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="css"
+        id="heading-c7a628cba22e28eb17b5f5c6ae2a266a" role="tab" data-toggle="collapse" href="#collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+        aria-expanded="false"
+      >
+        css
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+           role="tabpanel" aria-labelledby="heading-c7a628cba22e28eb17b5f5c6ae2a266a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%9D%97%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%B8%83%E5%B1%80/" title="盒子模型及块元素水平垂直定位和绝对元素的定位布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">盒子模型及块元素水平垂直定位和绝对元素的定位布局</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
       <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
         id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -391,24 +428,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -475,6 +494,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -489,6 +535,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -571,7 +621,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -589,6 +639,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -634,7 +711,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -712,24 +789,6 @@
     
       
       
-        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
-        </a>
-      
-    
-      
-      
         <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
            class="list-group-item list-group-item-action
            ">
@@ -796,6 +855,33 @@
         
         
           
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
   <div class="category-post-list">
     
     
@@ -810,6 +896,10 @@
     
   </div>
 
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -892,7 +982,7 @@
         aria-expanded="false"
       >
         vue
-        <span class="list-group-count">(3)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -910,6 +1000,33 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
     
@@ -974,10 +1091,10 @@
 </ol>
 <h3 id="懒加载原理"><a href="#懒加载原理" class="headerlink" title="懒加载原理"></a>懒加载原理</h3><p class="note note-info">红色为我们实际看到的浏览器窗口,黑色的为实际网页的长度</p>
 
-<h5 id="我们刚进入主页的时候"><a href="#我们刚进入主页的时候" class="headerlink" title="我们刚进入主页的时候"></a>我们刚进入主页的时候</h5><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323212758.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+<h5 id="我们刚进入主页的时候"><a href="#我们刚进入主页的时候" class="headerlink" title="我们刚进入主页的时候"></a>我们刚进入主页的时候</h5><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323212758.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload style="zoom:50%;" />
 
 <p>用户拖动滚动条,看到绿色的框框,这些绿色的框框才开始加载出来</p>
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323213458.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323213458.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload style="zoom:50%;" />
 
 <h3 id="必要知道的知识"><a href="#必要知道的知识" class="headerlink" title="必要知道的知识"></a>必要知道的知识</h3><ol>
 <li><p>获取元素距离顶部(body)的距离:元素.offsetTop</p>
@@ -998,7 +1115,7 @@
 <li><p>为了解决父元素如果开启定位的问题,我们可以使用offsetParent加循环获取距离body的距离</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//获取元素距离body的top值和left值</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">getPoint</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-comment">//记录left的值</span><br>    <span class="hljs-keyword">var</span> left = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//记录top的值</span><br>    <span class="hljs-keyword">var</span> top = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//如果需要减去边框的距离,可以解除下面这二行注释</span><br>    <span class="hljs-comment">//var borderLeftWidth;</span><br>    <span class="hljs-comment">//var borderTopWidth;</span><br>    <br>    <span class="hljs-comment">//如果obj.offsetParent获取不到父级了,就会跳出循环</span><br>    <span class="hljs-keyword">while</span> (obj) &#123;<br>        left = left + obj.<span class="hljs-property">offsetLeft</span>;<br>        top = top + obj.<span class="hljs-property">offsetTop</span>;<br>        <span class="hljs-comment">//如果需要减去边框的距离,可以解除下面这二行注释,并将前二行注释</span><br>        <span class="hljs-comment">//left = left + obj.offsetLeft - borderLeftWidth;</span><br>        <span class="hljs-comment">//top = top + obj.offsetTop - borderTopWidth;</span><br>        obj = obj.<span class="hljs-property">offsetParent</span>;<br>    &#125;<br>    <span class="hljs-comment">//返回距离body的left值和top值</span><br>    <span class="hljs-keyword">return</span> &#123;<br>        left,<br>        top<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220324113529.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220324113529.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 </li>
 </ol>
 <h3 id="实现懒加载"><a href="#实现懒加载" class="headerlink" title="实现懒加载"></a>实现懒加载</h3><ol>
@@ -1020,7 +1137,7 @@
 <h5 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>        <span class="hljs-comment">//获取元素距离body的top值和left值</span><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">getPoint</span>(<span class="hljs-params">obj</span>) &#123;<br>            <span class="hljs-keyword">var</span> left = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">var</span> top = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">while</span> (obj) &#123;<br>                left = left + obj.<span class="hljs-property">offsetLeft</span>;<br>                top = top + obj.<span class="hljs-property">offsetTop</span>;<br>                obj = obj.<span class="hljs-property">offsetParent</span>;<br>            &#125;<br>            <span class="hljs-keyword">return</span> &#123;<br>                left,<br>                top<br>            &#125;;<br>        &#125;<br>        <span class="hljs-comment">//防止图片没有加载出来获取不到图片的offsetTop值,就填加了一个window.onload事件</span><br>		<span class="hljs-comment">//页面初始化(用户刚刚进入页面的时候)</span><br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> domHeight = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientHeight</span>; <span class="hljs-comment">//视口的高度</span><br>            <span class="hljs-keyword">var</span> imgs = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;img&quot;</span>);<br>            <span class="hljs-comment">//然后循环</span><br>            <span class="hljs-comment">//每一个元素判断距离body的值是否 小于 (可视窗口的高度+垂直滚动的距离)</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> v <span class="hljs-keyword">of</span> imgs) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-title function_">getPoint</span>(v).<span class="hljs-property">top</span> &lt; (domHeight + <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollTop</span>)) &#123;<br>                    <span class="hljs-comment">//显示图片</span><br>                    <span class="hljs-comment">// v.src=v.dataset.src;也可以获取自定义属性值</span><br>                    v.<span class="hljs-property">src</span> = v.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&quot;data-src&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>		<span class="hljs-comment">//滚动事件</span><br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">onscroll</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> domHeight = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientHeight</span>; <span class="hljs-comment">//视口的高度</span><br>            <span class="hljs-keyword">var</span> imgs = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;img&quot;</span>);<br>            <span class="hljs-comment">//然后循环</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> v <span class="hljs-keyword">of</span> imgs) &#123;<br>                <span class="hljs-comment">//每一个元素判断距离body的值是否 小于 (可视窗口的高度+垂直滚动的距离)</span><br>                <span class="hljs-keyword">if</span> (<span class="hljs-title function_">getPoint</span>(v).<span class="hljs-property">top</span> &lt; (domHeight + <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollTop</span>)) &#123;<br>                    <span class="hljs-comment">//显示图片</span><br>                    <span class="hljs-comment">// v.src=v.dataset.src;</span><br>                    v.<span class="hljs-property">src</span> = v.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&quot;data-src&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
 <h3 id="展示效果"><a href="#展示效果" class="headerlink" title="展示效果"></a>展示效果</h3><p>可以看到图片不是一次性加载出来,而是随着滚动条滚动才加载出来的</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E5%8A%A8%E7%94%BB.gif" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E5%8A%A8%E7%94%BB.gif" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
 </li>
 </ol>
 
@@ -1075,7 +1192,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>js当中的图片懒加载,懒加载的一些概念和相关知识点</div>
-      <div>http://example.com/2022/03/24/工具库笔记/图片懒加载原理/</div>
+      <div>https://dreamlove.top/2022/03/24/工具库笔记/图片懒加载原理/</div>
     </div>
     <div class="license-meta">
       
@@ -1298,7 +1415,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
           
           <span>赣公网安备 36072102000155号</span>
         </a>
