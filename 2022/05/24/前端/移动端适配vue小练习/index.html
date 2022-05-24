@@ -16,28 +16,28 @@
   <meta name="author" content="梦洁">
   <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
   
-    <meta name="description" content="感兴趣的可以下载这位老师的例子 使用的DMQ的MVVM为例 地址(单击我跳转)  前置知识知道节点     nodeName nodeType nodeValue    文档节点 #document 9 null   元素节点 标签名 1 null   属性节点 属性名 2 属性值   文本节点 #text 3 文本内容   知道一些方法或者属性 dom元素.childNodes属性,获取dom元">
+    <meta name="description" content="移动端Vue适配小练习 为了练习,就没有使用自动转换rem的功能,想了解的可以看看这几位博主的 博主1 博主2   想看源码的可以到github或者gitee上下载(后台也打包好了) github地址 gitee地址    项目遇到的问题记录Navigation aborted from “&#x2F;center“ to “&#x2F;login“ via a navigation guard解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue源码分析-快速版(DMQ的MVVM为例)">
-<meta property="og:url" content="https://dreamlove.top/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/index.html">
+<meta property="og:title" content="移动端适配vue小练习">
+<meta property="og:url" content="https://dreamlove.top/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
-<meta property="og:description" content="感兴趣的可以下载这位老师的例子 使用的DMQ的MVVM为例 地址(单击我跳转)  前置知识知道节点     nodeName nodeType nodeValue    文档节点 #document 9 null   元素节点 标签名 1 null   属性节点 属性名 2 属性值   文本节点 #text 3 文本内容   知道一些方法或者属性 dom元素.childNodes属性,获取dom元">
+<meta property="og:description" content="移动端Vue适配小练习 为了练习,就没有使用自动转换rem的功能,想了解的可以看看这几位博主的 博主1 博主2   想看源码的可以到github或者gitee上下载(后台也打包好了) github地址 gitee地址    项目遇到的问题记录Navigation aborted from “&#x2F;center“ to “&#x2F;login“ via a navigation guard解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205162344719.jpg">
-<meta property="article:published_time" content="2022-05-20T05:45:00.000Z">
-<meta property="article:modified_time" content="2022-05-20T06:25:16.000Z">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242026129.jpg">
+<meta property="article:published_time" content="2022-05-24T01:20:00.000Z">
+<meta property="article:modified_time" content="2022-05-24T12:10:16.000Z">
 <meta property="article:author" content="梦洁">
 <meta property="article:tag" content="HTML">
 <meta property="article:tag" content="javscript">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205162344719.jpg">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242026129.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>vue源码分析-快速版(DMQ的MVVM为例) - 技术小站-属于你我的小天地</title>
+  <title>移动端适配vue小练习 - 技术小站-属于你我的小天地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vue源码分析-快速版(DMQ的MVVM为例)"></span>
+            <span id="subtitle" data-typed-text="移动端适配vue小练习"></span>
           
         </div>
 
@@ -215,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-20 13:45" pubdate>
-          2022年5月20日 下午
+        <time datetime="2022-05-24 09:20" pubdate>
+          2022年5月24日 上午
         </time>
       </span>
     
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          3.3k 字
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          19 分钟
+          28 分钟
         
       </span>
     
@@ -684,7 +684,7 @@
       
         <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
@@ -711,7 +711,7 @@
       
         <a href="/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/" title="移动端适配vue小练习"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">移动端适配vue小练习</span>
         </a>
       
@@ -1072,7 +1072,7 @@
       
         <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
@@ -1099,7 +1099,7 @@
       
         <a href="/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/" title="移动端适配vue小练习"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">移动端适配vue小练习</span>
         </a>
       
@@ -1176,7 +1176,7 @@
       
         <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
         </a>
       
@@ -1203,7 +1203,7 @@
       
         <a href="/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/" title="移动端适配vue小练习"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">移动端适配vue小练习</span>
         </a>
       
@@ -1227,123 +1227,92 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">vue源码分析-快速版(DMQ的MVVM为例)</h1>
+            <h1 style="display: none">移动端适配vue小练习</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年5月20日 下午
+                    本文最后更新于：2022年5月24日 晚上
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h3 id="感兴趣的可以下载这位老师的例子"><a href="#感兴趣的可以下载这位老师的例子" class="headerlink" title="感兴趣的可以下载这位老师的例子"></a>感兴趣的可以下载这位老师的例子</h3><ul>
-<li><strong>使用的DMQ的MVVM为例</strong></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/superBiuBiuMan/vue-source-analysis">地址(单击我跳转)</a></li>
+              <h2 id="移动端Vue适配小练习"><a href="#移动端Vue适配小练习" class="headerlink" title="移动端Vue适配小练习"></a>移动端Vue适配小练习</h2><ul>
+<li>为了练习,就没有使用自动转换rem的功能,想了解的可以看看这几位博主的<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/67a29794b98b">博主1</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_35773751/article/details/120894238">博主2</a></li>
 </ul>
-<h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><h4 id="知道节点"><a href="#知道节点" class="headerlink" title="知道节点"></a>知道节点</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205201157179.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="文档节点"></p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">nodeName</th>
-<th align="center">nodeType</th>
-<th align="center">nodeValue</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">文档节点</td>
-<td align="center">#document</td>
-<td align="center">9</td>
-<td align="center">null</td>
-</tr>
-<tr>
-<td align="center">元素节点</td>
-<td align="center">标签名</td>
-<td align="center">1</td>
-<td align="center">null</td>
-</tr>
-<tr>
-<td align="center">属性节点</td>
-<td align="center">属性名</td>
-<td align="center">2</td>
-<td align="center">属性值</td>
-</tr>
-<tr>
-<td align="center">文本节点</td>
-<td align="center">#text</td>
-<td align="center">3</td>
-<td align="center">文本内容</td>
-</tr>
-</tbody></table>
-<h4 id="知道一些方法或者属性"><a href="#知道一些方法或者属性" class="headerlink" title="知道一些方法或者属性"></a>知道一些方法或者属性</h4><ul>
-<li><code>dom元素.childNodes</code>属性,获取dom元素下的所有节点(包括文本节点和其他(换行符也是文本节点))<ul>
-<li>而<code>dom元素.children</code>是获取dom元素下的所有的元素节点</li>
+</li>
+<li>想看源码的可以到github或者gitee上下载(后台也打包好了)<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/superBiuBiuMan/vue_mobile_littel_demo">github地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/superBiuBiu/vue_mobile_littel_demo">gitee地址</a></li>
 </ul>
 </li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;d&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>12<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>1234<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>12345<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-keyword">var</span> d = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;d&quot;</span>);</span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(d.<span class="hljs-property">childNodes</span>);</span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(d.<span class="hljs-property">children</span>);</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="项目遇到的问题记录"><a href="#项目遇到的问题记录" class="headerlink" title="项目遇到的问题记录"></a>项目遇到的问题记录</h3><h4 id="Navigation-aborted-from-“-x2F-center“-to-“-x2F-login“-via-a-navigation-guard"><a href="#Navigation-aborted-from-“-x2F-center“-to-“-x2F-login“-via-a-navigation-guard" class="headerlink" title="Navigation aborted from “&#x2F;center“ to “&#x2F;login“ via a navigation guard"></a>Navigation aborted from “&#x2F;center“ to “&#x2F;login“ via a navigation guard</h4><p><strong>解决方法:</strong></p>
+<p>vue_project\src\router\index.js 路由主入口文件当中添加如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-keyword">const</span> originalPush = <span class="hljs-title class_">VueRouter</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">push</span><br><span class="hljs-comment">//解决重复提交相同链接报错</span><br><span class="hljs-title class_">VueRouter</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">push</span> = <span class="hljs-keyword">function</span> <span class="hljs-title function_">push</span>(<span class="hljs-params">location, onResolve, onReject</span>) &#123;<br>    <span class="hljs-keyword">if</span> (onResolve || onReject)<br>        <span class="hljs-keyword">return</span> originalPush.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, location, onResolve, onReject)<br>    <span class="hljs-keyword">return</span> originalPush.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, location).<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-title class_">VueRouter</span>.<span class="hljs-title function_">isNavigationFailure</span>(err)) &#123;<br>            <span class="hljs-comment">// resolve err</span><br>            <span class="hljs-keyword">return</span> err<br>        &#125;<br>        <span class="hljs-comment">// rethrow error</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(err)<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">const</span> originalReplace = <span class="hljs-title class_">VueRouter</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">replace</span><br><span class="hljs-title class_">VueRouter</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">replace</span> = <span class="hljs-keyword">function</span> <span class="hljs-title function_">replace</span>(<span class="hljs-params">location, onResolve, onReject</span>) &#123;<br>    <span class="hljs-keyword">if</span> (onResolve || onReject)&#123;<br>        <span class="hljs-comment">//回调函数里面会用到this的指向,所以就要使用call</span><br>        <span class="hljs-keyword">return</span> originalReplace.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, location, onResolve, onReject)<br>    &#125;<br>    <span class="hljs-keyword">return</span> originalReplace.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, location).<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-title class_">VueRouter</span>.<span class="hljs-title function_">isNavigationFailure</span>(err)) &#123;<br>            <span class="hljs-comment">//如果为相同链接引发的错误,返回错误原因,promise状态为resolve</span><br>            <span class="hljs-comment">// resolve err</span><br>            <span class="hljs-keyword">return</span> err<br>        &#125;<br>        <span class="hljs-comment">// rethrow error</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(err)<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>使用children输出结果</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205201222982.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="使用children输出结果"></p>
-<p>使用childNodes输出结果</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205201222088.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="使用childNodes输出结果"></p>
-<ul>
-<li><p><strong>特别注意,如果使用node.appendChild(被添加的节点) 如果被添加的节点存在于原有的文档上面,那么被添加的节点就会被移动到新的位置!</strong></p>
-</li>
-<li><p><code>node.attributes</code>获取元素节点身上的所有属性(返回一个对象)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;div id=<span class="hljs-string">&quot;id&quot;</span> attr=<span class="hljs-string">&quot;123&quot;</span>&gt;&lt;/div&gt;<br><br></code></pre></td></tr></table></figure>
+<h4 id="配置代理问题"><a href="#配置代理问题" class="headerlink" title="配置代理问题"></a>配置代理问题</h4><p>由于视频的是react,所以配置代理花了一点时间</p>
+<p>在<code>vue.config.js</code>当中,主要是proxy的配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> &#123; defineConfig &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;@vue/cli-service&#x27;</span>)<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title function_">defineConfig</span>(&#123;<br>  <span class="hljs-attr">lintOnSave</span>:<span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">transpileDependencies</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">devServer</span>:&#123;<br>    <span class="hljs-attr">proxy</span>:&#123;<br>      <span class="hljs-string">&quot;/dev&quot;</span>:&#123;<br>        <span class="hljs-comment">//转发</span><br>        <span class="hljs-attr">target</span>:<span class="hljs-string">&quot;http://localhost:5000&quot;</span>,<br>        <span class="hljs-attr">changeOrigin</span>:<span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">//重写,删除/dev前缀</span><br>        <span class="hljs-attr">pathRewrite</span>:&#123;<br>          <span class="hljs-string">&quot;^/dev&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;)<br><br></code></pre></td></tr></table></figure>
 
-<p>调用<code>attributes</code>返回截图</p>
-</li>
+<p>注意:这样子写的话所有api请求都需要戴上&#x2F;dev前缀了,所以一般都是对axios进行二次封装,下面是我的二次封装</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;axios&quot;</span>;<br><span class="hljs-keyword">import</span> nprogress <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;nprogress&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;nprogress/nprogress.css&quot;</span><br><br><span class="hljs-comment">//创建一个axios的实例化对象</span><br><span class="hljs-comment">//传入配置对象</span><br><span class="hljs-keyword">const</span> service = axios.<span class="hljs-title function_">create</span>(&#123;<br>    <span class="hljs-comment">//每一个ajax请求都添加/dev前缀</span><br>    <span class="hljs-comment">//比如http://localhost:8080/dev/login</span><br>    <span class="hljs-comment">//http://localhost:8080/dev/home</span><br>    <span class="hljs-attr">baseURL</span>:<span class="hljs-string">&quot;/dev&quot;</span>,<br>    <span class="hljs-comment">//请求超时时间</span><br>    <span class="hljs-attr">timeout</span>: <span class="hljs-number">2000</span><br>&#125;);<br><span class="hljs-comment">//请求拦截器</span><br>service.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">config</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">//进度显示(当然,nprogress是假进度条)</span><br>    nprogress.<span class="hljs-title function_">start</span>();<br>    <span class="hljs-keyword">return</span> config;<br>&#125;)<br><br><span class="hljs-comment">//响应拦截器</span><br>service.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> &#123;<br>    nprogress.<span class="hljs-title function_">done</span>();<br>    <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span> || response;<br>&#125;, <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;<br>    nprogress.<span class="hljs-title function_">done</span>();<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;未知错误!&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">() =&gt;</span> &#123;&#125;);<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> service;<br></code></pre></td></tr></table></figure>
+
+<h3 id="OAuth认证"><a href="#OAuth认证" class="headerlink" title="OAuth认证"></a>OAuth认证</h3><h4 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h4><ul>
+<li>OAuth 2.0 是目前最流行的授权机制，用来授权第三方应用，获取用户数据。</li>
+<li>简单说，OAuth 就是一种授权机制。数据的所有者同意其他应用使用自己存储的用户信息。</li>
 </ul>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205201914067.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="调用attributes"></p>
-<p>所以我们可以通过其里面的<code>name</code>,和<code>value</code>等获取属性名称和值</p>
+<h4 id="授权流程（以GitHub为例）"><a href="#授权流程（以GitHub为例）" class="headerlink" title="授权流程（以GitHub为例）"></a>授权流程（以GitHub为例）</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://docs.github.com/cn/developers/apps/building-oauth-apps/creating-an-oauth-app">GitHub官方文档</a></p>
+</li>
+<li><p>开发流程介绍</p>
 <ul>
-<li><code>node.removeAttribute()</code>从指定的元素中删除一个属性。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/removeAttribute">具体用法</a></li>
-</ul>
-<p>	</p>
-<h3 id="数据代理理解与原理"><a href="#数据代理理解与原理" class="headerlink" title="数据代理理解与原理"></a>数据代理理解与原理</h3><h4 id="什么是数据代理"><a href="#什么是数据代理" class="headerlink" title="什么是数据代理"></a>什么是数据代理</h4><p>本来我们需要通过this._data.属性名才可以读取到data上的属性值的,但是我们通过数据代理,可以直接通过vm.属性名就可以读取到了</p>
-<h4 id="数据代理干什么的-有什么用"><a href="#数据代理干什么的-有什么用" class="headerlink" title="数据代理干什么的,有什么用"></a>数据代理干什么的,有什么用</h4><p>简化了流程操作,可以看看vuex当中的mapGetters和mapState就是简化了我们的流程</p>
-<h4 id="数据代理原理是什么"><a href="#数据代理原理是什么" class="headerlink" title="数据代理原理是什么"></a>数据代理原理是什么</h4><p>原理就是通过<code>defineProperty</code>给vm添加data当中所有的属性和属性值</p>
-<p>并且通过<code>getter</code>返回所要读取的属性值,比如读取<code>this.msg</code>.那么就自动调用<code>getter</code>当中的方法</p>
-<p>并且通过<code>setter</code>设置要设置的属性值,比如要设置<code>this.msg = &quot;新信息&quot;</code>,那么就会自动调用<code>setter</code>方法</p>
-<h3 id="模板解析"><a href="#模板解析" class="headerlink" title="模板解析"></a>模板解析</h3><ul>
-<li>模板解析只发生在初始化节点,当初始化完成后,模板代码就会被删除</li>
-<li>解析二种模板语法<ul>
-<li><strong>插值语法:</strong> (<code>&#123;&#123; xxx &#125;&#125;</code>) 操作的是文本节点,通过<code>textContent=动态值和正则来进行匹配</code></li>
-<li><strong>指令语法:</strong> 操作元素节点<ul>
-<li>事件指令(比如说v-on:xxx&#x3D;xxxx),给元素绑定直接的事件名和回调函数,(通过addEventListener(事件类型,<strong>事件回调.bind(vm)</strong>))来进行绑定(注意通过bind来改变this的指向了)</li>
-<li>非事件指令<ul>
-<li>v-text:  element.textContent &#x3D; 动态值</li>
-<li>v-html: element.innerHTML &#x3D; 动态值</li>
-<li>v-bind:class: element.className &#x3D; 动态值 + 静态class</li>
+<li>从A 网站跳转到 GitHub授权页面。</li>
+<li>GitHub 要求校验用户信息，引导用户登录。</li>
+<li>GitHub 询问”A 网站要求获得你的xx数据，你是否同意？”</li>
+<li>用户同意，GitHub 就会重定向到A网站对应的服务器，同时发回一个授权码。</li>
+<li>A网站服务器使用授权码，向 GitHub 请求令牌。</li>
+<li>GitHub 返回令牌token. A网站服务器使用令牌，向 GitHub 请求用户数据。</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>除了事件指令外,解析其他模板语法的时候,都会创建一个对应的watcher对象,用于将来更新对应的节点</li>
-</ul>
-</li>
-</ul>
-<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205202135640.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="数据绑定原理图-再次"></p>
-<h3 id="数据双向绑定"><a href="#数据双向绑定" class="headerlink" title="数据双向绑定"></a>数据双向绑定</h3><ul>
-<li><p>理解</p>
+<li><p>应用登记</p>
 <ul>
-<li>以input中的<code>v-model</code>来说,也就是&lt;input v-model&#x3D;”msg”&#x2F;&gt;</li>
-<li><strong>从data到页面的绑定</strong>:输入框是根据<code>data</code>中的<code>msg</code>做初始化显示和更新显示</li>
-<li><strong>从页面到data绑定</strong>:当输入发生改变时，会自动的将输入的最新值自动保存到<code>data</code>的<code>msg</code>上</li>
-</ul>
-</li>
-<li><p>原理</p>
-<ul>
-<li><strong>从vm配置对象当中的<code>data</code>到页面的绑定</strong>:内部给<code>input</code>指定了动态<code>value</code>为<code>msg</code>的值，因为有单向数据绑定的存在，一旦更新msg, 输入框就会自动更新显示</li>
-<li>**从页面到data绑定:**内部给input绑定了<code>input</code>事件监听(<code>input</code>事件监听是输入的内容和原来内容不同的时候才会执行,而<code>change</code>是改变就触发)，在回调函数中读取<code>input</code>最新的<code>value</code>值保存到<code>data</code>的<code>msg</code>属性上</li>
+<li>一个应用要 OAuth 授权，必须先到对方网站登记，让对方知道是谁在请求。</li>
 </ul>
 </li>
 </ul>
+<h4 id="使用GitHub授权"><a href="#使用GitHub授权" class="headerlink" title="使用GitHub授权"></a>使用GitHub授权</h4><h5 id="1-GitHub登记应用"><a href="#1-GitHub登记应用" class="headerlink" title="1.GitHub登记应用"></a>1.GitHub登记应用</h5><p>登记地址：<a target="_blank" rel="noopener" href="https://github.com/settings/applications/new">https://github.com/settings/applications/new</a></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242000531.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="登记"></p>
+<h5 id="2-获得client-id"><a href="#2-获得client-id" class="headerlink" title="2.获得client_id"></a>2.获得client_id</h5><p>查看地址：<a target="_blank" rel="noopener" href="https://github.com/settings/developers">https://github.com/settings/developers</a></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242001147.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="client_id"></p>
+<h5 id="3-获得Client-secrets"><a href="#3-获得Client-secrets" class="headerlink" title="3.获得Client secrets"></a>3.获得Client secrets</h5><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242001499.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="获得Client secrets"></p>
+<h5 id="4-配置"><a href="#4-配置" class="headerlink" title="4.配置"></a>4.配置</h5><p>4.1 前台项目准备好个人中心组件,供授权成功后查看</p>
+<p>4.2 将得到的 client_id 、clinet_secret配置到服务器config\index.js中，随后重启服务器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// github oauth</span><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CLIENT_ID</span> = <span class="hljs-string">&quot;xxxxxxxxxxxxxxx&quot;</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CLIENT_SECRET</span> = <span class="hljs-string">&quot;xxxxxxxxxxxxxxx&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242003636.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="如图,server配置"></p>
+<p>4.3 配置前端请求地址,这里就不写了</p>
+<p>4.4 项目中携带网站标识跳转到授权页</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">loginGithub = <span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span> = <span class="hljs-variable constant_">AUTH_BASE_URL</span>+<span class="hljs-string">&#x27;?client_id=&#x27;</span>+<span class="hljs-variable constant_">CLIENT_ID</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h3><h4 id="1-电脑安装好MongoDB后启动"><a href="#1-电脑安装好MongoDB后启动" class="headerlink" title="1.电脑安装好MongoDB后启动"></a>1.电脑安装好MongoDB后启动</h4><h4 id="2-server路径下cmd打开-输入npm-start"><a href="#2-server路径下cmd打开-输入npm-start" class="headerlink" title="2.server路径下cmd打开,输入npm start"></a>2.server路径下cmd打开,输入npm start</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242006013.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="server启动"></p>
+<h4 id="3-项目启动-项目路径下cmd打开-输入npm-run-serve后浏览器进入"><a href="#3-项目启动-项目路径下cmd打开-输入npm-run-serve后浏览器进入" class="headerlink" title="3.项目启动 ,项目路径下cmd打开,输入npm run serve后浏览器进入~"></a>3.项目启动 ,项目路径下cmd打开,输入npm run serve后浏览器进入~</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242007443.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h3 id="项目的展示"><a href="#项目的展示" class="headerlink" title="项目的展示"></a>项目的展示</h3><p><strong>主页登录</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205241945498.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="主页登录"></p>
+<p><strong>获取验证码</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205241945065.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="获取验证码"></p>
+<p><strong>个人中心</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205241946993.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="个人中心"></p>
+<p><strong>github关联</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205241946226.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="github关联"></p>
+<p>关联后</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205241947552.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="关联后"></p>
 
               
             </div>
@@ -1406,8 +1375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vue源码分析-快速版(DMQ的MVVM为例)</div>
-      <div>https://dreamlove.top/2022/05/20/前端/vue源码分析-快速版/</div>
+      <div>移动端适配vue小练习</div>
+      <div>https://dreamlove.top/2022/05/24/前端/移动端适配vue小练习/</div>
     </div>
     <div class="license-meta">
       
@@ -1419,7 +1388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月20日</div>
+          <div>2022年5月24日</div>
         </div>
       
       
@@ -1449,18 +1418,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/21/%E5%B7%A5%E5%85%B7/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%AE%9E%E7%8E%B0%E7%94%A8%E4%BA%91%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆实现用云函数cfc进行自动化抢位置">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">我来图书馆实现用云函数cfc进行自动化抢位置</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/19/%E5%B7%A5%E5%85%B7/git%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%90%86/" title="git添加代理下载速度蹭蹭上">
-                        <span class="hidden-mobile">git添加代理下载速度蹭蹭上</span>
+                      <a href="/2022/05/23/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%89%8D%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E5%92%8Crem,vm%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9A%84%E5%A4%8D%E4%B9%A0/" title="移动端前端的适配和rem,vm其他的一些的复习">
+                        <span class="hidden-mobile">移动端前端的适配和rem,vm其他的一些的复习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
