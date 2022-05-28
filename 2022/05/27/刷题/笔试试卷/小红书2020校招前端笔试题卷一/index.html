@@ -1,0 +1,1215 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="题目1-下列说法正确的是（）多选12345678A: requestAnimationFrame(foo) 确保使浏览器在下一次重绘之前调用 foo 方法B: 在 addEventListener 的处理方法中使用 e.preventDefault() 可以阻止事件冒泡C:  把 &lt;script&gt; 标签的引入放在文档末尾可以确保脚本下载和执行均在文档解析完成后发生D: 多个 &lt;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小红书2020校招前端笔试题卷一">
+<meta property="og:url" content="https://dreamlove.top/2022/05/27/%E5%88%B7%E9%A2%98/%E7%AC%94%E8%AF%95%E8%AF%95%E5%8D%B7/%E5%B0%8F%E7%BA%A2%E4%B9%A62020%E6%A0%A1%E6%8B%9B%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AF%95%E9%A2%98%E5%8D%B7%E4%B8%80/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="题目1-下列说法正确的是（）多选12345678A: requestAnimationFrame(foo) 确保使浏览器在下一次重绘之前调用 foo 方法B: 在 addEventListener 的处理方法中使用 e.preventDefault() 可以阻止事件冒泡C:  把 &lt;script&gt; 标签的引入放在文档末尾可以确保脚本下载和执行均在文档解析完成后发生D: 多个 &lt;s">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281115389.jpg">
+<meta property="article:published_time" content="2022-05-27T07:06:07.000Z">
+<meta property="article:modified_time" content="2022-05-27T07:06:07.000Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="刷刷刷">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281115389.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>小红书2020校招前端笔试题卷一 - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-briefcase"></i>
+                工具站
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="小红书2020校招前端笔试题卷一"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-27 15:06" pubdate>
+          2022年5月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="刷题"
+        id="heading-fdacafc46605602f778fa704d63aa71b" role="tab" data-toggle="collapse" href="#collapse-fdacafc46605602f778fa704d63aa71b"
+        aria-expanded="true"
+      >
+        刷题
+        <span class="list-group-count">(23)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-fdacafc46605602f778fa704d63aa71b"
+           role="tabpanel" aria-labelledby="heading-fdacafc46605602f778fa704d63aa71b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/01/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8801%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-CMD和AMD的模块化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-CMD和AMD的模块化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/23/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8823%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-JavaScript的身份证正则和内置可迭代对象"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-JavaScript的身份证正则和内置可迭代对象</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/11/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8811%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/02/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8802%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-decodeURI"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-decodeURI</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/22/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8822%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-js的call,apply为null,undefined的情况和日期的注意点"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-js的call,apply为null,undefined的情况和日期的注意点</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/25/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8825%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-let的暂时性死锁"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-let的暂时性死锁</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-try...catch...finally"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-try...catch...finally</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/07/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8807%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-原型链"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-原型链</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/05/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8805%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-变量的回收和reduce的使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-变量的回收和reduce的使用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/04/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8804%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-四舍五入等于..."
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-四舍五入等于...</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-微任务和宏任务"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-微任务和宏任务</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/27/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8827%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-数组的splice和map方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-数组的splice和map方法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/24/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8824%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意let"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-注意let</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/30/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8830%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意优先级"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-注意优先级</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/26/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8826%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意数组的一些方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-注意数组的一些方法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/29/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8829%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-温故而知新"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-温故而知新</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/03/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8803%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-类型转换</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换必须解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-类型转换必须解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/28/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8828%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-请求头和响应头有必要了解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-请求头和响应头有必要了解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/06/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8806%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-重写的ValueOf"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-重写的ValueOf</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/20/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8820%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-隐式转换和String和new String"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">今日刷题-隐式转换和String和new String</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" title="前端真题刷题-注意基础知识不要忘了基本原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">前端真题刷题-注意基础知识不要忘了基本原理</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="笔试试卷"
+        id="heading-545fbf6cfe60270b8535df143304fb95" role="tab" data-toggle="collapse" href="#collapse-545fbf6cfe60270b8535df143304fb95"
+        aria-expanded="true"
+      >
+        笔试试卷
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-545fbf6cfe60270b8535df143304fb95"
+           role="tabpanel" aria-labelledby="heading-545fbf6cfe60270b8535df143304fb95">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/27/%E5%88%B7%E9%A2%98/%E7%AC%94%E8%AF%95%E8%AF%95%E5%8D%B7/%E5%B0%8F%E7%BA%A2%E4%B9%A62020%E6%A0%A1%E6%8B%9B%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AF%95%E9%A2%98%E5%8D%B7%E4%B8%80/" title="小红书2020校招前端笔试题卷一"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">小红书2020校招前端笔试题卷一</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="笔试试卷"
+        id="heading-545fbf6cfe60270b8535df143304fb95" role="tab" data-toggle="collapse" href="#collapse-545fbf6cfe60270b8535df143304fb95"
+        aria-expanded="true"
+      >
+        笔试试卷
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-545fbf6cfe60270b8535df143304fb95"
+           role="tabpanel" aria-labelledby="heading-545fbf6cfe60270b8535df143304fb95">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/27/%E5%88%B7%E9%A2%98/%E7%AC%94%E8%AF%95%E8%AF%95%E5%8D%B7/%E5%B0%8F%E7%BA%A2%E4%B9%A62020%E6%A0%A1%E6%8B%9B%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AF%95%E9%A2%98%E5%8D%B7%E4%B8%80/" title="小红书2020校招前端笔试题卷一"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">小红书2020校招前端笔试题卷一</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">小红书2020校招前端笔试题卷一</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月27日 下午
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h2 id="题目1-下列说法正确的是（）多选"><a href="#题目1-下列说法正确的是（）多选" class="headerlink" title="题目1-下列说法正确的是（）多选"></a>题目1-下列说法正确的是（）多选</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">A</span>: <span class="hljs-title function_">requestAnimationFrame</span>(foo) 确保使浏览器在下一次重绘之前调用 foo 方法<br><br><span class="hljs-attr">B</span>: 在 addEventListener 的处理方法中使用 e.<span class="hljs-title function_">preventDefault</span>() 可以阻止事件冒泡<br><br><span class="hljs-attr">C</span>:  把 &lt;script&gt; 标签的引入放在文档末尾可以确保脚本下载和执行均在文档解析完成后发生<br><br><span class="hljs-attr">D</span>: 多个 &lt;script&gt; 标签使用 defer 属性引入脚本时，可以确保脚本的执行是按照其被引入的顺序的<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>A,C,D</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>更详细的script的<code>defer</code>和<code>async</code><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52409770/article/details/123462169">可以看这位博主的</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="A选项"><a href="#A选项" class="headerlink" title="A选项:"></a>A选项:</h3><p><strong><code>window.requestAnimationFrame()</code></strong> 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画。该方法需要传入一个回调函数作为参数，该回调函数会在浏览器下一次重绘之前执行</p>
+<h3 id="BCD选项"><a href="#BCD选项" class="headerlink" title="BCD选项:"></a>BCD选项:</h3><ul>
+<li><p>B: 记住,阻止事件默认行为是<code>preventDefault</code> 停止事件冒泡是<code>stopPropagation</code> (记住关键字就好了,阻止和停止这二个关键字)</p>
+</li>
+<li><p>C:  由于js是单线程的,要么css在解析,要么js在解析,所以某一个时刻要么只有js,要么只有css在运行,所以把script放在最后可以等待css解析完成后执行js脚本</p>
+</li>
+<li><p>D: <code>&lt;script defer&gt;&lt;/script&gt;</code> </p>
+<ul>
+<li>具有<code>defer</code>特性的脚本不会阻塞页面,相当于遇到了就丢到后台去执行</li>
+<li>具有<code>defer</code>特征的脚本总是到等到DOM解析完毕,但在 <code>DOMContentLoaded</code> 事件之前执行。</li>
+<li>具有<code>defer</code>特征的脚本保持其引入顺序执行,(有多个<code>defer</code>,则执行顺序按照引入顺序来执行)</li>
+</ul>
+</li>
+</ul>
+<p>假设，我们有两个具有 <code>defer</code> 特性的脚本：<code>long.js</code> 在前，<code>small.js</code> 在后。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script defer src=<span class="hljs-string">&quot;https://javascript.info/article/script-async-defer/long.js&quot;</span>&gt;&lt;/script&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://javascript.info/article/script-async-defer/small.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<p>浏览器扫描页面寻找脚本，然后并行下载它们，以提高性能。因此，在上面的示例中，两个脚本是并行下载的。<code>small.js</code> 可能会先下载完成。</p>
+<p>……但是，<code>defer</code> 特性除了告诉浏览器“不要阻塞页面”之外，还可以确保脚本执行的相对顺序。因此，即使 <code>small.js</code> 先加载完成，它也需要等到 <code>long.js</code> 执行结束才会被执行。</p>
+<p>当我们需要先加载 JavaScript 库，然后再加载依赖于它的脚本时，这可能会很有用。</p>
+<p><strong>总结:</strong></p>
+<p>​	使用 defer 属性可以让脚本在文档完全呈现之后再执行,延迟脚本总是按照指定它们的顺序执行。<br>​	使用 async 属性可以表示当前脚本不必等待其他脚本，也不必阻塞文档呈现。不能保证异步脚本按照它们在页面中出现的顺序执行。</p>
+<h2 id="题目2-请根据下面的示例描述原型链与继承的关系并解释原因："><a href="#题目2-请根据下面的示例描述原型链与继承的关系并解释原因：" class="headerlink" title="题目2-请根据下面的示例描述原型链与继承的关系并解释原因："></a>题目2-请根据下面的示例描述原型链与继承的关系并解释原因：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;&#125;<br><span class="hljs-keyword">const</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title function_">A</span>()<br><span class="hljs-keyword">const</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title function_">B</span>()<br>a.<span class="hljs-property">__proto__</span> ===<br>b.<span class="hljs-property">__proto__</span> ===<br>B.<span class="hljs-property">__proto</span> ===<br>B.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> ===<br>b.<span class="hljs-property">__proto__</span>.<span class="hljs-property">__proto__</span> ===<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">a.<span class="hljs-property">__proto__</span> === A.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br>b.<span class="hljs-property">__proto__</span> === B.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br>B.<span class="hljs-property">__proto__</span> === A <br>B.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === A.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br>b.<span class="hljs-property">__proto__</span>.<span class="hljs-property">__proto__</span> === A.<span class="hljs-property">prorotype</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sujinqu/p/11503663.html">这位博主写的很详细</a></li>
+</ul>
+<p>大概意思就是如图</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205250929007.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h3 id="题目3-ajax-的-readyState-有哪几个状态，含义分别是什么？"><a href="#题目3-ajax-的-readyState-有哪几个状态，含义分别是什么？" class="headerlink" title="题目3-ajax 的 readyState 有哪几个状态，含义分别是什么？"></a>题目3-ajax 的 readyState 有哪几个状态，含义分别是什么？</h3><p><strong>有5个状态,分别是</strong></p>
+<p>0 : 代表open方法还没有被调用</p>
+<p>1:  代表send方法还没有被调用</p>
+<p>2:  还没有收到响应(刚刚发送)</p>
+<p>3: 收到一部分响应(数据流一样慢慢来)</p>
+<p>4: 收到全部数据(数据传输完成)</p>
+<p><strong>补充:</strong></p>
+<p>使用XMLHttpRequest发送ajax请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();<br>xhr.<span class="hljs-title function_">open</span>(<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;http://127.0.0.1:8000&quot;</span>);<br>xhr.<span class="hljs-title function_">send</span>();<br>xhr.<span class="hljs-property">onreadystatechange</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// xhr.readyState === 4 &amp;&amp; xhr.status &gt;=200 &amp;&amp; xhr.stats &lt;300也可以</span><br>    <span class="hljs-keyword">if</span>(xhr.<span class="hljs-property">readyState</span> === <span class="hljs-number">4</span> &amp;&amp; xhr.<span class="hljs-property">status</span> === <span class="hljs-number">200</span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(xhr.<span class="hljs-property">responseText</span>);<br>    &#125;<br>&#125;<br>xhr.<span class="hljs-property">onerror</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(error)<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用javascript实现每隔三位使用逗号分隔一次"><a href="#使用javascript实现每隔三位使用逗号分隔一次" class="headerlink" title="使用javascript实现每隔三位使用逗号分隔一次"></a>使用javascript实现每隔三位使用逗号分隔一次</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205251459039.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="图1"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205251459039.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="图2"></p>
+<p><strong>代码:参考大佬的</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">paddingNum</span>(<span class="hljs-params">num</span>)&#123;<br>	<span class="hljs-comment">//记录下是正数还是负数</span><br>	<span class="hljs-keyword">let</span> flag = num &gt; <span class="hljs-number">0</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;<br>	<span class="hljs-comment">//取绝对值并转化为字符串</span><br>	num = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(num)+<span class="hljs-string">&quot;&quot;</span>;<br>	<span class="hljs-comment">//获取整数部分和小数部分</span><br>	<span class="hljs-keyword">let</span> [numberLeft,numberRight] = num.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;.&quot;</span>);<br>	<span class="hljs-comment">//没有小数位就用空字符串填充下</span><br>	numberRight = numberRight ? <span class="hljs-string">&quot;.&quot;</span>+numberRight : <span class="hljs-string">&quot;&quot;</span>;<br>	<span class="hljs-comment">//暂存数字</span><br>	<span class="hljs-keyword">let</span> temp = <span class="hljs-string">&quot;&quot;</span>;<br>	<span class="hljs-keyword">while</span>(numberLeft.<span class="hljs-property">length</span> &gt; <span class="hljs-number">3</span>)&#123;<br>		<span class="hljs-comment">//每次截取整数部分后3个字符串</span><br>		temp =  <span class="hljs-string">&quot;,&quot;</span> + numberLeft.<span class="hljs-title function_">slice</span>(-<span class="hljs-number">3</span>) + temp;<br>		<span class="hljs-comment">//将整数部分除去最后三个字符串</span><br>		numberLeft = numberLeft.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,numberLeft.<span class="hljs-property">length</span> - <span class="hljs-number">3</span>);<br>	&#125;<br>	<span class="hljs-comment">//循环结束,最后长度小于3,就将剩余的连接上</span><br>	<span class="hljs-keyword">return</span> flag ? numberLeft+temp+numberRight : <span class="hljs-string">&quot;-&quot;</span>+numberLeft+temp+numberRight;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当然,你需要的话也可以用这种方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">paddingNum</span> = num =&gt; (num).<span class="hljs-title function_">toLocaleString</span>(<span class="hljs-string">&#x27;en-US&#x27;</span>)<br><br><span class="hljs-comment">//写复杂点就是</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">paddingNum</span>(<span class="hljs-params">num</span>)&#123;<br>    <span class="hljs-keyword">let</span> temp = num.<span class="hljs-title function_">toLocaleString</span>(<span class="hljs-string">&#x27;en-US&#x27;</span>);<br>    <span class="hljs-keyword">return</span> temp;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="题目3-给定长度为n的整数数组nums-其中n-gt-1-返回输出数组output-，其中output-i-等于nums中除nums-i-之外其余各元素的乘积"><a href="#题目3-给定长度为n的整数数组nums-其中n-gt-1-返回输出数组output-，其中output-i-等于nums中除nums-i-之外其余各元素的乘积" class="headerlink" title="题目3-给定长度为n的整数数组nums,其中n &gt; 1,返回输出数组output ，其中output[i] 等于nums中除nums[i] 之外其余各元素的乘积"></a>题目3-给定长度为n的整数数组nums,其中n &gt; 1,返回输出数组output ，其中output[i] 等于nums中除nums[i] 之外其余各元素的乘积</h2><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205251529755.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="题目3"></p>
+<p><strong>代码:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">productExceptSelf</span>(<span class="hljs-params">numArray</span>) &#123;<br>	<span class="hljs-keyword">let</span> tempArray = [];<br>	numArray.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item1</span> =&gt;</span> &#123;<br>		<span class="hljs-keyword">let</span> num = <span class="hljs-number">1</span>;<br>		numArray.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item2</span> =&gt;</span> &#123;<br>			<span class="hljs-keyword">if</span> (item1 != item2) &#123;<br>				num = num * item2;<br>			&#125;<br>		&#125;);<br>		tempArray.<span class="hljs-title function_">push</span>(num);<br>	&#125;);<br>	<span class="hljs-keyword">return</span> tempArray;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="题目4-薯队长带着小红薯参加密室逃脱团建游戏，首先遇到了反转游戏，小红薯们根据游戏提示收集了多个单词线索，并将单词按要求加一个空格组-成了句子，最终要求把句子按单词反转解密。-说明：收集的时候单词前后可能会有多个空格，反转后单词不能有多个空格，具体见输入输出样例。"><a href="#题目4-薯队长带着小红薯参加密室逃脱团建游戏，首先遇到了反转游戏，小红薯们根据游戏提示收集了多个单词线索，并将单词按要求加一个空格组-成了句子，最终要求把句子按单词反转解密。-说明：收集的时候单词前后可能会有多个空格，反转后单词不能有多个空格，具体见输入输出样例。" class="headerlink" title="题目4-薯队长带着小红薯参加密室逃脱团建游戏，首先遇到了反转游戏，小红薯们根据游戏提示收集了多个单词线索，并将单词按要求加一个空格组 成了句子，最终要求把句子按单词反转解密。 说明：收集的时候单词前后可能会有多个空格，反转后单词不能有多个空格，具体见输入输出样例。"></a>题目4-薯队长带着小红薯参加密室逃脱团建游戏，首先遇到了反转游戏，小红薯们根据游戏提示收集了多个单词线索，并将单词按要求加一个空格组 成了句子，最终要求把句子按单词反转解密。 说明：收集的时候单词前后可能会有多个空格，反转后单词不能有多个空格，具体见输入输出样例。</h2><h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h4><blockquote>
+<p>输入一个字符串。包含空格和可见字符。长度&lt;&#x3D;100000。 </p>
+</blockquote>
+<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h4><blockquote>
+<p>输出一个字符串，表示反转后结果。</p>
+</blockquote>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">输入<br>the	sky	<span class="hljs-keyword">is</span>												blue!<br><br>输出<br>blue! <span class="hljs-keyword">is</span> sky the<br></code></pre></td></tr></table></figure>
+
+<p><strong>代码:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br><br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">reverse</span>(<span class="hljs-string">&quot;the	sky	is												blue!&quot;</span>));<br><br>	<span class="hljs-keyword">function</span> <span class="hljs-title function_">reverse</span>(<span class="hljs-params">str</span>) &#123;<br>		<span class="hljs-comment">//匹配任何非空白字符。等价于[^ \f\n\r\t\v]。</span><br>		<span class="hljs-keyword">var</span> a = str.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/(\S+)/g</span>);<br>		<span class="hljs-comment">//调用数组的方法</span><br>		a = a.<span class="hljs-title function_">reverse</span>();<br>		<span class="hljs-keyword">return</span> a.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot; &quot;</span>);<br>	&#125;<br>&lt;/script&gt;<br>测试数据<br>jifgykoserhurjkcnhskdncvgkiyhnsjdukzecrunyst   827136547tr8yh74f8o9l3w92qujwhe8iu7ryhf   uincymh9oxw,z.<span class="hljs-property">ej</span>/09l8kyut8w9o,x.9elo58km4yu   ;78p0[<span class="hljs-number">2845</span>)&#123;*()&#123;<span class="hljs-attr">P</span>:T*#Q)<span class="hljs-title function_">I</span>(<span class="hljs-title class_">OPUQjfpii</span>[upOYHUIYG   9430q80965tpyw4[h   <span class="hljs-number">898888888888888888888888888888888888888888</span>   iouy4ewrt8iu7hgfo2UIYTRFYJHMGDSAI   f87e6rwtyugfhkjhki   <span class="hljs-variable constant_">ZHONGGUOGONGCHANDANGWANSUI</span>   <span class="hljs-variable constant_">MAOZHUXIWANSUI</span><br></code></pre></td></tr></table></figure>
+
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98/%E7%AC%94%E8%AF%95%E8%AF%95%E5%8D%B7/" class="category-chain-item">笔试试卷</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>小红书2020校招前端笔试题卷一</div>
+      <div>https://dreamlove.top/2022/05/27/刷题/笔试试卷/小红书2020校招前端笔试题卷一/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/28/%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8nodejs%E5%AF%BC%E5%87%BAmd%E6%88%96Markdown%E6%96%87%E6%A1%A3%E5%BD%93%E4%B8%AD%E5%9B%BE%E7%89%87%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%B9%B6%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%A7%8B%E6%96%87%E6%9C%AC/" title="使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/" title="移动端适配vue小练习">
+                        <span class="hidden-mobile">移动端适配vue小练习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

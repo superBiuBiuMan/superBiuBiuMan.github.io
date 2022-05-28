@@ -1,0 +1,943 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="有需求才有动力~有时候经常需要将md文件当中的图片离线保存下来,指不定那一天图床挂了,图片找不到了!但是typora没有一键保存到本地图片功能!,必须要一个个右键保存才可以!!!!太坑爹!!! 下载 github下载  gitee下载  原理1234567读取指定目录下的所有文件 &#x3D;&gt; 获取md文件并将路径保存到数组A &#x3D;&gt; 遍历每一个md文件,使用正则判断是否有图片链接&#x3D;&gt; 当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用nodejs导出md&#x2F;Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接">
+<meta property="og:url" content="https://dreamlove.top/2022/05/28/%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8nodejs%E5%AF%BC%E5%87%BAmd%E6%88%96Markdown%E6%96%87%E6%A1%A3%E5%BD%93%E4%B8%AD%E5%9B%BE%E7%89%87%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%B9%B6%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%A7%8B%E6%96%87%E6%9C%AC/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="有需求才有动力~有时候经常需要将md文件当中的图片离线保存下来,指不定那一天图床挂了,图片找不到了!但是typora没有一键保存到本地图片功能!,必须要一个个右键保存才可以!!!!太坑爹!!! 下载 github下载  gitee下载  原理1234567读取指定目录下的所有文件 &#x3D;&gt; 获取md文件并将路径保存到数组A &#x3D;&gt; 遍历每一个md文件,使用正则判断是否有图片链接&#x3D;&gt; 当">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281118457.png">
+<meta property="article:published_time" content="2022-05-28T03:06:07.000Z">
+<meta property="article:modified_time" content="2022-05-28T03:06:10.000Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="NodeJs">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281118457.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接 - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-briefcase"></i>
+                工具站
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-28 11:06" pubdate>
+          2022年5月28日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工具"
+        id="heading-20dce2c6fa909a5cd62526615fe2788a" role="tab" data-toggle="collapse" href="#collapse-20dce2c6fa909a5cd62526615fe2788a"
+        aria-expanded="true"
+      >
+        工具
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-20dce2c6fa909a5cd62526615fe2788a"
+           role="tabpanel" aria-labelledby="heading-20dce2c6fa909a5cd62526615fe2788a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/19/%E5%B7%A5%E5%85%B7/git%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%90%86/" title="git添加代理下载速度蹭蹭上"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git添加代理下载速度蹭蹭上</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/28/%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8nodejs%E5%AF%BC%E5%87%BAmd%E6%88%96Markdown%E6%96%87%E6%A1%A3%E5%BD%93%E4%B8%AD%E5%9B%BE%E7%89%87%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%B9%B6%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%A7%8B%E6%96%87%E6%9C%AC/" title="使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/30/%E5%B7%A5%E5%85%B7/%E5%AD%A6%E4%B9%A0%E5%BC%BA%E5%9B%BD,%E6%AF%8F%E5%A4%A940+,%E5%B8%AE%E4%BD%A0%E5%BF%AB%E4%B9%90%E5%AD%A6%E4%B9%A0/" title="学 xi强国,每天40+,帮你快乐学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">学 xi强国,每天40+,帮你快乐学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%B7%A5%E5%85%B7/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%AE%9E%E7%8E%B0%E7%94%A8%E4%BA%91%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆实现用云函数cfc进行自动化抢位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我来图书馆实现用云函数cfc进行自动化抢位置</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月28日 上午
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h2 id="有需求才有动力"><a href="#有需求才有动力" class="headerlink" title="有需求才有动力~"></a>有需求才有动力~</h2><p>有时候经常需要将md文件当中的图片离线保存下来,指不定那一天图床挂了,图片找不到了!但是typora没有一键保存到本地图片功能!,必须要一个个右键保存才可以!!!!太坑爹!!!</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/superBiuBiuMan/MarkdownPictureDownLoadAndReplace">github下载</a> </li>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/superBiuBiu/MarkdownPictureDownLoadAndReplace">gitee下载</a></li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs excel">读取指定目录下的所有文件 =&gt; 获取md文件并将路径保存到数组A =&gt; 遍历每一个md文件,使用正则判断是否有图片链接<br><br>=&gt; 当前md的文件下所有图片链接保存到数组B当中的某一项当中(使用push),重复此操作<br><br>=&gt; 弹出一个数组A的值(也就是md文件的路径) =&gt; 弹出一个数组B(也就是当前md所对应的图片链接)<br><br>=&gt; 对数组B进行遍历访问并保存图片到本地 =&gt; 替换内容 =&gt; 遍历完成后写入新内容<br></code></pre></td></tr></table></figure>
+
+<h3 id="具体看源代码吧-我把注释写的挺详细的"><a href="#具体看源代码吧-我把注释写的挺详细的" class="headerlink" title="具体看源代码吧,我把注释写的挺详细的"></a>具体看源代码吧,我把注释写的挺详细的</h3><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><strong>nodejs环境</strong><ul>
+<li>直接下载源码,记得<strong>先安装下依赖</strong>!然后 <code>node ./index.js</code>输入安装提示输入文件地址即可(<strong>注意要是文件夹!!!</strong>)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281002006.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="使用"></p>
+<ul>
+<li><strong>window环境</strong> 尝试了下打包,感觉打包的文件好大,打包过程<ul>
+<li>全局安装下 <code>npm install pkg -g</code> <a target="_blank" rel="noopener" href="https://github.com/vercel/pkg">pkg地址</a></li>
+</ul>
+</li>
+</ul>
+<p>使用也很简单,双击运行输入<strong>文件夹路径</strong>即可,<strong>文件夹路径</strong>,<strong>文件夹路径!</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281048150.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="exe运行"></p>
+<h3 id="我打包nodejs的一些配置"><a href="#我打包nodejs的一些配置" class="headerlink" title="我打包nodejs的一些配置"></a>我打包nodejs的一些配置</h3><ul>
+<li>配置了下文件(具体的可以看官网,我这里直接copy了别人的)</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205280935788.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>  <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;pkg&quot;</span>: &#123;<br>  <span class="hljs-string">&quot;scripts&quot;</span>: <span class="hljs-string">&quot;build/**/*.js&quot;</span>,<br>  <span class="hljs-string">&quot;assets&quot;</span>: <span class="hljs-string">&quot;views/**/*&quot;</span>,<br>  <span class="hljs-string">&quot;targets&quot;</span>: <span class="hljs-string">&quot;node16&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>然后运行<code>npm pkg</code> ,然后会下载三个包<ul>
+<li><code>index-linux</code> <code>index-macos</code> <code>index-win</code></li>
+</ul>
+</li>
+<li>然后生成三个平台的运行文件(可以有配置生成哪一个平台文件,具体看官网就可以~我这里就不研究了)</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205280937735.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="npm pck生成的文件"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205280939511.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="打包时候安装的文件"></p>
+<h2 id="注意下"><a href="#注意下" class="headerlink" title="注意下"></a>注意下</h2><ul>
+<li><p>由于担心访问过快导致被屏蔽,这里设置了300毫秒的等待,每访问一次图片网站就等待300毫秒,当然,你可以自己更改下~</p>
+</li>
+<li><p>修改 <code>utils\index.js</code></p>
+</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281001741.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="修改延迟"></p>
+<h2 id="使用效果"><a href="#使用效果" class="headerlink" title="使用效果"></a>使用效果</h2><ul>
+<li>使用后md当中的图片链接就被替换了</li>
+<li>测试了下 有链接的,有img标签的<code>移动端md</code></li>
+</ul>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs excel">//普通的<br>![](htt<span class="hljs-symbol">ps:</span>//<span class="hljs-symbol">s1</span>.ax1x.com/<span class="hljs-number">2020</span>/<span class="hljs-number">06</span>/<span class="hljs-number">27</span>/NyZQbQ.png)<br>=&gt;替换为了<br>![](移动端.assets/NyZQbQ.png)<br><br>&lt;img src=<span class="hljs-string">&quot;https://s1.ax1x.com/2020/06/27/NyZ1Ej.png&quot;</span> style=<span class="hljs-string">&quot;zoom: 25%;&quot;</span> /&gt;<br>=&gt;替换为了<br>&lt;img src=<span class="hljs-string">&quot;移动端.assets/NyZ1Ej.png&quot;</span> style=<span class="hljs-string">&quot;zoom: 25%;&quot;</span> /&gt;<br><br>都替换正常和显示正常<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281005164.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="如图"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281005668.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="生成了对应存储图片的文件夹"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281005685.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="使用截图"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281022103.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="使用"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281026056.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="故意失败测试~防止失败就中断"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205281048486.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="使用"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/NodeJs/">#NodeJs</a>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>使用nodejs导出md/Markdown文档当中的图片到本地并替换原始图片链接为本地图片链接</div>
+      <div>https://dreamlove.top/2022/05/28/工具/使用nodejs导出md或Markdown文档当中图片到本地并替换原始文本/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/27/%E5%88%B7%E9%A2%98/%E7%AC%94%E8%AF%95%E8%AF%95%E5%8D%B7/%E5%B0%8F%E7%BA%A2%E4%B9%A62020%E6%A0%A1%E6%8B%9B%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AF%95%E9%A2%98%E5%8D%B7%E4%B8%80/" title="小红书2020校招前端笔试题卷一">
+                        <span class="hidden-mobile">小红书2020校招前端笔试题卷一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
