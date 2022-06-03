@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205081002213.jpg">
 <meta property="article:published_time" content="2022-05-08T01:45:40.000Z">
-<meta property="article:modified_time" content="2022-05-08T01:45:00.000Z">
+<meta property="article:modified_time" content="2022-05-29T01:45:00.000Z">
 <meta property="article:author" content="梦洁">
 <meta property="article:tag" content="刷题">
 <meta property="article:tag" content="刷刷刷">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          3.6k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          17 分钟
+          30 分钟
         
       </span>
     
@@ -573,7 +573,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年5月8日 上午
+                    本文最后更新于：2022年5月29日 上午
                   
                 
               </p>
@@ -636,7 +636,7 @@
 </ul>
 <p><strong>总结下</strong></p>
 <ol>
-<li><p>只要是<strong>基本数据类型</strong>的&#x3D;&#x3D;比较,都会转化为数值来进行比较</p>
+<li><p>只要是<strong>基本数据类型</strong>的 <code>==</code> 比较,都会转化为数值来进行比较</p>
 </li>
 <li><p>只要是<strong>引用数据类型</strong>和<strong>基本数据类型</strong>的的比较,都会转化为<strong>字符串</strong>   然后 转化为 <strong>被比较的基本数据的类型</strong>  后 <strong>再进行比较</strong>((除了引用数据类型和布尔值进行比较的时候是将二者转化为布尔值比较))</p>
 </li>
@@ -647,22 +647,47 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 输出结果为true</span><br><span class="hljs-comment">// 过程: [1]转化为字符串&#x27;1&#x27; ,然后转化为数字1 然后数字1 和 1进行比较 ,返回true</span><br>[<span class="hljs-number">1</span>] == <span class="hljs-number">1</span>;  <br></code></pre></td></tr></table></figure>
 </li>
 <li><p>还有一些需要记住的，像</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span> <span class="hljs-comment">// true  null和undefined二个比较则返回true,二者和其他比较就返回false</span><br><br><span class="hljs-comment">//举例子,下方的就是</span><br><span class="hljs-literal">null</span> == <span class="hljs-literal">false</span> <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span> <span class="hljs-comment">// true  null和undefined二个等于号比较则返回true,二者和其他比较就返回false</span><br><br><span class="hljs-comment">//举例子,下方的就是</span><br><span class="hljs-literal">null</span> == <span class="hljs-literal">false</span> <span class="hljs-comment">//false</span><br><br><span class="hljs-literal">null</span> === <span class="hljs-literal">null</span> <span class="hljs-comment">//为true</span><br><span class="hljs-literal">undefined</span> === <span class="hljs-literal">undefined</span>  <span class="hljs-comment">//为true</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>具体可以看这个博主写的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ljk001/p/8086084.html">js中的一些隐式转换和总结</a></p>
 </li>
 </ol>
-<h4 id="题目2扩展"><a href="#题目2扩展" class="headerlink" title="题目2扩展"></a>题目2扩展</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-comment">//各自的返回结果是?</span><br><span class="hljs-number">1</span>==<span class="hljs-literal">true</span><br><span class="hljs-string">&quot;&quot;</span>==<span class="hljs-literal">false</span><br><span class="hljs-literal">false</span>==<span class="hljs-literal">null</span><br><span class="hljs-literal">null</span>==<span class="hljs-literal">undefined</span><br></code></pre></td></tr></table></figure>
+<h4 id="题目2扩展"><a href="#题目2扩展" class="headerlink" title="题目2扩展"></a>题目2扩展</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//各自的返回结果是?</span><br><span class="hljs-number">1</span> == <span class="hljs-literal">true</span><br><span class="hljs-string">&quot;&quot;</span> == <span class="hljs-literal">false</span><br><span class="hljs-literal">false</span> == <span class="hljs-literal">null</span><br><span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>答案<ul>
-<li>1 &#x3D;&#x3D; true ;&#x2F;&#x2F; true (基本数据类型和布尔值比较,二者转化为数值 <code>1</code> 不变化 <code> true</code>变为了<code>1</code>,所以二者相等返回true)</li>
-<li>“” &#x3D;&#x3D; false; &#x2F;&#x2F; true  (基本数据类型和布尔值比较 , 二者转化为数值,  <code>&quot;&quot; </code>转化为数值为<code>0 </code>, <code>false</code>变为0,所以二者相等返回true)</li>
-<li>false &#x3D;&#x3D; null ; &#x2F;&#x2F; false (null除了和undefined相比返回为true,null和其他比较均返回为false(undefined也是))</li>
-<li>null &#x3D;&#x3D; undefined ;&#x2F;&#x2F; true (<code>null</code> 和 <code>undefined</code> 比较,返回为true,<strong>可以看上面第五条</strong>)</li>
+<li><code>1 == true</code> ;&#x2F;&#x2F; true (基本数据类型和布尔值比较,二者转化为数值 <code>1</code> 不变化 <code> true</code>变为了<code>1</code>,所以二者相等返回true)</li>
+<li><code>&quot;&quot; == false</code>; &#x2F;&#x2F; true  (基本数据类型和布尔值比较 , 二者转化为数值,  <code>&quot;&quot; </code>转化为数值为<code>0 </code>, <code>false</code>变为0,所以二者相等返回true)</li>
+<li><code>false == null </code>; &#x2F;&#x2F; false (null除了和undefined二个等号比较返回为true,null和其他比较均返回为false(undefined也是))</li>
+<li><code>null == undefined </code>;&#x2F;&#x2F; true (<code>null</code> 和 <code>undefined</code> 比较,返回为true,<strong>可以看上面第五条</strong>)</li>
 </ul>
 </li>
 </ul>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><ul>
+<li>对象转换为数字的时候的时候,会依次调用<code>valueOf</code>方法和<code>toString</code>方法,我们可以进行重写这二个方法来完成一些看似不可能的操作<ul>
+<li>valueOf 取出对象内部的值，不进行类型转换 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf">mdnDoc文档地址</a></li>
+<li>toString 一定将所有内容转为字符串! <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString">mdnDoc文档地址</a></li>
+</ul>
+</li>
+<li>当调用valueOf方法没有获取到基本数据类型的时候,就会再次调用toString方法</li>
+</ul>
+<p><strong>证明1:当调用valueOf方法没有获取到基本数据类型的时候,就会再次调用toString方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = [];<br><span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">valueOf</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我1&quot;</span>);<br>	<span class="hljs-keyword">return</span> [];<br>&#125;;<br><span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">toString</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我2&quot;</span>);<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>([] == <span class="hljs-literal">false</span>);<br><br><span class="hljs-comment">//依次输出</span><br><span class="hljs-comment">// 你调用了我1</span><br><span class="hljs-comment">// 你调用了我2</span><br><span class="hljs-comment">// false </span><br></code></pre></td></tr></table></figure>
+
+<p><strong>证明2:当调用valueOf方法没有获取到基本数据类型的时候,就会再次调用toString方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> test = &#123;<br>	<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;李白&quot;</span>,<br>	<span class="hljs-title function_">valueOf</span>(<span class="hljs-params"></span>)&#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我1&quot;</span>);<br>		<span class="hljs-keyword">return</span> &#123;&#125;;<br>	&#125;,<br>	<span class="hljs-title function_">toString</span>(<span class="hljs-params"></span>)&#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我2&quot;</span>);<br>	&#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(test == <span class="hljs-literal">false</span>);<br><span class="hljs-comment">//依次输出 </span><br><span class="hljs-comment">// 你调用了我1</span><br><span class="hljs-comment">// 你调用了我2</span><br><span class="hljs-comment">// false </span><br></code></pre></td></tr></table></figure>
+
+<p><strong>证明3:当调用valueOf方法没有获取到基本数据类型的时候,就会再次调用toString方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> test = &#123;<br>	<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;李白&quot;</span>,<br>	<span class="hljs-title function_">valueOf</span>(<span class="hljs-params"></span>)&#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我1&quot;</span>);<br>		<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;777&quot;</span>;<br>	&#125;,<br>	<span class="hljs-title function_">toString</span>(<span class="hljs-params"></span>)&#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我2&quot;</span>);<br>	&#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(test == <span class="hljs-literal">false</span>);<br><span class="hljs-comment">//依次输出</span><br><span class="hljs-comment">// 你调用了我1</span><br><span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+
+<p>也许有人会说,为什么我重写了valueOf方法和toString方法还是只会调用valueOf啊</p>
+<ul>
+<li>那是因为你没有加return,你没加return在valueOf方法里面,那么相同会自动添加<code>return undefined</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> test = &#123;<br>	<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;李白&quot;</span>,<br>	<span class="hljs-title function_">valueOf</span>(<span class="hljs-params"></span>)&#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我1&quot;</span>);<br>	&#125;,<br>	<span class="hljs-title function_">toString</span>(<span class="hljs-params"></span>)&#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;你调用了我2&quot;</span>);<br>	&#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(test == <span class="hljs-literal">false</span>);<br><span class="hljs-comment">//可能你们是这样子写的</span><br><span class="hljs-comment">//然后发现只有 你调用了我1 和false输出</span><br><span class="hljs-comment">// 你return下任意的引用数据类型就可以了</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="有没有什么办法可以使得-a-x3D-x3D-1-amp-amp-a-x3D-x3D-2-amp-amp-a-x3D-x3D-3为真"><a href="#有没有什么办法可以使得-a-x3D-x3D-1-amp-amp-a-x3D-x3D-2-amp-amp-a-x3D-x3D-3为真" class="headerlink" title="有没有什么办法可以使得 a&#x3D;&#x3D;1 &amp;&amp; a&#x3D;&#x3D;2 &amp;&amp; a&#x3D;&#x3D;3为真?"></a>有没有什么办法可以使得 a&#x3D;&#x3D;1 &amp;&amp; a&#x3D;&#x3D;2 &amp;&amp; a&#x3D;&#x3D;3为真?</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = &#123;<br>	<span class="hljs-attr">num</span>:<span class="hljs-number">1</span>,<br>	<span class="hljs-title function_">valueOf</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-comment">//每次都是先返回在自增1</span><br>		<span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">num</span>++;<br>	&#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a==<span class="hljs-number">1</span> &amp;&amp; a==<span class="hljs-number">2</span> &amp;&amp; a==<span class="hljs-number">3</span>);<span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+
 
               
             </div>
