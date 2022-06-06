@@ -16,28 +16,28 @@
   <meta name="author" content="梦洁">
   <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
   
-    <meta name="description" content="canvas的基本了解 canvas仅仅只是一个画布,定义一个canvas标签,需要通过属性,属性,属性来设置宽度高度(不可以通过样式!),如果不设置默认300*150  不通过属性设置画布的宽度和高度,会造成坐标不准确的问题!   canvas必须要通过js来操作  canvas的坐标是从左到右是x轴,从上到下是y轴  vscode书写canvas的时候没有提示,加上&#x2F;** @type &amp;#12">
+    <meta name="description" content="前置准备 nodejs必安装 全局安装typescript  1npm install typescript -g   使用tsc命令对ts文件进行编译 进入命名行 进入ts文件所在目录 执行命名tsc xxx.ts即可,xxx.ts中xxx为文件名 如果没有在报错的情况下进行编译,默认情况下依旧会进行编译,但是可以后期配置不编译   编译可以编译为任意js(兼容性处理更加好),后期可以通过配置文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="canvas基本使用">
-<meta property="og:url" content="https://dreamlove.top/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="Typescript的学习笔记">
+<meta property="og:url" content="https://dreamlove.top/2022/06/05/%E5%89%8D%E7%AB%AF/Typescript%E7%9A%84%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
-<meta property="og:description" content="canvas的基本了解 canvas仅仅只是一个画布,定义一个canvas标签,需要通过属性,属性,属性来设置宽度高度(不可以通过样式!),如果不设置默认300*150  不通过属性设置画布的宽度和高度,会造成坐标不准确的问题!   canvas必须要通过js来操作  canvas的坐标是从左到右是x轴,从上到下是y轴  vscode书写canvas的时候没有提示,加上&#x2F;** @type &amp;#12">
+<meta property="og:description" content="前置准备 nodejs必安装 全局安装typescript  1npm install typescript -g   使用tsc命令对ts文件进行编译 进入命名行 进入ts文件所在目录 执行命名tsc xxx.ts即可,xxx.ts中xxx为文件名 如果没有在报错的情况下进行编译,默认情况下依旧会进行编译,但是可以后期配置不编译   编译可以编译为任意js(兼容性处理更加好),后期可以通过配置文">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205132349743.jpg">
-<meta property="article:published_time" content="2022-05-13T07:15:48.000Z">
-<meta property="article:modified_time" content="2022-05-13T07:15:48.000Z">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206031946538.jpg">
+<meta property="article:published_time" content="2022-06-05T11:47:18.000Z">
+<meta property="article:modified_time" content="2022-06-05T11:48:18.000Z">
 <meta property="article:author" content="梦洁">
 <meta property="article:tag" content="HTML">
 <meta property="article:tag" content="javscript">
-<meta property="article:tag" content="canvas">
+<meta property="article:tag" content="ES6">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205132349743.jpg">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206031946538.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>canvas基本使用 - 技术小站-属于你我的小天地</title>
+  <title>Typescript的学习笔记 - 技术小站-属于你我的小天地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="canvas基本使用"></span>
+            <span id="subtitle" data-typed-text="Typescript的学习笔记"></span>
           
         </div>
 
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-13 15:15" pubdate>
-          2022年5月13日 下午
+        <time datetime="2022-06-05 19:47" pubdate>
+          2022年6月5日 晚上
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5k 字
+          9.6k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          42 分钟
+          80 分钟
         
       </span>
     
@@ -399,7 +399,7 @@
       
         <a href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="canvas基本使用"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">canvas基本使用</span>
         </a>
       
@@ -638,17 +638,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="typescript"
         id="heading-1e35bcba2dba1089c7bd0805d4517c8f" role="tab" data-toggle="collapse" href="#collapse-1e35bcba2dba1089c7bd0805d4517c8f"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         typescript
         <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+      <div class="category-collapse collapse show" id="collapse-1e35bcba2dba1089c7bd0805d4517c8f"
            role="tabpanel" aria-labelledby="heading-1e35bcba2dba1089c7bd0805d4517c8f">
         
         
@@ -660,7 +660,7 @@
       
         <a href="/2022/06/05/%E5%89%8D%E7%AB%AF/Typescript%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="Typescript的学习笔记"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">Typescript的学习笔记</span>
         </a>
       
@@ -870,7 +870,7 @@
       
         <a href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="canvas基本使用"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">canvas基本使用</span>
         </a>
       
@@ -1109,17 +1109,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="typescript"
         id="heading-1e35bcba2dba1089c7bd0805d4517c8f" role="tab" data-toggle="collapse" href="#collapse-1e35bcba2dba1089c7bd0805d4517c8f"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         typescript
         <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+      <div class="category-collapse collapse show" id="collapse-1e35bcba2dba1089c7bd0805d4517c8f"
            role="tabpanel" aria-labelledby="heading-1e35bcba2dba1089c7bd0805d4517c8f">
         
         
@@ -1131,7 +1131,7 @@
       
         <a href="/2022/06/05/%E5%89%8D%E7%AB%AF/Typescript%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="Typescript的学习笔记"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">Typescript的学习笔记</span>
         </a>
       
@@ -1292,6 +1292,52 @@
       </div>
     </div>
   
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="typescript"
+        id="heading-1e35bcba2dba1089c7bd0805d4517c8f" role="tab" data-toggle="collapse" href="#collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+        aria-expanded="true"
+      >
+        typescript
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+           role="tabpanel" aria-labelledby="heading-1e35bcba2dba1089c7bd0805d4517c8f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/06/05/%E5%89%8D%E7%AB%AF/Typescript%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="Typescript的学习笔记"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Typescript的学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/03/%E5%89%8D%E7%AB%AF/typescript%E5%AE%8C%E6%88%90%E7%9A%84%E8%B4%AA%E5%90%83%E8%9B%87/" title="typescript完成的贪吃蛇前端小游戏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">typescript完成的贪吃蛇前端小游戏</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
 </div>
 
 
@@ -1305,125 +1351,392 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">canvas基本使用</h1>
+            <h1 style="display: none">Typescript的学习笔记</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年5月13日 下午
+                    本文最后更新于：2022年6月5日 晚上
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h3 id="canvas的基本了解"><a href="#canvas的基本了解" class="headerlink" title="canvas的基本了解"></a>canvas的基本了解</h3><ul>
-<li><p>canvas仅仅只是一个画布,定义一个canvas标签,需要通过<strong>属性,属性,属性</strong>来设置宽度高度(不可以通过样式!),如果不设置默认<code>300*150</code></p>
+              <h2 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h2><ul>
+<li>nodejs必安装</li>
+<li>全局安装<code>typescript</code></li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> typescript -g<br></code></pre></td></tr></table></figure>
+
 <ul>
-<li>不通过属性设置画布的宽度和高度,会造成坐标不准确的问题!</li>
+<li>使用<code>tsc</code>命令对ts文件进行编译<ul>
+<li>进入命名行</li>
+<li>进入ts文件所在目录</li>
+<li>执行命名<code>tsc xxx.ts</code>即可,xxx.ts中xxx为文件名<ul>
+<li>如果没有在报错的情况下进行编译,默认情况下依旧会进行编译,但是可以后期配置不编译</li>
 </ul>
 </li>
-<li><p>canvas必须要通过js来操作</p>
-</li>
-<li><p>canvas的坐标是从左到右是x轴,从上到下是y轴</p>
-</li>
-<li><p>vscode书写canvas的时候没有提示,加上<code>/** @type &#123;HTMLCanvasElement&#125; */</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br><span class="hljs-comment">/** <span class="hljs-doctag">@type</span> &#123;<span class="hljs-type">HTMLCanvasElement</span>&#125; */</span><br> canvas代码书写<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure></li>
+<li>编译可以编译为任意js(兼容性处理更加好),后期可以通过配置文件进行配置</li>
 </ul>
-<h3 id="canvas的基本步骤"><a href="#canvas的基本步骤" class="headerlink" title="canvas的基本步骤"></a>canvas的基本步骤</h3><ol>
-<li>获取canvas的节点</li>
-<li>画布创建画笔并选择画笔的绘制类型</li>
-<li>开始绘制</li>
-<li>store()方法绘制  ——  stroke() 方法会实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径。默认颜色是黑色。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;canvas id=<span class="hljs-string">&quot;cav&quot;</span> height=<span class="hljs-string">&quot;400&quot;</span> width=<span class="hljs-string">&quot;400&quot;</span>&gt;&lt;/canvas&gt;<br> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> &#123;<span class="hljs-type">HTMLCanvasElement</span>&#125; */</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//1.获取canvas节点(获取画布)</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;cav&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//2.画布创建画笔并选择画笔的绘制类型</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//3.开始绘制</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//绘制的起点</span></span></span><br><span class="language-javascript"><span class="language-xml">     ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>);</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//有了绘制的起点我们就拖动着笔移动到100,200的坐标点</span></span></span><br><span class="language-javascript"><span class="language-xml">     ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">100</span>,<span class="hljs-number">200</span>);</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//我们再次移动画笔的坐标</span></span></span><br><span class="language-javascript"><span class="language-xml">     ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">200</span>,<span class="hljs-number">300</span>);</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//第一个坐标(100,100)和最后一个坐标(200,300)点闭合</span></span></span><br><span class="language-javascript"><span class="language-xml">     ctx.<span class="hljs-title function_">closePath</span>();</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//设置填充颜色 - 红色</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//ctx.fillStyle = &quot;red&quot;;</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//开始填充颜色</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//ctx.fill();</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//设置绘制线条的颜色</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//ctx.strokeStyle = &quot;yellow&quot;;</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//设置绘制线条的粗细</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//ctx.lineWidth = &quot;20&quot;;</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-comment">//绘制线条</span></span></span><br><span class="language-javascript"><span class="language-xml">     ctx.<span class="hljs-title function_">stroke</span>();</span></span><br><span class="language-javascript"><span class="language-xml"> </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<ol start="5">
-<li><p>绘制效果<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121114879.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="绘制效果" style="zoom:50%;" /></p>
 </li>
-<li><p>如果想要填充的颜色,画笔可以设置fillStyle指明颜色并且调用fill()方法进行填充</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//设置填充颜色 - 红色</span><br>ctx.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&quot;red&quot;</span>;<br><span class="hljs-comment">//开始填充</span><br>ctx.<span class="hljs-title function_">fill</span>();<br></code></pre></td></tr></table></figure>
-
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121116797.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="绘制效果" style="zoom:50%;" />
-</li>
-<li><p>设置线条的颜色</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//设置绘制线条的颜色</span><br>ctx.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&quot;yellow&quot;</span>;<br><span class="hljs-comment">//设置绘制线条的粗细</span><br>ctx.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&quot;20&quot;</span>;<br></code></pre></td></tr></table></figure>
-
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121120755.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="绘制效果" style="zoom:50%;" /></li>
-</ol>
-<h3 id="canvas绘制矩形和圆"><a href="#canvas绘制矩形和圆" class="headerlink" title="canvas绘制矩形和圆"></a>canvas绘制矩形和圆</h3><h4 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h4><ul>
-<li>画笔使用<code>storeRect()</code>方法</li>
-<li>画笔使用<code>fillRect()</code>方法</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> cav = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;cav&quot;</span>);<br><span class="hljs-keyword">var</span> ctx = cav.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);<br>ctx.<span class="hljs-title function_">beginPath</span>();<br><span class="hljs-comment">//绘制线框矩形四个参数分别为 x,y,width,height</span><br>ctx.<span class="hljs-title function_">strokeRect</span>(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">150</span>,<span class="hljs-number">200</span>);<br>	<span class="hljs-comment">//绘制填充矩形</span><br>	<span class="hljs-comment">//设置填充颜色</span><br>ctx.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;red&#x27;</span>;<br>ctx.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">300</span>,<span class="hljs-number">100</span>,<span class="hljs-number">150</span>,<span class="hljs-number">200</span>);<br></code></pre></td></tr></table></figure>
+<h2 id="ts的基本类型"><a href="#ts的基本类型" class="headerlink" title="ts的基本类型"></a>ts的基本类型</h2><ul>
+<li><p>类型声明是TS非常重要的一个特点</p>
+</li>
+<li><p>通过类型声明可以指定TS中变量（参数、形参）的类型</p>
+</li>
+<li><p><strong>指定类型后，当为变量赋值时，TS编译器会自动检查值是否符合类型声明，符合则赋值，否则报错</strong></p>
+</li>
+<li><p>简而言之，类型声明给变量设置了类型，使得变量只能存储某种类型的值</p>
+</li>
+</ul>
+<p><strong>ts一些类型</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">例子</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">number</td>
+<td align="center">1, -33, 2.5</td>
+<td align="center">任意数字</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">‘hi’, “hi”, <code>hi</code></td>
+<td align="center">任意字符串</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">true、false</td>
+<td align="center">布尔值true或false</td>
+</tr>
+<tr>
+<td align="center">字面量</td>
+<td align="center">其本身</td>
+<td align="center">限制变量的值就是该字面量的值</td>
+</tr>
+<tr>
+<td align="center">any</td>
+<td align="center">*</td>
+<td align="center">任意类型</td>
+</tr>
+<tr>
+<td align="center">unknown</td>
+<td align="center">*</td>
+<td align="center">类型安全的any</td>
+</tr>
+<tr>
+<td align="center">void</td>
+<td align="center">空值（undefined）</td>
+<td align="center">没有值（或undefined）</td>
+</tr>
+<tr>
+<td align="center">never</td>
+<td align="center">没有值</td>
+<td align="center">不能是任何值</td>
+</tr>
+<tr>
+<td align="center">object</td>
+<td align="center">{name:’孙悟空’}</td>
+<td align="center">任意的JS对象</td>
+</tr>
+<tr>
+<td align="center">array</td>
+<td align="center">[1,2,3]</td>
+<td align="center">任意JS数组</td>
+</tr>
+<tr>
+<td align="center">tuple</td>
+<td align="center">[4,5]</td>
+<td align="center">元素，TS新增类型，固定长度数组</td>
+</tr>
+<tr>
+<td align="center">enum</td>
+<td align="center">enum{A, B}</td>
+<td align="center">枚举，TS中新增类型</td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<h3 id="类型声明细节"><a href="#类型声明细节" class="headerlink" title="类型声明细节"></a>类型声明细节</h3><h4 id="类型声明-手动"><a href="#类型声明-手动" class="headerlink" title="类型声明(手动)"></a>类型声明(手动)</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//手动指明类型</span><br><span class="hljs-keyword">let</span> 变量: 类型;<br><br><span class="hljs-comment">//手动指明类型并赋值</span><br><span class="hljs-keyword">let</span> 变量: 类型 = 值;<br><br><span class="hljs-comment">//设置函数形参的变量类型和返回值的类型</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">参数: 类型, 参数: 类型</span>): 类型&#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="绘制圆"><a href="#绘制圆" class="headerlink" title="绘制圆"></a>绘制圆</h4><ul>
-<li><p>画笔使用<code>arc()</code>方法</p>
+<h4 id="类型声明-自动"><a href="#类型声明-自动" class="headerlink" title="类型声明(自动)"></a>类型声明(自动)</h4><ul>
+<li>变量的声明和赋值是同时进行的,<strong>ts就可以自动对变量进行类型检测的</strong></li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//ts会自动指明类型</span><br>	<span class="hljs-comment">//这样子变量类型就会自动根据变量值判断</span><br><span class="hljs-keyword">let</span> 变量 = 变量值;<br></code></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 变量的声明和赋值是同时进行</span><br>    <span class="hljs-comment">//指明了是string类型</span><br><span class="hljs-keyword">let</span> typeString = <span class="hljs-string">&#x27;123&#x27;</span>;<br>typeString = <span class="hljs-string">&quot;456&quot;</span>;<br><span class="hljs-comment">// typeString = false;//报错</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="类型声明特殊情况-使用字面量"><a href="#类型声明特殊情况-使用字面量" class="headerlink" title="类型声明特殊情况-使用字面量"></a>类型声明特殊情况-使用字面量</h4><ul>
+<li>使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">zml</span>:<span class="hljs-number">10</span>;<br>zml = <span class="hljs-number">10</span>;<br><span class="hljs-comment">// zml = 100;//报错</span><br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">sex</span>: <span class="hljs-string">&quot;男&quot;</span> | <span class="hljs-string">&quot;女&quot;</span>;<br>sex = <span class="hljs-string">&quot;男&quot;</span>;<br>sex = <span class="hljs-string">&quot;女&quot;</span>;<br><span class="hljs-comment">// sex = &quot;未知&quot;;//报错</span><br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;red&#x27;</span> | <span class="hljs-string">&#x27;blue&#x27;</span> | <span class="hljs-string">&#x27;black&#x27;</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">num</span>: <span class="hljs-number">1</span> | <span class="hljs-number">2</span> | <span class="hljs-number">3</span> | <span class="hljs-number">4</span> | <span class="hljs-number">5</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="ts的其他类型说明"><a href="#ts的其他类型说明" class="headerlink" title="ts的其他类型说明"></a>ts的其他类型说明</h3><h4 id="number"><a href="#number" class="headerlink" title="number"></a>number</h4><ul>
+<li><p>这个不多说声明</p>
+</li>
+<li><p><strong>支持进制表示</strong></p>
+</li>
+<li><p>示例代码</p>
+</li>
+</ul>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">decimal</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">6</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">hex</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0xf00d</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">binary</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0b1010</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">octal</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0o744</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">big</span>: <span class="hljs-built_in">bigint</span> = <span class="hljs-number">100n</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h4><ul>
+<li>示例代码</li>
+</ul>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">isDone</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;<br><span class="hljs-comment">//let isDone: boolean = 134;报错</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><ul>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">color</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;blue&quot;</span>;<br>color = <span class="hljs-string">&#x27;red&#x27;</span>;<br> <br><span class="hljs-keyword">let</span> <span class="hljs-attr">fullName</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">`Bob Bobbington`</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">37</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">sentence</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;fullName&#125;</span>.</span><br><span class="hljs-string"> </span><br><span class="hljs-string"> I&#x27;ll be <span class="hljs-subst">$&#123;age + <span class="hljs-number">1</span>&#125;</span> years old next month.`</span>;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="any"><a href="#any" class="headerlink" title="any"></a>any</h4><ul>
+<li><p>使用any任意类型,相当于对该变量关闭了ts的类型检测,和普通的js代码一样了</p>
 <ul>
-<li><p>ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);</p>
+<li>示例代码;</li>
+</ul>
 </li>
-<li><p><code>X,Y,radius</code>分别是横坐标,纵坐标,半径</p>
+</ul>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"> <span class="hljs-comment">//声明的时候指明类型,显式的any  </span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">d</span>: <span class="hljs-built_in">any</span> = <span class="hljs-number">4</span>;<br>d = <span class="hljs-string">&#x27;hello&#x27;</span>;<br>d = <span class="hljs-literal">true</span>;<br><br><span class="hljs-comment">//声明变量的时候不指定类型ts自动判断变量的类型为any,,相当于声明隐式any</span><br><span class="hljs-keyword">let</span> d; <br><br><span class="hljs-comment">//声明显示的ayn</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">anyType</span>:<span class="hljs-built_in">any</span>;<br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">s</span>:<span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;123&#x27;</span>;<br>s = anyType;<span class="hljs-comment">//不会发生报错,因为d的类型是any,会祸害其他人</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="unknown"><a href="#unknown" class="headerlink" title="unknown"></a>unknown</h4><ul>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">notSure</span>: <span class="hljs-built_in">unknown</span> = <span class="hljs-number">4</span>;<br>notSure = <span class="hljs-string">&#x27;hello&#x27;</span>;<br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">str</span>:<span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-comment">// str = notSure;//发生报错,unknown不会祸害其他</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="void"><a href="#void" class="headerlink" title="void"></a>void</h4><ul>
+<li><p>表示没有返回值</p>
 </li>
-<li><p><code>startAngle:</code> 圆弧的起点,x轴方向开始计算,单位以弧度表示</p>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">unusable</span>: <span class="hljs-built_in">void</span> = <span class="hljs-literal">undefined</span>;<br><br><span class="hljs-comment">//void类型</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn1</span>(<span class="hljs-params"></span>):<span class="hljs-built_in">void</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;123&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="never"><a href="#never" class="headerlink" title="never"></a>never</h4><ul>
+<li><p>表示永远不会返回结果,比如这个函数是用来报错的,所以永远不会返回结果</p>
+</li>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">error</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">never</span> &#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(message);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="object"><a href="#object" class="headerlink" title="object"></a>object</h4><ul>
+<li><p>不过这种object类型不太经常用,因为很多情况下都是object</p>
+</li>
+<li><p>比如 typeof null返回值是object</p>
+</li>
+<li><p>并且ts认为函数也是一个object</p>
+</li>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">obj</span>: <span class="hljs-built_in">object</span> = &#123;&#125;;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title="{}"></a>{}</h4><ul>
+<li>用来指定对象中可以包含哪些属性,<strong>并且结构要一模一样</strong>,多了,少了都不可以!</li>
+<li>比如 <code>let b: &#123;name:string&#125;</code> &#x2F;&#x2F;设定指向一个对象,并且有name属性,并且name属性为string</li>
+<li>属性名<strong>后面加一个问号</strong>,表示这个属性是可选的</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//sex为可选</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">myObj</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, sex?: <span class="hljs-built_in">string</span> &#125;;<br><br>myObj = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;李白&#x27;</span> &#125;;<span class="hljs-comment">//不报错</span><br>myObj = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;李白&#x27;</span>, <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;男&#x27;</span> &#125;;<span class="hljs-comment">//不报错</span><br></code></pre></td></tr></table></figure>
+
 <ul>
-<li>(<strong>1弧度等于57度左右</strong>) 因为2<em>PI</em>弧度&#x3D;360所以1弧度&#x3D;57度</li>
-<li>所以绘制一个圆直接起始弧度为<code>0</code>,终点弧度为<code>2*Math.PI</code>即可</li>
+<li><p><code>[propName:string]:any </code>表示任意类型的属性值,propName名字可以随便的,这里只是为了区分下,也可以<code>[xxxx:string]:any</code>,当然,如果需要指明value的类型,可以把any改为指定的类型,比如<code>[propName:string]:string</code> 表示value要为string类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//表示有必须要有key为name,value类型为string的值,和其他任意数量的任意key(类型必须要为string)和value(类型随意)</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">myObj</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, [<span class="hljs-attr">propName</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> &#125;<br>myObj = &#123; <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;李白&#x27;</span>, <span class="hljs-string">&quot;sex&quot;</span>: <span class="hljs-string">&#x27;男&#x27;</span> &#125;;<br>myObj = &#123; <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;李白&#x27;</span>, <span class="hljs-string">&quot;sex&quot;</span>: <span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-string">&#x27;hobby&#x27;</span>: <span class="hljs-string">&quot;吃饭&quot;</span> &#125;;<span class="hljs-comment">//不报错</span><br>myObj = &#123; <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;李白&#x27;</span>, <span class="hljs-string">&quot;sex&quot;</span>: <span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-string">&#x27;hobby&#x27;</span>: <span class="hljs-number">555</span> &#125;;<span class="hljs-comment">//不报错</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p><code>endAngle: </code>圆弧的终点,单位以弧度表示</p>
-</li>
-<li><p><code>anticlockwise: </code>可选的<code>Boolean</code>值 ，如果为 <code>true</code>，逆时针绘制圆弧，反之，顺时针绘制。 </p>
+<h4 id="设置函数结构的类型声明"><a href="#设置函数结构的类型声明" class="headerlink" title="设置函数结构的类型声明"></a>设置函数结构的类型声明</h4><ul>
+<li>语法: <strong>(形参1:类型1 , 形参2:类型2 [,…] ) &#x3D;&gt; 返回值</strong></li>
+<li>比如 希望<code>getSum</code>为函数,并且有二个参数,均为number,并且返回值为number</li>
+</ul>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> get<span class="hljs-constructor">Sum(<span class="hljs-params">a</span>: <span class="hljs-params">number</span>, <span class="hljs-params">b</span>: <span class="hljs-params">number</span>)</span>: number &#123;<br>    return a + b;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <ul>
-<li><p>注意,是绘制,绘制,绘制!,比如其他参数相同,唯独最后一个参数不同,那么图形是完全不同的</p>
-</li>
-<li><p>如图 ctx.arc(50,50,25,0,1,false);顺时针和逆时针绘制效果</p>
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121505891.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="绘制效果" /></li>
+<li>希望<code>getResult</code>为函数,并且有二个参数,一个为<code>object</code>,另一个为<code>string</code>,并且返回值为<code>number</code>或者<code>string</code></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> cav2 = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;cav2&#x27;</span>);<br><span class="hljs-keyword">var</span> ctx = cav2.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);<br>ctx.<span class="hljs-title function_">beginPath</span>();<br><span class="hljs-comment">//绘制圆 ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);</span><br>ctx.<span class="hljs-title function_">arc</span>(<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">25</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>*<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>,<span class="hljs-literal">false</span>);<br>ctx.<span class="hljs-title function_">stroke</span>();<br></code></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getResult</span>(<span class="hljs-params">a: <span class="hljs-built_in">object</span>, b: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> &#123;<br>    <span class="hljs-keyword">return</span> a + b;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="绘制字体"><a href="#绘制字体" class="headerlink" title="绘制字体"></a>绘制字体</h4><ul>
-<li>画笔设置<code>font</code>属性可以设置字体的格式<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/font">API</a></li>
+<h4 id="array"><a href="#array" class="headerlink" title="array"></a>array</h4><ul>
+<li><p>之前的数组的什么都可以存的,在ts当中可以设置存储数据的类型</p>
+</li>
+<li><p>格式</p>
+<ul>
+<li><code>类型[] </code></li>
+<li><code>Array&lt;类型&gt;</code></li>
 </ul>
 </li>
-<li>画笔调用<code>fillText</code>可以绘制字体<ul>
-<li>ctx.fillText(text, x, y, [maxWidth]);</li>
-<li><code>text</code>:  绘制的文本</li>
-<li><code>x,y</code>: 坐标</li>
-<li><code>maxWidth</code>: 绘制的最大宽度。如果指定了值，并且经过计算字符串的值比最大宽度还要宽，字体为了适应会水平缩放（如果通过水平缩放当前字体，可以进行有效的或者合理可读的处理）或者使用小号的字体。</li>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//表示数组里面只可以存储number类型</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">typeNumberArray</span>:<span class="hljs-built_in">number</span>[];<br><span class="hljs-keyword">let</span> <span class="hljs-attr">typeNumberArray</span>:<span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">number</span>&gt;;<br>typeNumberArray = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-comment">// typeNumberArray = [1,2,&#x27;3&#x27;];//报错</span><br><br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">a</span>:<span class="hljs-built_in">string</span>[];<span class="hljs-comment">//代表字符串数组</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">b</span>:<span class="hljs-built_in">number</span>[];<span class="hljs-comment">//代表数字数组</span><br></code></pre></td></tr></table></figure></li>
 </ul>
+<h4 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple(元组)"></a>tuple(元组)</h4><ul>
+<li><p>元组就是固定长度的数组,里面存储的值多了不可以,少了也不可以</p>
+</li>
+<li><p>和数组的类型声明不用的就是反转了下,现在<code>[]</code>在前面了,类型在后面了</p>
+</li>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">x</span>: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>x = [<span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-number">10</span>]; <br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">h</span>: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>];<br>h = [<span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;456&#x27;</span>];<br>h = [<span class="hljs-string">&#x27;123&#x27;</span>];<span class="hljs-comment">//少了,报错;</span><br>h = [<span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;456&#x27;</span>, <span class="hljs-string">&#x27;689&#x27;</span>];<span class="hljs-comment">//多了,报错</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="enum-枚举"><a href="#enum-枚举" class="headerlink" title="enum(枚举)"></a>enum(枚举)</h4><ul>
+<li><p>示例代码</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Sex</span> &#123;<br>    <span class="hljs-title class_">Male</span>,<br>    <span class="hljs-title class_">Female</span><br>&#125;<br><br><span class="hljs-comment">//设置一个数组的结构为userName和sex</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">userInfo</span>: &#123; <span class="hljs-attr">userName</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">sex</span>: <span class="hljs-title class_">Sex</span> &#125;;<br><br>userInfo = &#123;<br>    <span class="hljs-attr">userName</span>:<span class="hljs-string">&quot;李白&quot;</span>,<br>    <span class="hljs-comment">//使用枚举</span><br>    <span class="hljs-attr">sex</span>:<span class="hljs-title class_">Sex</span>.<span class="hljs-property">Male</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>上面代码编译后的js代码</strong></p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;canvas id=<span class="hljs-string">&quot;cav&quot;</span> height=<span class="hljs-string">&quot;400&quot;</span> width=<span class="hljs-string">&quot;400&quot;</span>&gt;&lt;/canvas&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> &#123;<span class="hljs-type">HTMLCanvasElement</span>&#125; */</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//1.获取canvas节点(获取画布)</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;cav&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//2.画布创建画笔并选择画笔的绘制类型</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//绘制文字</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//设置绘制文字字体</span></span></span><br><span class="language-javascript"><span class="language-xml">    ctx.<span class="hljs-property">font</span> = <span class="hljs-string">&quot;20px 黑体&quot;</span></span></span><br><span class="language-javascript"><span class="language-xml">    ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;叫我将军大人&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> <span class="hljs-title class_">Sex</span>;<br>(<span class="hljs-keyword">function</span> (<span class="hljs-params">Sex</span>) &#123;<br>    <span class="hljs-title class_">Sex</span>[<span class="hljs-title class_">Sex</span>[<span class="hljs-string">&quot;Male&quot;</span>] = <span class="hljs-number">0</span>] = <span class="hljs-string">&quot;Male&quot;</span>;<br>    <span class="hljs-title class_">Sex</span>[<span class="hljs-title class_">Sex</span>[<span class="hljs-string">&quot;Female&quot;</span>] = <span class="hljs-number">1</span>] = <span class="hljs-string">&quot;Female&quot;</span>;<br>&#125;)(<span class="hljs-title class_">Sex</span> || (<span class="hljs-title class_">Sex</span> = &#123;&#125;));<br><span class="hljs-comment">//设置一个数组的结构为userName和sex</span><br><span class="hljs-keyword">var</span> userInfo;<br>userInfo = &#123;<br>    <span class="hljs-attr">userName</span>: <span class="hljs-string">&quot;李白&quot;</span>,<br>    <span class="hljs-comment">//使用枚举</span><br>    <span class="hljs-attr">sex</span>: <span class="hljs-title class_">Sex</span>.<span class="hljs-property">Male</span><br>&#125;;<br><br></code></pre></td></tr></table></figure>
 
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121546644.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="绘制效果" />
+<h4 id="amp-表示同时满足条件"><a href="#amp-表示同时满足条件" class="headerlink" title="&amp;(表示同时满足条件)"></a>&amp;(表示同时满足条件)</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//表示key当中既要有name属性和age属性,并且符合规定的value类型</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">all</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span> &#125; &amp; &#123; <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> &#125;;<br>all = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;李白&quot;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">1000</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="清空画步和清除指定区域"><a href="#清空画步和清除指定区域" class="headerlink" title="清空画步和清除指定区域"></a>清空画步和清除指定区域</h3><ul>
-<li>均使用画笔当中的clearRect方法,只是传入的值有所区别</li>
-<li>ctx.clearRect(x, y, width, height);<ul>
-<li><code>X,Y</code>: 开始清空的坐标</li>
-<li><code>width</code>:  清空的宽度</li>
-<li><code>height</code>: 清空的高度</li>
+<h4 id="type-类型别名"><a href="#type-类型别名" class="headerlink" title="type(类型别名)"></a>type(类型别名)</h4><ul>
+<li>关键字是<code>type</code></li>
 </ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">type</span> myType = <span class="hljs-number">1</span> | <span class="hljs-number">2</span> | <span class="hljs-number">3</span> | <span class="hljs-number">4</span> | <span class="hljs-number">5</span> | <span class="hljs-number">6</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">one</span>: myType;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">two</span>: myType;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">three</span>: myType;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">four</span>: myType;<br></code></pre></td></tr></table></figure>
+
+<h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><ul>
+<li><p>有时候二边类型编译器判断是不同,但是我们已经明确知道了二边类型是一样的,这时候就可以使用类型断言</p>
+</li>
+<li><p>语法 <strong>变量 as 类型</strong> 或者 <strong>&lt;类型&gt;变量</strong></p>
+</li>
+<li><p>比如: 如果直接将unknown赋值给其他类型的变量,是会发生报错的,所以我们需要类型断言</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">notSure</span>: <span class="hljs-built_in">unknown</span> = <span class="hljs-string">&#x27;biubiu&#x27;</span>;<br><br><span class="hljs-keyword">let</span> strType = <span class="hljs-string">&#x27;123&#x27;</span>;<br><br><span class="hljs-comment">//不进行断言,会报错</span><br><span class="hljs-comment">// strType = notSure;</span><br><br><span class="hljs-comment">//进行类型断言</span><br>strType = notSure <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>;<br><span class="hljs-comment">//或者这种形式的类型断言</span><br><br>strType = &lt;<span class="hljs-built_in">string</span>&gt; notSure;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="ts编译"><a href="#ts编译" class="headerlink" title="ts编译"></a>ts编译</h2><h3 id="自动编译-单个文件编译-无需配置文件"><a href="#自动编译-单个文件编译-无需配置文件" class="headerlink" title="自动编译(单个文件编译,无需配置文件)"></a>自动编译(单个文件编译,无需配置文件)</h3><ul>
+<li>编译文件的时候,使用 <code>-w</code>指令后,ts编译器会自动监视文件的变化,并在文件发生变化时候对文件进行重新编译</li>
+<li>示例: <code>tsc xxx.ts -w</code></li>
+<li>缺点: 只能对一个文件进行ts,因为没有配置文件!</li>
+</ul>
+<h3 id="自动编译-整个编译-有配置文件"><a href="#自动编译-整个编译-有配置文件" class="headerlink" title="自动编译(整个编译,有配置文件)"></a>自动编译(整个编译,有配置文件)</h3><ul>
+<li><p>配置文件名称为<code>tsconfig.json</code></p>
+</li>
+<li><p><code>tsconfig.json</code>是一个JSON文件,里面填写配置文件项</p>
+</li>
+<li><p>注意: <code>tsconfig.json</code>是可以添加注释的~其他的JSON不可以哦</p>
+</li>
+<li><p><strong>tsconfig.json配置对象</strong>如下,<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/tsconfig/">官网API</a></p>
 </li>
 </ul>
-<h4 id="清空画布"><a href="#清空画布" class="headerlink" title="清空画布"></a>清空画布</h4><ul>
-<li>ctx.clearRect(0,0,画布的宽度,画布的高度);</li>
+<h4 id="1-include"><a href="#1-include" class="headerlink" title="1.include"></a>1.include</h4><ul>
+<li>设置希望被编译文件所在的目录,为一个数组</li>
+<li>默认值为: <code>[&quot;**/*&quot;]</code> 代表当前命名行下所有文件夹和文件</li>
 </ul>
-<h4 id="清除指定区域"><a href="#清除指定区域" class="headerlink" title="清除指定区域"></a>清除指定区域</h4><ul>
-<li><p>ctx.clearRect(0,0,40,50)</p>
-</li>
-<li><p>效果</p>
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121552458.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="绘制效果" /></li>
-</ul>
-<h3 id="canvas绘制一个柱形图"><a href="#canvas绘制一个柱形图" class="headerlink" title="canvas绘制一个柱形图"></a>canvas绘制一个柱形图</h3><h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121702131.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="柱形图效果"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;cav&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;600&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;800&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">        <span class="hljs-selector-id">#cav</span>&#123;</span><br><span class="language-css">            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;</span><br><span class="language-css">        &#125;</span><br><span class="language-css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">         <span class="hljs-comment">/** <span class="hljs-doctag">@type</span> &#123;<span class="hljs-type">HTMLCanvasElement</span>&#125; */</span></span><br><span class="language-javascript">        <span class="hljs-comment">//1.获取canvas节点(获取画布)</span></span><br><span class="language-javascript">        <span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;cav&quot;</span>);</span><br><span class="language-javascript">        <span class="hljs-comment">//2.画布创建画笔并选择画笔的绘制类型</span></span><br><span class="language-javascript">        <span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);</span><br><span class="language-javascript">        <span class="hljs-comment">//设置线条粗细</span></span><br><span class="language-javascript">        ctx.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&quot;2&quot;</span>;</span><br><span class="language-javascript">        <span class="hljs-comment">//设置字体</span></span><br><span class="language-javascript">        ctx.<span class="hljs-property">font</span> = <span class="hljs-string">&quot;20px 黑体&quot;</span></span><br><span class="language-javascript">        <span class="hljs-comment">//绘制坐标轴先</span></span><br><span class="language-javascript">            <span class="hljs-comment">//y坐标</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;数据可视化&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">40</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">40</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">480</span>)</span><br><span class="language-javascript">            <span class="hljs-comment">//150字体</span></span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">80</span>);</span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">20</span>,<span class="hljs-number">80</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;150&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">80</span>);</span><br><span class="language-javascript">             <span class="hljs-comment">//120字体</span></span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">160</span>);</span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">20</span>,<span class="hljs-number">160</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;120&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">160</span>);</span><br><span class="language-javascript">            <span class="hljs-comment">//90字体</span></span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">240</span>);</span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">20</span>,<span class="hljs-number">240</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;90&quot;</span>,<span class="hljs-number">20</span>,<span class="hljs-number">240</span>);</span><br><span class="language-javascript">             <span class="hljs-comment">//60字体</span></span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">320</span>);</span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">20</span>,<span class="hljs-number">320</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;60&quot;</span>,<span class="hljs-number">20</span>,<span class="hljs-number">320</span>);</span><br><span class="language-javascript">              <span class="hljs-comment">//30字体</span></span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">20</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;30&quot;</span>,<span class="hljs-number">20</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">             <span class="hljs-comment">//0字体</span></span><br><span class="language-javascript">             ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">480</span>);</span><br><span class="language-javascript">            ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">20</span>,<span class="hljs-number">480</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-number">20</span>,<span class="hljs-number">480</span>);</span><br><span class="language-javascript"></span><br><span class="language-javascript">            <span class="hljs-comment">//x坐标</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">40</span>,<span class="hljs-number">480</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">680</span>,<span class="hljs-number">480</span>);</span><br><span class="language-javascript">            <span class="hljs-comment">//竖线1</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">200</span>,<span class="hljs-number">480</span>)</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">200</span>,<span class="hljs-number">500</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;食品&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">500</span>);</span><br><span class="language-javascript">            <span class="hljs-comment">//竖线2</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">360</span>,<span class="hljs-number">480</span>)</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">360</span>,<span class="hljs-number">500</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;数码&quot;</span>,<span class="hljs-number">260</span>,<span class="hljs-number">500</span>);</span><br><span class="language-javascript">             <span class="hljs-comment">//竖线3</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">520</span>,<span class="hljs-number">480</span>)</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">520</span>,<span class="hljs-number">500</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;服饰&quot;</span>,<span class="hljs-number">420</span>,<span class="hljs-number">500</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&quot;箱包&quot;</span>,<span class="hljs-number">580</span>,<span class="hljs-number">500</span>);</span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">stroke</span>();</span><br><span class="language-javascript">        </span><br><span class="language-javascript">        <span class="hljs-comment">//绘制矩形</span></span><br><span class="language-javascript">        <span class="hljs-comment">//设置填充矩形颜色</span></span><br><span class="language-javascript">        ctx.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;hotpink&#x27;</span>;</span><br><span class="language-javascript">            <span class="hljs-comment">//食品矩形</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">80</span>,<span class="hljs-number">320</span>,<span class="hljs-number">80</span>,<span class="hljs-number">160</span>);</span><br><span class="language-javascript">            <span class="hljs-comment">//数码矩形</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">240</span>,<span class="hljs-number">280</span>,<span class="hljs-number">80</span>,<span class="hljs-number">200</span>);</span><br><span class="language-javascript">            <span class="hljs-comment">//服饰矩形</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">400</span>,<span class="hljs-number">240</span>,<span class="hljs-number">80</span>,<span class="hljs-number">240</span>);</span><br><span class="language-javascript">            <span class="hljs-comment">//箱包矩形</span></span><br><span class="language-javascript">        ctx.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">560</span>,<span class="hljs-number">0</span>,<span class="hljs-number">80</span>,<span class="hljs-number">480</span>);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>   <br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>示例:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-comment">// 所有src目录和tests目录下的文件和文件夹里面的ts文件,都会被编译</span><br>    <span class="hljs-attr">&quot;include&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;src/**/*&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;tests/**/*&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
 
-<h4 id="过程图"><a href="#过程图" class="headerlink" title="过程图"></a>过程图</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205121704140.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="过程图"></p>
+<p>了解下 <code>**</code> 和 <code>* </code> 在tsconfig.json的作用</p>
+<ul>
+<li><code>**/</code> 递归匹配任意子目录</li>
+<li><code>*</code> 表示匹配任意文件</li>
+</ul>
+<h4 id="2-exclude"><a href="#2-exclude" class="headerlink" title="2.exclude"></a>2.exclude</h4><ul>
+<li>设置排除列表</li>
+<li>默认值:<code>[&quot;node_modules&quot;, &quot;bower_components&quot;, &quot;jspm_packages&quot;]</code></li>
+</ul>
+<p>示例:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-comment">// test目录及下层等的ts文件都不会编译</span><br>    <span class="hljs-attr">&quot;exclude&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;./test/**/*&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-files"><a href="#3-files" class="headerlink" title="3.files"></a>3.files</h4><ul>
+<li>指定被编译文件的列表,只有需要编译的文件少时才会用到</li>
+</ul>
+<p>示例: 列表中的文件都会被ts编译器所编译</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;files&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;core.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;sys.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;types.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;scanner.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;parser.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;utilities.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;binder.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;checker.ts&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;tsc.ts&quot;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="4-extends"><a href="#4-extends" class="headerlink" title="4.extends"></a>4.extends</h4><ul>
+<li>继承配置文件</li>
+<li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/tsconfig#extends">具体可看官网</a></li>
+</ul>
+<p>示例:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-comment">//上述示例中,当前配置文件会自动打包包含config目录下的base.json文件当中的所有信息</span><br>	<span class="hljs-attr">&quot;extends&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;./config/base&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="5-compilerOptions-重要"><a href="#5-compilerOptions-重要" class="headerlink" title="5.compilerOptions(重要)"></a>5.compilerOptions(重要)</h4><ul>
+<li>编译器的选项,比如说编译模式之类的,里面是由<code>key</code>和<code>value</code>组成的</li>
+<li>下面为常见的key</li>
+</ul>
+<h5 id="1-taget"><a href="#1-taget" class="headerlink" title="1.taget"></a>1.taget</h5><ul>
+<li>用来指明ts被编译为js的版本,<strong>默认值为”es3”</strong></li>
+<li><strong>可选值为</strong>: <code>&#39;es3&#39;, &#39;es5&#39;, &#39;es6&#39;, &#39;es2015&#39;, &#39;es2016&#39;, &#39;es2017&#39;, &#39;es2018&#39;, &#39;es2019&#39;, &#39;es2020&#39;, &#39;es2021&#39;, &#39;esnext&#39;.</code></li>
+</ul>
+<p>target设置为es6的效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//编译前				//编译后</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;           =&gt;  <span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">var</span> b = <span class="hljs-string">&#x27;true&#x27;</span>;        =&gt;  <span class="hljs-keyword">var</span> b = <span class="hljs-string">&#x27;true&#x27;</span>;<br><span class="hljs-keyword">let</span> c = <span class="hljs-string">&#x27;我是动感超人&#x27;</span>;  =&gt;  <span class="hljs-keyword">let</span> c = <span class="hljs-string">&#x27;我是动感超人&#x27;</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(c);        =&gt;  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(c);<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;	   =&gt; &#123;<span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <br>&#125;, <span class="hljs-number">900</span>);				&#125;, <span class="hljs-number">900</span>);<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-module"><a href="#2-module" class="headerlink" title="2.module"></a>2.module</h5><ul>
+<li>指明要使用的模块化规范</li>
+<li><strong>可选值为:</strong><code>&#39;none&#39;, &#39;commonjs&#39;, &#39;amd&#39;, &#39;system&#39;, &#39;umd&#39;, &#39;es6&#39;, &#39;es2015&#39;, &#39;es2020&#39;, &#39;es2022&#39;, &#39;esnext&#39;, &#39;node12&#39;, &#39;nodenext&#39;</code></li>
+</ul>
+<p>实例如图: 设置模块化规范为<code>commonjs</code></p>
+<p><code>index.ts</code>使用es6模块化规范导出<code>say</code>函数,<code>app.ts</code>引入<code>say函数并输出</code>,然后查看编译后的<code>app.js</code></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206060835209.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h5 id="3-outDir"><a href="#3-outDir" class="headerlink" title="3.outDir"></a>3.outDir</h5><ul>
+<li>指定编译后的js文件所在目录</li>
+<li>默认情况下,编译后的js文件会和ts文件位于相同的目录,设置<code>outDir</code>后可以改变编译后文件的位置</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;compilerOptions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-comment">// 将编译后的js文件输出到当前配置文件所在目录下的dist文件夹下</span><br>        <span class="hljs-attr">&quot;outDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./dist&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="4-outFile"><a href="#4-outFile" class="headerlink" title="4.outFile"></a>4.outFile</h5><ul>
+<li>将所有的文件编译为一个js文件,默认会将所有编写在<strong>全局作用域下的代码</strong>合并为一个js文件</li>
+<li>如果<code>module</code>配置项指定了<code>none</code>,<code>style</code>或者<code>amd</code>,则会将模块一起合并到文件之中,这几个才可以,<code>es6</code>不可以</li>
+</ul>
+<h5 id="5-lib"><a href="#5-lib" class="headerlink" title="5.lib"></a>5.lib</h5><ul>
+<li>指明要使用的库</li>
+<li>可以写的值</li>
+</ul>
+<figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sml"><span class="hljs-symbol">&#x27;es5&#x27;</span>, <span class="hljs-symbol">&#x27;es6&#x27;</span>, <span class="hljs-symbol">&#x27;es2015&#x27;</span>, <span class="hljs-symbol">&#x27;es7&#x27;</span>, <span class="hljs-symbol">&#x27;es2016&#x27;</span>, <span class="hljs-symbol">&#x27;es2017&#x27;</span>, <span class="hljs-symbol">&#x27;es2018&#x27;</span>, <span class="hljs-symbol">&#x27;es2019&#x27;</span>, <span class="hljs-symbol">&#x27;es2020&#x27;</span>, <span class="hljs-symbol">&#x27;es2021&#x27;</span>, <span class="hljs-symbol">&#x27;esnext&#x27;</span>, <span class="hljs-symbol">&#x27;dom&#x27;</span>, <span class="hljs-symbol">&#x27;dom</span>.iterable&#x27;, <span class="hljs-symbol">&#x27;webworker&#x27;</span>, <span class="hljs-symbol">&#x27;webworker</span>.importscripts&#x27;, <span class="hljs-symbol">&#x27;webworker</span>.iterable&#x27;, <span class="hljs-symbol">&#x27;scripthost&#x27;</span>, <span class="hljs-symbol">&#x27;es2015</span>.core&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.collection&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.generator&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.iterable&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.promise&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.proxy&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.reflect&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.symbol&#x27;, <span class="hljs-symbol">&#x27;es2015</span>.symbol.wellknown&#x27;, <span class="hljs-symbol">&#x27;es2016</span>.<span class="hljs-built_in">array</span>.include&#x27;, <span class="hljs-symbol">&#x27;es2017</span>.object&#x27;, <span class="hljs-symbol">&#x27;es2017</span>.sharedmemory&#x27;, <span class="hljs-symbol">&#x27;es2017</span>.string&#x27;, <span class="hljs-symbol">&#x27;es2017</span>.intl&#x27;, <span class="hljs-symbol">&#x27;es2017</span>.typedarrays&#x27;, <span class="hljs-symbol">&#x27;es2018</span>.asyncgenerator&#x27;, <span class="hljs-symbol">&#x27;es2018</span>.asynciterable&#x27;, <span class="hljs-symbol">&#x27;es2018</span>.intl&#x27;, <span class="hljs-symbol">&#x27;es2018</span>.promise&#x27;, <span class="hljs-symbol">&#x27;es2018</span>.regexp&#x27;, <span class="hljs-symbol">&#x27;es2019</span>.array&#x27;, <span class="hljs-symbol">&#x27;es2019</span>.object&#x27;, <span class="hljs-symbol">&#x27;es2019</span>.string&#x27;, <span class="hljs-symbol">&#x27;es2019</span>.symbol&#x27;, <span class="hljs-symbol">&#x27;es2020</span>.bigint&#x27;, <span class="hljs-symbol">&#x27;es2020</span>.promise&#x27;, <span class="hljs-symbol">&#x27;es2020</span>.sharedmemory&#x27;, <span class="hljs-symbol">&#x27;es2020</span>.string&#x27;, <span class="hljs-symbol">&#x27;es2020</span>.symbol.wellknown&#x27;, <span class="hljs-symbol">&#x27;es2020</span>.intl&#x27;, <span class="hljs-symbol">&#x27;es2021</span>.promise&#x27;, <span class="hljs-symbol">&#x27;es2021</span>.string&#x27;, <span class="hljs-symbol">&#x27;es2021</span>.weakref&#x27;, <span class="hljs-symbol">&#x27;es2021</span>.intl&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.array&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.symbol&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.asynciterable&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.intl&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.bigint&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.string&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.promise&#x27;, <span class="hljs-symbol">&#x27;esnext</span>.weakref&#x27;.<br></code></pre></td></tr></table></figure>
+
+<h5 id="6-allowJs"><a href="#6-allowJs" class="headerlink" title="6.allowJs"></a>6.allowJs</h5><ul>
+<li>是否对js文件进行编译,因为当前目录不止会有ts,可能还有js文件</li>
+<li>默认为<code>false</code>,代表不编译js</li>
+<li>为true代表编译,为false代表不编译js</li>
+</ul>
+<h5 id="7-checkJs"><a href="#7-checkJs" class="headerlink" title="7.checkJs"></a>7.checkJs</h5><ul>
+<li>是否对js文件进行检查</li>
+<li>默认为<code>false</code>,代表不检查</li>
+</ul>
+<h5 id="8-removeComments"><a href="#8-removeComments" class="headerlink" title="8.removeComments"></a>8.removeComments</h5><ul>
+<li>是否移除注释</li>
+<li>默认为<code>false</code>代表不移除</li>
+</ul>
+<h5 id="9-noEmit"><a href="#9-noEmit" class="headerlink" title="9.noEmit"></a>9.noEmit</h5><ul>
+<li>不生成编译后的文件</li>
+<li>默认为<code>false</code>,代表生成编译后的文件</li>
+<li>一般用在只想用ts进行语法检查的情况下使用这个配置项</li>
+</ul>
+<h5 id="10-noEmitOnError"><a href="#10-noEmitOnError" class="headerlink" title="10.noEmitOnError"></a>10.noEmitOnError</h5><ul>
+<li>当有错误的时候不生成编译后的文件</li>
+<li>默认为<code>false</code>,代表ts文件有报错也生成js文件,所以我们经常可以看到有报错还编译生成了js文件就是这个原因</li>
+</ul>
+<hr>
+<blockquote>
+<p>严格检查系列</p>
+</blockquote>
+<h5 id="11-strict-总开关"><a href="#11-strict-总开关" class="headerlink" title="11.strict(总开关)"></a>11.strict(总开关)</h5><ul>
+<li>开启了这个,下面所有的配置项都会设置为true,<strong>默认值为false</strong></li>
+</ul>
+<h5 id="12-alwaysStrict"><a href="#12-alwaysStrict" class="headerlink" title="12.alwaysStrict"></a>12.alwaysStrict</h5><ul>
+<li><p>总是以严格模式对代码进行编译</p>
+</li>
+<li><p><strong>注意:如果使用了es6模块化,那么就自动开启了严格模式,所以编译后不会添加”use strict”关键字</strong></p>
+</li>
+<li><p>值可以为 true | false</p>
+</li>
+</ul>
+<h5 id="13-noImplicitAny"><a href="#13-noImplicitAny" class="headerlink" title="13.noImplicitAny"></a>13.noImplicitAny</h5><ul>
+<li>禁止隐式的any类型,默认为<code>false</code></li>
+<li>设置为<code>true</code>后,隐式的any类型不被允许</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206060853464.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h5 id="14-noImplicitThis"><a href="#14-noImplicitThis" class="headerlink" title="14.noImplicitThis"></a>14.noImplicitThis</h5><ul>
+<li>禁止类型不明确的this</li>
+</ul>
+<p>如图 所以要指明this的类型 测试了.断言是不可以的忽略这语句的</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206060854166.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h3 id="忽略错误"><a href="#忽略错误" class="headerlink" title="忽略错误"></a>忽略错误</h3><ul>
+<li>比如根据id获取,可能会获取不到,但是已经确认了 后面加一个 <strong>!</strong><ul>
+<li>var a &#x3D; document.getElementById(“food”)!;</li>
+</ul>
+</li>
+<li><code>@ts-ignore</code> 忽略当前行错误</li>
+</ul>
 
               
             </div>
@@ -1449,6 +1762,13 @@
   <a href="/categories/HTML/javscript/" class="category-chain-item">javscript</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/HTML/javscript/typescript/" class="category-chain-item">typescript</a>
+  
+  
+
+  
 
   
 
@@ -1467,7 +1787,7 @@
       
         <a href="/tags/javscript/">#javscript</a>
       
-        <a href="/tags/canvas/">#canvas</a>
+        <a href="/tags/ES6/">#ES6</a>
       
     </div>
   
@@ -1479,8 +1799,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>canvas基本使用</div>
-      <div>https://dreamlove.top/2022/05/13/前端/canvas基本使用/</div>
+      <div>Typescript的学习笔记</div>
+      <div>https://dreamlove.top/2022/06/05/前端/Typescript的学习/</div>
     </div>
     <div class="license-meta">
       
@@ -1492,7 +1812,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月13日</div>
+          <div>2022年6月5日</div>
         </div>
       
       
@@ -1522,18 +1842,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/15/%E5%89%8D%E7%AB%AF/LeanCloud%E7%99%BD%E5%AB%96valine%E8%AF%84%E8%AE%BA%E5%92%8C%E9%81%BF%E5%85%8D%E4%BC%91%E7%9C%A0%E6%8C%87%E5%8D%97/" title="LeanCloud白嫖valine评论和避免休眠指南">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LeanCloud白嫖valine评论和避免休眠指南</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/11/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8811%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor">
-                        <span class="hidden-mobile">今日刷题-Object.defineProperty和Object.getOwnPropertyDescriptor</span>
+                      <a href="/2022/06/03/%E5%89%8D%E7%AB%AF/typescript%E5%AE%8C%E6%88%90%E7%9A%84%E8%B4%AA%E5%90%83%E8%9B%87/" title="typescript完成的贪吃蛇前端小游戏">
+                        <span class="hidden-mobile">typescript完成的贪吃蛇前端小游戏</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
