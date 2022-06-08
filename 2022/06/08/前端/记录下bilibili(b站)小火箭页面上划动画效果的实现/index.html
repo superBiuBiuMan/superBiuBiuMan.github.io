@@ -16,16 +16,16 @@
   <meta name="author" content="梦洁">
   <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
   
-    <meta name="description" content="知道什么是懒加载说通俗点就是轮到我我再出现,而不是一进入页面就出现为什么需要 节省资源 加快网页打开 提升用户体育 巴拉巴拉  懒加载原理红色为我们实际看到的浏览器窗口,黑色的为实际网页的长度  我们刚进入主页的时候  用户拖动滚动条,看到绿色的框框,这些绿色的框框才开始加载出来   必要知道的知识 获取元素距离顶部(body)的距离:元素.offsetTop  注意:如果元素的父元素(不管是祖父">
+    <meta name="description" content="突发 觉得这种bilibili小火箭很有意思,想看看怎么实现的,发现是精灵图来实现的 具体的期末考试完成后在学习~ css中animation的steps分步动画  效果 素材  代码 这里暂时只实现了动画效果,滚动到顶部等我期末考试完成后补充~  123456789101112131415161718192021222324252627282930313233343536373839404142">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js当中的图片懒加载,懒加载的一些概念和相关知识点">
-<meta property="og:url" content="https://dreamlove.top/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:title" content="记录下bilibili(b站)小火箭页面上划动画效果的实现">
+<meta property="og:url" content="https://dreamlove.top/2022/06/08/%E5%89%8D%E7%AB%AF/%E8%AE%B0%E5%BD%95%E4%B8%8Bbilibili(b%E7%AB%99)%E5%B0%8F%E7%81%AB%E7%AE%AD%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%88%92%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="技术小站-属于你我的小天地">
-<meta property="og:description" content="知道什么是懒加载说通俗点就是轮到我我再出现,而不是一进入页面就出现为什么需要 节省资源 加快网页打开 提升用户体育 巴拉巴拉  懒加载原理红色为我们实际看到的浏览器窗口,黑色的为实际网页的长度  我们刚进入主页的时候  用户拖动滚动条,看到绿色的框框,这些绿色的框框才开始加载出来   必要知道的知识 获取元素距离顶部(body)的距离:元素.offsetTop  注意:如果元素的父元素(不管是祖父">
+<meta property="og:description" content="突发 觉得这种bilibili小火箭很有意思,想看看怎么实现的,发现是精灵图来实现的 具体的期末考试完成后在学习~ css中animation的steps分步动画  效果 素材  代码 这里暂时只实现了动画效果,滚动到顶部等我期末考试完成后补充~  123456789101112131415161718192021222324252627282930313233343536373839404142">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228215037.png">
-<meta property="article:published_time" content="2022-03-24T03:59:27.000Z">
-<meta property="article:modified_time" content="2022-03-24T03:59:29.644Z">
+<meta property="article:published_time" content="2022-06-08T10:32:52.000Z">
+<meta property="article:modified_time" content="2022-06-08T10:35:52.000Z">
 <meta property="article:author" content="梦洁">
 <meta property="article:tag" content="javscript">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>js当中的图片懒加载,懒加载的一些概念和相关知识点 - 技术小站-属于你我的小天地</title>
+  <title>记录下bilibili(b站)小火箭页面上划动画效果的实现 - 技术小站-属于你我的小天地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="js当中的图片懒加载,懒加载的一些概念和相关知识点"></span>
+            <span id="subtitle" data-typed-text="记录下bilibili(b站)小火箭页面上划动画效果的实现"></span>
           
         </div>
 
@@ -225,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-24 11:59" pubdate>
-          2022年3月24日 中午
+        <time datetime="2022-06-08 18:32" pubdate>
+          2022年6月8日 晚上
         </time>
       </span>
     
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          1.2k 字
         
       </span>
     
@@ -248,7 +248,7 @@
         
         
         
-          30 分钟
+          10 分钟
         
       </span>
     
@@ -415,7 +415,7 @@
       
         <a href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" title="js当中的图片懒加载,懒加载的一些概念和相关知识点"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">js当中的图片懒加载,懒加载的一些概念和相关知识点</span>
         </a>
       
@@ -460,7 +460,7 @@
       
         <a href="/2022/06/08/%E5%89%8D%E7%AB%AF/%E8%AE%B0%E5%BD%95%E4%B8%8Bbilibili(b%E7%AB%99)%E5%B0%8F%E7%81%AB%E7%AE%AD%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%88%92%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="记录下bilibili(b站)小火箭页面上划动画效果的实现"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">记录下bilibili(b站)小火箭页面上划动画效果的实现</span>
         </a>
       
@@ -895,7 +895,7 @@
       
         <a href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" title="js当中的图片懒加载,懒加载的一些概念和相关知识点"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">js当中的图片懒加载,懒加载的一些概念和相关知识点</span>
         </a>
       
@@ -940,7 +940,7 @@
       
         <a href="/2022/06/08/%E5%89%8D%E7%AB%AF/%E8%AE%B0%E5%BD%95%E4%B8%8Bbilibili(b%E7%AB%99)%E5%B0%8F%E7%81%AB%E7%AE%AD%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%88%92%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="记录下bilibili(b站)小火箭页面上划动画效果的实现"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">记录下bilibili(b站)小火箭页面上划动画效果的实现</span>
         </a>
       
@@ -1321,75 +1321,31 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">js当中的图片懒加载,懒加载的一些概念和相关知识点</h1>
+            <h1 style="display: none">记录下bilibili(b站)小火箭页面上划动画效果的实现</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年3月24日 中午
+                    本文最后更新于：2022年6月8日 晚上
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h3 id="知道什么是懒加载"><a href="#知道什么是懒加载" class="headerlink" title="知道什么是懒加载"></a>知道什么是懒加载</h3><h4 id="说通俗点就是轮到我我再出现-而不是一进入页面就出现"><a href="#说通俗点就是轮到我我再出现-而不是一进入页面就出现" class="headerlink" title="说通俗点就是轮到我我再出现,而不是一进入页面就出现"></a>说通俗点就是轮到我我再出现,而不是一进入页面就出现</h4><h4 id="为什么需要"><a href="#为什么需要" class="headerlink" title="为什么需要"></a>为什么需要</h4><ol>
-<li>节省资源</li>
-<li>加快网页打开</li>
-<li>提升用户体育</li>
-<li>巴拉巴拉</li>
-</ol>
-<h3 id="懒加载原理"><a href="#懒加载原理" class="headerlink" title="懒加载原理"></a>懒加载原理</h3><p class="note note-info">红色为我们实际看到的浏览器窗口,黑色的为实际网页的长度</p>
+              <h3 id="突发"><a href="#突发" class="headerlink" title="突发"></a>突发</h3><ul>
+<li>觉得这种bilibili小火箭很有意思,想看看怎么实现的,发现是精灵图来实现的</li>
+<li>具体的期末考试完成后在学习~</li>
+<li><a target="_blank" rel="noopener" href="http://www.qiutianaimeili.com/html/page/2021/06/2028tl9nhl7wfij.html">css中animation的steps分步动画</a></li>
+</ul>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206082307750.gif" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="哔哩哔哩小火箭效果"></p>
+<h3 id="素材"><a href="#素材" class="headerlink" title="素材"></a>素材</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206082312323.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="rocket_top"></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206082312501.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="rocket_frame"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>这里暂时只实现了动画效果,滚动到顶部等我期末考试完成后补充~</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>bilibili小火箭<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">        * &#123;</span><br><span class="language-css">            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">        &#125;</span><br><span class="language-css">        <span class="hljs-selector-class">.rock</span> &#123;</span><br><span class="language-css">            <span class="hljs-attribute">position</span>: fixed;</span><br><span class="language-css">            <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;</span><br><span class="language-css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">174px</span>;</span><br><span class="language-css">            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;img/rocket_top.png&quot;</span>);</span><br><span class="language-css">            <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="language-css">        &#125;</span><br><span class="language-css"></span><br><span class="language-css">        <span class="hljs-selector-class">.rock</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="language-css">            <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;img/rocket_frame.png&quot;</span>);</span><br><span class="language-css">            <span class="hljs-attribute">animation</span>: rockMove <span class="hljs-built_in">steps</span>(<span class="hljs-number">4</span>) .<span class="hljs-number">4s</span> infinite;</span><br><span class="language-css">        &#125;</span><br><span class="language-css">        <span class="hljs-keyword">@keyframes</span> rockMove &#123;</span><br><span class="language-css">            <span class="hljs-number">0%</span> &#123;</span><br><span class="language-css">                <span class="hljs-attribute">background-position</span>-x: <span class="hljs-number">0</span>;</span><br><span class="language-css">            &#125;</span><br><span class="language-css">            <span class="hljs-comment">/* 25% &#123;</span></span><br><span class="hljs-comment"><span class="language-css">                background-position-x: -150px;</span></span><br><span class="hljs-comment"><span class="language-css">            &#125;</span></span><br><span class="hljs-comment"><span class="language-css"></span></span><br><span class="hljs-comment"><span class="language-css">            50% &#123;</span></span><br><span class="hljs-comment"><span class="language-css">                background-position-x: -300px;</span></span><br><span class="hljs-comment"><span class="language-css">            &#125;</span></span><br><span class="hljs-comment"><span class="language-css"></span></span><br><span class="hljs-comment"><span class="language-css">            75% &#123;</span></span><br><span class="hljs-comment"><span class="language-css">                background-position-x: -450px;</span></span><br><span class="hljs-comment"><span class="language-css">            &#125; */</span></span><br><span class="language-css">            <span class="hljs-number">100%</span> &#123;</span><br><span class="language-css">                <span class="hljs-attribute">background-position</span>-x: -<span class="hljs-number">600px</span>;</span><br><span class="language-css">            &#125;</span><br><span class="language-css">        &#125;</span><br><span class="language-css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;rock fly&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<h5 id="我们刚进入主页的时候"><a href="#我们刚进入主页的时候" class="headerlink" title="我们刚进入主页的时候"></a>我们刚进入主页的时候</h5><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323212758.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload style="zoom:50%;" />
-
-<p>用户拖动滚动条,看到绿色的框框,这些绿色的框框才开始加载出来</p>
-<img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220323213458.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload style="zoom:50%;" />
-
-<h3 id="必要知道的知识"><a href="#必要知道的知识" class="headerlink" title="必要知道的知识"></a>必要知道的知识</h3><ol>
-<li><p>获取元素距离顶部(body)的距离:元素.offsetTop</p>
-<ol>
-<li>注意:如果元素的父元素(不管是祖父还是曾祖父还是亲生父亲),只要任意一个父亲开启了定位(不管是相对还是绝对),那么子元素的offsetTop属性值都是参考父元素的</li>
-<li>如果父元素没有开启定位,那么就参考body</li>
-<li>元素.offsetLeft同理</li>
-</ol>
-</li>
-<li><p>获取浏览器垂直滚动的距离:document.documentElement.onscrollTop</p>
-</li>
-<li><p>offsetTop和offsetLeft 这两个属性,IE 、Opera和Firefox对它俩的解释存在差异：</p>
-<ol>
-<li>IE5.0+ 、Opera8.0+：　offsetTop和offsetLeft 都是相对父级元素</li>
-<li>Firefox1.06： offsetTop和offsetLeft 都是相对于body元素</li>
-</ol>
-</li>
-<li><p>为了解决父元素如果开启定位的问题,我们可以使用offsetParent加循环获取距离body的距离</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//获取元素距离body的top值和left值</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">getPoint</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-comment">//记录left的值</span><br>    <span class="hljs-keyword">var</span> left = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//记录top的值</span><br>    <span class="hljs-keyword">var</span> top = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//如果需要减去边框的距离,可以解除下面这二行注释</span><br>    <span class="hljs-comment">//var borderLeftWidth;</span><br>    <span class="hljs-comment">//var borderTopWidth;</span><br>    <br>    <span class="hljs-comment">//如果obj.offsetParent获取不到父级了,就会跳出循环</span><br>    <span class="hljs-keyword">while</span> (obj) &#123;<br>        left = left + obj.<span class="hljs-property">offsetLeft</span>;<br>        top = top + obj.<span class="hljs-property">offsetTop</span>;<br>        <span class="hljs-comment">//如果需要减去边框的距离,可以解除下面这二行注释,并将前二行注释</span><br>        <span class="hljs-comment">//left = left + obj.offsetLeft - borderLeftWidth;</span><br>        <span class="hljs-comment">//top = top + obj.offsetTop - borderTopWidth;</span><br>        obj = obj.<span class="hljs-property">offsetParent</span>;<br>    &#125;<br>    <span class="hljs-comment">//返回距离body的left值和top值</span><br>    <span class="hljs-keyword">return</span> &#123;<br>        left,<br>        top<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220324113529.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
-</li>
-</ol>
-<h3 id="实现懒加载"><a href="#实现懒加载" class="headerlink" title="实现懒加载"></a>实现懒加载</h3><ol>
-<li><p>一开始的思路(错误的):</p>
-<ol>
-<li>先获取元素距离可视窗口顶部的距离,然后再和可视窗口的高度进行比较,如果小于可视窗口的高度,就加载出来(错误,因为二者距离都是死的)</li>
-</ol>
-</li>
-<li><p>后来的思路(正确的)</p>
-<ol>
-<li>还是依旧获取元素距离可是窗口顶部的距离,然后再和(可视窗口的高度+滚动的距离)进行比较,如果某一个元素距离顶部距离小于这二者之和的距离,则元素里面的资源加载出来</li>
-</ol>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><h5 id="css代码"><a href="#css代码" class="headerlink" title="css代码"></a>css代码</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;style&gt;<br>    * &#123;<br>        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;<br>        <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-selector-tag">body</span>,<br>    <span class="hljs-selector-tag">html</span> &#123;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>        <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    &#125;<br>    <span class="hljs-selector-tag">img</span> &#123;<br>        <span class="hljs-attribute">vertical-align</span>: bottom;<br>        <span class="hljs-attribute">display</span>: inline;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">590px</span>;<br>        <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;<br>    &#125;<br>    <span class="hljs-selector-class">.content</span> &#123;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">1200px</span>;<br>        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>    &#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
-
-
-
-<h5 id="HTML代码"><a href="#HTML代码" class="headerlink" title="HTML代码"></a>HTML代码</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>图片展示<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br>&lt;/div&gt;<br>&lt;div class=&quot;content&quot;&gt;<br>    &lt;img data-src=&quot;./img/01.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/02.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/03.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/04.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/05.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/06.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/07.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/08.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/09.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/10.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/10.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/11.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;img data-src=&quot;./img/12.jpg&quot; alt=&quot;&quot;&gt;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
-
-<h5 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>        <span class="hljs-comment">//获取元素距离body的top值和left值</span><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">getPoint</span>(<span class="hljs-params">obj</span>) &#123;<br>            <span class="hljs-keyword">var</span> left = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">var</span> top = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">while</span> (obj) &#123;<br>                left = left + obj.<span class="hljs-property">offsetLeft</span>;<br>                top = top + obj.<span class="hljs-property">offsetTop</span>;<br>                obj = obj.<span class="hljs-property">offsetParent</span>;<br>            &#125;<br>            <span class="hljs-keyword">return</span> &#123;<br>                left,<br>                top<br>            &#125;;<br>        &#125;<br>        <span class="hljs-comment">//防止图片没有加载出来获取不到图片的offsetTop值,就填加了一个window.onload事件</span><br>		<span class="hljs-comment">//页面初始化(用户刚刚进入页面的时候)</span><br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> domHeight = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientHeight</span>; <span class="hljs-comment">//视口的高度</span><br>            <span class="hljs-keyword">var</span> imgs = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;img&quot;</span>);<br>            <span class="hljs-comment">//然后循环</span><br>            <span class="hljs-comment">//每一个元素判断距离body的值是否 小于 (可视窗口的高度+垂直滚动的距离)</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> v <span class="hljs-keyword">of</span> imgs) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-title function_">getPoint</span>(v).<span class="hljs-property">top</span> &lt; (domHeight + <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollTop</span>)) &#123;<br>                    <span class="hljs-comment">//显示图片</span><br>                    <span class="hljs-comment">// v.src=v.dataset.src;也可以获取自定义属性值</span><br>                    v.<span class="hljs-property">src</span> = v.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&quot;data-src&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>		<span class="hljs-comment">//滚动事件</span><br>        <span class="hljs-variable language_">window</span>.<span class="hljs-property">onscroll</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-keyword">var</span> domHeight = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientHeight</span>; <span class="hljs-comment">//视口的高度</span><br>            <span class="hljs-keyword">var</span> imgs = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;img&quot;</span>);<br>            <span class="hljs-comment">//然后循环</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> v <span class="hljs-keyword">of</span> imgs) &#123;<br>                <span class="hljs-comment">//每一个元素判断距离body的值是否 小于 (可视窗口的高度+垂直滚动的距离)</span><br>                <span class="hljs-keyword">if</span> (<span class="hljs-title function_">getPoint</span>(v).<span class="hljs-property">top</span> &lt; (domHeight + <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollTop</span>)) &#123;<br>                    <span class="hljs-comment">//显示图片</span><br>                    <span class="hljs-comment">// v.src=v.dataset.src;</span><br>                    v.<span class="hljs-property">src</span> = v.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&quot;data-src&quot;</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &lt;/script&gt;<br></code></pre></td></tr></table></figure>
-
-<h3 id="展示效果"><a href="#展示效果" class="headerlink" title="展示效果"></a>展示效果</h3><p>可以看到图片不是一次性加载出来,而是随着滚动条滚动才加载出来的</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E5%8A%A8%E7%94%BB.gif" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
-</li>
-</ol>
 
               
             </div>
@@ -1441,8 +1397,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>js当中的图片懒加载,懒加载的一些概念和相关知识点</div>
-      <div>https://dreamlove.top/2022/03/24/工具库笔记/图片懒加载原理/</div>
+      <div>记录下bilibili(b站)小火箭页面上划动画效果的实现</div>
+      <div>https://dreamlove.top/2022/06/08/前端/记录下bilibili(b站)小火箭页面上划动画效果的实现/</div>
     </div>
     <div class="license-meta">
       
@@ -1454,7 +1410,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年3月24日</div>
+          <div>2022年6月8日</div>
         </div>
       
       
@@ -1484,18 +1440,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" title="express,multer,jQuery前端后端上传单个文件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">express,multer,jQuery前端后端上传单个文件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/23/%E7%B3%BB%E7%BB%9F/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/" title="使用优启通(EasyU)重装系统教程(详细)">
-                        <span class="hidden-mobile">使用优启通(EasyU)重装系统教程(详细)</span>
+                      <a href="/2022/06/05/%E5%89%8D%E7%AB%AF/Typescript%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="Typescript的学习笔记">
+                        <span class="hidden-mobile">Typescript的学习笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
