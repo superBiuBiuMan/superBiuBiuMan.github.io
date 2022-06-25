@@ -1,0 +1,20 @@
+/*一级标题*/
+.markdown-body ol ol, 
+.markdown-body ul ol{
+list-style-type: decimal;
+}
+
+/*设置二级标题为数字*/
+.markdown-body ol ol ol, 
+.markdown-body ol ul ol, 
+.markdown-body ul ol ol, 
+.markdown-body ul ul ol{
+list-style-type: decimal;
+}
+
+.index-img img {
+	height:unset;
+}
+.v[data-class="v"] .txt-right{
+	display:none;
+}
