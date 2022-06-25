@@ -67,7 +67,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -76,6 +76,36 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
 
   
 <meta name="generator" content="Hexo 6.2.0"></head>
@@ -232,13 +262,19 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 65 篇文章</p>
+  <p class="h4">共计 66 篇文章</p>
   <hr>
   
   
     
       
       <p class="h5">2022</p>
+    
+    <a href="/2022/05/15/%E5%89%8D%E7%AB%AF/LeanCloud%E7%99%BD%E5%AB%96valine%E8%AF%84%E8%AE%BA%E5%92%8C%E9%81%BF%E5%85%8D%E4%BC%91%E7%9C%A0%E6%8C%87%E5%8D%97/" class="list-group-item list-group-item-action">
+      <time>05-15</time>
+      <div class="list-group-item-title">LeanCloud白嫖valine评论和避免休眠指南</div>
+    </a>
+  
     
     <a href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="list-group-item list-group-item-action">
       <time>05-13</time>
@@ -252,15 +288,15 @@
     </a>
   
     
-    <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>05-10</time>
-      <div class="list-group-item-title">今日刷题-微任务和宏任务</div>
-    </a>
-  
-    
     <a href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" class="list-group-item list-group-item-action">
       <time>05-10</time>
       <div class="list-group-item-title">前端真题刷题-注意基础知识不要忘了基本原理</div>
+    </a>
+  
+    
+    <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" class="list-group-item list-group-item-action">
+      <time>05-10</time>
+      <div class="list-group-item-title">今日刷题-微任务和宏任务</div>
     </a>
   
     
@@ -291,12 +327,6 @@
     <a href="/2022/05/06/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8806%E6%97%A5%E5%88%B7%E9%A2%98/" class="list-group-item list-group-item-action">
       <time>05-06</time>
       <div class="list-group-item-title">今日刷题-重写的ValueOf</div>
-    </a>
-  
-    
-    <a href="/2022/05/05/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8805%E6%97%A5%E5%88%B7%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>05-05</time>
-      <div class="list-group-item-title">今日刷题-变量的回收和reduce的使用</div>
     </a>
   
 </div>
@@ -447,36 +477,6 @@
       
     })(window, document);
   </script>
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
 

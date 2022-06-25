@@ -67,7 +67,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -76,6 +76,36 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
 
   
 <meta name="generator" content="Hexo 6.2.0"></head>
@@ -240,6 +270,75 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/22/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8822%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+          <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/study3.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="今日刷题-js的call,apply为null,undefined的情况和日期的注意点">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/22/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8822%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+          今日刷题-js的call,apply为null,undefined的情况和日期的注意点
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/04/22/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8822%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+        <div>
+          题目11234function a()&amp;#123;  console.log(this);&amp;#125; a.call(null);&#x2F;&#x2F;输出结果为?   答案 window   解析 call,apply用于改变this的指向,并且可以让任意函数成为某一对象的方法进行调用 特别的是 null或undefined时，将是JS执行环境的全局变量。浏览器中是window，其它环境（如node）则是glob
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-22 18:25" pubdate>
+              2022-04-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+            
+              <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
           <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/study2.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="今日刷题-try...catch...finally">
         </a>
@@ -253,9 +352,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
         <div>
-          
           题目112345678910111213var i &#x3D; 100;function foo() &amp;#123;    bbb: try &amp;#123;        console.log(&quot;position1&quot;);        return i++;    &amp;#125;    finally &amp;#123;        break bbb;    &amp;#125;    consol
         </div>
       </a>
@@ -322,9 +421,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/04/20/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8820%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/04/20/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8820%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
         <div>
-          
           题目1123456789101112var p1 &#x3D; &amp;#123;  name:&amp;#x27;小明&amp;#x27;,  age:&amp;#x27;12&amp;#x27;,  action:function(where,doing)&amp;#123;   console.log(this.age + &amp;#x27;岁的&amp;#x27;+this.name + &amp;#x27;在&amp;#x27; + where + doing);  &amp;#
         </div>
       </a>
@@ -391,9 +490,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/04/06/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85%E6%8A%A2%E4%BD%8D%E7%BD%AE/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/04/06/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85%E6%8A%A2%E4%BD%8D%E7%BD%AE/" target="_self">
         <div>
-          
           提交预约流程 注意 抓包分析好像还涉及到wxlib&#x2F;wx&#x2F;login 不过从后面提交数据来看好像用不到,可能我技术问题吧  抓包分析有人可能最新微信PC抓不了小程序包解决办法 打开一个任意小程序，打开任务管理器，找到进程。右键打开文件位置。  退出电脑微信，右键结束小程序进程。  找到这个目录后删除这个目录  或者你有everything这个工具,直接搜索 WMPFRuntim
         </div>
       </a>
@@ -458,9 +557,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/04/03/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%88%86%E9%A1%B5%E5%99%A8/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/04/03/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%88%86%E9%A1%B5%E5%99%A8/" target="_self">
         <div>
-          
           分页器下载github地址 使用 引入样式文件&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;.&#x2F;paginationself.css&quot;&gt;  引入js代码文件 &lt;script src&#x3D;&quot;.&#x2F;paginationself.js&quot;&gt;&lt;&#x2F;script&gt;  js代码添加 12var fy &#x3D; docu
         </div>
       </a>
@@ -532,9 +631,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/03/31/%E5%89%8D%E7%AB%AF/express+socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A4/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/03/31/%E5%89%8D%E7%AB%AF/express+socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A4/" target="_self">
         <div>
-          
           简易聊天室前置知识 在我们平常的时候,ajax发送的都是短连接,get完成或者post完成之后连接就断开,并且当服务器数据更新的时候,必须再次发送ajax请求才可以获取到最新的数据 在没有socket之前,要实时获取服务器的数据,必须要轮询,也就是每隔一段时间发送ajax 所以现在有了服务端主动向前端推送消息的东东——长连接socket 实现的二种方式 socket.io websocket(H5
         </div>
       </a>
@@ -622,9 +721,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/03/31/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/03/31/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/" target="_self">
         <div>
-          
           前置知识关于this指向问题，防抖函数中的fn.apply(this,arguments)作用防抖函数中的fn.apply(this,arguments)作用 this指向问题 节流 一定时间内只执行一项任务  节流原理 执行一个函数 执行这个函数的时候看看前面有没有执行过 如果前面有执行过这个函数并且没有完成,那么本次任务就不执行  节流前可以看到&quot;move&quot;疯狂输出   节流后程序输出move
         </div>
       </a>
@@ -696,9 +795,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" target="_self">
         <div>
-          
           先安装基本的模块$ npm init -y  $ npm install express –save $ npm install multer –save 附上multer的github当中别人汉化的API文档github地址 我这使用的nodemon,如果那么使用node运行,修改记得重启  开始创建基本express(上传图片)当前目录下创建fileup.js文件 12345678910111
         </div>
       </a>
@@ -770,9 +869,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" target="_self">
         <div>
-          
           知道什么是懒加载说通俗点就是轮到我我再出现,而不是一进入页面就出现为什么需要 节省资源 加快网页打开 提升用户体育 巴拉巴拉  懒加载原理红色为我们实际看到的浏览器窗口,黑色的为实际网页的长度  我们刚进入主页的时候  用户拖动滚动条,看到绿色的框框,这些绿色的框框才开始加载出来   必要知道的知识 获取元素距离顶部(body)的距离:元素.offsetTop  注意:如果元素的父元素(不管是祖父
         </div>
       </a>
@@ -844,9 +943,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/03/23/%E7%B3%BB%E7%BB%9F/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/03/23/%E7%B3%BB%E7%BB%9F/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/" target="_self">
         <div>
-          
           前言 为什么要制作一个启动盘才能重装系统?  通俗点来说就是你自己生病了，自己一般不能自己帮自己看病，一般都是别人看病。电脑也是如此，需要一个第三方来“治疗”。  为什么使用EasyU？而不使用老毛_，巴拉巴拉。。。。。  因为其他的很多启动盘制作工具有广告，会在系统安装的时候安装第三方软件。 资源下载 启动盘制作工具(任选一个下载地址)：  下载地址1:123盘(不限速) 下载地址2:百度网盘
         </div>
       </a>
@@ -889,80 +988,6 @@
               <a href="/tags/%E7%B3%BB%E7%BB%9F/">#系统</a>
             
               <a href="/tags/%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/">#重装系统</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/03/22/%E5%89%8D%E7%AB%AF/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" target="_self">
-          <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220228215037.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/03/22/%E5%89%8D%E7%AB%AF/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" target="_self">
-          ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/03/22/%E5%89%8D%E7%AB%AF/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" target="_self">
-        <div>
-          
-          前置知识 在ES5当中,变量的作用域只有全局作用域和函数作用域之分的,也就是说,你使用 var 关键字创建的变量,要么是全局都可以使用的,要么就是函数内部可以使用的 在ES5当中,var定义的变量是会变量提升的 在ES6当中,let是块级作用域,不会变量提升  于是乎产生了一次错误1234567&lt;script&gt;      var data&#x3D;&amp;#x27;动感超人&amp;#x27;      i
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-03-22 22:47" pubdate>
-              2022-03-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/HTML/" class="category-chain-item">HTML</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/HTML/javscript/" class="category-chain-item">javscript</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javscript/">#javscript</a>
             
           </div>
         
@@ -1116,36 +1141,6 @@
       
     })(window, document);
   </script>
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
 

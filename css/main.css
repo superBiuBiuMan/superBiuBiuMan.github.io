@@ -586,8 +586,9 @@ sup > a::before,
 .pagination .space {
   align-self: flex-end;
 }
-.pagination a,
-.pagination .current {
+.pagination .page-number,
+.pagination .current,
+.pagination .extend {
   outline: 0;
   border: 0;
   background-color: transparent;
@@ -595,10 +596,13 @@ sup > a::before,
   padding: 0.5rem 0.75rem;
   line-height: 1.25;
   border-radius: 0.125rem;
-  transition: background-color 0.2s ease-in-out;
 }
-.pagination a:hover,
+.pagination .page-number {
+  margin: 0 0.05rem;
+}
+.pagination .page-number:hover,
 .pagination .current {
+  transition: background-color 0.2s ease-in-out;
   background-color: var(--link-hover-bg-color);
 }
 .qr-trigger {
@@ -865,7 +869,7 @@ i.iconfont {
     --scrollbar-hover-color: #9da8b3;
     --button-bg-color: transparent;
     --button-hover-bg-color: #46647e;
-    --highlight-bg-color: #2d333b;
+    --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
   }
   :root:not([data-user-color-scheme]) img {
@@ -900,7 +904,7 @@ i.iconfont {
   --scrollbar-hover-color: #9da8b3;
   --button-bg-color: transparent;
   --button-hover-bg-color: #46647e;
-  --highlight-bg-color: #2d333b;
+  --highlight-bg-color: #303030;
   --inlinecode-bg-color: rgba(99,110,123,0.4);
 }
 [data-user-color-scheme="dark"] img {
@@ -1176,7 +1180,6 @@ i.iconfont {
   height: calc(1.4rem * 3);
   overflow: hidden;
   display: flex;
-  align-items: center;
 }
 .index-excerpt > div {
   width: 100%;
@@ -1185,6 +1188,10 @@ i.iconfont {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+.index-excerpt__noimg {
+  height: auto;
+  max-height: calc(1.4rem * 3);
 }
 @media (max-width: 767px) {
   .index-info {
@@ -1242,6 +1249,7 @@ i.iconfont {
   padding-top: 1.45rem;
   padding-bottom: 1.45rem;
   padding-right: 1rem;
+  line-height: 1.5;
 }
 .markdown-body .code-wrapper {
   position: relative;
@@ -1306,11 +1314,11 @@ figure.highlight td.code > pre {
   margin-bottom: 2rem;
   color: var(--post-text-color);
 }
-.markdown-body h1,
+.markdown-body > h1,
 .markdown-body h2 {
   border-bottom-color: var(--line-color);
 }
-.markdown-body h1,
+.markdown-body > h1,
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4,
@@ -1322,7 +1330,20 @@ figure.highlight td.code > pre {
   margin-bottom: 0.75em;
   margin-top: 2em;
 }
-.markdown-body h1:focus,
+.markdown-body > h1::before,
+.markdown-body h2::before,
+.markdown-body h3::before,
+.markdown-body h4::before,
+.markdown-body h5::before,
+.markdown-body h6::before {
+  display: block;
+  content: "";
+  margin-top: -5rem;
+  height: 5rem;
+  width: 1px;
+  visibility: hidden;
+}
+.markdown-body > h1:focus,
 .markdown-body h2:focus,
 .markdown-body h3:focus,
 .markdown-body h4:focus,
@@ -1426,19 +1447,6 @@ post-custom {
   .anchorjs-link-left {
     opacity: 0 !important;
   }
-}
-.post-content h1::before,
-.post-content h2::before,
-.post-content h3::before,
-.post-content h4::before,
-.post-content h5::before,
-.post-content h6::before {
-  display: block;
-  content: "";
-  margin-top: -5rem;
-  height: 5rem;
-  width: 1px;
-  visibility: hidden;
 }
 .page-content strong,
 .post-content strong {

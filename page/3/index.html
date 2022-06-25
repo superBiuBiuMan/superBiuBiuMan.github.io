@@ -67,7 +67,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -76,6 +76,36 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
 
   
 <meta name="generator" content="Hexo 6.2.0"></head>
@@ -240,6 +270,91 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/15/%E5%89%8D%E7%AB%AF/LeanCloud%E7%99%BD%E5%AB%96valine%E8%AF%84%E8%AE%BA%E5%92%8C%E9%81%BF%E5%85%8D%E4%BC%91%E7%9C%A0%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205152229804.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="LeanCloud白嫖valine评论和避免休眠指南">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/15/%E5%89%8D%E7%AB%AF/LeanCloud%E7%99%BD%E5%AB%96valine%E8%AF%84%E8%AE%BA%E5%92%8C%E9%81%BF%E5%85%8D%E4%BC%91%E7%9C%A0%E6%8C%87%E5%8D%97/" target="_self">
+          LeanCloud白嫖valine评论和避免休眠指南
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/05/15/%E5%89%8D%E7%AB%AF/LeanCloud%E7%99%BD%E5%AB%96valine%E8%AF%84%E8%AE%BA%E5%92%8C%E9%81%BF%E5%85%8D%E4%BC%91%E7%9C%A0%E6%8C%87%E5%8D%97/" target="_self">
+        <div>
+          由于白嫖原因,LenCloud会自动休眠导致valine评论通知邮箱发送不了,所以这里记录了下我解决的过程 这里用服务器的cron解决,其他方法可以看这个博主的 另外一种直接在valine添加定时器的方式失败(如下图),所以就用另外一种   绑定域名1. 添加云引擎、ClientEngine 域名假设你的域名为example.com，为Valine后端分配的二级域名是xxx.example.com
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-15 18:58" pubdate>
+              2022-05-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/valine/" class="category-chain-item">valine</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/valine/LeanCloud/" class="category-chain-item">LeanCloud</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/valine/LeanCloud/%E7%99%BD%E5%AB%96%E6%8C%87%E5%8D%97/" class="category-chain-item">白嫖指南</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/valine/">#valine</a>
+            
+              <a href="/tags/LeanCloud/">#LeanCloud</a>
+            
+              <a href="/tags/%E7%99%BD%E5%AB%96%E6%8C%87%E5%8D%97/">#白嫖指南</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
           <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205132349743.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="canvas基本使用">
         </a>
@@ -253,9 +368,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
         <div>
-          
           canvas的基本了解 canvas仅仅只是一个画布,定义一个canvas标签,需要通过属性,属性,属性来设置宽度高度(不可以通过样式!),如果不设置默认300*150  不通过属性设置画布的宽度和高度,会造成坐标不准确的问题!   canvas必须要通过js来操作  canvas的坐标是从左到右是x轴,从上到下是y轴  vscode书写canvas的时候没有提示,加上&#x2F;** @type &amp;#12
         </div>
       </a>
@@ -331,9 +446,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/11/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8811%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/11/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8811%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
         <div>
-          
           题目112345678910下列window方法中，可以显示对话框的一项是（）A: confirm()B: alert()C: prompt()D: open()   答案 C   解析 A: 弹出一个判断对话框(有确认,取消按钮和提示文本),返回值为用户所按下的,为真返回true,为假返回false B: 弹出一个对话框 C: 弹出一个用户输入对话框,返回值为用户输入的值,没有输入则返回值为nu
         </div>
       </a>
@@ -344,75 +459,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2022-05-11 09:23" pubdate>
               2022-05-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-            
-              <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
-          <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205100902062.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="今日刷题-微任务和宏任务">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
-          今日刷题-微任务和宏任务
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
-        <div>
-          
-          题目1123456789101112131415161718192021执行以下程序，输出结果为（）var a &#x3D; 100;function a()&amp;#123;var a &#x3D; 200;console.log(a);&amp;#125;a();A: 100B: 200C: 抛出异常D: f a()&amp;#123;var a &#x3D; 200;console.log(a);&amp;#125;   答案  C   解析  首先
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-10 08:23" pubdate>
-              2022-05-10
             </time>
           </div>
         
@@ -469,10 +515,79 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" target="_self">
         <div>
-          
-          题目1123456789SVG 有多少种图形对象类型？A: 2 B: 3C: 5D: 7   答案 解析题目2  12345678910111213141516以下哪个是 html5 中的 input 类型属性？(1) search(2) datetime(3) week(4) color(5) track(6) placeholderA: 1 , 2 , 3 , 4 , 6  B: 1 , 2
+          题目1123456789SVG 有多少种图形对象类型？A: 2 B: 3C: 5D: 7   答案 解析  题目212345678910111213141516以下哪个是 html5 中的 input 类型属性？(1) search(2) datetime(3) week(4) color(5) track(6) placeholderA: 1 , 2 , 3 , 4 , 6  B: 1 , 2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-10 08:23" pubdate>
+              2022-05-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+            
+              <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+          <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205100902062.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="今日刷题-微任务和宏任务">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+          今日刷题-微任务和宏任务
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+        <div>
+          题目1123456789101112131415161718192021执行以下程序，输出结果为（）var a &#x3D; 100;function a()&amp;#123;var a &#x3D; 200;console.log(a);&amp;#125;a();A: 100B: 200C: 抛出异常D: f a()&amp;#123;var a &#x3D; 200;console.log(a);&amp;#125;   答案  C   解析  首先
         </div>
       </a>
 
@@ -538,9 +653,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
         <div>
-          
           题目112345678下面结果为真的表达式是：（）A: null instanceof ObjectB: null &#x3D;&#x3D;&#x3D; undefinedC: null &#x3D;&#x3D; undefinedD: NaN &#x3D;&#x3D; NaN   答案  C   解析  A:  null instanceof Object ;&#x2F;&#x2F; false typeof null &#x3D;&#x3D;&#x3D; ‘ob
         </div>
       </a>
@@ -607,9 +722,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/07/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8807%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/07/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8807%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
         <div>
-          
           题目1123456789101112请问以下两次检测对象constructor是否拥有属性名1的结果分别是什么？1 in Object(1.0).constructor;Number[1] &#x3D; 123;1 in Object(1.0).constructor;A: false,falseB: false,trueC: true,trueD: true,false   答案  B   解析  in用
         </div>
       </a>
@@ -676,9 +791,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/06/%E5%89%8D%E7%AB%AF/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E5%86%8D%E6%AC%A1(%E6%B7%B1%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9FDOM%E4%BA%8B%E4%BB%B6)/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/06/%E5%89%8D%E7%AB%AF/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E5%86%8D%E6%AC%A1(%E6%B7%B1%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9FDOM%E4%BA%8B%E4%BB%B6)/" target="_self">
         <div>
-          
           深入自定义事件和原生DOM事件自定义事件 在组件上标签上添加的事件就是自定义事件,不管系统是否带这些事件,比如在上添加@click @click&#x2F;&gt; 那么@click在自定义组件上就是自定义事件  添加的事件如果没有传入参数,那么输出就是undefined  如图,传入了参数,单击button,输出为10,如果没有传递参数10,则输出undefined    自定义组件上绑定原生D
         </div>
       </a>
@@ -763,9 +878,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" target="_self">
         <div>
-          
           预备知识 引用数据类型  Object（在JS中除了基本数据类型以外的都是对象，数据是对象，函数是对象等等)   基本数据类型  Number、String、Boolean、Null、 Undefined、Symbol   文章参考了牛客网CodeSheep   赋值 vs 浅拷贝 vs 深拷贝赋值(不能算是拷贝，因为拷贝的仅仅只是引用关系，并没有生成新的实际对象)  很常见的一种 1234567
         </div>
       </a>
@@ -841,9 +956,9 @@
         </a>
       </h1>
 
-      <a class="index-excerpt" href="/2022/05/06/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8806%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
+      
+      <a class="index-excerpt " href="/2022/05/06/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8806%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
         <div>
-          
           题目1123456789以下关于Histroy对象的属性或方法描述正确的是（）(多选)A: back回到浏览器载入历史URL地址列表的当前URL的前一个URLB: go表示刷新当前页面C: length保存历史URL地址列表的长度信息D: forward转到浏览器载入历史URL地址列表的当前URL的下一个URL。   答案 A,C,D   解析 A: back回到浏览器载入历史URL地址列表的当前
         </div>
       </a>
@@ -854,75 +969,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2022-05-06 07:57" pubdate>
               2022-05-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-            
-              <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/05/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8805%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
-          <img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205062322082.jpg" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="今日刷题-变量的回收和reduce的使用">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/05/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8805%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
-          今日刷题-变量的回收和reduce的使用
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/05/05/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8805%E6%97%A5%E5%88%B7%E9%A2%98/" target="_self">
-        <div>
-          
-          题目112345678以下哪些表达式的值为0？(多选)A: (()&#x3D;&gt;&amp;#123;&amp;#125;).lengthB: 1 &amp; 2C: +[]D: [1,2,-3].reduce((a, b) &#x3D;&gt; a - b, 0)   答案  A,B,C,D   解析  A:  获取的是形参的个数(不是实参) 12345如果是((a)&#x3D;&gt; &amp;#123;&amp;#125;).length，形参有
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-05 08:57" pubdate>
-              2022-05-05
             </time>
           </div>
         
@@ -1108,36 +1154,6 @@
       
     })(window, document);
   </script>
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
