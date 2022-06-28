@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,261 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-隐式转换和String和new String</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> p1 = &#123;<br>  <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;小明&#x27;</span>,<br>  <span class="hljs-attr">age</span>:<span class="hljs-string">&#x27;12&#x27;</span>,<br>  <span class="hljs-attr">action</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">where,doing</span>)&#123;<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> + <span class="hljs-string">&#x27;岁的&#x27;</span>+<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> + <span class="hljs-string">&#x27;在&#x27;</span> + where + doing);<br>  &#125;  <br>&#125;<br><span class="hljs-keyword">var</span> p2 = &#123;<br>  <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;小红&#x27;</span>,<br>  <span class="hljs-attr">age</span>:<span class="hljs-string">&#x27;15&#x27;</span><br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(p1.<span class="hljs-property">action</span>.<span class="hljs-title function_">call</span>(p2,<span class="hljs-string">&#x27;操场上&#x27;</span>,<span class="hljs-string">&#x27;运动&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>输出结果<ul>
+<li>15岁的小红在操场上运动</li>
+</ul>
+</li>
+<li>分析<ul>
+<li>call可以改变this的执行,并且使得某一个函数成为对象的方法调用</li>
+<li>所以p1.action.call(p2,’操场上’,’运动’) &#x3D; &gt; p2.action(“操作上”,”运动) &#x3D; &gt; 输出  “15岁的小红在操场上运动”</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><p>以下哪个表达式的值为true？</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">A</span>.	&#x27;<span class="hljs-number">1</span>&#x27; === <span class="hljs-number">1</span><br><span class="hljs-attribute">B</span>.	isNaN(<span class="hljs-number">1</span>/<span class="hljs-number">0</span>)<br><span class="hljs-attribute">C</span>.	<span class="hljs-number">1</span> in<span class="hljs-meta"> [1]</span><br><span class="hljs-attribute">D</span>.	<span class="hljs-number">1</span> &amp;&amp; <span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>D</li>
+</ul>
+</li>
+<li>分析<ul>
+<li>A:  &#x3D;&#x3D;&#x3D;不会隐式转换,String类型不会等于Number类型 所以结果为false</li>
+<li>B: 1&#x2F;0在js当中返回 <strong>Infinity</strong> 所以isNaN(1&#x2F;0)为false</li>
+<li>C: in在数组可以用来检测是否有这个索引,在对象则是否是实例化对象<ul>
+<li>Arrays var trees &#x3D; new Array(“redwood”, “bay”, “cedar”, “oak”, “maple”); 0 in trees &#x2F;&#x2F; returns true</li>
+<li>var color1 &#x3D; new String(“green”); “length” in color1 &#x2F;&#x2F; returns true</li>
+</ul>
+</li>
+<li>算术运算符优先级 &gt; 关系运算符 &gt; 逻辑运算符,所以 1 &amp;&amp; true &#x3D; &gt; true</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//说错1,2,3,4的输出结果</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">value</span>)&#123;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">arguments</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Array</span>); ...①<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">arguments</span>.<span class="hljs-property">length</span>);...②<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value);...③<br><br><span class="hljs-keyword">var</span> arr = [...<span class="hljs-variable language_">arguments</span>];...④<br><br>&#125;<br><br><span class="hljs-title function_">fn</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>① : false</li>
+<li>② : 3</li>
+<li>③ : 1</li>
+<li>④ :  [1,2,3,4]</li>
+</ul>
+</li>
+<li>分析<ul>
+<li>① : arguments为一个伪数组,实际上是一个对象,所以为false</li>
+<li>② : arguments接收函数传入过来的所有参数,所以结果为3</li>
+<li>③ : value为函数第一个传入过来的值,所以为1</li>
+<li>④ : 记住就好</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下面哪些语句执行结果为<span class="hljs-title function_">true</span>(多选)<br><span class="hljs-attr">A</span>:<span class="hljs-string">&#x27;foo&#x27;</span> == <span class="hljs-keyword">new</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&#x27;foo&#x27;</span>); &#125;;<br><span class="hljs-attr">B</span>:<span class="hljs-string">&#x27;foo&#x27;</span> == <span class="hljs-keyword">new</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&#x27;foo&#x27;</span>); &#125;;<br><span class="hljs-attr">C</span>:[] == <span class="hljs-number">0</span><br><span class="hljs-attr">D</span>:![]<br><span class="hljs-attr">E</span>:!<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>B C E</li>
+</ul>
+</li>
+<li>分析<ul>
+<li>A,B:<ul>
+<li>构造函数使用会返回一个对象:<ul>
+<li>情况1:return 一个对象,那么构造函数就会返回你定义的这个对象 比如 return {a:xxx}; 就会返回这个 {a:xxx}</li>
+<li>情况2:未写return 或者return 基本数据类型,构造函数会默认返回一个对象</li>
+<li>A选项当中的构造函数返回一个基本数据类型,所以构造函数默认返回一个空对象<ul>
+<li>String(‘foo’); 控制台输出为’foo’</li>
+</ul>
+</li>
+<li>B选项返回一个String对象,所以构造函数就返回了这个对象<ul>
+<li>new String(‘foo’);控制台输出为String {‘foo’}<br><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220420102106.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C: 引用数据和基本数据比较,会将引用数据转基本数据在比较,[]转基本数据类型为”” , “” &#x3D;&#x3D; 0 ;比较再转化为布尔类型,false &#x3D;&#x3D; false,所以为true</li>
+<li>D:未发生隐式转换,**[]**的布尔值有两种转换结果。直接转的话是true(在false六种值之外)，还有一种是调用tostring转字符串”” 再转布尔就为false了,所以![] 为true<ul>
+<li>如果[] &#x3D;&#x3D; false ,发生了隐式转换,则[]会转化为false</li>
+</ul>
+</li>
+<li>E: 0转布尔为false,同样转false的还有 undefined null ‘’ NaN 0 false 这四种都会为FALSE . 其他均为TRUE.所以!false &#x3D;&gt; true</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-隐式转换和String和new String</div>
+      <div>https://dreamlove.top/2022/04/20/刷题/JavaScript/2022年4月20日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月20日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-try...catch...finally">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日刷题-try...catch...finally</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/06/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序抓包抢位置">
+                        <span class="hidden-mobile">我来图书馆小程序抓包抢位置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,260 +840,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-隐式转换和String和new String</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> p1 = &#123;<br>  <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;小明&#x27;</span>,<br>  <span class="hljs-attr">age</span>:<span class="hljs-string">&#x27;12&#x27;</span>,<br>  <span class="hljs-attr">action</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">where,doing</span>)&#123;<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> + <span class="hljs-string">&#x27;岁的&#x27;</span>+<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> + <span class="hljs-string">&#x27;在&#x27;</span> + where + doing);<br>  &#125;  <br>&#125;<br><span class="hljs-keyword">var</span> p2 = &#123;<br>  <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;小红&#x27;</span>,<br>  <span class="hljs-attr">age</span>:<span class="hljs-string">&#x27;15&#x27;</span><br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(p1.<span class="hljs-property">action</span>.<span class="hljs-title function_">call</span>(p2,<span class="hljs-string">&#x27;操场上&#x27;</span>,<span class="hljs-string">&#x27;运动&#x27;</span>))<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>输出结果<ul>
-<li>15岁的小红在操场上运动</li>
-</ul>
-</li>
-<li>分析<ul>
-<li>call可以改变this的执行,并且使得某一个函数成为对象的方法调用</li>
-<li>所以p1.action.call(p2,’操场上’,’运动’) &#x3D; &gt; p2.action(“操作上”,”运动) &#x3D; &gt; 输出  “15岁的小红在操场上运动”</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><p>以下哪个表达式的值为true？</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">A</span>.	&#x27;<span class="hljs-number">1</span>&#x27; === <span class="hljs-number">1</span><br><span class="hljs-attribute">B</span>.	isNaN(<span class="hljs-number">1</span>/<span class="hljs-number">0</span>)<br><span class="hljs-attribute">C</span>.	<span class="hljs-number">1</span> in<span class="hljs-meta"> [1]</span><br><span class="hljs-attribute">D</span>.	<span class="hljs-number">1</span> &amp;&amp; <span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>D</li>
-</ul>
-</li>
-<li>分析<ul>
-<li>A:  &#x3D;&#x3D;&#x3D;不会隐式转换,String类型不会等于Number类型 所以结果为false</li>
-<li>B: 1&#x2F;0在js当中返回 <strong>Infinity</strong> 所以isNaN(1&#x2F;0)为false</li>
-<li>C: in在数组可以用来检测是否有这个索引,在对象则是否是实例化对象<ul>
-<li>Arrays var trees &#x3D; new Array(“redwood”, “bay”, “cedar”, “oak”, “maple”); 0 in trees &#x2F;&#x2F; returns true</li>
-<li>var color1 &#x3D; new String(“green”); “length” in color1 &#x2F;&#x2F; returns true</li>
-</ul>
-</li>
-<li>算术运算符优先级 &gt; 关系运算符 &gt; 逻辑运算符,所以 1 &amp;&amp; true &#x3D; &gt; true</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//说错1,2,3,4的输出结果</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">value</span>)&#123;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">arguments</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Array</span>); ...①<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">arguments</span>.<span class="hljs-property">length</span>);...②<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(value);...③<br><br><span class="hljs-keyword">var</span> arr = [...<span class="hljs-variable language_">arguments</span>];...④<br><br>&#125;<br><br><span class="hljs-title function_">fn</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>① : false</li>
-<li>② : 3</li>
-<li>③ : 1</li>
-<li>④ :  [1,2,3,4]</li>
-</ul>
-</li>
-<li>分析<ul>
-<li>① : arguments为一个伪数组,实际上是一个对象,所以为false</li>
-<li>② : arguments接收函数传入过来的所有参数,所以结果为3</li>
-<li>③ : value为函数第一个传入过来的值,所以为1</li>
-<li>④ : 记住就好</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下面哪些语句执行结果为<span class="hljs-title function_">true</span>(多选)<br><span class="hljs-attr">A</span>:<span class="hljs-string">&#x27;foo&#x27;</span> == <span class="hljs-keyword">new</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&#x27;foo&#x27;</span>); &#125;;<br><span class="hljs-attr">B</span>:<span class="hljs-string">&#x27;foo&#x27;</span> == <span class="hljs-keyword">new</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&#x27;foo&#x27;</span>); &#125;;<br><span class="hljs-attr">C</span>:[] == <span class="hljs-number">0</span><br><span class="hljs-attr">D</span>:![]<br><span class="hljs-attr">E</span>:!<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>B C E</li>
-</ul>
-</li>
-<li>分析<ul>
-<li>A,B:<ul>
-<li>构造函数使用会返回一个对象:<ul>
-<li>情况1:return 一个对象,那么构造函数就会返回你定义的这个对象 比如 return {a:xxx}; 就会返回这个 {a:xxx}</li>
-<li>情况2:未写return 或者return 基本数据类型,构造函数会默认返回一个对象</li>
-<li>A选项当中的构造函数返回一个基本数据类型,所以构造函数默认返回一个空对象<ul>
-<li>String(‘foo’); 控制台输出为’foo’</li>
-</ul>
-</li>
-<li>B选项返回一个String对象,所以构造函数就返回了这个对象<ul>
-<li>new String(‘foo’);控制台输出为String {‘foo’}<br><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220420102106.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>C: 引用数据和基本数据比较,会将引用数据转基本数据在比较,[]转基本数据类型为”” , “” &#x3D;&#x3D; 0 ;比较再转化为布尔类型,false &#x3D;&#x3D; false,所以为true</li>
-<li>D:未发生隐式转换,**[]**的布尔值有两种转换结果。直接转的话是true(在false六种值之外)，还有一种是调用tostring转字符串”” 再转布尔就为false了,所以![] 为true<ul>
-<li>如果[] &#x3D;&#x3D; false ,发生了隐式转换,则[]会转化为false</li>
-</ul>
-</li>
-<li>E: 0转布尔为false,同样转false的还有 undefined null ‘’ NaN 0 false 这四种都会为FALSE . 其他均为TRUE.所以!false &#x3D;&gt; true</li>
-</ul>
-</li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-隐式转换和String和new String</div>
-      <div>https://dreamlove.top/2022/04/20/刷题/JavaScript/2022年4月20日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年4月20日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-try...catch...finally">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日刷题-try...catch...finally</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/06/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序抓包抢位置">
-                        <span class="hidden-mobile">我来图书馆小程序抓包抢位置</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

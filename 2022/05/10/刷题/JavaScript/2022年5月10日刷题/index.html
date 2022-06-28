@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,238 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-微任务和宏任务</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月10日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">执行以下程序，输出结果为（）<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><br><span class="hljs-title function_">a</span>();<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">100</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-number">200</span><br><br><span class="hljs-attr">C</span>: 抛出异常<br><br><span class="hljs-attr">D</span>: f <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>C</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>首先注意,函数提升优先级高于变量提升(也就是先函数提升才轮到变量) <del>之前我一直以为是被覆盖….</del></p>
+</li>
+<li><p>所以上面的代码相当于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><span class="hljs-keyword">var</span> a <br>a = <span class="hljs-number">200</span>;<br>a = <span class="hljs-number">100</span>;<br><span class="hljs-title function_">a</span>();<br><span class="hljs-comment">//所以报错~</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请输入分母:&#x27;</span>)<br><span class="hljs-keyword">try</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  value = <span class="hljs-number">0</span> / num;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;b&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">catch</span>(e)&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;c&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">finally</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;d&#x27;</span>);<br>&#125;<br><span class="hljs-attr">A</span>: a , c , d<br><br><span class="hljs-attr">B</span>: a , b , d<br><br><span class="hljs-attr">C</span>: a , b , c , d<br><br><span class="hljs-attr">D</span>: a , b , c<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>B</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li>虽然说0不能做分母,如果做了会报错,在其他语言是这样子的,但是JavaScript不会,因为JavaScript有NaN类型~</li>
+<li>所以 0 &#x2F; 0 &#x3D;&gt; NaN 不会报错,所以不会捕捉到异常</li>
+<li>而 <strong>finally</strong>不管try…catch是成功还是失败都会执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">let</span> a = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span>)&#125;, <span class="hljs-number">0</span>);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span>);<br><br><span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);<br>    <br>    <span class="hljs-built_in">clearTimeout</span>(a);<br>&#125;);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">5</span>);<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">1</span> , <span class="hljs-number">2</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">B</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">C</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span><br><span class="hljs-attr">D</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span> , <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>C</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>js代码分为同步任务和异步任务,js先执行同步任务后执行任务(比如定时器,promise)</p>
+</li>
+<li><p>并且异步任务分为(微任务和宏任务,优先级为微任务 <strong>&gt;</strong> 宏任务)</p>
+</li>
+<li><p>所以代码先输出1,3,5,然后执行promise,由于promise当中清除了定时器a,所以不会执行定时器了</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205100901161.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-微任务和宏任务</div>
+      <div>https://dreamlove.top/2022/05/10/刷题/JavaScript/2022年5月10日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月10日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" title="前端真题刷题-注意基础知识不要忘了基本原理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端真题刷题-注意基础知识不要忘了基本原理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换必须解决">
+                        <span class="hidden-mobile">今日刷题-类型转换必须解决</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,237 +817,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-微任务和宏任务</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2022年5月10日 早上
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">执行以下程序，输出结果为（）<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><br><span class="hljs-title function_">a</span>();<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">100</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-number">200</span><br><br><span class="hljs-attr">C</span>: 抛出异常<br><br><span class="hljs-attr">D</span>: f <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>C</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>首先注意,函数提升优先级高于变量提升(也就是先函数提升才轮到变量) <del>之前我一直以为是被覆盖….</del></p>
-</li>
-<li><p>所以上面的代码相当于</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><span class="hljs-keyword">var</span> a <br>a = <span class="hljs-number">200</span>;<br>a = <span class="hljs-number">100</span>;<br><span class="hljs-title function_">a</span>();<br><span class="hljs-comment">//所以报错~</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请输入分母:&#x27;</span>)<br><span class="hljs-keyword">try</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  value = <span class="hljs-number">0</span> / num;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;b&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">catch</span>(e)&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;c&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">finally</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;d&#x27;</span>);<br>&#125;<br><span class="hljs-attr">A</span>: a , c , d<br><br><span class="hljs-attr">B</span>: a , b , d<br><br><span class="hljs-attr">C</span>: a , b , c , d<br><br><span class="hljs-attr">D</span>: a , b , c<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>B</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li>虽然说0不能做分母,如果做了会报错,在其他语言是这样子的,但是JavaScript不会,因为JavaScript有NaN类型~</li>
-<li>所以 0 &#x2F; 0 &#x3D;&gt; NaN 不会报错,所以不会捕捉到异常</li>
-<li>而 <strong>finally</strong>不管try…catch是成功还是失败都会执行</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">let</span> a = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span>)&#125;, <span class="hljs-number">0</span>);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span>);<br><br><span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);<br>    <br>    <span class="hljs-built_in">clearTimeout</span>(a);<br>&#125;);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">5</span>);<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">1</span> , <span class="hljs-number">2</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">B</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">C</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span><br><span class="hljs-attr">D</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span> , <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>C</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>js代码分为同步任务和异步任务,js先执行同步任务后执行任务(比如定时器,promise)</p>
-</li>
-<li><p>并且异步任务分为(微任务和宏任务,优先级为微任务 <strong>&gt;</strong> 宏任务)</p>
-</li>
-<li><p>所以代码先输出1,3,5,然后执行promise,由于promise当中清除了定时器a,所以不会执行定时器了</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205100901161.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
-</li>
-</ul>
-</li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-微任务和宏任务</div>
-      <div>https://dreamlove.top/2022/05/10/刷题/JavaScript/2022年5月10日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年5月10日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" title="前端真题刷题-注意基础知识不要忘了基本原理">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">前端真题刷题-注意基础知识不要忘了基本原理</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换必须解决">
-                        <span class="hidden-mobile">今日刷题-类型转换必须解决</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

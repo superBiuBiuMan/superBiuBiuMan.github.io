@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,199 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-CMD和AMD的模块化</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月1日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">下列关于 JavaScript 模块化的描述，错误的是（）<br><span class="hljs-symbol">A:</span> AMD推崇依赖前置，CMD推崇依赖就近<br><span class="hljs-symbol">B:</span> Sea.js遵循AMD规范，RequireJS遵循CMD规范<br><span class="hljs-symbol">C:</span> 主流的模块化包括CommonJS,AMD,CMD等<br><span class="hljs-symbol">D:</span> 模块化有利于管理模块间的依赖，更依赖模块的维护<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>B</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>AMD(也就是Async Module definition)异步模块加载机制,比如说Require.js使用的就是AMD规范,依赖前置,所有的依赖必须要放在最前面(一次性引入)</li>
+<li>CMD是由sea.js实现的（依赖就近，所有依赖需要了再引入,用到了再引入）</li>
+<li>CommonJS,比如说NodeJs</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-CMD和AMD的模块化</div>
+      <div>https://dreamlove.top/2022/05/01/刷题/JavaScript/2022年5月01日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/02/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8802%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-decodeURI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日刷题-decodeURI</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/30/%E5%B7%A5%E5%85%B7/%E5%AD%A6%E4%B9%A0%E5%BC%BA%E5%9B%BD,%E6%AF%8F%E5%A4%A940+,%E5%B8%AE%E4%BD%A0%E5%BF%AB%E4%B9%90%E5%AD%A6%E4%B9%A0/" title="学 xi强国,每天40+,帮你快乐学习">
+                        <span class="hidden-mobile">学 xi强国,每天40+,帮你快乐学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,198 +778,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-CMD和AMD的模块化</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2022年5月1日 早上
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">下列关于 JavaScript 模块化的描述，错误的是（）<br><span class="hljs-symbol">A:</span> AMD推崇依赖前置，CMD推崇依赖就近<br><span class="hljs-symbol">B:</span> Sea.js遵循AMD规范，RequireJS遵循CMD规范<br><span class="hljs-symbol">C:</span> 主流的模块化包括CommonJS,AMD,CMD等<br><span class="hljs-symbol">D:</span> 模块化有利于管理模块间的依赖，更依赖模块的维护<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>B</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>AMD(也就是Async Module definition)异步模块加载机制,比如说Require.js使用的就是AMD规范,依赖前置,所有的依赖必须要放在最前面(一次性引入)</li>
-<li>CMD是由sea.js实现的（依赖就近，所有依赖需要了再引入,用到了再引入）</li>
-<li>CommonJS,比如说NodeJs</li>
-</ul>
-</li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-CMD和AMD的模块化</div>
-      <div>https://dreamlove.top/2022/05/01/刷题/JavaScript/2022年5月01日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年5月1日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/02/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8802%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-decodeURI">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日刷题-decodeURI</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/30/%E5%B7%A5%E5%85%B7/%E5%AD%A6%E4%B9%A0%E5%BC%BA%E5%9B%BD,%E6%AF%8F%E5%A4%A940+,%E5%B8%AE%E4%BD%A0%E5%BF%AB%E4%B9%90%E5%AD%A6%E4%B9%A0/" title="学 xi强国,每天40+,帮你快乐学习">
-                        <span class="hidden-mobile">学 xi强国,每天40+,帮你快乐学习</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

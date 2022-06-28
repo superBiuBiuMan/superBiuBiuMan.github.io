@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,240 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-let的暂时性死锁</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下代码执行后，输出结果为（） <br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-title function_">foo</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<br>    <span class="hljs-keyword">let</span> x = <span class="hljs-number">20</span>;<br>    x++;<br>&#125;<br><span class="hljs-title function_">foo</span>();<br><span class="hljs-attr">A</span>: 抛出<span class="hljs-title class_">ReferenceError</span><br><span class="hljs-attr">B</span>: <span class="hljs-number">10</span><br><span class="hljs-attr">C</span>: <span class="hljs-number">20</span><br><span class="hljs-attr">D</span>: <span class="hljs-number">21</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>A</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>需要知道的知识点</p>
+<ul>
+<li>let变量的没有变量提升的</li>
+<li>只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。**(暂时性死区)**</li>
+<li>上面这句话说通俗点: 就是只要let所在定义域下(也就是在函数当中的 <code>&#123; &#125;</code> 当中),<strong>在let代码没有执行之前</strong>,如果这个时候有一段代码对let声明的变量名称<strong>进行了访问并且代码执行了</strong>(  比如console.log() ) ,那么就会发生报错!</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//注意下面这种情况</span><br><span class="hljs-keyword">let</span> <span class="hljs-title function_">foo</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//输出x=10;</span><br>    x++;<br>&#125;<br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-title function_">foo</span>();<br><span class="hljs-comment">//结合上面说所的,分析下过程</span><br><span class="hljs-comment">//就是只要let所在定义域下(也就是在函数当中的 `&#123; &#125;` 当中)</span><br><span class="hljs-comment">//在let代码没有执行之前</span><br><span class="hljs-comment">//如果这个时候有一段代码对let声明的变量名称进行了访问</span><br><span class="hljs-comment">//(  比如console.log() ) ,那么就会发生报错!</span><br><br><span class="hljs-comment">//拆解 执行过程</span><br><span class="hljs-comment">//第一步</span><br><span class="hljs-keyword">let</span> foo = &#123;...&#125;;<span class="hljs-comment">//此时函数并没有执行,所以不存在对let变量进行访问并执行,所以不报错</span><br><span class="hljs-comment">//第二步</span><br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-comment">//第三步</span><br><span class="hljs-title function_">foo</span>();<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/let">具体let知识(这里解释的更完整)</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p><strong>es6中的class和let const一样都不存在提升</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在位置A打印变量a与在位置B打印变量a各会有怎样的输出？</span><br>原来的代码 <br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">//console.log(a) 位置A</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">a</span> &#123;&#125;<br>   <span class="hljs-comment">// console.log(a) 位置B</span><br>&#125;<br><span class="hljs-title function_">test</span>();<br><br>实际上提升后的<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a) 位置A <span class="hljs-comment">//在test()作用域内找得到a</span><br><span class="hljs-comment">//是一个class但是存在TDZ暂时性死区，访问报错</span><br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">a</span> &#123;&#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a) 位置B <span class="hljs-comment">//a已经声明创建出来了</span><br>&#125;<br><span class="hljs-title function_">test</span>()<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">下列表达式中，返回值为<span class="hljs-literal">true</span>的是（）多选<br>①<span class="hljs-built_in">Object</span>.<span class="hljs-keyword">is</span>(<span class="hljs-literal">NaN</span>,<span class="hljs-literal">NaN</span>)<br><br>②<span class="hljs-built_in">Object</span>.<span class="hljs-keyword">is</span>(+<span class="hljs-number">0</span>,<span class="hljs-number">-0</span>)<br><br>③<span class="hljs-literal">NaN</span> === <span class="hljs-literal">NaN</span><br><br>④+<span class="hljs-number">0</span> === <span class="hljs-number">-0</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>①④</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>NaN和谁比较运算(+ - * &#x2F; &#x3D;&#x3D; ,&#x3D;&#x3D;&#x3D;&#x3D;)都是false</li>
+<li>indexOf无法识别数组的NaN成员也就是[NaN].indexOf(NaN)输出结果为-1(代表未找到),所以想要找到数组当中NaN就可以使用includes,[1,2,NaN].includes(NaN)返回为true</li>
+<li>Object.is()方法认为NaN等于NaN (没得说,记!)<ul>
+<li>Object.is(NaN, NaN) &#x2F;&#x2F; true</li>
+<li>Object.is(+0, -0) &#x2F;&#x2F; false</li>
+<li>+0&#x3D;&#x3D;&#x3D;-0的返回结果为true</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">以下哪些事件支持冒泡？(多选)<br><span class="hljs-symbol">A:</span> mouseenter<br><span class="hljs-symbol">B:</span> scroll<br><span class="hljs-symbol">C:</span> focus<br><span class="hljs-symbol">D:</span> keypress<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>B D</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>看图就好~</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E5%8F%AF%E4%BB%A5%E5%86%92%E6%B3%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E4%BB%A5%E5%86%92%E6%B3%A1%E7%9A%84.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-let的暂时性死锁</div>
+      <div>https://dreamlove.top/2022/04/25/刷题/JavaScript/2022年4月25日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/26/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8826%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意数组的一些方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日刷题-注意数组的一些方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/24/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8824%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意let">
+                        <span class="hidden-mobile">今日刷题-注意let</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,239 +819,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-let的暂时性死锁</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下代码执行后，输出结果为（） <br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-title function_">foo</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<br>    <span class="hljs-keyword">let</span> x = <span class="hljs-number">20</span>;<br>    x++;<br>&#125;<br><span class="hljs-title function_">foo</span>();<br><span class="hljs-attr">A</span>: 抛出<span class="hljs-title class_">ReferenceError</span><br><span class="hljs-attr">B</span>: <span class="hljs-number">10</span><br><span class="hljs-attr">C</span>: <span class="hljs-number">20</span><br><span class="hljs-attr">D</span>: <span class="hljs-number">21</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>A</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>需要知道的知识点</p>
-<ul>
-<li>let变量的没有变量提升的</li>
-<li>只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。**(暂时性死区)**</li>
-<li>上面这句话说通俗点: 就是只要let所在定义域下(也就是在函数当中的 <code>&#123; &#125;</code> 当中),<strong>在let代码没有执行之前</strong>,如果这个时候有一段代码对let声明的变量名称<strong>进行了访问并且代码执行了</strong>(  比如console.log() ) ,那么就会发生报错!</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//注意下面这种情况</span><br><span class="hljs-keyword">let</span> <span class="hljs-title function_">foo</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//输出x=10;</span><br>    x++;<br>&#125;<br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-title function_">foo</span>();<br><span class="hljs-comment">//结合上面说所的,分析下过程</span><br><span class="hljs-comment">//就是只要let所在定义域下(也就是在函数当中的 `&#123; &#125;` 当中)</span><br><span class="hljs-comment">//在let代码没有执行之前</span><br><span class="hljs-comment">//如果这个时候有一段代码对let声明的变量名称进行了访问</span><br><span class="hljs-comment">//(  比如console.log() ) ,那么就会发生报错!</span><br><br><span class="hljs-comment">//拆解 执行过程</span><br><span class="hljs-comment">//第一步</span><br><span class="hljs-keyword">let</span> foo = &#123;...&#125;;<span class="hljs-comment">//此时函数并没有执行,所以不存在对let变量进行访问并执行,所以不报错</span><br><span class="hljs-comment">//第二步</span><br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-comment">//第三步</span><br><span class="hljs-title function_">foo</span>();<br><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/let">具体let知识(这里解释的更完整)</a></p>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p><strong>es6中的class和let const一样都不存在提升</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在位置A打印变量a与在位置B打印变量a各会有怎样的输出？</span><br>原来的代码 <br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">//console.log(a) 位置A</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">a</span> &#123;&#125;<br>   <span class="hljs-comment">// console.log(a) 位置B</span><br>&#125;<br><span class="hljs-title function_">test</span>();<br><br>实际上提升后的<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a) 位置A <span class="hljs-comment">//在test()作用域内找得到a</span><br><span class="hljs-comment">//是一个class但是存在TDZ暂时性死区，访问报错</span><br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">a</span> &#123;&#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a) 位置B <span class="hljs-comment">//a已经声明创建出来了</span><br>&#125;<br><span class="hljs-title function_">test</span>()<br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">下列表达式中，返回值为<span class="hljs-literal">true</span>的是（）多选<br>①<span class="hljs-built_in">Object</span>.<span class="hljs-keyword">is</span>(<span class="hljs-literal">NaN</span>,<span class="hljs-literal">NaN</span>)<br><br>②<span class="hljs-built_in">Object</span>.<span class="hljs-keyword">is</span>(+<span class="hljs-number">0</span>,<span class="hljs-number">-0</span>)<br><br>③<span class="hljs-literal">NaN</span> === <span class="hljs-literal">NaN</span><br><br>④+<span class="hljs-number">0</span> === <span class="hljs-number">-0</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>①④</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>NaN和谁比较运算(+ - * &#x2F; &#x3D;&#x3D; ,&#x3D;&#x3D;&#x3D;&#x3D;)都是false</li>
-<li>indexOf无法识别数组的NaN成员也就是[NaN].indexOf(NaN)输出结果为-1(代表未找到),所以想要找到数组当中NaN就可以使用includes,[1,2,NaN].includes(NaN)返回为true</li>
-<li>Object.is()方法认为NaN等于NaN (没得说,记!)<ul>
-<li>Object.is(NaN, NaN) &#x2F;&#x2F; true</li>
-<li>Object.is(+0, -0) &#x2F;&#x2F; false</li>
-<li>+0&#x3D;&#x3D;&#x3D;-0的返回结果为true</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">以下哪些事件支持冒泡？(多选)<br><span class="hljs-symbol">A:</span> mouseenter<br><span class="hljs-symbol">B:</span> scroll<br><span class="hljs-symbol">C:</span> focus<br><span class="hljs-symbol">D:</span> keypress<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>B D</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>看图就好~</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/%E5%8F%AF%E4%BB%A5%E5%86%92%E6%B3%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E4%BB%A5%E5%86%92%E6%B3%A1%E7%9A%84.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
-</li>
-</ul>
-</li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-let的暂时性死锁</div>
-      <div>https://dreamlove.top/2022/04/25/刷题/JavaScript/2022年4月25日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年4月25日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/25/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E5%BD%93%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%86%E6%98%AF%E4%B8%8D%E7%86%9F%E6%82%89/" title="项目练习当中用到的函数但是不熟悉(持续更新)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">项目练习当中用到的函数但是不熟悉(持续更新)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/24/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8824%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-注意let">
-                        <span class="hidden-mobile">今日刷题-注意let</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

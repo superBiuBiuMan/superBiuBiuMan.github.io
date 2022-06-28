@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,230 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-注意优先级</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">执行以下代码，其实现的效果为（）<br>&lt;div&gt;<br>   <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span> =<span class="hljs-string">&quot;button1&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;moveBtn(this);&quot;</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span> =<span class="hljs-string">&quot;button2&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;2&quot;</span> /&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">   <span class="hljs-keyword">function</span> <span class="hljs-title function_">moveBtn</span>(<span class="hljs-params">obj</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> clone = obj.<span class="hljs-title function_">cloneNode</span>(<span class="hljs-literal">true</span>);</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> parent = obj.<span class="hljs-property">parentNode</span>;</span></span><br><span class="language-javascript"><span class="language-xml">     parent.<span class="hljs-title function_">appendChild</span>(clone);</span></span><br><span class="language-javascript"><span class="language-xml">     parent.<span class="hljs-title function_">removeChild</span>(obj);</span></span><br><span class="language-javascript"><span class="language-xml">   &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="hljs-attr">A</span>: 鼠标单击button1后将button1链接到button2的后面<br><br><span class="hljs-attr">B</span>: 鼠标单击button1后将button1移动到button2的后面<br><br><span class="hljs-attr">C</span>: 鼠标单击button1后将button2移动到button1的后面<br><br><span class="hljs-attr">D</span>: 鼠标单击button1后将button2链接到button1的后面<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>B</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>**<code>Node.cloneNode([deep]) </code>**方法返回调用该方法的节点的一个副本.<ul>
+<li>Node: 将要被克隆的节点</li>
+<li>deep: 是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身.</li>
+</ul>
+</li>
+<li>所以obj.cloneNode(true);深度克隆一个自己的节点,克隆之后删除原体后在移动克隆体到button1的后面</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript">假设val已经声明,可定义为任何值。则下面js代码有可能输出的结果为:<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Value is &#x27;</span> + (val != <span class="hljs-string">&#x27;0&#x27;</span>) ? <span class="hljs-string">&#x27;define&#x27;</span> : <span class="hljs-string">&#x27;undefine&#x27;</span>);<br><span class="hljs-attr">A</span>: <span class="hljs-title class_">Value</span> is define<br><br><span class="hljs-attr">B</span>: <span class="hljs-title class_">Value</span> is undefine<br><br><span class="hljs-attr">C</span>: define<br><br><span class="hljs-attr">D</span>: undefine<br><br><span class="hljs-attr">E</span>: <span class="hljs-title class_">Value</span> is define 或者 <span class="hljs-title class_">Value</span> isundefine<br><br><span class="hljs-attr">D</span>: define 或者 undefine <br><br><span class="hljs-attr">E</span>: 其他选项都有可能<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>C</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>算术运算符优先级大于三元运算符,所以先计算 <strong>‘Value is ‘ + (val !&#x3D; ‘0’)</strong> 后进行三元运算,但是这个计算结果不管怎么样都会为真（因为在js当中，除了 <strong>“”  null undefined NaN false 0</strong> 这六个转化为布尔值为假，其他均为真，空数组，空对象转化为布尔值也是真！）所以这个三元运算符结果永远为 <strong>‘define’</strong></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">JavaScript当中运算符优先级文档</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">已知数组arr=<span class="hljs-string">[1,69,4,6,8,10]</span>，对数组进行升序排列，下列选项中，不符合要求的是（）<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">A</span>:<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>;i++)&#123;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>;j &lt; arr.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>-i;j++)&#123;<br><br>        <span class="hljs-keyword">if</span>(arr[j]&gt;arr[j+<span class="hljs-number">1</span>])&#123;<br><br>            <span class="hljs-keyword">var</span> temp = arr[j];<br><br>            arr[j] = arr[j+<span class="hljs-number">1</span>];<br><br>            arr[j+<span class="hljs-number">1</span>] = temp;<br><br>        &#125;<br><br>    &#125;<br><br>&#125;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">B</span>:<br><span class="hljs-keyword">var</span> minIndex;<br><br><span class="hljs-keyword">var</span> temp;<br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.<span class="hljs-property">length</span>; i++) &#123;<br><br>    minIndex = i - <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = i; j &lt;arr.<span class="hljs-property">length</span>; j++) &#123;<br><br>        <span class="hljs-keyword">if</span>(arr[j] &lt; arr[minIndex]) minIndex = j;<br><br>    &#125;<br><br>    <span class="hljs-keyword">if</span>(minIndex != i-<span class="hljs-number">1</span>) &#123;<br><br>        temp = arr[i-<span class="hljs-number">1</span>];<br><br>        arr[i-<span class="hljs-number">1</span>] = arr[minIndex];<br><br>        arr[minIndex] = temp;<br><br>    &#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">C</span>:<br>arr.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>b-a);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">D</span>:<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.<span class="hljs-property">length</span>; i ++) &#123;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j&gt;=<span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; arr[j+<span class="hljs-number">1</span>]; j --) &#123;<br><br>        <span class="hljs-keyword">let</span> temp = arr[j];<br><br>        arr[j] = arr[j+<span class="hljs-number">1</span>];<br><br>        arr[j+<span class="hljs-number">1</span>] = temp;<br><br>    &#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>C选项</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>sort当中arr.sort( ( a , b ) ) &#x3D;&gt; b - a ) ;为降序,    arr.sort( ( a , b ) ) &#x3D;&gt; a-b ) 为升序</li>
+<li>A是冒泡排序</li>
+<li>B是选择排序</li>
+<li>D是插入排序</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-注意优先级</div>
+      <div>https://dreamlove.top/2022/04/30/刷题/JavaScript/2022年4月30日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月30日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/30/%E5%89%8D%E7%AB%AF/element-ui%E5%BD%93%E4%B8%ADpagination%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%80%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%95%B0%E9%87%8F(page-size)%E5%90%8E%E9%A1%B5%E7%A0%81%E6%B2%A1%E6%9C%89%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96/" title="element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/29/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8829%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-温故而知新">
+                        <span class="hidden-mobile">今日刷题-温故而知新</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,229 +809,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-注意优先级</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">执行以下代码，其实现的效果为（）<br>&lt;div&gt;<br>   <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span> =<span class="hljs-string">&quot;button1&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;moveBtn(this);&quot;</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span> =<span class="hljs-string">&quot;button2&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;2&quot;</span> /&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">   <span class="hljs-keyword">function</span> <span class="hljs-title function_">moveBtn</span>(<span class="hljs-params">obj</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> clone = obj.<span class="hljs-title function_">cloneNode</span>(<span class="hljs-literal">true</span>);</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> parent = obj.<span class="hljs-property">parentNode</span>;</span></span><br><span class="language-javascript"><span class="language-xml">     parent.<span class="hljs-title function_">appendChild</span>(clone);</span></span><br><span class="language-javascript"><span class="language-xml">     parent.<span class="hljs-title function_">removeChild</span>(obj);</span></span><br><span class="language-javascript"><span class="language-xml">   &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="hljs-attr">A</span>: 鼠标单击button1后将button1链接到button2的后面<br><br><span class="hljs-attr">B</span>: 鼠标单击button1后将button1移动到button2的后面<br><br><span class="hljs-attr">C</span>: 鼠标单击button1后将button2移动到button1的后面<br><br><span class="hljs-attr">D</span>: 鼠标单击button1后将button2链接到button1的后面<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>B</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>**<code>Node.cloneNode([deep]) </code>**方法返回调用该方法的节点的一个副本.<ul>
-<li>Node: 将要被克隆的节点</li>
-<li>deep: 是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身.</li>
-</ul>
-</li>
-<li>所以obj.cloneNode(true);深度克隆一个自己的节点,克隆之后删除原体后在移动克隆体到button1的后面</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript">假设val已经声明,可定义为任何值。则下面js代码有可能输出的结果为:<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Value is &#x27;</span> + (val != <span class="hljs-string">&#x27;0&#x27;</span>) ? <span class="hljs-string">&#x27;define&#x27;</span> : <span class="hljs-string">&#x27;undefine&#x27;</span>);<br><span class="hljs-attr">A</span>: <span class="hljs-title class_">Value</span> is define<br><br><span class="hljs-attr">B</span>: <span class="hljs-title class_">Value</span> is undefine<br><br><span class="hljs-attr">C</span>: define<br><br><span class="hljs-attr">D</span>: undefine<br><br><span class="hljs-attr">E</span>: <span class="hljs-title class_">Value</span> is define 或者 <span class="hljs-title class_">Value</span> isundefine<br><br><span class="hljs-attr">D</span>: define 或者 undefine <br><br><span class="hljs-attr">E</span>: 其他选项都有可能<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>C</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>算术运算符优先级大于三元运算符,所以先计算 <strong>‘Value is ‘ + (val !&#x3D; ‘0’)</strong> 后进行三元运算,但是这个计算结果不管怎么样都会为真（因为在js当中，除了 <strong>“”  null undefined NaN false 0</strong> 这六个转化为布尔值为假，其他均为真，空数组，空对象转化为布尔值也是真！）所以这个三元运算符结果永远为 <strong>‘define’</strong></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">JavaScript当中运算符优先级文档</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">已知数组arr=<span class="hljs-string">[1,69,4,6,8,10]</span>，对数组进行升序排列，下列选项中，不符合要求的是（）<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">A</span>:<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>;i++)&#123;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>;j &lt; arr.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>-i;j++)&#123;<br><br>        <span class="hljs-keyword">if</span>(arr[j]&gt;arr[j+<span class="hljs-number">1</span>])&#123;<br><br>            <span class="hljs-keyword">var</span> temp = arr[j];<br><br>            arr[j] = arr[j+<span class="hljs-number">1</span>];<br><br>            arr[j+<span class="hljs-number">1</span>] = temp;<br><br>        &#125;<br><br>    &#125;<br><br>&#125;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">B</span>:<br><span class="hljs-keyword">var</span> minIndex;<br><br><span class="hljs-keyword">var</span> temp;<br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.<span class="hljs-property">length</span>; i++) &#123;<br><br>    minIndex = i - <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = i; j &lt;arr.<span class="hljs-property">length</span>; j++) &#123;<br><br>        <span class="hljs-keyword">if</span>(arr[j] &lt; arr[minIndex]) minIndex = j;<br><br>    &#125;<br><br>    <span class="hljs-keyword">if</span>(minIndex != i-<span class="hljs-number">1</span>) &#123;<br><br>        temp = arr[i-<span class="hljs-number">1</span>];<br><br>        arr[i-<span class="hljs-number">1</span>] = arr[minIndex];<br><br>        arr[minIndex] = temp;<br><br>    &#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">C</span>:<br>arr.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>b-a);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">D</span>:<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.<span class="hljs-property">length</span>; i ++) &#123;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j&gt;=<span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; arr[j+<span class="hljs-number">1</span>]; j --) &#123;<br><br>        <span class="hljs-keyword">let</span> temp = arr[j];<br><br>        arr[j] = arr[j+<span class="hljs-number">1</span>];<br><br>        arr[j+<span class="hljs-number">1</span>] = temp;<br><br>    &#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>C选项</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>sort当中arr.sort( ( a , b ) ) &#x3D;&gt; b - a ) ;为降序,    arr.sort( ( a , b ) ) &#x3D;&gt; a-b ) 为升序</li>
-<li>A是冒泡排序</li>
-<li>B是选择排序</li>
-<li>D是插入排序</li>
-</ul>
-</li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-注意优先级</div>
-      <div>https://dreamlove.top/2022/04/30/刷题/JavaScript/2022年4月30日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年4月30日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/30/%E5%89%8D%E7%AB%AF/element-ui%E5%BD%93%E4%B8%ADpagination%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%80%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%95%B0%E9%87%8F(page-size)%E5%90%8E%E9%A1%B5%E7%A0%81%E6%B2%A1%E6%9C%89%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96/" title="element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/29/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8829%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-温故而知新">
-                        <span class="hidden-mobile">今日刷题-温故而知新</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

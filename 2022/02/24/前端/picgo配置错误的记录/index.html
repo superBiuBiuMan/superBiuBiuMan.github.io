@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,54 +309,12 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
-    
-
-
-
-
-
-<div class="category-list">
-  
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="随记"
-        id="heading-0f870dc3db2c69d7ef6789cc5a395e72" role="tab" data-toggle="collapse" href="#collapse-0f870dc3db2c69d7ef6789cc5a395e72"
-        aria-expanded="true"
-      >
-        随记
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-0f870dc3db2c69d7ef6789cc5a395e72"
-           role="tabpanel" aria-labelledby="heading-0f870dc3db2c69d7ef6789cc5a395e72">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2022/02/24/%E5%89%8D%E7%AB%AF/picgo%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E7%9A%84%E8%AE%B0%E5%BD%95/" title="记一次配置picgo错误的记录和解决办法"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">记一次配置picgo错误的记录和解决办法</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
+
 
 
   </aside>
@@ -536,12 +494,54 @@
 
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
 
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="随记"
+        id="heading-0f870dc3db2c69d7ef6789cc5a395e72" role="tab" data-toggle="collapse" href="#collapse-0f870dc3db2c69d7ef6789cc5a395e72"
+        aria-expanded="true"
+      >
+        随记
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0f870dc3db2c69d7ef6789cc5a395e72"
+           role="tabpanel" aria-labelledby="heading-0f870dc3db2c69d7ef6789cc5a395e72">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/02/24/%E5%89%8D%E7%AB%AF/picgo%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E7%9A%84%E8%AE%B0%E5%BD%95/" title="记一次配置picgo错误的记录和解决办法"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">记一次配置picgo错误的记录和解决办法</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
 
 
   </aside>

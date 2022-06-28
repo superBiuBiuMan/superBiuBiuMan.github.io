@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,249 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-js的call,apply为null,undefined的情况和日期的注意点</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);<br>&#125; <br>a.<span class="hljs-title function_">call</span>(<span class="hljs-literal">null</span>);<span class="hljs-comment">//输出结果为?</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>window</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>call,apply用于改变this的指向,并且可以让任意函数成为某一对象的方法进行调用</li>
+<li><strong>特别的是</strong><ul>
+<li>null或undefined时，将是JS执行环境的全局变量。浏览器中是window，其它环境（如node）则是global。</li>
+<li><a target="_blank" rel="noopener" href="http://es5.github.io/#x15.3.4.4">ECMAScript5.1 15.3.4.4中有解释</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">有<span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;2018-05-09&#x27;</span>)，可以设置为<span class="hljs-number">6</span>月份的操作是？（）(多选)<br><span class="hljs-attr">A</span>:  d.<span class="hljs-title function_">setMonth</span>(<span class="hljs-number">7</span>);<br><span class="hljs-attr">B</span>:  d.<span class="hljs-title function_">setMonth</span>(<span class="hljs-number">6</span>);<br><span class="hljs-attr">C</span>:  d.<span class="hljs-title function_">setMonth</span>(<span class="hljs-number">5</span>);<br><span class="hljs-attr">D</span>:  d.<span class="hljs-title function_">setDate</span>(<span class="hljs-number">40</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>C与D</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>C : js当中的月份是从0开始算的,0代表1月,11代表12月,所以设置的时候需要减少1,所以d.setMonth(5)为设置6月份</p>
+</li>
+<li><p>D : 看看菜鸟教程当中的setDate(day)解释</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>day</em></td>
+<td align="left">必需。<br /><strong>表示一个月中的一天的一个数值（1 ~ 31</strong>）<br />          0 为上一个月的最后一天<br />           -1 为上一个月最后一天之前的一天<br /><strong>如果当月有 31 天</strong><br />          32 为下个月的第一天<br /><strong>如果当月有 30 天</strong><br />           32 为下一个月的第二天</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//五月有31天,所以只需要大于31就是设置下一个月了(其实设置大于31的数字都可以设置到下一个月,只不过下一个是记号的区别而已~)</span><br><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&quot;2018-05-09&quot;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;time.getFullYear()&#125;</span>年<span class="hljs-subst">$&#123;time.getMonth()+<span class="hljs-number">1</span>&#125;</span>月<span class="hljs-subst">$&#123;time.getDate()&#125;</span>日`</span>);<span class="hljs-comment">//2018年5月9日</span><br>time.<span class="hljs-title function_">setDate</span>(<span class="hljs-number">42</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;time.getFullYear()&#125;</span>年<span class="hljs-subst">$&#123;time.getMonth()+<span class="hljs-number">1</span>&#125;</span>月<span class="hljs-subst">$&#123;time.getDate()&#125;</span>日`</span>);<span class="hljs-comment">//2018年6月12日</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//说出A,B,C,D输出结果</span><br><span class="hljs-attr">A</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>+ <span class="hljs-string">&quot;2&quot;</span>+<span class="hljs-string">&quot;2&quot;</span>);<br><span class="hljs-attr">B</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>+ +<span class="hljs-string">&quot;2&quot;</span>+<span class="hljs-string">&quot;2&quot;</span>);<br><span class="hljs-attr">C</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;A&quot;</span>- <span class="hljs-string">&quot;B&quot;</span>+<span class="hljs-string">&quot;2&quot;</span>);<br><span class="hljs-attr">D</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;A&quot;</span>- <span class="hljs-string">&quot;B&quot;</span>+<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>122   &#x3D;&gt; (  如果typeof (1+ “2”+”2”)   那么输出结果为”string”  )</li>
+<li>32    &#x3D;&gt;  (  如果typeof (1+ +”2”+”2”)   那么输出结果为”string”  )</li>
+<li>NaN2</li>
+<li>NaN</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li>A : 做加法时要注意双引号，当使用双引号时，JavaScript认为是字符串，字符串相加等于字符串合并。<br>因此，这里相当于字符串的合并，即为122.</li>
+<li>B : 第一个+”2”中的加号是一元加操作符，+”2”会变成数值2，因此1+ +”2”相当于1+2&#x3D;3.<br>然后和后面的字符串“2”相合并，变成了字符串”32”.</li>
+<li>C :  第一个+”2”中的加号是一元加操作符，+”2”会变成数值2，因此1+ +”2”相当于1+2&#x3D;3.<br>然后和后面的字符串“2”相合并，变成了字符串”32”.<ul>
+<li>同样的操作还有  * “1”   &#x3D;&gt;  相当于把字符串1转化为数字1</li>
+</ul>
+</li>
+<li>“A”-“B”的运算中，需要先把”A”和”B”用Number函数转换为数值，其结果为NaN，在减发操作中，如果有一个是NaN，则结果是NaN，因此”A”-“B”结果为NaN。<br>然后和”2”进行字符串合并(<strong>这里的+为什么是合并那是因为加数为字符串类型</strong>)，变成了NaN2.</li>
+<li>D :”A”-“B”结果为NaN，然后和数值2进行<strong>加法</strong>操作，在加法操作中，如果有一个操作数是NaN，则结果为NaN。</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-js的call,apply为null,undefined的情况和日期的注意点</div>
+      <div>https://dreamlove.top/2022/04/22/刷题/JavaScript/2022年4月22日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月22日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/23/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8823%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-JavaScript的身份证正则和内置可迭代对象">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日刷题-JavaScript的身份证正则和内置可迭代对象</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-try...catch...finally">
+                        <span class="hidden-mobile">今日刷题-try...catch...finally</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,248 +828,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-js的call,apply为null,undefined的情况和日期的注意点</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);<br>&#125; <br>a.<span class="hljs-title function_">call</span>(<span class="hljs-literal">null</span>);<span class="hljs-comment">//输出结果为?</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>window</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>call,apply用于改变this的指向,并且可以让任意函数成为某一对象的方法进行调用</li>
-<li><strong>特别的是</strong><ul>
-<li>null或undefined时，将是JS执行环境的全局变量。浏览器中是window，其它环境（如node）则是global。</li>
-<li><a target="_blank" rel="noopener" href="http://es5.github.io/#x15.3.4.4">ECMAScript5.1 15.3.4.4中有解释</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">有<span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;2018-05-09&#x27;</span>)，可以设置为<span class="hljs-number">6</span>月份的操作是？（）(多选)<br><span class="hljs-attr">A</span>:  d.<span class="hljs-title function_">setMonth</span>(<span class="hljs-number">7</span>);<br><span class="hljs-attr">B</span>:  d.<span class="hljs-title function_">setMonth</span>(<span class="hljs-number">6</span>);<br><span class="hljs-attr">C</span>:  d.<span class="hljs-title function_">setMonth</span>(<span class="hljs-number">5</span>);<br><span class="hljs-attr">D</span>:  d.<span class="hljs-title function_">setDate</span>(<span class="hljs-number">40</span>);<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>C与D</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>C : js当中的月份是从0开始算的,0代表1月,11代表12月,所以设置的时候需要减少1,所以d.setMonth(5)为设置6月份</p>
-</li>
-<li><p>D : 看看菜鸟教程当中的setDate(day)解释</p>
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><em>day</em></td>
-<td align="left">必需。<br /><strong>表示一个月中的一天的一个数值（1 ~ 31</strong>）<br />          0 为上一个月的最后一天<br />           -1 为上一个月最后一天之前的一天<br /><strong>如果当月有 31 天</strong><br />          32 为下个月的第一天<br /><strong>如果当月有 30 天</strong><br />           32 为下一个月的第二天</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//五月有31天,所以只需要大于31就是设置下一个月了(其实设置大于31的数字都可以设置到下一个月,只不过下一个是记号的区别而已~)</span><br><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&quot;2018-05-09&quot;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;time.getFullYear()&#125;</span>年<span class="hljs-subst">$&#123;time.getMonth()+<span class="hljs-number">1</span>&#125;</span>月<span class="hljs-subst">$&#123;time.getDate()&#125;</span>日`</span>);<span class="hljs-comment">//2018年5月9日</span><br>time.<span class="hljs-title function_">setDate</span>(<span class="hljs-number">42</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;time.getFullYear()&#125;</span>年<span class="hljs-subst">$&#123;time.getMonth()+<span class="hljs-number">1</span>&#125;</span>月<span class="hljs-subst">$&#123;time.getDate()&#125;</span>日`</span>);<span class="hljs-comment">//2018年6月12日</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//说出A,B,C,D输出结果</span><br><span class="hljs-attr">A</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>+ <span class="hljs-string">&quot;2&quot;</span>+<span class="hljs-string">&quot;2&quot;</span>);<br><span class="hljs-attr">B</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>+ +<span class="hljs-string">&quot;2&quot;</span>+<span class="hljs-string">&quot;2&quot;</span>);<br><span class="hljs-attr">C</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;A&quot;</span>- <span class="hljs-string">&quot;B&quot;</span>+<span class="hljs-string">&quot;2&quot;</span>);<br><span class="hljs-attr">D</span>:  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;A&quot;</span>- <span class="hljs-string">&quot;B&quot;</span>+<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>122   &#x3D;&gt; (  如果typeof (1+ “2”+”2”)   那么输出结果为”string”  )</li>
-<li>32    &#x3D;&gt;  (  如果typeof (1+ +”2”+”2”)   那么输出结果为”string”  )</li>
-<li>NaN2</li>
-<li>NaN</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li>A : 做加法时要注意双引号，当使用双引号时，JavaScript认为是字符串，字符串相加等于字符串合并。<br>因此，这里相当于字符串的合并，即为122.</li>
-<li>B : 第一个+”2”中的加号是一元加操作符，+”2”会变成数值2，因此1+ +”2”相当于1+2&#x3D;3.<br>然后和后面的字符串“2”相合并，变成了字符串”32”.</li>
-<li>C :  第一个+”2”中的加号是一元加操作符，+”2”会变成数值2，因此1+ +”2”相当于1+2&#x3D;3.<br>然后和后面的字符串“2”相合并，变成了字符串”32”.<ul>
-<li>同样的操作还有  * “1”   &#x3D;&gt;  相当于把字符串1转化为数字1</li>
-</ul>
-</li>
-<li>“A”-“B”的运算中，需要先把”A”和”B”用Number函数转换为数值，其结果为NaN，在减发操作中，如果有一个是NaN，则结果是NaN，因此”A”-“B”结果为NaN。<br>然后和”2”进行字符串合并(<strong>这里的+为什么是合并那是因为加数为字符串类型</strong>)，变成了NaN2.</li>
-<li>D :”A”-“B”结果为NaN，然后和数值2进行<strong>加法</strong>操作，在加法操作中，如果有一个操作数是NaN，则结果为NaN。</li>
-</ul>
-</li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-js的call,apply为null,undefined的情况和日期的注意点</div>
-      <div>https://dreamlove.top/2022/04/22/刷题/JavaScript/2022年4月22日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年4月22日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/23/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8823%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-JavaScript的身份证正则和内置可迭代对象">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日刷题-JavaScript的身份证正则和内置可迭代对象</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/21/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8821%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-try...catch...finally">
-                        <span class="hidden-mobile">今日刷题-try...catch...finally</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

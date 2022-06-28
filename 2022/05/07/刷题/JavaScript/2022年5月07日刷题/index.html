@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,233 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-原型链</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月7日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">请问以下两次检测对象constructor是否拥有属性名<span class="hljs-number">1</span>的结果分别是什么？<br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> <span class="hljs-title class_">Object</span>(<span class="hljs-number">1.0</span>).<span class="hljs-property">constructor</span>;<br><span class="hljs-title class_">Number</span>[<span class="hljs-number">1</span>] = <span class="hljs-number">123</span>;<br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> <span class="hljs-title class_">Object</span>(<span class="hljs-number">1.0</span>).<span class="hljs-property">constructor</span>;<br><br><span class="hljs-attr">A</span>: <span class="hljs-literal">false</span>,<span class="hljs-literal">false</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-literal">false</span>,<span class="hljs-literal">true</span><br><br><span class="hljs-attr">C</span>: <span class="hljs-literal">true</span>,<span class="hljs-literal">true</span><br><br><span class="hljs-attr">D</span>: <span class="hljs-literal">true</span>,<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>B</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p><code>in</code>用于检测一个属性是否在指定对象上或者是其原型链上</p>
+</li>
+<li><p><strong><code>Object</code> 构造函数将给定的值包装为一个新对象。</strong></p>
+<ul>
+<li>比如Object({name:’李白’}) 返回 { name : ‘李白’ }</li>
+<li>Object([1,2,3,4]) 返回[1,2,3,4]</li>
+<li>Object(1.0) 返回Number(1) 也就是Number对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 代码等同于</span><br><span class="hljs-keyword">var</span> temp = <span class="hljs-title class_">Object</span>(<span class="hljs-number">1.0</span>);<br><br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> temp.<span class="hljs-property">constructor</span>;<br><br><span class="hljs-comment">//Object[key] = value; 形式给 constructor 对象添加 key = 1 属性,对应的 value = 123 </span><br><span class="hljs-comment">// 因为key不能为数字开头,所以就通过Ojbect[key]方式赋值</span><br><span class="hljs-comment">// 类似于 Object.name = &quot;李白&quot;这种</span><br><span class="hljs-title class_">Number</span>[<span class="hljs-number">1</span>] = <span class="hljs-number">123</span>;<br><br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> temp.<span class="hljs-property">constructor</span>;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> F=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;;<br><span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">a</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;;<br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> .<span class="hljs-property">b</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;;<br><span class="hljs-keyword">var</span> f=<span class="hljs-keyword">new</span> <span class="hljs-title function_">F</span>();<br><span class="hljs-attr">A</span>: f能取到a，但取不到b<br><br><span class="hljs-attr">B</span>: f能取到a,b<br><br><span class="hljs-attr">C</span>: F能取到b，不能取到a<br><br><span class="hljs-attr">D</span>: F能取到a，不能取到b<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>A</li>
+</ul>
+</li>
+<li><p>解析</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 看代码~</span><br><span class="hljs-keyword">var</span> F = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><span class="hljs-keyword">var</span> f = <span class="hljs-keyword">new</span> <span class="hljs-title function_">F</span>();<br>F.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br>f.<span class="hljs-property">__proto__</span> === F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br>F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br><br>F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> == <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+
+<p>图形演示</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205070910644.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="原型链"></p>
+</li>
+</ul>
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下面哪些语句可以 在<span class="hljs-variable constant_">JS</span>里判断一个对象是否为<span class="hljs-title class_">String</span>类型？<br><span class="hljs-attr">A</span>: oStringObject <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">String</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-keyword">typeof</span> oStringObject == <span class="hljs-string">&#x27;string&#x27;</span><br><br><span class="hljs-attr">C</span>: oStringObject is <span class="hljs-title class_">String</span> (没见过这个语法~)<br><br><span class="hljs-attr">D</span>: 以上答案都不正确<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>A</li>
+</ul>
+</li>
+<li><p>解析</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//所以只有a</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-string">&#x27;hello&#x27;</span>;  <span class="hljs-comment">// &#x27;string&#x27;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&#x27;hello&#x27;</span>);  <span class="hljs-comment">// &#x27;object&#x27;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-原型链</div>
+      <div>https://dreamlove.top/2022/05/07/刷题/JavaScript/2022年5月07日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月7日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换必须解决">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日刷题-类型转换必须解决</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E5%86%8D%E6%AC%A1(%E6%B7%B1%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9FDOM%E4%BA%8B%E4%BB%B6)/" title="深入自定义事件和原生DOM事件($attr等)">
+                        <span class="hidden-mobile">深入自定义事件和原生DOM事件($attr等)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,232 +812,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-原型链</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2022年5月7日 早上
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">请问以下两次检测对象constructor是否拥有属性名<span class="hljs-number">1</span>的结果分别是什么？<br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> <span class="hljs-title class_">Object</span>(<span class="hljs-number">1.0</span>).<span class="hljs-property">constructor</span>;<br><span class="hljs-title class_">Number</span>[<span class="hljs-number">1</span>] = <span class="hljs-number">123</span>;<br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> <span class="hljs-title class_">Object</span>(<span class="hljs-number">1.0</span>).<span class="hljs-property">constructor</span>;<br><br><span class="hljs-attr">A</span>: <span class="hljs-literal">false</span>,<span class="hljs-literal">false</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-literal">false</span>,<span class="hljs-literal">true</span><br><br><span class="hljs-attr">C</span>: <span class="hljs-literal">true</span>,<span class="hljs-literal">true</span><br><br><span class="hljs-attr">D</span>: <span class="hljs-literal">true</span>,<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>B</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p><code>in</code>用于检测一个属性是否在指定对象上或者是其原型链上</p>
-</li>
-<li><p><strong><code>Object</code> 构造函数将给定的值包装为一个新对象。</strong></p>
-<ul>
-<li>比如Object({name:’李白’}) 返回 { name : ‘李白’ }</li>
-<li>Object([1,2,3,4]) 返回[1,2,3,4]</li>
-<li>Object(1.0) 返回Number(1) 也就是Number对象</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 代码等同于</span><br><span class="hljs-keyword">var</span> temp = <span class="hljs-title class_">Object</span>(<span class="hljs-number">1.0</span>);<br><br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> temp.<span class="hljs-property">constructor</span>;<br><br><span class="hljs-comment">//Object[key] = value; 形式给 constructor 对象添加 key = 1 属性,对应的 value = 123 </span><br><span class="hljs-comment">// 因为key不能为数字开头,所以就通过Ojbect[key]方式赋值</span><br><span class="hljs-comment">// 类似于 Object.name = &quot;李白&quot;这种</span><br><span class="hljs-title class_">Number</span>[<span class="hljs-number">1</span>] = <span class="hljs-number">123</span>;<br><br><span class="hljs-number">1</span> <span class="hljs-keyword">in</span> temp.<span class="hljs-property">constructor</span>;<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> F=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;;<br><span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">a</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;;<br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> .<span class="hljs-property">b</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;;<br><span class="hljs-keyword">var</span> f=<span class="hljs-keyword">new</span> <span class="hljs-title function_">F</span>();<br><span class="hljs-attr">A</span>: f能取到a，但取不到b<br><br><span class="hljs-attr">B</span>: f能取到a,b<br><br><span class="hljs-attr">C</span>: F能取到b，不能取到a<br><br><span class="hljs-attr">D</span>: F能取到a，不能取到b<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>A</li>
-</ul>
-</li>
-<li><p>解析</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 看代码~</span><br><span class="hljs-keyword">var</span> F = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br><span class="hljs-keyword">var</span> f = <span class="hljs-keyword">new</span> <span class="hljs-title function_">F</span>();<br>F.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br>f.<span class="hljs-property">__proto__</span> === F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br>F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//true</span><br><br>F.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> == <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>; <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
-
-<p>图形演示</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205070910644.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="原型链"></p>
-</li>
-</ul>
-<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下面哪些语句可以 在<span class="hljs-variable constant_">JS</span>里判断一个对象是否为<span class="hljs-title class_">String</span>类型？<br><span class="hljs-attr">A</span>: oStringObject <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">String</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-keyword">typeof</span> oStringObject == <span class="hljs-string">&#x27;string&#x27;</span><br><br><span class="hljs-attr">C</span>: oStringObject is <span class="hljs-title class_">String</span> (没见过这个语法~)<br><br><span class="hljs-attr">D</span>: 以上答案都不正确<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>A</li>
-</ul>
-</li>
-<li><p>解析</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//所以只有a</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-string">&#x27;hello&#x27;</span>;  <span class="hljs-comment">// &#x27;string&#x27;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&#x27;hello&#x27;</span>);  <span class="hljs-comment">// &#x27;object&#x27;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-原型链</div>
-      <div>https://dreamlove.top/2022/05/07/刷题/JavaScript/2022年5月07日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年5月7日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8808%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换必须解决">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日刷题-类型转换必须解决</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E5%86%8D%E6%AC%A1(%E6%B7%B1%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9FDOM%E4%BA%8B%E4%BB%B6)/" title="深入自定义事件和原生DOM事件($attr等)">
-                        <span class="hidden-mobile">深入自定义事件和原生DOM事件($attr等)</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

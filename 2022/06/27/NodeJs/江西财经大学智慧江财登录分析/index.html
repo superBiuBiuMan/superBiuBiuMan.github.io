@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="先抓包看看 发现提交登录的参数  如图,提交的参数   然后试着搜索这些参数,看哪里用到了,关键的是password是怎么加密的,全局搜索ctrl+shift+f来进行代码搜索,定位在如下图    然后我们就知道了加密方式  逻辑总结 我就懒得写了,直接引用@K哥爬虫   加密入口可以在 index 首页找到，用到了 rsa.js 里面的三个加密函数 RSAKey()、setPublic()、en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="江西财经大学智慧江财登录分析">
+<meta property="og:url" content="https://dreamlove.top/2022/06/27/NodeJs/%E6%B1%9F%E8%A5%BF%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E6%99%BA%E6%85%A7%E6%B1%9F%E8%B4%A2%E7%99%BB%E5%BD%95%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="先抓包看看 发现提交登录的参数  如图,提交的参数   然后试着搜索这些参数,看哪里用到了,关键的是password是怎么加密的,全局搜索ctrl+shift+f来进行代码搜索,定位在如下图    然后我们就知道了加密方式  逻辑总结 我就懒得写了,直接引用@K哥爬虫   加密入口可以在 index 首页找到，用到了 rsa.js 里面的三个加密函数 RSAKey()、setPublic()、en">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206280827701.jpg">
+<meta property="article:published_time" content="2022-06-26T19:06:07.000Z">
+<meta property="article:modified_time" content="2022-06-27T07:06:10.000Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="NodeJs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206280827701.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>江西财经大学智慧江财登录分析 - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-briefcase"></i>
+                工具站
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="江西财经大学智慧江财登录分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-27 03:06" pubdate>
+          2022年6月27日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          102 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">江西财经大学智慧江财登录分析</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年6月27日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="先抓包看看"><a href="#先抓包看看" class="headerlink" title="先抓包看看"></a>先抓包看看</h3><ul>
+<li>发现提交登录的参数</li>
+</ul>
+<p>如图,提交的参数</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206271149618.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<ul>
+<li>然后试着搜索这些参数,看哪里用到了,关键的是<code>password</code>是怎么加密的,<strong>全局搜索</strong><code>ctrl+shift+f</code>来进行代码搜索,定位在如下图</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206271403931.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<ul>
+<li>然后我们就知道了加密方式</li>
+</ul>
+<h4 id="逻辑总结"><a href="#逻辑总结" class="headerlink" title="逻辑总结"></a>逻辑总结</h4><ul>
+<li>我就懒得写了,直接引用<a target="_blank" rel="noopener" href="https://blog.csdn.net/kdl_csdn">@K哥爬虫</a></li>
+</ul>
+<ol>
+<li>加密入口可以在 index 首页找到，用到了 rsa.js 里面的三个加密函数 <code>RSAKey()</code>、<code>setPublic()</code>、<code>encrypt()</code>；</li>
+<li>rsa.js 里的 <code>BigInteger()</code> 函数依赖 jsbn.js，<code>SecureRandom()</code> 函数依赖 rng.js；</li>
+<li>rng.js 里的变量 <code>rng_psize</code> 在 prng4.js 中定义，<code>prng_newstate()</code> 函数也依赖 prng4.js</li>
+</ol>
+<h3 id="提交方式"><a href="#提交方式" class="headerlink" title="提交方式"></a>提交方式</h3><h4 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h4><ul>
+<li><p>表单的name作用：name 属性用于对提交到服务器后的表单数据进行标识</p>
+</li>
+<li><p>注意：<strong>只有设置了 name 属性的表单元素才能在提交表单时传递它们的值。</strong></p>
+</li>
+<li><p>简单来说，name就是提交到后台的索引，比如在复选框中都要设置成name&#x3D;”hobby”说明几个复选框都在爱好下。</p>
+</li>
+<li><p>查看网页源代码发现,是在网页通过<code>form</code>表单提交的,并不是通过<code>axios</code>或者加<code>jQuery</code>进行js提交,可以看看下面的代码,通过<code>form</code>表单提交到<code>/cas/login</code></p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fm1&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;`&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;errorMessage&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none;&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-massage&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">cellpadding</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">cellspacing</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span><br>    	<br>      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;校园卡号/首次登录请激活&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;passwordEnc&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pw&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;统一身份认证密码&quot;</span> /&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pw&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;imageCode&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position:relative;&quot;</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;errors&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;errors&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0&quot;</span> /&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;imageCodeName&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;imageCodeName&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;4&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;yzm&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;验证码&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;yzm&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span> /&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position:absolute; top:5px; right:0;&quot;</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height:2.5rem;&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;/cas/codeimage&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;cursor: pointer;&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;this.src=&#x27;/cas/codeimage?&#x27;+Math.floor(Math.random()*100)&quot;</span> /&gt;</span><br>        	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;rememberPwd&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 15px;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ckbRememberPP&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;rememberMe&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;_rememberMe&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;on&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;ckbRememberPP&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;vertical-align: middle;height: 13px;&quot;</span>&gt;</span>记住密码，2周内自动登录<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;登 录&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;javascript:return checkInput();&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/uid/activateAuth?t=20161208120000&#x27;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;zhjh-a&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span>账号激活<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/uid/forget?t=20161208120000&#x27;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wjmm-a&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span>忘记密码<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;line&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;60%&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;pages/account_activate.html?t=20161208120000&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;zhjh&quot;</span>&gt;</span>统一认证账号激活攻略<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;clear-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      	<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;pages/password_forget.html?t=20161208120000&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mmzh&quot;</span>&gt;</span>信息门户密码找回攻略<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>	<br>      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;line&quot;</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;right&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;40%&quot;</span>&gt;</span> <br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;center&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ewm&quot;</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/ewm.jpg&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;70&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>移动门户二维码<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;cryptoType&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lt&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;_c4ECACA77-B52F-B3C8-EF78-7F2DE9C616E0_k8175C76F-F064-D984-F521-22035A30AD09&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;_eventId&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;submit&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="加密示例代码"><a href="#加密示例代码" class="headerlink" title="加密示例代码"></a>加密示例代码</h3><ul>
+<li>其他依赖github看看就可以 <a target="_blank" rel="noopener" href="https://github.com/superBiuBiuMan/jxufe_loginRSA">https://github.com/superBiuBiuMan/jxufe_loginRSA</a></li>
+</ul>
+<h4 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//RSA加密</span><br><span class="hljs-keyword">const</span> &#123;<br>    <span class="hljs-title class_">RSAKey</span><br>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./tools/rsa&quot;</span>);<br><br><span class="hljs-keyword">var</span> rsa = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RSAKey</span>();<br><span class="hljs-comment">//如果下面二个参数变动了,就去官网看看源代码就可以</span><br><span class="hljs-keyword">var</span> n = <span class="hljs-string">&quot;5598e3b75d21a2989274e222fa59ab07d829faa29b544e3a920c4dd287aed9302a657280c23220a35ae985ba157400e0502ce8e44570a1513bf7146f372e9c842115fb1b86def80e2ecf9f8e7a586656d12b27529f487e55052e5c31d0836b2e8c01c011bca911d983b1541f20b7466c325b4e30b4a79652470e88135113c9d9&quot;</span>;<br><span class="hljs-keyword">var</span> e = <span class="hljs-string">&quot;10001&quot;</span>;<br><br><span class="hljs-comment">//密码加密</span><br>rsa.<span class="hljs-title function_">setPublic</span>(n, e);<br><span class="hljs-keyword">var</span> encodedPassword = rsa.<span class="hljs-title function_">encrypt</span>(<span class="hljs-string">&#x27;123456789&#x27;</span>);<br><span class="hljs-comment">//输出加密的密码</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(encodedPassword);<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p><strong>二个参数可能会发生变动,就去官网看看源代码就可以</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206271615175.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h4 id="附带下登录的js"><a href="#附带下登录的js" class="headerlink" title="附带下登录的js"></a>附带下登录的js</h4><ul>
+<li>本来想写一个查询成绩的,后面发现不会,抓包分析也不会…跳来跳去的那个认证….</li>
+</ul>
+<p><strong>ts版本</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs ts"><br><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>);<br><span class="hljs-keyword">const</span> qs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;qs&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123; <span class="hljs-title class_">RSAKey</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./tools/rsa&quot;</span>);<br><span class="hljs-keyword">const</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;cheerio&quot;</span>);<br><br><span class="hljs-keyword">const</span> nDefault = <span class="hljs-string">&#x27;5598e3b75d21a2989274e222fa59ab07d829faa29b544e3a920c4dd287aed9302a657280c23220a35ae985ba157400e0502ce8e44570a1513bf7146f372e9c842115fb1b86def80e2ecf9f8e7a586656d12b27529f487e55052e5c31d0836b2e8c01c011bca911d983b1541f20b7466c325b4e30b4a79652470e88135113c9d9&#x27;</span>;<br><span class="hljs-keyword">const</span> eDefault = <span class="hljs-string">&#x27;10001&#x27;</span>;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">LoginAndGet</span> &#123;<br>    <span class="hljs-attr">n</span>: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-attr">e</span>: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-attr">userName</span>: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-attr">passWord</span>: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-attr">encodedPassword</span>: <span class="hljs-built_in">string</span>;<span class="hljs-comment">//加密过后的密码</span><br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">userName: <span class="hljs-built_in">string</span>, passWord: <span class="hljs-built_in">string</span>, n: <span class="hljs-built_in">string</span> = nDefault, e: <span class="hljs-built_in">string</span> = eDefault</span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">n</span> = n;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">e</span> = e;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">userName</span> = userName;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">passWord</span> = passWord;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getRSAPassword</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">passWord</span>);<br>    &#125;<br>    <span class="hljs-comment">/* 获取加密后的密码 */</span><br>    <span class="hljs-title function_">getRSAPassword</span>(<span class="hljs-attr">originPass</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> &#123;<br>        <span class="hljs-keyword">let</span> rsa = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RSAKey</span>();<br>        <span class="hljs-comment">//设置加密</span><br>        rsa.<span class="hljs-title function_">setPublic</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">n</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">e</span>);<br>        <span class="hljs-comment">//进行加密</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">encodedPassword</span> = rsa.<span class="hljs-title function_">encrypt</span>(originPass);<br>    &#125;<br><br>    <span class="hljs-comment">/* 开始 */</span><br>    <span class="hljs-title function_">start</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getIt</span>();<br>    &#125;<br><br>    <span class="hljs-comment">/* 获取it参数 */</span><br>    <span class="hljs-title function_">getIt</span>(): <span class="hljs-built_in">void</span> &#123;<br>        <span class="hljs-title function_">axios</span>(&#123;<br>            <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span>,<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/cas/login&#x27;</span>,<br>            <span class="hljs-attr">headers</span>: &#123;<br>                <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36&#x27;</span>,<br>            &#125;<br>        &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">var</span> <span class="hljs-title class_">Data</span> = [];<br>            <span class="hljs-title class_">Data</span>.<span class="hljs-title function_">push</span>(data.<span class="hljs-property">headers</span>[<span class="hljs-string">&#x27;set-cookie&#x27;</span>][<span class="hljs-number">0</span>].<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\w*(?=\.)/m</span>).<span class="hljs-title function_">join</span>()); <span class="hljs-comment">//获取JSESSIONID</span><br>            <span class="hljs-title class_">Data</span>.<span class="hljs-title function_">push</span>(data.<span class="hljs-property">headers</span>[<span class="hljs-string">&#x27;set-cookie&#x27;</span>][<span class="hljs-number">1</span>].<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\w*(?=;)/m</span>).<span class="hljs-title function_">join</span>()); <span class="hljs-comment">//获取sessoinMapKey</span><br>            <span class="hljs-title class_">Data</span>.<span class="hljs-title function_">push</span>(cheerio.<span class="hljs-title function_">load</span>(data.<span class="hljs-property">data</span>)(<span class="hljs-string">&quot;:input[name=&#x27;lt&#x27;]&quot;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;value&#x27;</span>)); <span class="hljs-comment">//获取It</span><br>            <span class="hljs-comment">// )</span><br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;载入页面获取的东西&quot;</span>, <span class="hljs-title class_">Data</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-title class_">Data</span>;<br>        &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br>            <span class="hljs-comment">// console.log(data);</span><br>            <span class="hljs-comment">// JSESSIONID 0索引和 sessoinMapKey 1 和It 2</span><br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loginF</span>(data[<span class="hljs-number">2</span>], data[<span class="hljs-number">1</span>], data[<span class="hljs-number">0</span>], <span class="hljs-variable language_">this</span>.<span class="hljs-property">userName</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">encodedPassword</span>);<br>        &#125;);<br>    &#125;<br>    <span class="hljs-comment">/* 登录 */</span><br>    <span class="hljs-title function_">loginF</span>(<span class="hljs-params">lt: <span class="hljs-built_in">string</span>, sess: <span class="hljs-built_in">string</span>, jsess: <span class="hljs-built_in">string</span>, userName: <span class="hljs-built_in">string</span>, encodedPassword: <span class="hljs-built_in">string</span></span>) &#123;<br>        <span class="hljs-comment">//传送的数据</span><br>        <span class="hljs-keyword">var</span> data = qs.<span class="hljs-title function_">stringify</span>(&#123;<br>            <span class="hljs-string">&#x27;username&#x27;</span>: userName,<br>            <span class="hljs-string">&#x27;password&#x27;</span>: encodedPassword,<br>            <span class="hljs-string">&#x27;errors&#x27;</span>: <span class="hljs-string">&#x27;0&#x27;</span>,<br>            <span class="hljs-string">&#x27;_rememberMe&#x27;</span>: <span class="hljs-string">&#x27;on&#x27;</span>,<br>            <span class="hljs-string">&#x27;cryptoType&#x27;</span>: <span class="hljs-string">&#x27;1&#x27;</span>,<br>            <span class="hljs-string">&#x27;_eventId&#x27;</span>: <span class="hljs-string">&#x27;submit&#x27;</span>,<br>            <span class="hljs-string">&#x27;imageCodeName&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&#x27;lt&#x27;</span>: lt<br>        &#125;);<br>        <span class="hljs-comment">//axios配置</span><br>        <span class="hljs-keyword">var</span> config = &#123;<br>            <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/cas/login?jsessionid=&#x27;</span> + jsess + <span class="hljs-string">&#x27;.cas_app_2&#x27;</span>,<br>            <span class="hljs-comment">// url: &#x27;https://ssl.jxufe.edu.cn/cas/login&#x27;,</span><br>            <span class="hljs-attr">headers</span>: &#123;<br>                <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,<br>                <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27; Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36&#x27;</span>,<br>                <span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;JSESSIONID=&#x27;</span> + jsess + <span class="hljs-string">&#x27;.cas_app_2;sessoinMapKey=&#x27;</span> + sess + <span class="hljs-string">&#x27;; jxufe_username=&#x27;</span> + userName,<br>                <span class="hljs-string">&#x27;Referer&#x27;</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/cas/login&#x27;</span>,<br>                <span class="hljs-string">&#x27;Origin&#x27;</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn&#x27;</span>,<br>            &#125;,<br>            <span class="hljs-attr">data</span>: data<br>        &#125;;<br>        <span class="hljs-comment">//发送请求</span><br>        <span class="hljs-title function_">axios</span>(config)<br>            .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;<br>                <span class="hljs-keyword">var</span> result = cheerio.<span class="hljs-title function_">load</span>(response.<span class="hljs-property">data</span>)(<span class="hljs-string">&quot;.error-massage span&quot;</span>).<span class="hljs-title function_">text</span>();<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;登录结果为:&quot;</span> + result);<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;cookie1为&#x27;</span>,response.<span class="hljs-property">headers</span>);<br>            &#125;)<br>            .<span class="hljs-title function_">catch</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(error);<br>            &#125;);<br>    &#125;<br><br>&#125;<br><br><span class="hljs-comment">//测试代码</span><br><span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LoginAndGet</span>(<span class="hljs-string">&#x27;2202140875&#x27;</span>, <span class="hljs-string">&#x27;superBiuBB&#x27;</span>);<br>test.<span class="hljs-title function_">start</span>();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>转换后的js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>);<br><span class="hljs-keyword">var</span> qs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;qs&#x27;</span>);<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">RSAKey</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./tools/rsa&quot;</span>).<span class="hljs-property">RSAKey</span>;<br><span class="hljs-keyword">var</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;cheerio&quot;</span>);<br><span class="hljs-keyword">var</span> nDefault = <span class="hljs-string">&#x27;5598e3b75d21a2989274e222fa59ab07d829faa29b544e3a920c4dd287aed9302a657280c23220a35ae985ba157400e0502ce8e44570a1513bf7146f372e9c842115fb1b86def80e2ecf9f8e7a586656d12b27529f487e55052e5c31d0836b2e8c01c011bca911d983b1541f20b7466c325b4e30b4a79652470e88135113c9d9&#x27;</span>;<br><span class="hljs-keyword">var</span> eDefault = <span class="hljs-string">&#x27;10001&#x27;</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">LoginAndGet</span> = <span class="hljs-comment">/** <span class="hljs-doctag">@class</span> */</span> (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">LoginAndGet</span>(<span class="hljs-params">userName, passWord, n, e</span>) &#123;<br>        <span class="hljs-keyword">if</span> (n === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span>) &#123; n = nDefault; &#125;<br>        <span class="hljs-keyword">if</span> (e === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span>) &#123; e = eDefault; &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">n</span> = n;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">e</span> = e;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">userName</span> = userName;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">passWord</span> = passWord;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getRSAPassword</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">passWord</span>);<br>    &#125;<br>    <span class="hljs-comment">/* 获取加密后的密码 */</span><br>    <span class="hljs-title class_">LoginAndGet</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getRSAPassword</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">originPass</span>) &#123;<br>        <span class="hljs-keyword">var</span> rsa = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RSAKey</span>();<br>        <span class="hljs-comment">//设置加密</span><br>        rsa.<span class="hljs-title function_">setPublic</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">n</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">e</span>);<br>        <span class="hljs-comment">//进行加密</span><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">encodedPassword</span> = rsa.<span class="hljs-title function_">encrypt</span>(originPass);<br>    &#125;;<br>    <span class="hljs-comment">/* 开始 */</span><br>    <span class="hljs-title class_">LoginAndGet</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">start</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getIt</span>();<br>    &#125;;<br>    <span class="hljs-comment">/* 获取it参数 */</span><br>    <span class="hljs-title class_">LoginAndGet</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getIt</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">var</span> _this = <span class="hljs-variable language_">this</span>;<br>        <span class="hljs-title function_">axios</span>(&#123;<br>            <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span>,<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/cas/login&#x27;</span>,<br>            <span class="hljs-attr">headers</span>: &#123;<br>                <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36&#x27;</span><br>            &#125;<br>        &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br>            <span class="hljs-keyword">var</span> <span class="hljs-title class_">Data</span> = [];<br>            <span class="hljs-title class_">Data</span>.<span class="hljs-title function_">push</span>(data.<span class="hljs-property">headers</span>[<span class="hljs-string">&#x27;set-cookie&#x27;</span>][<span class="hljs-number">0</span>].<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\w*(?=\.)/m</span>).<span class="hljs-title function_">join</span>()); <span class="hljs-comment">//获取JSESSIONID</span><br>            <span class="hljs-title class_">Data</span>.<span class="hljs-title function_">push</span>(data.<span class="hljs-property">headers</span>[<span class="hljs-string">&#x27;set-cookie&#x27;</span>][<span class="hljs-number">1</span>].<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/\w*(?=;)/m</span>).<span class="hljs-title function_">join</span>()); <span class="hljs-comment">//获取sessoinMapKey</span><br>            <span class="hljs-title class_">Data</span>.<span class="hljs-title function_">push</span>(cheerio.<span class="hljs-title function_">load</span>(data.<span class="hljs-property">data</span>)(<span class="hljs-string">&quot;:input[name=&#x27;lt&#x27;]&quot;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;value&#x27;</span>)); <span class="hljs-comment">//获取It</span><br>            <span class="hljs-comment">// )</span><br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;载入页面获取的东西&quot;</span>, <span class="hljs-title class_">Data</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-title class_">Data</span>;<br>        &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;<br>            <span class="hljs-comment">// console.log(data);</span><br>            <span class="hljs-comment">// JSESSIONID 0索引和 sessoinMapKey 1 和It 2</span><br>            _this.<span class="hljs-title function_">loginF</span>(data[<span class="hljs-number">2</span>], data[<span class="hljs-number">1</span>], data[<span class="hljs-number">0</span>], _this.<span class="hljs-property">userName</span>, _this.<span class="hljs-property">encodedPassword</span>);<br>        &#125;);<br>    &#125;;<br>    <span class="hljs-comment">/* 登录 */</span><br>    <span class="hljs-title class_">LoginAndGet</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">loginF</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">lt, sess, jsess, userName, encodedPassword</span>) &#123;<br>        <span class="hljs-comment">//传送的数据</span><br>        <span class="hljs-keyword">var</span> data = qs.<span class="hljs-title function_">stringify</span>(&#123;<br>            <span class="hljs-string">&#x27;username&#x27;</span>: userName,<br>            <span class="hljs-string">&#x27;password&#x27;</span>: encodedPassword,<br>            <span class="hljs-string">&#x27;errors&#x27;</span>: <span class="hljs-string">&#x27;0&#x27;</span>,<br>            <span class="hljs-string">&#x27;_rememberMe&#x27;</span>: <span class="hljs-string">&#x27;on&#x27;</span>,<br>            <span class="hljs-string">&#x27;cryptoType&#x27;</span>: <span class="hljs-string">&#x27;1&#x27;</span>,<br>            <span class="hljs-string">&#x27;_eventId&#x27;</span>: <span class="hljs-string">&#x27;submit&#x27;</span>,<br>            <span class="hljs-string">&#x27;imageCodeName&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&#x27;lt&#x27;</span>: lt<br>        &#125;);<br>        <span class="hljs-comment">//axios配置</span><br>        <span class="hljs-keyword">var</span> config = &#123;<br>            <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/cas/login?jsessionid=&#x27;</span> + jsess + <span class="hljs-string">&#x27;.cas_app_2&#x27;</span>,<br>            <span class="hljs-comment">// url: &#x27;https://ssl.jxufe.edu.cn/cas/login&#x27;,</span><br>            <span class="hljs-attr">headers</span>: &#123;<br>                <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,<br>                <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27; Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36&#x27;</span>,<br>                <span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;JSESSIONID=&#x27;</span> + jsess + <span class="hljs-string">&#x27;.cas_app_2;sessoinMapKey=&#x27;</span> + sess + <span class="hljs-string">&#x27;; jxufe_username=&#x27;</span> + userName,<br>                <span class="hljs-string">&#x27;Referer&#x27;</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn/cas/login&#x27;</span>,<br>                <span class="hljs-string">&#x27;Origin&#x27;</span>: <span class="hljs-string">&#x27;https://ssl.jxufe.edu.cn&#x27;</span><br>            &#125;,<br>            <span class="hljs-attr">data</span>: data<br>        &#125;;<br>        <span class="hljs-comment">//发送请求</span><br>        <span class="hljs-title function_">axios</span>(config)<br>            .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;<br>            <span class="hljs-keyword">var</span> result = cheerio.<span class="hljs-title function_">load</span>(response.<span class="hljs-property">data</span>)(<span class="hljs-string">&quot;.error-massage span&quot;</span>).<span class="hljs-title function_">text</span>();<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;登录结果为:&quot;</span> + result);<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;cookie1为&#x27;</span>, response.<span class="hljs-property">headers</span>);<br>        &#125;)[<span class="hljs-string">&quot;catch&quot;</span>](<span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(error);<br>        &#125;);<br>    &#125;;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">LoginAndGet</span>;<br>&#125;());<br><span class="hljs-comment">//测试代码</span><br><span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LoginAndGet</span>(<span class="hljs-string">&#x27;2202140875&#x27;</span>, <span class="hljs-string">&#x27;superBiuBB&#x27;</span>);<br>test.<span class="hljs-title function_">start</span>();<br><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/javscript/" class="category-chain-item">javscript</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/NodeJs/">#NodeJs</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>江西财经大学智慧江财登录分析</div>
+      <div>https://dreamlove.top/2022/06/27/NodeJs/江西财经大学智慧江财登录分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/26/NodeJs/%E9%97%AE%E5%8D%B7%E6%98%9F%E9%97%AE%E5%8D%B7%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/" title="问卷星问卷抓包分析">
+                        <span class="hidden-mobile">问卷星问卷抓包分析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
+        id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
+        aria-expanded="true"
+      >
+        javscript
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ef149587124f3e10cde7322bbd9d3f01"
+           role="tabpanel" aria-labelledby="heading-ef149587124f3e10cde7322bbd9d3f01">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/04/23/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%AF%86%E5%90%8E%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90%E5%8F%8D%E7%BC%96%E8%AF%91%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序加密后抓包分析反编译抢位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我来图书馆小程序加密后抓包分析反编译抢位置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/06/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序抓包抢位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我来图书馆小程序抓包抢位置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/27/NodeJs/%E6%B1%9F%E8%A5%BF%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E6%99%BA%E6%85%A7%E6%B1%9F%E8%B4%A2%E7%99%BB%E5%BD%95%E5%88%86%E6%9E%90/" title="江西财经大学智慧江财登录分析"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">江西财经大学智慧江财登录分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/26/NodeJs/%E9%97%AE%E5%8D%B7%E6%98%9F%E9%97%AE%E5%8D%B7%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/" title="问卷星问卷抓包分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">问卷星问卷抓包分析</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="html"
+        id="heading-fc35fdc70d5fc69d269883a822c7a53e" role="tab" data-toggle="collapse" href="#collapse-fc35fdc70d5fc69d269883a822c7a53e"
+        aria-expanded="false"
+      >
+        html
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-fc35fdc70d5fc69d269883a822c7a53e"
+           role="tabpanel" aria-labelledby="heading-fc35fdc70d5fc69d269883a822c7a53e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/04/03/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%88%86%E9%A1%B5%E5%99%A8/" title="纯css+html实现的分页器功能"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">纯css+html实现的分页器功能</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="jQuery"
+        id="heading-f590b4fda2c30be28dd3c8c3caf5c77b" role="tab" data-toggle="collapse" href="#collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+        aria-expanded="false"
+      >
+        jQuery
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+           role="tabpanel" aria-labelledby="heading-f590b4fda2c30be28dd3c8c3caf5c77b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" title="express,multer,jQuery前端后端上传单个文件"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">express,multer,jQuery前端后端上传单个文件</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/02/28/%E5%89%8D%E7%AB%AF/jQuery%E4%B8%ADAPI,post%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%AE%B0%E5%BD%95/" title="jQuery中API,post上传文件到阿里云OSS记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jQuery中API,post上传文件到阿里云OSS记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

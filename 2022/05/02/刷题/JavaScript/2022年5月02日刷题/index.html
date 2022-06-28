@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,285 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-decodeURI</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年5月2日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下列正确定义函数的是<br><span class="hljs-attr">A</span>: <span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>) &#123;&#125;<br><br><span class="hljs-attr">B</span>: <span class="hljs-title class_">Function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>) &#123;&#125;<br><br><span class="hljs-attr">C</span>: <span class="hljs-keyword">var</span> foo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Function</span>() &#123;&#125;<br><br><span class="hljs-attr">D</span>: <span class="hljs-keyword">var</span> foo = <span class="hljs-keyword">new</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>A</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>B当中的 ‘Function’ 写错了,应该是 ‘function’</li>
+<li>C当中应该是 var foo &#x3D; new Function (参数1,参数2,……)</li>
+<li>D同C一样,都是弄错了</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下代码执行时不会在控制台输出错误信息的是：<br><span class="hljs-attr">A</span>: <span class="hljs-keyword">let</span> a = <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-string">&#x27;%&#x27;</span>);<br><span class="hljs-attr">B</span>: <br>    <span class="hljs-keyword">var</span> a;<br>    <span class="hljs-title function_">a</span>();<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>    &#125;<br><span class="hljs-attr">C</span>:<br>    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(<span class="hljs-number">123</span>).<span class="hljs-title function_">finally</span>(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>    &#125;);<br><span class="hljs-attr">D</span>: <br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>B</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>A: decodeURIComponent(字符串),对字符串进行解码,此时这里传入的字符串应该是使用encodeURI或者是encodeURIComponent编码后的字符串进行解码,直接传入%是一个没有编码的字符串（ ‘%’ 编码后为 ‘ %25’ ）</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220428204031.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+</li>
+<li><p>B: 函数提升和变量提升同时存在，<strong>函数提升优先级 高于 变量提升</strong>，所以变量a被函数所覆盖</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo); <br><span class="hljs-keyword">var</span> foo = <span class="hljs-number">1</span>  <span class="hljs-comment">//变量提升</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo)<br><span class="hljs-title function_">foo</span>()<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-comment">//函数提升</span><br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;函数&#x27;</span>)<br>&#125;<br>=========等价于=============&gt;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-comment">//提到顶端</span><br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;函数&#x27;</span>)<br>&#125;<br><span class="hljs-keyword">var</span> foo  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo) <span class="hljs-comment">//输出foo这个函数，因为上面foo没有被赋值，foo还是原来的值 </span><br>foo = <span class="hljs-number">1</span>;  <span class="hljs-comment">//赋值不会提升,赋值后 foo就不再是函数类型了，而是number类型</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo) <span class="hljs-comment">//输出1</span><br><span class="hljs-title function_">foo</span>() <span class="hljs-comment">//这里会报错，因为foo不是函数了</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>C: 选项需要 .catch去补货 被 reject 的 Promise，才能不抛出错误</p>
+</li>
+<li><p>D: 选项因为 let 的 TDZ（“暂时性死区”），在 let 的<strong>块</strong>作用域中无法重复声明，也无法在声明语句之前使用（没有变量提升）。简而言之，在 let 语句出现之前，都是无法使用该变量的(<strong>说通俗点就是</strong>——只要let所在定义域下(也就是在函数当中的 <code>&#123; &#125;</code> 当中),<strong>在let代码没有执行之前</strong>,如果这个时候有一段代码对let声明的变量名称<strong>进行了访问并且代码执行了</strong>(  比如console.log() ) ,那么就会发生报错!)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript">补充一点。这种情况下是可以正常运行的：<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>&#123;<br>    <span class="hljs-comment">//块级作用域</span><br>    <span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span>;   <br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<span class="hljs-comment">//输出1</span><br><br><br>也看看下面这种情况<br><span class="hljs-keyword">let</span> <span class="hljs-title function_">foo</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//输出x=10;</span><br>    x++;<br>&#125;<br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-title function_">foo</span>();<br><span class="hljs-comment">//结合上面说所的,分析下过程</span><br><span class="hljs-comment">//就是只要let所在定义域下(也就是在函数当中的 `&#123; &#125;` 当中)</span><br><span class="hljs-comment">//在let代码没有执行之前</span><br><span class="hljs-comment">//如果这个时候有一段代码对let声明的变量名称进行了访问</span><br><span class="hljs-comment">//(  比如console.log() ) ,那么就会发生报错!</span><br><br><span class="hljs-comment">//拆解 执行过程</span><br><span class="hljs-comment">//第一步</span><br><span class="hljs-keyword">let</span> foo = &#123;...&#125;;<span class="hljs-comment">//此时函数并没有执行,所以不存在对let变量进行访问并执行,所以不报错</span><br><span class="hljs-comment">//第二步</span><br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-comment">//第三步</span><br><span class="hljs-title function_">foo</span>();<br><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下列代码中，页面打开后能够弹出<span class="hljs-number">1</span>的是？(多选)<br><span class="hljs-attr">A</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">”javascript:</span> <span class="hljs-attr">alert</span>(<span class="hljs-attr">1</span>)”&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span></span><br><br><span class="hljs-attr">B</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">””</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">”alert(1)”/</span>&gt;</span></span><br><br><span class="hljs-attr">C</span>: <span class="hljs-variable constant_">IE</span>下&lt;s style=”<span class="hljs-attr">top</span>:<span class="hljs-title function_">expression</span>(<span class="hljs-title function_">alert</span>(<span class="hljs-number">1</span>))”&gt;&lt;/s&gt;<br><br><span class="hljs-attr">D</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">”alert(1)”</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>A，B，C</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>A：加载的时候会触发alert（1）代码</li>
+<li>B：img当中的onerror，当图片不存在加载失败的时候会触发，此时这里src&#x3D;“”，导致加载失败，所以触发alert（1）事件</li>
+<li>C：在ie 7下会连续弹出，   IE5及其以后版本支持在CSS中使用expression，用来把CSS属性和Javascript表达式关联起来，这里的CSS属性可以是元素固有的属性，也可以是自定义属性。就是说CSS属性后面可以是一段Javascript表达式，CSS属性的值等于Javascript表达式计算的结果。在表达式中可以直接引用元素自身的属性和方法，也可以使用其他浏览器对象。这个表达式就好像是在这个元素的一个成员函数中一样。</li>
+<li>D：onclick，单击div标签才会触发</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">当用户打开一个网页时，想一直停留在当前打开的页面，禁止页面前进和后退，以下正确的是（      ）(多选)<br><span class="hljs-attr">A</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">forward</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-attr">B</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">back</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-attr">C</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">go</span>(-<span class="hljs-number">1</span>);<br><br><span class="hljs-attr">D</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">forward</span>(-<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>A，D</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>题目意思</p>
+<ul>
+<li><p><strong>相当于URI当中输入了网站，比如说baidu.com,然后会发现只有后退没有前进按钮的操作，这种情况下从ABCD选</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220502161507.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+<li><p>A：window.history.forward( 1 ) （forward不用传递参数，传入也会无效）前进一个页面，这里没办法前进，所以可以选</p>
+</li>
+<li><p>B：window.history.back(  )（back不用传递参数，传入也会无效）后退一个页面，这里可以后退，但是题目要求禁止，所以不选</p>
+</li>
+<li><p>C：window.history.go(-1) 后退一个页面，这里可以后退，但是题目要求禁止，所以不选</p>
+<ul>
+<li>window.history.go(delta);—-相对于当前页面你要去往历史页面的位置。<strong>负值</strong>表示向后移动，<strong>正值</strong>表示向前移动。因此，例如：<code>history.go(2)</code>向前移动两页，<code>history.go(-2)</code>则向后移动两页。如果未向该函数传参或<code>delta</code>相等于0，则该函数与调用<code>location.reload()</code>具有相同的效果。</li>
+</ul>
+</li>
+<li><p>D：window.history.forward( -1 ) 前进一个页面，这里没办法前进，所以可以选</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">如何遍历下面的 my_data 对象？<br><span class="hljs-keyword">var</span> my_data=&#123;<span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;Ape&#x27;</span>, <span class="hljs-attr">b</span>:<span class="hljs-string">&#x27;Banana&#x27;</span>, <span class="hljs-attr">c</span>:<span class="hljs-string">&#x27;Citronella&#x27;</span>&#125;;<br><br><span class="hljs-attr">A</span>: <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> my_data) &#123;&#125;<br><br><span class="hljs-attr">B</span>: <span class="hljs-title function_">foreach</span>(<span class="hljs-params">my_data <span class="hljs-keyword">as</span> key=&gt;value</span>) &#123;&#125;<br><br><span class="hljs-attr">C</span>: <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;my_data.<span class="hljs-property">length</span>;i++) &#123;&#125;<br><br><span class="hljs-attr">D</span>: 全不选<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>A</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>A: 没有错,<strong><code>for...in</code>语句</strong>以任意顺序迭代一个对象的除<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>以外的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Enumerability_and_ownership_of_properties">可枚举</a>属性，包括继承的可枚举属性。<ul>
+<li><code>for...in</code>不应该用于迭代一个关注索引顺序的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>Array</code></a>。(Array用forEach或者for…of代替)</li>
+</ul>
+</li>
+<li>B: 大佬说是php的,php我不太懂</li>
+<li>C: 对象没有.length属性,输出也是undefined(伪数组除外)</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-decodeURI</div>
+      <div>https://dreamlove.top/2022/05/02/刷题/JavaScript/2022年5月02日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月2日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/03/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8803%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日刷题-类型转换</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/01/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8801%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-CMD和AMD的模块化">
+                        <span class="hidden-mobile">今日刷题-CMD和AMD的模块化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,284 +864,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-decodeURI</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2022年5月2日 上午
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下列正确定义函数的是<br><span class="hljs-attr">A</span>: <span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>) &#123;&#125;<br><br><span class="hljs-attr">B</span>: <span class="hljs-title class_">Function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>) &#123;&#125;<br><br><span class="hljs-attr">C</span>: <span class="hljs-keyword">var</span> foo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Function</span>() &#123;&#125;<br><br><span class="hljs-attr">D</span>: <span class="hljs-keyword">var</span> foo = <span class="hljs-keyword">new</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>A</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>B当中的 ‘Function’ 写错了,应该是 ‘function’</li>
-<li>C当中应该是 var foo &#x3D; new Function (参数1,参数2,……)</li>
-<li>D同C一样,都是弄错了</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下代码执行时不会在控制台输出错误信息的是：<br><span class="hljs-attr">A</span>: <span class="hljs-keyword">let</span> a = <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-string">&#x27;%&#x27;</span>);<br><span class="hljs-attr">B</span>: <br>    <span class="hljs-keyword">var</span> a;<br>    <span class="hljs-title function_">a</span>();<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>    &#125;<br><span class="hljs-attr">C</span>:<br>    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(<span class="hljs-number">123</span>).<span class="hljs-title function_">finally</span>(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>    &#125;);<br><span class="hljs-attr">D</span>: <br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>B</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>A: decodeURIComponent(字符串),对字符串进行解码,此时这里传入的字符串应该是使用encodeURI或者是encodeURIComponent编码后的字符串进行解码,直接传入%是一个没有编码的字符串（ ‘%’ 编码后为 ‘ %25’ ）</p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220428204031.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
-</li>
-<li><p>B: 函数提升和变量提升同时存在，<strong>函数提升优先级 高于 变量提升</strong>，所以变量a被函数所覆盖</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo); <br><span class="hljs-keyword">var</span> foo = <span class="hljs-number">1</span>  <span class="hljs-comment">//变量提升</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo)<br><span class="hljs-title function_">foo</span>()<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-comment">//函数提升</span><br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;函数&#x27;</span>)<br>&#125;<br>=========等价于=============&gt;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>)&#123; <span class="hljs-comment">//提到顶端</span><br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;函数&#x27;</span>)<br>&#125;<br><span class="hljs-keyword">var</span> foo  <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo) <span class="hljs-comment">//输出foo这个函数，因为上面foo没有被赋值，foo还是原来的值 </span><br>foo = <span class="hljs-number">1</span>;  <span class="hljs-comment">//赋值不会提升,赋值后 foo就不再是函数类型了，而是number类型</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(foo) <span class="hljs-comment">//输出1</span><br><span class="hljs-title function_">foo</span>() <span class="hljs-comment">//这里会报错，因为foo不是函数了</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>C: 选项需要 .catch去补货 被 reject 的 Promise，才能不抛出错误</p>
-</li>
-<li><p>D: 选项因为 let 的 TDZ（“暂时性死区”），在 let 的<strong>块</strong>作用域中无法重复声明，也无法在声明语句之前使用（没有变量提升）。简而言之，在 let 语句出现之前，都是无法使用该变量的(<strong>说通俗点就是</strong>——只要let所在定义域下(也就是在函数当中的 <code>&#123; &#125;</code> 当中),<strong>在let代码没有执行之前</strong>,如果这个时候有一段代码对let声明的变量名称<strong>进行了访问并且代码执行了</strong>(  比如console.log() ) ,那么就会发生报错!)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript">补充一点。这种情况下是可以正常运行的：<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>&#123;<br>    <span class="hljs-comment">//块级作用域</span><br>    <span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span>;   <br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<span class="hljs-comment">//输出1</span><br><br><br>也看看下面这种情况<br><span class="hljs-keyword">let</span> <span class="hljs-title function_">foo</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);<span class="hljs-comment">//输出x=10;</span><br>    x++;<br>&#125;<br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-title function_">foo</span>();<br><span class="hljs-comment">//结合上面说所的,分析下过程</span><br><span class="hljs-comment">//就是只要let所在定义域下(也就是在函数当中的 `&#123; &#125;` 当中)</span><br><span class="hljs-comment">//在let代码没有执行之前</span><br><span class="hljs-comment">//如果这个时候有一段代码对let声明的变量名称进行了访问</span><br><span class="hljs-comment">//(  比如console.log() ) ,那么就会发生报错!</span><br><br><span class="hljs-comment">//拆解 执行过程</span><br><span class="hljs-comment">//第一步</span><br><span class="hljs-keyword">let</span> foo = &#123;...&#125;;<span class="hljs-comment">//此时函数并没有执行,所以不存在对let变量进行访问并执行,所以不报错</span><br><span class="hljs-comment">//第二步</span><br><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-comment">//第三步</span><br><span class="hljs-title function_">foo</span>();<br><br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">下列代码中，页面打开后能够弹出<span class="hljs-number">1</span>的是？(多选)<br><span class="hljs-attr">A</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">”javascript:</span> <span class="hljs-attr">alert</span>(<span class="hljs-attr">1</span>)”&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span></span><br><br><span class="hljs-attr">B</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">””</span> <span class="hljs-attr">onerror</span>=<span class="hljs-string">”alert(1)”/</span>&gt;</span></span><br><br><span class="hljs-attr">C</span>: <span class="hljs-variable constant_">IE</span>下&lt;s style=”<span class="hljs-attr">top</span>:<span class="hljs-title function_">expression</span>(<span class="hljs-title function_">alert</span>(<span class="hljs-number">1</span>))”&gt;&lt;/s&gt;<br><br><span class="hljs-attr">D</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">”alert(1)”</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>A，B，C</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>A：加载的时候会触发alert（1）代码</li>
-<li>B：img当中的onerror，当图片不存在加载失败的时候会触发，此时这里src&#x3D;“”，导致加载失败，所以触发alert（1）事件</li>
-<li>C：在ie 7下会连续弹出，   IE5及其以后版本支持在CSS中使用expression，用来把CSS属性和Javascript表达式关联起来，这里的CSS属性可以是元素固有的属性，也可以是自定义属性。就是说CSS属性后面可以是一段Javascript表达式，CSS属性的值等于Javascript表达式计算的结果。在表达式中可以直接引用元素自身的属性和方法，也可以使用其他浏览器对象。这个表达式就好像是在这个元素的一个成员函数中一样。</li>
-<li>D：onclick，单击div标签才会触发</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">当用户打开一个网页时，想一直停留在当前打开的页面，禁止页面前进和后退，以下正确的是（      ）(多选)<br><span class="hljs-attr">A</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">forward</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-attr">B</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">back</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-attr">C</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">go</span>(-<span class="hljs-number">1</span>);<br><br><span class="hljs-attr">D</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">forward</span>(-<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>A，D</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>题目意思</p>
-<ul>
-<li><p><strong>相当于URI当中输入了网站，比如说baidu.com,然后会发现只有后退没有前进按钮的操作，这种情况下从ABCD选</strong></p>
-<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/20220502161507.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
-</li>
-</ul>
-</li>
-<li><p>A：window.history.forward( 1 ) （forward不用传递参数，传入也会无效）前进一个页面，这里没办法前进，所以可以选</p>
-</li>
-<li><p>B：window.history.back(  )（back不用传递参数，传入也会无效）后退一个页面，这里可以后退，但是题目要求禁止，所以不选</p>
-</li>
-<li><p>C：window.history.go(-1) 后退一个页面，这里可以后退，但是题目要求禁止，所以不选</p>
-<ul>
-<li>window.history.go(delta);—-相对于当前页面你要去往历史页面的位置。<strong>负值</strong>表示向后移动，<strong>正值</strong>表示向前移动。因此，例如：<code>history.go(2)</code>向前移动两页，<code>history.go(-2)</code>则向后移动两页。如果未向该函数传参或<code>delta</code>相等于0，则该函数与调用<code>location.reload()</code>具有相同的效果。</li>
-</ul>
-</li>
-<li><p>D：window.history.forward( -1 ) 前进一个页面，这里没办法前进，所以可以选</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">如何遍历下面的 my_data 对象？<br><span class="hljs-keyword">var</span> my_data=&#123;<span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;Ape&#x27;</span>, <span class="hljs-attr">b</span>:<span class="hljs-string">&#x27;Banana&#x27;</span>, <span class="hljs-attr">c</span>:<span class="hljs-string">&#x27;Citronella&#x27;</span>&#125;;<br><br><span class="hljs-attr">A</span>: <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> my_data) &#123;&#125;<br><br><span class="hljs-attr">B</span>: <span class="hljs-title function_">foreach</span>(<span class="hljs-params">my_data <span class="hljs-keyword">as</span> key=&gt;value</span>) &#123;&#125;<br><br><span class="hljs-attr">C</span>: <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;my_data.<span class="hljs-property">length</span>;i++) &#123;&#125;<br><br><span class="hljs-attr">D</span>: 全不选<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>A</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>A: 没有错,<strong><code>for...in</code>语句</strong>以任意顺序迭代一个对象的除<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>以外的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Enumerability_and_ownership_of_properties">可枚举</a>属性，包括继承的可枚举属性。<ul>
-<li><code>for...in</code>不应该用于迭代一个关注索引顺序的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>Array</code></a>。(Array用forEach或者for…of代替)</li>
-</ul>
-</li>
-<li>B: 大佬说是php的,php我不太懂</li>
-<li>C: 对象没有.length属性,输出也是undefined(伪数组除外)</li>
-</ul>
-</li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-decodeURI</div>
-      <div>https://dreamlove.top/2022/05/02/刷题/JavaScript/2022年5月02日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年5月2日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/03/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8803%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-类型转换">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日刷题-类型转换</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/01/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8801%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-CMD和AMD的模块化">
-                        <span class="hidden-mobile">今日刷题-CMD和AMD的模块化</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

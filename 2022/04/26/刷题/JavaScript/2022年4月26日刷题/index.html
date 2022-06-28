@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -309,7 +309,254 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar category-bar" style="margin-right: -1rem">
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今日刷题-注意数组的一些方法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">在下列Promise所提供的方法中，用来向成功或者失败的回调函数队列中添加回调函数的是（ ）<br><span class="hljs-symbol">A:</span> done<br><span class="hljs-symbol">B:</span> fail<br><span class="hljs-symbol">C:</span> always <br><span class="hljs-symbol">D:</span> then <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>D</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>A没有,B也不存在,C为一个扩展(不管有没有成功失败都会调用),D的回调有二个参数,第一个是成功回调,第二个是失败回调</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>    <span class="hljs-keyword">const</span> promise1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        <span class="hljs-title function_">resolve</span>(<span class="hljs-string">&quot;事情解决&quot;</span>);<br>    &#125;);<br>    <span class="hljs-comment">//promise对象.then(成功回调,失败回调);</span><br>    promise1.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;我是成功回调&quot;</span>, value);<br>    &#125;, <span class="hljs-function">(<span class="hljs-params">reason</span>) =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;我是失败回调&quot;</span>, value);<br>    &#125;)<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>至于C选项,是一个扩展,可以安装npm &#96;&#96;install<code> </code>es6-promise-always –save</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-comment">//always(data, error) data: resolve的数据。 error: reject的数据。</span><br>require(<span class="hljs-string">&quot;es6-promise-always&quot;</span>)<br><br>axios.get(<span class="hljs-string">&quot;/&quot;</span>).then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br><br> <span class="hljs-comment">//处理逻辑</span><br><br>&#125;).always(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br><br> <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;请求结束&quot;</span>)<br><br> hideLoading();<br><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Promise杂烩示例</span><br>axios(<span class="hljs-string">&quot;www.baidu.com&quot;</span>).then(function(data) &#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-number">50</span>&gt;<span class="hljs-number">10</span>) &#123;<br>      <span class="hljs-keyword">return</span> data.json();<br>    &#125;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeError</span>(<span class="hljs-string">&quot;出错了!&quot;</span>);<br>  &#125;)<br>  .then(function(data) &#123; console.log(<span class="hljs-string">&quot;我要处理返回的数据&quot;</span>) &#125;)<br>  .<span class="hljs-keyword">catch</span>(function(error) &#123; console.log(<span class="hljs-string">&quot;失败原因&quot;</span>,error); &#125;)<br>  .<span class="hljs-keyword">finally</span>(function() &#123; console.log(<span class="hljs-string">&quot;不管怎么样我都要执行&quot;</span>) &#125;);<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下符合 <span class="hljs-title class_">ES6</span> 写法的有<br><span class="hljs-attr">A</span>:  <span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span><br>    &#123;<br>        <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;<span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(<span class="hljs-literal">null</span>);&#125;<br>    &#125;<br>    <span class="hljs-title class_">Foo</span>()<br><span class="hljs-attr">B</span>: <span class="hljs-keyword">var</span> m=<span class="hljs-number">1</span>;<br>   <span class="hljs-keyword">export</span> m;<br><span class="hljs-attr">C</span>: <span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> firstName=’<span class="hljs-title class_">Michael</span>’;<br><span class="hljs-attr">D</span>: 在A模块中<span class="hljs-keyword">export</span>&#123;readFile&#125;后，在B模块中<span class="hljs-keyword">import</span> readFile <span class="hljs-keyword">from</span> ‘A’可以获取到readFile<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>C</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li><p>A: Fun() 把 class 当成方法来用？ var fun &#x3D; new Func() 这样用就对了</p>
+</li>
+<li><p>B :暴露方式不对</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros">1. 分别暴露 <span class="hljs-built_in">export</span> let <span class="hljs-attribute">length</span>=<span class="hljs-string">&quot;100&quot;</span>;export function <span class="hljs-built_in">add</span>()&#123;console.log(<span class="hljs-string">&quot;干饭&quot;</span>)&#125;<br>	引入: <span class="hljs-built_in">export</span> &#123;length,add&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./module.js&quot;</span>;<br>2. 统一暴露 <span class="hljs-built_in">export</span> &#123;暴露的数据键值对&#125; 比如:var a = 10; <span class="hljs-built_in">export</span> &#123; a &#125;;<br>	引入: <span class="hljs-built_in">export</span> &#123;length,add&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./module.js&quot;</span>;<br>3. 默认暴露 <span class="hljs-built_in">export</span><span class="hljs-built_in"> default </span>暴露的数据,比如<span class="hljs-built_in">export</span><span class="hljs-built_in"> default </span>var a = 10;<br>	引入:import a <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./module.js&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>C: 正确的,分别暴露</p>
+</li>
+<li><p>D: 缺少了 {  }  符号,正确应该为import {readFile} from ‘A’</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>​	<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export">export文档</a> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import">import文档</a></p>
+<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下代码执行后，array 的结果是？<br><span class="hljs-keyword">let</span> array = [,<span class="hljs-number">1</span>,,<span class="hljs-number">2</span>,,<span class="hljs-number">3</span>];<br>array = array.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> ++i)<br><span class="hljs-attr">A</span>: [,<span class="hljs-number">2</span>,,<span class="hljs-number">3</span>,,<span class="hljs-number">4</span>]<br><span class="hljs-attr">B</span>: [<span class="hljs-title class_">NaN</span>,<span class="hljs-number">2</span>,<span class="hljs-title class_">NaN</span>,<span class="hljs-number">3</span>,<span class="hljs-title class_">NaN</span>,<span class="hljs-number">4</span>]<br><span class="hljs-attr">C</span>: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>]<br><span class="hljs-attr">D</span>: [<span class="hljs-literal">null</span>,<span class="hljs-number">2</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">3</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>答案<ul>
+<li>A</li>
+</ul>
+</li>
+<li>解析<ul>
+<li>orEach(), filter(), reduce(), every() 和some()都会跳过空位。</li>
+<li>map()会跳过空位，但会保留这个值。</li>
+<li>join()和toString()会将空位视为undefined，而undefined和null会被处理成空字符串。</li>
+<li>ES6 中都会将空位当做undefined</li>
+</ul>
+</li>
+</ul>
+<h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下哪些方法会返回一个数组？(多选)<br><span class="hljs-attr">A</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>()<br><span class="hljs-attr">B</span>: <span class="hljs-title class_">String</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-title function_">split</span>()<br><span class="hljs-attr">C</span>: <span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-title function_">join</span>()<br><span class="hljs-attr">D</span>: <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<ul>
+<li>A,B</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li>A: Object.keys()返回对象的key值所组成的数组(key要为可枚举)</li>
+<li>B: String.prototype.split()分割字符串,返回分割后的数组</li>
+<li>C: Array.prototype.join()方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符。</li>
+<li>D:   Promise.all(iterable) 方法返回一个 Promise 实例，此实例在 iterable 参数内所有的 promise 都“完成（resolved）”或参数中不包含 promise 时回调完成（resolve）；<br>如果参数中 promise 有一个失败（rejected），此实例回调失败（reject），失败原因的是第一个失败 promise 的结果。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>    <span class="hljs-keyword">var</span> obj = &#123;<br>        <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;李白&quot;</span>,<br>        <span class="hljs-attr">age</span>:<span class="hljs-number">1000</span>,<br>    &#125;;<br>    <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj,<span class="hljs-string">&quot;sex&quot;</span>,&#123;<br>        <span class="hljs-attr">value</span>:<span class="hljs-string">&quot;男&quot;</span>,<br>        <span class="hljs-attr">enumerable</span>:<span class="hljs-literal">false</span><br>    &#125;);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj);<span class="hljs-comment">//&#123;name: &#x27;李白&#x27;, age: 1000, sex: &#x27;男&#x27;&#125;</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(obj));<span class="hljs-comment">//[&#x27;name&#x27;, &#x27;age&#x27;]</span><br>&lt;/script&gt;<br></code></pre></td></tr></table></figure></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
+      
+        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>今日刷题-注意数组的一些方法</div>
+      <div>https://dreamlove.top/2022/04/26/刷题/JavaScript/2022年4月26日刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月26日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/27/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8827%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-数组的splice和map方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今日刷题-数组的splice和map方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/25/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8825%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-let的暂时性死锁">
+                        <span class="hidden-mobile">今日刷题-let的暂时性死锁</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
     
 
 
@@ -586,253 +833,6 @@
     </div>
   
 </div>
-
-
-  </aside>
-
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">今日刷题-注意数组的一些方法</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">在下列Promise所提供的方法中，用来向成功或者失败的回调函数队列中添加回调函数的是（ ）<br><span class="hljs-symbol">A:</span> done<br><span class="hljs-symbol">B:</span> fail<br><span class="hljs-symbol">C:</span> always <br><span class="hljs-symbol">D:</span> then <br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>D</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>A没有,B也不存在,C为一个扩展(不管有没有成功失败都会调用),D的回调有二个参数,第一个是成功回调,第二个是失败回调</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>    <span class="hljs-keyword">const</span> promise1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        <span class="hljs-title function_">resolve</span>(<span class="hljs-string">&quot;事情解决&quot;</span>);<br>    &#125;);<br>    <span class="hljs-comment">//promise对象.then(成功回调,失败回调);</span><br>    promise1.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;我是成功回调&quot;</span>, value);<br>    &#125;, <span class="hljs-function">(<span class="hljs-params">reason</span>) =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;我是失败回调&quot;</span>, value);<br>    &#125;)<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>至于C选项,是一个扩展,可以安装npm &#96;&#96;install<code> </code>es6-promise-always –save</p>
-<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-comment">//always(data, error) data: resolve的数据。 error: reject的数据。</span><br>require(<span class="hljs-string">&quot;es6-promise-always&quot;</span>)<br><br>axios.get(<span class="hljs-string">&quot;/&quot;</span>).then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br><br> <span class="hljs-comment">//处理逻辑</span><br><br>&#125;).always(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br><br> <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;请求结束&quot;</span>)<br><br> hideLoading();<br><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Promise杂烩示例</span><br>axios(<span class="hljs-string">&quot;www.baidu.com&quot;</span>).then(function(data) &#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-number">50</span>&gt;<span class="hljs-number">10</span>) &#123;<br>      <span class="hljs-keyword">return</span> data.json();<br>    &#125;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeError</span>(<span class="hljs-string">&quot;出错了!&quot;</span>);<br>  &#125;)<br>  .then(function(data) &#123; console.log(<span class="hljs-string">&quot;我要处理返回的数据&quot;</span>) &#125;)<br>  .<span class="hljs-keyword">catch</span>(function(error) &#123; console.log(<span class="hljs-string">&quot;失败原因&quot;</span>,error); &#125;)<br>  .<span class="hljs-keyword">finally</span>(function() &#123; console.log(<span class="hljs-string">&quot;不管怎么样我都要执行&quot;</span>) &#125;);<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下符合 <span class="hljs-title class_">ES6</span> 写法的有<br><span class="hljs-attr">A</span>:  <span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span><br>    &#123;<br>        <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;<span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(<span class="hljs-literal">null</span>);&#125;<br>    &#125;<br>    <span class="hljs-title class_">Foo</span>()<br><span class="hljs-attr">B</span>: <span class="hljs-keyword">var</span> m=<span class="hljs-number">1</span>;<br>   <span class="hljs-keyword">export</span> m;<br><span class="hljs-attr">C</span>: <span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> firstName=’<span class="hljs-title class_">Michael</span>’;<br><span class="hljs-attr">D</span>: 在A模块中<span class="hljs-keyword">export</span>&#123;readFile&#125;后，在B模块中<span class="hljs-keyword">import</span> readFile <span class="hljs-keyword">from</span> ‘A’可以获取到readFile<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>C</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li><p>A: Fun() 把 class 当成方法来用？ var fun &#x3D; new Func() 这样用就对了</p>
-</li>
-<li><p>B :暴露方式不对</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros">1. 分别暴露 <span class="hljs-built_in">export</span> let <span class="hljs-attribute">length</span>=<span class="hljs-string">&quot;100&quot;</span>;export function <span class="hljs-built_in">add</span>()&#123;console.log(<span class="hljs-string">&quot;干饭&quot;</span>)&#125;<br>	引入: <span class="hljs-built_in">export</span> &#123;length,add&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./module.js&quot;</span>;<br>2. 统一暴露 <span class="hljs-built_in">export</span> &#123;暴露的数据键值对&#125; 比如:var a = 10; <span class="hljs-built_in">export</span> &#123; a &#125;;<br>	引入: <span class="hljs-built_in">export</span> &#123;length,add&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./module.js&quot;</span>;<br>3. 默认暴露 <span class="hljs-built_in">export</span><span class="hljs-built_in"> default </span>暴露的数据,比如<span class="hljs-built_in">export</span><span class="hljs-built_in"> default </span>var a = 10;<br>	引入:import a <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./module.js&quot;</span>;<br></code></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>C: 正确的,分别暴露</p>
-</li>
-<li><p>D: 缺少了 {  }  符号,正确应该为import {readFile} from ‘A’</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>​	<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export">export文档</a> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import">import文档</a></p>
-<h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下代码执行后，array 的结果是？<br><span class="hljs-keyword">let</span> array = [,<span class="hljs-number">1</span>,,<span class="hljs-number">2</span>,,<span class="hljs-number">3</span>];<br>array = array.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">i</span>) =&gt;</span> ++i)<br><span class="hljs-attr">A</span>: [,<span class="hljs-number">2</span>,,<span class="hljs-number">3</span>,,<span class="hljs-number">4</span>]<br><span class="hljs-attr">B</span>: [<span class="hljs-title class_">NaN</span>,<span class="hljs-number">2</span>,<span class="hljs-title class_">NaN</span>,<span class="hljs-number">3</span>,<span class="hljs-title class_">NaN</span>,<span class="hljs-number">4</span>]<br><span class="hljs-attr">C</span>: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>]<br><span class="hljs-attr">D</span>: [<span class="hljs-literal">null</span>,<span class="hljs-number">2</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">3</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>答案<ul>
-<li>A</li>
-</ul>
-</li>
-<li>解析<ul>
-<li>orEach(), filter(), reduce(), every() 和some()都会跳过空位。</li>
-<li>map()会跳过空位，但会保留这个值。</li>
-<li>join()和toString()会将空位视为undefined，而undefined和null会被处理成空字符串。</li>
-<li>ES6 中都会将空位当做undefined</li>
-</ul>
-</li>
-</ul>
-<h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">以下哪些方法会返回一个数组？(多选)<br><span class="hljs-attr">A</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>()<br><span class="hljs-attr">B</span>: <span class="hljs-title class_">String</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-title function_">split</span>()<br><span class="hljs-attr">C</span>: <span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-title function_">join</span>()<br><span class="hljs-attr">D</span>: <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>()<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>答案</p>
-<ul>
-<li>A,B</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li>A: Object.keys()返回对象的key值所组成的数组(key要为可枚举)</li>
-<li>B: String.prototype.split()分割字符串,返回分割后的数组</li>
-<li>C: Array.prototype.join()方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符。</li>
-<li>D:   Promise.all(iterable) 方法返回一个 Promise 实例，此实例在 iterable 参数内所有的 promise 都“完成（resolved）”或参数中不包含 promise 时回调完成（resolve）；<br>如果参数中 promise 有一个失败（rejected），此实例回调失败（reject），失败原因的是第一个失败 promise 的结果。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br>    <span class="hljs-keyword">var</span> obj = &#123;<br>        <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;李白&quot;</span>,<br>        <span class="hljs-attr">age</span>:<span class="hljs-number">1000</span>,<br>    &#125;;<br>    <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj,<span class="hljs-string">&quot;sex&quot;</span>,&#123;<br>        <span class="hljs-attr">value</span>:<span class="hljs-string">&quot;男&quot;</span>,<br>        <span class="hljs-attr">enumerable</span>:<span class="hljs-literal">false</span><br>    &#125;);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj);<span class="hljs-comment">//&#123;name: &#x27;李白&#x27;, age: 1000, sex: &#x27;男&#x27;&#125;</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(obj));<span class="hljs-comment">//[&#x27;name&#x27;, &#x27;age&#x27;]</span><br>&lt;/script&gt;<br></code></pre></td></tr></table></figure></li>
-</ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98/" class="category-chain-item">刷题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%88%B7%E9%A2%98/">#刷题</a>
-      
-        <a href="/tags/%E5%88%B7%E5%88%B7%E5%88%B7/">#刷刷刷</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>今日刷题-注意数组的一些方法</div>
-      <div>https://dreamlove.top/2022/04/26/刷题/JavaScript/2022年4月26日刷题/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>梦洁</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年4月26日</div>
-        </div>
-      
-      
-      <div class="license-meta-item">
-        <div>许可协议</div>
-        <div>
-          
-            
-            
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
-                <i class="iconfont icon-by"></i>
-              </span>
-              </a>
-            
-          
-        </div>
-      </div>
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/27/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B44%E6%9C%8827%E6%97%A5%E5%88%B7%E9%A2%98/" title="今日刷题-数组的splice和map方法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">今日刷题-数组的splice和map方法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/25/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E5%BD%93%E4%B8%AD%E7%94%A8%E5%88%B0%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%86%E6%98%AF%E4%B8%8D%E7%86%9F%E6%82%89/" title="项目练习当中用到的函数但是不熟悉(持续更新)">
-                        <span class="hidden-mobile">项目练习当中用到的函数但是不熟悉(持续更新)</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
 
 
   </aside>

@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="谷歌调试分析提交的包数据如图,可以看到提交是数据,我们先以jqsign来进行全局搜索  这次全局搜索注意点 在没有提交之前进行全局搜索ctrl+shift+F搜索才可以搜索到,不然提交完成后全局搜索什么都搜索不到 如图,没有提交之前搜索,可以看到jqsin关键字  网页源码分析jqnonce(后期jqsign加密需要用到)就在网页源代码里面~所以每次请求网页都会发生变化  rndnum(后期提交请">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问卷星问卷抓包分析">
+<meta property="og:url" content="https://dreamlove.top/2022/06/26/NodeJs/%E9%97%AE%E5%8D%B7%E6%98%9F%E9%97%AE%E5%8D%B7%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="谷歌调试分析提交的包数据如图,可以看到提交是数据,我们先以jqsign来进行全局搜索  这次全局搜索注意点 在没有提交之前进行全局搜索ctrl+shift+F搜索才可以搜索到,不然提交完成后全局搜索什么都搜索不到 如图,没有提交之前搜索,可以看到jqsin关键字  网页源码分析jqnonce(后期jqsign加密需要用到)就在网页源代码里面~所以每次请求网页都会发生变化  rndnum(后期提交请">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206280826561.png">
+<meta property="article:published_time" content="2022-06-26T00:27:07.000Z">
+<meta property="article:modified_time" content="2022-06-27T04:46:10.000Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="NodeJs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206280826561.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>问卷星问卷抓包分析 - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-briefcase"></i>
+                工具站
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="问卷星问卷抓包分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-26 08:27" pubdate>
+          2022年6月26日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">问卷星问卷抓包分析</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年6月27日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="谷歌调试分析"><a href="#谷歌调试分析" class="headerlink" title="谷歌调试分析"></a>谷歌调试分析</h3><h4 id="提交的包数据"><a href="#提交的包数据" class="headerlink" title="提交的包数据"></a>提交的包数据</h4><p>如图,可以看到提交是数据,我们先以<code>jqsign</code>来进行全局搜索</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206272232432.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<p><strong>这次全局搜索注意点</strong></p>
+<p>在没有提交之前进行全局搜索<code>ctrl+shift+F</code>搜索才可以搜索到,不然提交完成后全局搜索什么都搜索不到</p>
+<p>如图,没有提交之前搜索,可以看到<code>jqsin</code>关键字</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206272231656.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="没有提交之前搜索"></p>
+<h3 id="网页源码分析"><a href="#网页源码分析" class="headerlink" title="网页源码分析"></a>网页源码分析</h3><h4 id="jqnonce-后期jqsign加密需要用到"><a href="#jqnonce-后期jqsign加密需要用到" class="headerlink" title="jqnonce(后期jqsign加密需要用到)"></a>jqnonce(后期jqsign加密需要用到)</h4><p><strong>就在网页源代码里面~所以每次请求网页都会发生变化</strong></p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206272258842.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="jqnonce"></p>
+<h4 id="rndnum-后期提交请求需要用到"><a href="#rndnum-后期提交请求需要用到" class="headerlink" title="rndnum(后期提交请求需要用到)"></a>rndnum(后期提交请求需要用到)</h4><ul>
+<li>依旧网页当中有</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//网页提供了很多参数</span><br><span class="hljs-keyword">var</span> isYdb=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isPub=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isQywx =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isinterview =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isQywxAnswerChangeUrl = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> cqType=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> ddcorpid=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> sojumpParm=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> parmsign=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> casign=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> cats=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> endTs=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> isKaoShi=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> lastTopic=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">Password</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">Password</span> ? <span class="hljs-variable language_">window</span>.<span class="hljs-property">Password</span> : <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">PasswordExt</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">PasswordExt</span> ? <span class="hljs-variable language_">window</span>.<span class="hljs-property">PasswordExt</span> : <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> pwdExt=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> emailName=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> displayExt=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> phoneName=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> wxNickName=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> cepingName=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> guid = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> udsid=<span class="hljs-number">0</span>;<span class="hljs-keyword">var</span> fromsour=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> langVer=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> cProvince=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> cCity=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> cIp=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> divTip=<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;divTip&quot;</span>);<br><span class="hljs-keyword">var</span> displayPrevPage=<span class="hljs-string">&quot;none&quot;</span>;<br><span class="hljs-keyword">var</span> inviteid=<span class="hljs-string">&#x27;&#x27;</span>;<span class="hljs-keyword">var</span> jbkid=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> access_token=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> openid = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> unionId = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> wxUserId = <span class="hljs-string">&quot;&quot;</span>; <br><span class="hljs-keyword">var</span> isQQLogin=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isDingTalkLogin = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> wxthird=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> parterts=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> parterjoiner=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> partersign=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> parterrealname=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> parterextf=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> parterdept=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> parterpuser=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> relusername=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> relts=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> relsign=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> relrealname=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> reldept=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> relext = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> writeuser = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> formopen=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> formts=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> formsign=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> formnick=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> nbk=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> corpId=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> flist=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isPvw=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> user_token=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">IsSampleService</span>=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> hashb=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> sjUser=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> sjts=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> sjsign=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> outuser=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> sourcelink=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> outsign=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> sourceurl = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> sourcename=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> isSimple=<span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> jiFenBao=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isRunning=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">SJBack</span>=<span class="hljs-string">&#x27;&#x27;</span>;<span class="hljs-keyword">var</span> jiFen=<span class="hljs-string">&quot;0&quot;</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">FromSj</span>=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">ItemDicData</span>=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-comment">//需要用到</span><br><span class="hljs-keyword">var</span> rndnum=<span class="hljs-string">&quot;1792470105.05000187&quot;</span>;<br><span class="hljs-keyword">var</span> totalPage=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> totalCut=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> cepingCandidate=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> allowPart =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> showTotalScore =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">OneaTime</span> =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> oneDept =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> oneneedcontcp =<span class="hljs-number">0</span><br><span class="hljs-keyword">var</span> cpid=<span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> needSaveJoin=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isChuangGuan=<span class="hljs-number">0</span>;<br><span class="hljs-comment">//需要用到</span><br><span class="hljs-keyword">var</span> jqnonce=<span class="hljs-string">&quot;61348c0e-ff49-4ffb-b2a7-f60ae3106771&quot;</span>;<br><span class="hljs-keyword">var</span> maxCgTime=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> maxOpTime=<span class="hljs-number">0</span>;<br><span class="hljs-comment">//需要用到,后期提交只不过转换了下</span><br><span class="hljs-keyword">var</span> qBeginDate=<span class="hljs-string">&quot;1656339402157&quot;</span>;<br><span class="hljs-keyword">var</span> randomMode=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> fisrtLoadTime=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getTime</span>();<br><span class="hljs-keyword">var</span> canAward=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> allowAward=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> isVip =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> emUserName = <span class="hljs-string">&quot;V30SQaxJ9+XY5Hw0HBxVmINnib19XMvSDwMRfIUgpMA=&quot;</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-title class_">LogStoreLocal</span>=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> needAddList=<span class="hljs-number">0</span>;<br><br><span class="hljs-keyword">var</span> needLogCompanyId=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> needHBAlert=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> isPromoteing=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> prsjts = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span>  prsjsign = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span>  cityPeiEQues = <span class="hljs-string">&quot;&quot;</span>;<br><br><span class="hljs-keyword">var</span> ishydj = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> canEditAnswer = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> forbidEditStr = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> markerText = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-keyword">var</span> jumpOrgMinPro =<span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> progressBarType = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> isdingtalkFreeUser = <span class="hljs-number">0</span><br><span class="hljs-keyword">var</span> themeId = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> fengmainId = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> backgroundId = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">var</span> useNewAppearance = <span class="hljs-string">&quot;1&quot;</span>;<br><span class="hljs-keyword">var</span> hasTouPiao =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> compressPictures =<span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> completeResultType = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="jqsign参数加密分析"><a href="#jqsign参数加密分析" class="headerlink" title="jqsign参数加密分析"></a>jqsign参数加密分析</h3><p>加密关键js和代码,如图</p>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206272254016.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="加密关键js和代码"></p>
+<p><strong>代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/*a为网页的window.jqnonce的参数</span><br><span class="hljs-comment">  ktimes 单击网页的次数</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">dataenc</span>(<span class="hljs-params">a,ktimes</span>) &#123;<br>    <span class="hljs-keyword">var</span> c, d, e, b = ktimes % <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-number">0</span> == b &amp;&amp; (b = <span class="hljs-number">1</span>),<br>    c = [],<br>    d = <span class="hljs-number">0</span>; d &lt; a.<span class="hljs-property">length</span>; d++)<br>        e = a.<span class="hljs-title function_">charCodeAt</span>(d) ^ b,<br>        c.<span class="hljs-title function_">push</span>(<span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(e));<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">encodeURIComponent</span>(c.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>));<br>&#125;<br><br><span class="hljs-title function_">dataenc</span>(<span class="hljs-string">&quot;fcabefd7-5003-480f-a256-6f0e24f813be&quot;</span>,<span class="hljs-number">2</span>);<br><span class="hljs-comment">//返回内容</span><br><span class="hljs-comment">//dac%60gdf5%2F7221%2F6%3A2d%2Fc074%2F4d2g06d%3A31%60g</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>这里以<a target="_blank" rel="noopener" href="https://www.wjx.cn/vm/tuf9t53.aspx%E9%97%AE%E5%8D%B7%E4%B8%BA%E4%BE%8B">https://www.wjx.cn/vm/tuf9t53.aspx问卷为例</a></li>
+</ul>
+<h4 id="get参数"><a href="#get参数" class="headerlink" title="get参数"></a>get参数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//这里以https://www.wjx.cn/vm/tuf9t53.aspx问卷为例</span><br><span class="hljs-attr">shortid</span>: tuf9t53 <span class="hljs-comment">//问卷后缀</span><br><span class="hljs-attr">starttime</span>: <span class="hljs-number">2022</span>/<span class="hljs-number">6</span>/<span class="hljs-number">27</span> <span class="hljs-number">22</span>:<span class="hljs-number">31</span>:<span class="hljs-number">23</span> <span class="hljs-comment">//开始时间</span><br><span class="hljs-attr">submittype</span>: <span class="hljs-number">1</span> <span class="hljs-comment">//提交类型好像(不太清楚)</span><br><span class="hljs-attr">ktimes</span>: <span class="hljs-number">49</span> <span class="hljs-comment">//好像是统计单击了网页多少次</span><br><span class="hljs-attr">hlv</span>: <span class="hljs-number">1</span> <br><span class="hljs-attr">rn</span>: <span class="hljs-number">1792470105.85906191</span><br><span class="hljs-attr">jqpram</span>: hyKUJxeSJ <span class="hljs-comment">//网页加载后有</span><br><span class="hljs-attr">nw</span>: <span class="hljs-number">1</span><br><span class="hljs-attr">t</span>: <span class="hljs-number">1656340310465</span> <span class="hljs-comment">//时间戳</span><br><span class="hljs-attr">jqnonce</span>: 2b1b7383-4cc2-4b14-a29d-4b53af74a1fc<br><span class="hljs-attr">jqsign</span>: ;k8k&gt;:<span class="hljs-number">1</span>:$=jj;$=k8=$h;0m$=k&lt;:ho&gt;=h8oj <span class="hljs-comment">//具体查看jqsign参数加密分析部分</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="post参数"><a href="#post参数" class="headerlink" title="post参数"></a>post参数</h4><ul>
+<li>这里以这个问卷全部是<strong>单选</strong>为例<a target="_blank" rel="noopener" href="https://www.wjx.cn/vm/tuf9t53.aspx">https://www.wjx.cn/vm/tuf9t53.aspx</a></li>
+<li>这个问卷规律很简单<ul>
+<li><code>&#125; </code>分割题目</li>
+<li><strong>单选:</strong><code>1$1</code> 前面的代表题目,后面的代表题目号</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>我这里全选A了,会发现规律了<br>&#125; 分割题目<br><span class="hljs-number">1</span><span class="hljs-variable">$1</span> 前面的代表题目,后面的代表题目号<br>submitdata: <span class="hljs-number">1</span><span class="hljs-variable">$1</span>&#125;<span class="hljs-number">2</span><span class="hljs-variable">$1</span>&#125;<span class="hljs-number">3</span><span class="hljs-variable">$1</span>&#125;<span class="hljs-number">4</span><span class="hljs-variable">$1</span>&#125;<span class="hljs-number">5</span><span class="hljs-variable">$1</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>后面看了下多选的,以这个问卷分析<a target="_blank" rel="noopener" href="https://www.wjx.cn/vm/mpPVSKK.aspx">https://www.wjx.cn/vm/mpPVSKK.aspx</a></li>
+<li>这个问卷规律也还挺简单的<ul>
+<li><code>&#125; </code>分割题目</li>
+<li><strong>单选:</strong><code>1$1</code> 前面的代表题目,后面的代表题目号</li>
+<li><strong>多选:</strong><code>6$1|2</code> 前面代表题目,后面代表选项,以<code>|</code>分割</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//第六题为多选,我选了1,2,所以这里就出现了</span><br><span class="hljs-comment">// 6$1|2</span><br><span class="hljs-attr">submitdata</span>: <span class="hljs-number">1</span>$<span class="hljs-number">1</span>&#125;<span class="hljs-number">2</span>$<span class="hljs-number">1</span>&#125;<span class="hljs-number">3</span>$<span class="hljs-number">1</span>&#125;<span class="hljs-number">4</span>$<span class="hljs-number">1</span>&#125;<span class="hljs-number">5</span>$<span class="hljs-number">1</span>&#125;<span class="hljs-number">6</span>$<span class="hljs-number">1</span>|<span class="hljs-number">2</span>&#125;<span class="hljs-number">7</span>$<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/javscript/" class="category-chain-item">javscript</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/NodeJs/">#NodeJs</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>问卷星问卷抓包分析</div>
+      <div>https://dreamlove.top/2022/06/26/NodeJs/问卷星问卷抓包分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月26日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/27/NodeJs/%E6%B1%9F%E8%A5%BF%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E6%99%BA%E6%85%A7%E6%B1%9F%E8%B4%A2%E7%99%BB%E5%BD%95%E5%88%86%E6%9E%90/" title="江西财经大学智慧江财登录分析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">江西财经大学智慧江财登录分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/23/%E5%89%8D%E7%AB%AF/vue3.0%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="vue3.0的学习">
+                        <span class="hidden-mobile">vue3.0的学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
+        id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
+        aria-expanded="true"
+      >
+        javscript
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ef149587124f3e10cde7322bbd9d3f01"
+           role="tabpanel" aria-labelledby="heading-ef149587124f3e10cde7322bbd9d3f01">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/04/23/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%AF%86%E5%90%8E%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90%E5%8F%8D%E7%BC%96%E8%AF%91%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序加密后抓包分析反编译抢位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我来图书馆小程序加密后抓包分析反编译抢位置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/06/NodeJs/%E6%88%91%E6%9D%A5%E5%9B%BE%E4%B9%A6%E9%A6%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85%E6%8A%A2%E4%BD%8D%E7%BD%AE/" title="我来图书馆小程序抓包抢位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我来图书馆小程序抓包抢位置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/27/NodeJs/%E6%B1%9F%E8%A5%BF%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E6%99%BA%E6%85%A7%E6%B1%9F%E8%B4%A2%E7%99%BB%E5%BD%95%E5%88%86%E6%9E%90/" title="江西财经大学智慧江财登录分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">江西财经大学智慧江财登录分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/26/NodeJs/%E9%97%AE%E5%8D%B7%E6%98%9F%E9%97%AE%E5%8D%B7%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/" title="问卷星问卷抓包分析"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">问卷星问卷抓包分析</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="html"
+        id="heading-fc35fdc70d5fc69d269883a822c7a53e" role="tab" data-toggle="collapse" href="#collapse-fc35fdc70d5fc69d269883a822c7a53e"
+        aria-expanded="false"
+      >
+        html
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-fc35fdc70d5fc69d269883a822c7a53e"
+           role="tabpanel" aria-labelledby="heading-fc35fdc70d5fc69d269883a822c7a53e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/04/03/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%88%86%E9%A1%B5%E5%99%A8/" title="纯css+html实现的分页器功能"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">纯css+html实现的分页器功能</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="jQuery"
+        id="heading-f590b4fda2c30be28dd3c8c3caf5c77b" role="tab" data-toggle="collapse" href="#collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+        aria-expanded="false"
+      >
+        jQuery
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-f590b4fda2c30be28dd3c8c3caf5c77b"
+           role="tabpanel" aria-labelledby="heading-f590b4fda2c30be28dd3c8c3caf5c77b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/29/%E5%89%8D%E7%AB%AF/express+multer+jQuery%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%8A%E4%BC%A0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6/" title="express,multer,jQuery前端后端上传单个文件"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">express,multer,jQuery前端后端上传单个文件</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/02/28/%E5%89%8D%E7%AB%AF/jQuery%E4%B8%ADAPI,post%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%AE%B0%E5%BD%95/" title="jQuery中API,post上传文件到阿里云OSS记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">jQuery中API,post上传文件到阿里云OSS记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
