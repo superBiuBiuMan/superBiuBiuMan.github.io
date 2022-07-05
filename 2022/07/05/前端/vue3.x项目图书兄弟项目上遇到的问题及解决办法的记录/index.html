@@ -1,0 +1,2286 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="梦洁">
+  <meta name="keywords" content="前端,JavaScript,nodejs,es5,es6,vue">
+  
+    <meta name="description" content="1.vue3中reactive定义的引用类型直接赋值导致数据失去响应式 这里写的很详细,想看可以看看@地址,我这里说下结果就可以~ reactive定义的数组或者对象，不能直接对整体进行赋值修改，否则定义的数据将失去响应性。  失去响应式示例 当经过一秒后,页面显示的内容并没有被改变!  12345678910111213141516171819202122232425262728&lt;temp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录">
+<meta property="og:url" content="https://dreamlove.top/2022/07/05/%E5%89%8D%E7%AB%AF/vue3.x%E9%A1%B9%E7%9B%AE%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E9%A1%B9%E7%9B%AE%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="技术小站-属于你我的小天地">
+<meta property="og:description" content="1.vue3中reactive定义的引用类型直接赋值导致数据失去响应式 这里写的很详细,想看可以看看@地址,我这里说下结果就可以~ reactive定义的数组或者对象，不能直接对整体进行赋值修改，否则定义的数据将失去响应性。  失去响应式示例 当经过一秒后,页面显示的内容并没有被改变!  12345678910111213141516171819202122232425262728&lt;temp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052224860.jpg">
+<meta property="article:published_time" content="2022-07-05T14:21:20.000Z">
+<meta property="article:modified_time" content="2022-07-05T14:22:52.000Z">
+<meta property="article:author" content="梦洁">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="图书兄弟">
+<meta property="article:tag" content="移动端">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052224860.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录 - 技术小站-属于你我的小天地</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/self.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dreamlove.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":"56a9edfbb46d4b121042cc70ff0dc1ef","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?56a9edfbb46d4b121042cc70ff0dc1ef";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梦恋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-briefcase"></i>
+                工具站
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205142210528.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-05 22:21" pubdate>
+          2022年7月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          135 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年7月5日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1-vue3中reactive定义的引用类型直接赋值导致数据失去响应式"><a href="#1-vue3中reactive定义的引用类型直接赋值导致数据失去响应式" class="headerlink" title="1.vue3中reactive定义的引用类型直接赋值导致数据失去响应式"></a>1.vue3中reactive定义的引用类型直接赋值导致数据失去响应式</h2><ul>
+<li>这里写的很详细,想看可以看看<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45974259/article/details/124002564">@地址</a>,我这里说下结果就可以~</li>
+<li><strong>reactive定义的数组或者对象，不能直接对整体进行赋值修改，否则定义的数据将失去响应性。</strong></li>
+</ul>
+<h3 id="失去响应式示例"><a href="#失去响应式示例" class="headerlink" title="失去响应式示例"></a>失去响应式示例</h3><ul>
+<li>当经过一秒后,<strong>页面显示的内容并没有被改变!</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid red&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span></span><br><span class="language-xml">    &#123;&#123; banner &#125;&#125;</span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; reactive, onMounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;HomeView&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">components</span>: &#123;&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//预先定义一个数据填充占位</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">var</span> banner = <span class="hljs-title function_">reactive</span>(&#123;&#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        banner = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;李白&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;18&quot;</span> &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;修改值完成&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">      &#125;, <span class="hljs-number">2000</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      banner,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="2-vue使用插槽的简写和使用默认插槽"><a href="#2-vue使用插槽的简写和使用默认插槽" class="headerlink" title="2.vue使用插槽的简写和使用默认插槽"></a>2.vue使用插槽的简写和使用默认插槽</h2><h3 id="使用插槽简写v-slot直接用字符’-’代替"><a href="#使用插槽简写v-slot直接用字符’-’代替" class="headerlink" title="使用插槽简写v-slot直接用字符’#’代替"></a>使用插槽简写v-slot直接用字符’#’代替</h3><ul>
+<li>使用<code>Navbar组件</code>当中的默认插槽   <code>v-slot:default</code>等同于<code>#default</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;<span class="hljs-title class_">Navbar</span>&gt;<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> 商品分类 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br>&lt;/<span class="hljs-title class_">Navbar</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-flex-1是什么意思在弹性布局当中"><a href="#3-flex-1是什么意思在弹性布局当中" class="headerlink" title="3.flex:1是什么意思在弹性布局当中"></a>3.flex:1是什么意思在弹性布局当中</h2><ul>
+<li><p><code>flex</code>属性是以下三个属性的简写(用于弹性元素-也就是父元素被设置了display:flex,然后子元素就可以设置flex属性)</p>
+<ul>
+<li><code>flex-grow</code> :设置增长系数(也就是如何分配剩余的空闲空间) 如果元素不是弹性盒对象的元素，则 <code>flex-grow</code> 属性不起作用。</li>
+<li><code>flex-shrink</code>  :设置收缩系数</li>
+<li><code>flex-basis</code>:设置基准值</li>
+</ul>
+</li>
+<li><p>当我们设置为<code>flex:1</code>的时候,相当于设置了 <code>flex:1 1 0</code> 也就是设置了flex-grow,其他都设置默认值</p>
+</li>
+<li><p><strong>经常用来设置元素不管其内容如何，使所有弹性项目的长度均相同</strong></p>
+</li>
+<li><p>具体可以看看MdnWeb <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">@flex属性</a></p>
+</li>
+</ul>
+<h2 id="4-vue3使用编程式导航"><a href="#4-vue3使用编程式导航" class="headerlink" title="4.vue3使用编程式导航"></a>4.vue3使用编程式导航</h2><ul>
+<li>vue2的时候,编程式导航都是通过<code>this.$router.push</code>等方法来进行的,但是到了vue3,是没有this了~</li>
+</ul>
+<h3 id="vue3使用编程式导航和获取当前路由对象"><a href="#vue3使用编程式导航和获取当前路由对象" class="headerlink" title="vue3使用编程式导航和获取当前路由对象"></a>vue3使用编程式导航和获取当前路由对象</h3><ul>
+<li><p>首先导入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//为了获取路由总管 --- 注意,这里有字母r</span><br><span class="hljs-keyword">import</span> &#123;useRouter&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;<br><br><span class="hljs-comment">//为了获取当前自身路由信息 --- 注意,这里没有字母r</span><br><span class="hljs-keyword">import</span> &#123;useRoute&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>setup</code>当中调用<code>useRouter</code>方法获取路由总管 和调用<code>useRoute</code>方法获取自身路由信息</p>
+<ul>
+<li><code>const router  = useRouter()</code>; 这样子就相当于vue2时候的<code>this.$router</code>了  </li>
+<li><code>const route  = useRouter()</code>; 这样子就相当于vue2时候的<code>this.$route</code>了</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; useRouter, useRoute &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;HomeView&quot;</span>,<br>  <span class="hljs-attr">components</span>: &#123;&#125;,<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//路由总管</span><br>    <span class="hljs-keyword">const</span> router = <span class="hljs-title function_">useRouter</span>();<br>    <span class="hljs-comment">//自身路由</span><br>    <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>();<br>      <span class="hljs-comment">//输出查看</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(route);<br>    <span class="hljs-comment">//编程式导航</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">clickTo</span>(<span class="hljs-params"></span>) &#123;<br>      router.<span class="hljs-title function_">push</span>(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/about&quot;</span> &#125;);<br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123; clickTo &#125;;<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="5-设置超出容器内容隐藏并添加省略号"><a href="#5-设置超出容器内容隐藏并添加省略号" class="headerlink" title="5.设置超出容器内容隐藏并添加省略号"></a>5.设置超出容器内容隐藏并添加省略号</h2><ul>
+<li>设置<code>overflow:hidden</code> <code>white-space:nowrap</code> <code>text-overflow:ellipsis</code></li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>超出部分添加省略号<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">        *&#123;</span><br><span class="language-css">            <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;</span><br><span class="language-css">            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="language-css">        &#125;</span><br><span class="language-css">        <span class="hljs-selector-id">#over</span>&#123;</span><br><span class="language-css">            <span class="hljs-comment">/* 设置下位置 */</span></span><br><span class="language-css">            <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto;</span><br><span class="language-css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="language-css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">40px</span>;</span><br><span class="language-css">            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;</span><br><span class="language-css">            <span class="hljs-comment">/* 查出隐藏 */</span></span><br><span class="language-css">            <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="language-css">            <span class="hljs-attribute">text-overflow</span>: ellipsis;<span class="hljs-comment">/* 文本超出省略号 */</span></span><br><span class="language-css">            <span class="hljs-attribute">white-space</span>: nowrap;<span class="hljs-comment">/* 连续的空白符会被合并。但文本内的换行无效 */</span></span><br><span class="language-css">        &#125;</span><br><span class="language-css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;over&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>我认为， 文森特·皮尔说过一句富有哲理的话，改变你的想法，你就改变了自己的世界。这不禁令我深思。 的发生，到底需要如何做到，不的发生，又会如何产生。 的发生，到底需要如何做到，不的发生，又会如何产生。 这样看来， 佚名说过一句富有哲理的话，感激每一个新的挑战，因为它会锻造你的意志和品格。这似乎解答了我的疑惑。 要想清楚，，到底是一种怎么样的存在。 总结的来说， 培根曾经说过，合理安排时间，就等于节约时间。这不禁令我深思。<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051454795.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h2 id="6-vue3的ref来获取dom元素"><a href="#6-vue3的ref来获取dom元素" class="headerlink" title="6.vue3的ref来获取dom元素"></a>6.vue3的ref来获取dom元素</h2><ul>
+<li>1.元素添加<code>ref</code>属性<ul>
+<li>比如<code>&lt;div ref=&quot;content&quot;&gt;我是内容&lt;/div&gt;</code></li>
+</ul>
+</li>
+<li>2.setup当中添加<code>const 刚刚添加的ref属性名称 = ref(null)</code><ul>
+<li><code>const content = ref(null)</code> <strong>注意,变量名字必须要和ref属性名字一样!</strong></li>
+</ul>
+</li>
+<li>3.通过setup返回,然后就可以在其他当中调用了</li>
+<li>注意<ul>
+<li>需要在<code>return</code>当中返回</li>
+<li>需要添加<code>.value</code>才可以正确获取到dom节点(因为返回的是引用示例,所以需要在访问一层才可以)</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><ul>
+<li>通过<code>ref</code>来读取属性并输出里面的内容</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid red&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>我是动感超人<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; onMounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;HomeView&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">components</span>: &#123;&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> content = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">null</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//输出&#x27;我是动感超人&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(content.<span class="hljs-property">value</span>.<span class="hljs-property">textContent</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      content,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="7-getBoundingClientRect"><a href="#7-getBoundingClientRect" class="headerlink" title="7.getBoundingClientRect"></a>7.getBoundingClientRect</h2><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
+<li>统计某一个元素相当于浏览器视口的距离</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect">mdnWebDoc说明(含有视口滚动时候的情况)</a></li>
+</ul>
+<h3 id="示例说明"><a href="#示例说明" class="headerlink" title="示例说明"></a>示例说明</h3><ul>
+<li>主要关注<code>#box</code>的样式</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;!DOCTYPE <span class="hljs-selector-tag">html</span>&gt;<br>&lt;<span class="hljs-selector-tag">html</span> lang=&quot;en&quot;&gt;<br><br>&lt;head&gt;<br>    &lt;meta charset=&quot;UTF-<span class="hljs-number">8</span>&quot;&gt;<br>    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; <span class="hljs-attribute">content</span>=&quot;IE=edge&quot;&gt;<br>    &lt;meta name=&quot;viewport&quot; <span class="hljs-attribute">content</span>=&quot;<span class="hljs-attribute">width</span>=device-<span class="hljs-attribute">width</span>, initial-scale=<span class="hljs-number">1.0</span>&quot;&gt;<br>    &lt;title&gt;Document&lt;/title&gt;<br>&lt;/head&gt;<br><br>&lt;<span class="hljs-selector-tag">body</span>&gt;<br>    &lt;style&gt;<br>        <span class="hljs-selector-id">#box</span> &#123;<br>            <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;<br>            <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;<br>            <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;<br>            <span class="hljs-attribute">margin</span>: <span class="hljs-number">50px</span> auto;<br>            <span class="hljs-attribute">background</span>: purple;<br>        &#125;<br>    &lt;/style&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> id=&quot;box&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;script&gt;<br>        <span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">object</span> = document<span class="hljs-selector-class">.querySelector</span>(&quot;<span class="hljs-selector-id">#box</span>&quot;);<br>        <span class="hljs-selector-tag">var</span> objectDomInfo = <span class="hljs-selector-tag">object</span><span class="hljs-selector-class">.getBoundingClientRect</span>();<br>        console<span class="hljs-selector-class">.log</span>(objectDomInfo);<br>    &lt;/script&gt;<br><br>&lt;/<span class="hljs-selector-tag">body</span>&gt;<br><br>&lt;/<span class="hljs-selector-tag">html</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>getBoundingClientRect</code>返回对象的属性</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bottom</span>: <span class="hljs-number">290</span><br><span class="hljs-attribute">height</span>: <span class="hljs-number">240</span><br><span class="hljs-attribute">left</span>: <span class="hljs-number">539</span>.<span class="hljs-number">6000366210938</span><br><span class="hljs-attribute">right</span>: <span class="hljs-number">979</span>.<span class="hljs-number">6000366210938</span><br><span class="hljs-attribute">top</span>: <span class="hljs-number">50</span><br><span class="hljs-attribute">width</span>: <span class="hljs-number">440</span><br><span class="hljs-attribute">x</span>: <span class="hljs-number">539</span>.<span class="hljs-number">6000366210938</span><br><span class="hljs-attribute">y</span>: <span class="hljs-number">50</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>getBoundingClientRect</code>返回对象的属性说明</p>
+<ul>
+<li><p><code>x:</code> &#x2F;<code>left:</code> 元素左上角顶点相当于当前浏览器视口的<strong>左边</strong>距离</p>
+</li>
+<li><p><code>y:</code> &#x2F;<code>top: </code>元素左上角顶点相对于当年浏览器视口的<strong>顶部</strong>距离</p>
+<hr>
+</li>
+<li><p><code>width:</code>400+20+20 &#x3D; 440 <strong>(width+padding-left+padding-right)</strong></p>
+<ul>
+<li>当前元素的<code>width+paddin-left+padding-right的值</code></li>
+</ul>
+</li>
+<li><p><code>height:</code>200+20+20 &#x3D; 240 <strong>(height+padding-top+padding-bottom)</strong></p>
+<ul>
+<li>当前元素的<code>height+padding-top+padding-bottom</code>的值</li>
+</ul>
+</li>
+<li><p>注意点:</p>
+<ul>
+<li><code>width</code>&#x2F;<code>height</code> 是与元素的 <code>width</code>&#x2F;<code>height</code> + <code>padding</code> 相等的。</li>
+</ul>
+<hr>
+</li>
+<li><p><code>bottom:</code>元素右下角顶点相对于当年浏览器视口<strong>顶部</strong>的距离</p>
+</li>
+<li><p><code>right:</code>元素右下角顶点相对于当年浏览器视口的<strong>左边</strong>的距离</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051724469.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h2 id="8-better-scroll"><a href="#8-better-scroll" class="headerlink" title="8.better-scroll"></a>8.better-scroll</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ustbhuangyi/better-scroll/blob/master/README_zh-CN.md">@中文文档</a></p>
+</li>
+<li><p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install better-scroll --save<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>引入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">import BetterScroll from <span class="hljs-string">&quot;better-scroll&quot;</span>;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">BetterScroll</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;better-scroll&quot;</span>;<br><span class="hljs-keyword">import</span> throttle <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;lodash/throttle&quot;</span>;<br><span class="hljs-keyword">import</span> debounce <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;lodash/debounce&quot;</span>;<br><span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>)&#123;<br>	<span class="hljs-comment">//一般在dom结构创建完成后调用</span><br>    <span class="hljs-title function_">onMounted</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>          <span class="hljs-comment">// 创建BetterScroll对象</span><br>          bs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BetterScroll</span>(<span class="hljs-string">&quot;.home-wrapper&quot;</span>, &#123;<br>            <span class="hljs-attr">probeType</span>: <span class="hljs-number">3</span>,<br>            <span class="hljs-attr">click</span>: <span class="hljs-literal">true</span>,<br>            <span class="hljs-attr">pullUpLoad</span>: <span class="hljs-literal">true</span>,<br>          &#125;);<br>    &#125;)<br>	<span class="hljs-comment">//添加滚动事件,使用下节流阀</span><br>     bs.<span class="hljs-title function_">on</span>(<br>        <span class="hljs-string">&quot;scroll&quot;</span>,<br>        <span class="hljs-title function_">throttle</span>(<span class="hljs-function">(<span class="hljs-params">position</span>) =&gt;</span> &#123;<br>          <span class="hljs-comment">//position.y可以获取滚动距离</span><br>        &#125;, <span class="hljs-number">100</span>)<br>    );<br>   <span class="hljs-comment">//当拉动到底部的时候</span><br>    bs.<span class="hljs-title function_">on</span>(<br>        <span class="hljs-string">&quot;pullingUp&quot;</span>,<br>        <span class="hljs-title function_">throttle</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;到底部了&quot;</span>);<br>          <span class="hljs-comment">//发送ajax请求获取新页</span><br>            <br>           	<span class="hljs-comment">//....</span><br>            <br>          <span class="hljs-comment">//完成上划动作</span><br>          bs.<span class="hljs-title function_">finishPullUp</span>();<br>          bs.<span class="hljs-title function_">refresh</span>();<br>        &#125;, <span class="hljs-number">80</span>)<br>      );<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="9-手机端常用的左边分类-上部标签页-右部分布局页的结构代码"><a href="#9-手机端常用的左边分类-上部标签页-右部分布局页的结构代码" class="headerlink" title="9.手机端常用的左边分类,上部标签页,右部分布局页的结构代码"></a>9.手机端常用的左边分类,上部标签页,右部分布局页的结构代码</h2><h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202206300942081.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Navbar</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span> 商品分类 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Navbar</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category-wrapper&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-comment">&lt;!-- 排序分布栏 --&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navbar&quot;</span>&gt;</span></span><br><span class="language-xml">        1</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-comment">&lt;!-- 左侧分类列表 --&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left-list&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-comment">&lt;!-- 书籍展示 --&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;show-list&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Navbar</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/components/common/navbar/Navbar&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Category&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">components</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title class_">Navbar</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;less&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span><br><span class="language-xml">.category-wrapper &#123;</span><br><span class="language-xml">  //隔开顶部nab</span><br><span class="language-xml">  margin-top: 45px;</span><br><span class="language-xml">  display: flex;</span><br><span class="language-xml">  // 为左侧分类列表的宽度</span><br><span class="language-xml">  @leftItemWidth: 130px;</span><br><span class="language-xml">  //nav的宽度</span><br><span class="language-xml">  @navBarHidth: 40px;</span><br><span class="language-xml">  .navbar &#123;</span><br><span class="language-xml">    background-color: red;</span><br><span class="language-xml">    float: right;</span><br><span class="language-xml">    position: fixed;</span><br><span class="language-xml">    right: 0;</span><br><span class="language-xml">    height: @navBarHidth;</span><br><span class="language-xml">    left: @leftItemWidth;</span><br><span class="language-xml">    z-index: 10;</span><br><span class="language-xml">  &#125;</span><br><span class="language-xml">  // 左侧分类列表</span><br><span class="language-xml">  .left-list &#123;</span><br><span class="language-xml">    position: fixed;</span><br><span class="language-xml">    width: @leftItemWidth;</span><br><span class="language-xml">    left: 0;</span><br><span class="language-xml">    height: 100%;</span><br><span class="language-xml">    background-color: green;</span><br><span class="language-xml">  &#125;</span><br><span class="language-xml">  // 书籍展示</span><br><span class="language-xml">  .show-list &#123;</span><br><span class="language-xml">    background-color: blue;</span><br><span class="language-xml">    position: absolute;</span><br><span class="language-xml">    right: 0;</span><br><span class="language-xml">    // nav的宽度 + 顶部的商品分类宽度</span><br><span class="language-xml">    top: @navBarHidth+45;</span><br><span class="language-xml">    left:@leftItemWidth;</span><br><span class="language-xml">    height: 100%;</span><br><span class="language-xml">  &#125;</span><br><span class="language-xml">&#125;</span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="10-深度选择器vue3"><a href="#10-深度选择器vue3" class="headerlink" title="10.深度选择器vue3"></a>10.深度选择器vue3</h2><ul>
+<li><p>通过<code>:deep(选择器) &#123; .... &#125;</code> 来实现,具体看代码~</p>
+</li>
+<li><p><code>::v-deep</code>在vue3被废弃了,不推荐使用,推荐使用<code>:deep()</code>这种方式</p>
+</li>
+</ul>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><ul>
+<li>less代码示例</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;style lang=&quot;less&quot; scoped&gt;<br><span class="hljs-selector-id">#address</span> &#123;<br>  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">45px</span>;<br>  <span class="hljs-selector-class">.content</span> &#123;<br>    <span class="hljs-attribute">background</span>: white; <br>    :<span class="hljs-built_in">deep</span>(.van-radio__icon) &#123;<br>      <span class="hljs-attribute">display</span>: none;<br>    &#125;<br>  &#125;<br>  :<span class="hljs-built_in">deep</span>(.van-address-list__bottom)&#123;<br>      <span class="hljs-attribute">bottom</span>: <span class="hljs-number">50px</span>;<br>      <span class="hljs-attribute">background-color</span>:unset;<br>    &#125;<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="11-vant组件库van-collapse-下拉折叠面板出现Collapse-“v-model”-should-not-be-Array-in-accordion-mode"><a href="#11-vant组件库van-collapse-下拉折叠面板出现Collapse-“v-model”-should-not-be-Array-in-accordion-mode" class="headerlink" title="11.vant组件库van-collapse 下拉折叠面板出现Collapse: “v-model” should not be Array in accordion mode"></a>11.vant组件库van-collapse 下拉折叠面板出现Collapse: “v-model” should not be Array in accordion mode</h2><ul>
+<li><strong>原因</strong><ul>
+<li>默认的下拉折叠面板是可以展示多个数据的,所以v-model绑定的是一个数组,但是这里使用了accordion属性,就只记录一个的值,不需要使用到数组,所以就出现这个提示</li>
+</ul>
+</li>
+<li><strong>解决办法</strong><ul>
+<li>v-model&#x3D;”activeNames”当中的activeNames变量值改为一个基本数据类型即可</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!-- v-model=<span class="hljs-string">&quot;activeNames&quot;</span> --&gt;<br>	由于这里使用了只能选中一个,并且这里为什么取名叫activeNames,是记录展开的列表项,但是<br>    但是这里使用了accordion属性,就只记录一个,就没有必要用数组了<br>  &lt;van-collapse v-model=<span class="hljs-string">&quot;activeNames&quot;</span> accordion&gt;<br>	&lt;!-- title为一级列表的展示名  --&gt;<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">van-collapse-item</span></span></span><br><span class="hljs-tag"><span class="language-xml">	  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(firstLevel, index) in categoryList&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">	  <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;firstLevel.id&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">	  <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;firstLevel.name&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">	  <span class="hljs-attr">:name</span>=<span class="hljs-string">&quot;firstLevel.name&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">	&gt;</span></span><br><span class="language-xml">	  <span class="hljs-comment">&lt;!-- 二级列表 --&gt;</span></span><br><span class="language-xml">	  <span class="hljs-tag">&lt;<span class="hljs-name">van-sidebar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;active&quot;</span>&gt;</span></span><br><span class="language-xml">		<span class="hljs-tag">&lt;<span class="hljs-name">van-sidebar-item</span></span></span><br><span class="hljs-tag"><span class="language-xml">		  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(secondLevel,index) in firstLevel.children&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		  <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;secondLevel.id&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		  <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;secondLevel.name&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		/&gt;</span></span><br><span class="language-xml">	  <span class="hljs-tag">&lt;/<span class="hljs-name">van-sidebar</span>&gt;</span></span><br><span class="language-xml">	<span class="hljs-tag">&lt;/<span class="hljs-name">van-collapse-item</span>&gt;</span></span><br>  &lt;/van-collapse&gt;<br><br><br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//左分类默认项</span><br>    <span class="hljs-keyword">const</span> active = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>);<br>       但是这里使用了accordion属性,就只记录一个,就没有必要用数组了<br>    <span class="hljs-comment">//const activeNames = ref([]);</span><br>	<span class="hljs-keyword">const</span> activeNames = <span class="hljs-title function_">ref</span>();<span class="hljs-comment">//这样子就可以</span><br>      <br>    <span class="hljs-keyword">const</span> categoryList = <span class="hljs-title function_">ref</span>([]);<br>    <span class="hljs-title function_">onMounted</span>(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>      <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">reqCategory</span>();<br>      <span class="hljs-comment">//保存存储数据</span><br>      categoryList.<span class="hljs-property">value</span> = result.<span class="hljs-property">categories</span>;<br>    &#125;);<br>    <span class="hljs-keyword">return</span> &#123;<br>      active,<br>      activeNames,<br>      categoryList,<br>    &#125;;<br>  &#125;,<br></code></pre></td></tr></table></figure>
+
+<h3 id="14-vant组件库sidebar-侧边导航-和-Collapse-折叠面板-的结合使用"><a href="#14-vant组件库sidebar-侧边导航-和-Collapse-折叠面板-的结合使用" class="headerlink" title="14.vant组件库sidebar(侧边导航) 和 Collapse(折叠面板)的结合使用"></a>14.vant组件库sidebar(侧边导航) 和 Collapse(折叠面板)的结合使用</h3><h3 id="效果"><a href="#效果" class="headerlink" title="效果:"></a>效果:</h3><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051559332.gif" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码:"></a>代码:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!-- 左侧分类列表 --&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left-list&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left-item-content&quot;</span>&gt;</span></span><br><span class="language-xml">    </span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">van-sidebar</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;activeSecond&quot;</span>&gt;</span></span><br><span class="language-xml">	<span class="hljs-comment">&lt;!-- 当做一个整体 --&gt;</span></span><br><span class="language-xml">	<span class="hljs-tag">&lt;<span class="hljs-name">van-collapse</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;activeName&quot;</span> <span class="hljs-attr">accordion</span>&gt;</span></span><br><span class="language-xml">	  <span class="hljs-comment">&lt;!-- 循环一级菜单 --&gt;</span></span><br><span class="language-xml">	  <span class="hljs-tag">&lt;<span class="hljs-name">van-collapse-item</span></span></span><br><span class="hljs-tag"><span class="language-xml">		<span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in categoryList&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		<span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.id&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		<span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;item.name&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		<span class="hljs-attr">:name</span>=<span class="hljs-string">&quot;item.name&quot;</span>&gt;</span></span><br><span class="language-xml">            </span><br><span class="language-xml">		<span class="hljs-comment">&lt;!-- 循环二级菜单 --&gt;</span></span><br><span class="language-xml">		<span class="hljs-tag">&lt;<span class="hljs-name">van-sidebar-item</span></span></span><br><span class="hljs-tag"><span class="language-xml">		  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;sub in item.children&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		  <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;sub.name&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">		  <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;sub.id&quot;</span>/&gt;</span></span><br><span class="language-xml">              </span><br><span class="language-xml">	  <span class="hljs-tag">&lt;/<span class="hljs-name">van-collapse-item</span>&gt;</span></span><br><span class="language-xml">	<span class="hljs-tag">&lt;/<span class="hljs-name">van-collapse</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">van-sidebar</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>setup当中内容<br><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;HomeView&quot;</span>,<br>  <span class="hljs-attr">components</span>: &#123;&#125;,<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//设置为99999,就不会出现初始化的时候单击任意一级菜单看到二级菜单选中的情况了</span><br>    <span class="hljs-keyword">const</span> activeSecond = <span class="hljs-title function_">ref</span>(<span class="hljs-number">99999</span>); <span class="hljs-comment">//二级分类列表目前活动项</span><br>    <span class="hljs-keyword">const</span> categoryList = <span class="hljs-title function_">ref</span>([]); <span class="hljs-comment">//左侧分类列表</span><br>    <span class="hljs-keyword">const</span> activeName = <span class="hljs-title function_">ref</span>(); <span class="hljs-comment">//一级分类列表的活动项记录</span><br>    <span class="hljs-keyword">return</span> &#123;<br>      activeSecond,<br>      categoryList,<br>      activeName<br>    &#125;;<br>  &#125;,<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="12-linear-gradient的知识点"><a href="#12-linear-gradient的知识点" class="headerlink" title="12.linear-gradient的知识点"></a>12.linear-gradient的知识点</h2><ul>
+<li><code>linear-gradient</code> 设置渐变,根据函数用于创建一个表示两种或多种颜色线性渐变的<strong>图片</strong>。<ul>
+<li><strong>所以这就是我们通过background-image属性来设置linear-gradient的原因</strong></li>
+</ul>
+</li>
+<li>角度方向理解,必看案例演示!!!!!!!!!!!!!!!!!<ul>
+<li>**(必看)**<a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/DRWdxj">https://codepen.io/thebabydino/pen/DRWdxj</a></li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/thebabydino/pen/kQjeWe">https://codepen.io/thebabydino/pen/kQjeWe</a></li>
+</ul>
+</li>
+<li>一些渐变效果网站<ul>
+<li><a target="_blank" rel="noopener" href="https://wangdicoder.github.io/awesome-gradient/">https://wangdicoder.github.io/awesome-gradient/</a> (比较少)</li>
+<li><a target="_blank" rel="noopener" href="http://color.oulu.me/">http://color.oulu.me/</a> (很多)</li>
+</ul>
+</li>
+<li>参考了一些别人的文章<ul>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014312295">https://segmentfault.com/a/1190000014312295</a> </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jenreal/article/details/117662540">https://blog.csdn.net/jenreal/article/details/117662540</a> (关于色块部分说的很好)</li>
+</ul>
+</li>
+</ul>
+<h3 id="linear-gradient确认起点和终点"><a href="#linear-gradient确认起点和终点" class="headerlink" title="linear-gradient确认起点和终点"></a>linear-gradient确认起点和终点</h3><ul>
+<li>linear-gradient线性渐变是通过一个<strong>轴</strong>定义的，这个轴称为<strong>渐变轴&#x2F;渐变线</strong>。如图,红色的为渐变轴&#x2F;渐变线,正方形的为div容器示例</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052152918.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<ul>
+<li><p>轴通过顺时针旋转来进行设置起点和终点</p>
+<ul>
+<li>设置完成起点和终点后,将颜色进行分布(如果没有对颜色位置进行分布,则平均分配颜色位置)</li>
+</ul>
+</li>
+<li><p><code>linear-gradient</code>默认方向为<code>to bottom</code></p>
+</li>
+</ul>
+<h3 id="linear-gradient常见的绘制方向的坐标轴和效果示例"><a href="#linear-gradient常见的绘制方向的坐标轴和效果示例" class="headerlink" title="linear-gradient常见的绘制方向的坐标轴和效果示例"></a>linear-gradient常见的绘制方向的坐标轴和效果示例</h3><ul>
+<li><code>to top</code>, <code>to bottom</code>, <code>to left</code> 和 <code>to right</code> 这些值会被转换成角度 0 度、180 度、270 度和 90 度。</li>
+<li>简单理解方向<ul>
+<li><code>to</code>  <strong>指明终点渲染的方向</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="1-background-image-linear-gradient-red-green"><a href="#1-background-image-linear-gradient-red-green" class="headerlink" title="1.background-image:linear-gradient(red, green);"></a>1.background-image:linear-gradient(red, green);</h4><ul>
+<li>默认情况轴被旋转了180度</li>
+<li>等同于<code>linear-gradient(to bottom,red,green)</code></li>
+<li>默认值to bottom转化为180度</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052153306.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="background-image:linear-gradient(red, green)"></p>
+<h4 id="2-background-image-linear-gradient-to-top-red-green"><a href="#2-background-image-linear-gradient-to-top-red-green" class="headerlink" title="2.background-image: linear-gradient(to top,red,green);"></a>2.background-image: linear-gradient(to top,red,green);</h4><ul>
+<li>轴没有被旋转的情况</li>
+<li>0度</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052153651.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="background-image: linear-gradient(to top,red,green)"></p>
+<h4 id="3-background-image-linear-gradient-to-left-red-green"><a href="#3-background-image-linear-gradient-to-left-red-green" class="headerlink" title="3.background-image: linear-gradient(to left,red,green);"></a>3.background-image: linear-gradient(to left,red,green);</h4><ul>
+<li>轴被旋转270度的情况</li>
+<li>270 度</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052154835.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="background-image: linear-gradient(to left,red,green)"></p>
+<h4 id="4-background-image-linear-gradient-to-right-red-green"><a href="#4-background-image-linear-gradient-to-right-red-green" class="headerlink" title="4.background-image: linear-gradient(to right, red,green);"></a>4.background-image: linear-gradient(to right, red,green);</h4><ul>
+<li>轴被旋转90度的情况</li>
+<li>90度</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052154643.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="background-image: linear-gradient(to right, red,green)"></p>
+<h4 id="5-background-image-linear-gradient-45deg-red-green"><a href="#5-background-image-linear-gradient-45deg-red-green" class="headerlink" title="5.background-image: linear-gradient(45deg, red,green);"></a>5.background-image: linear-gradient(45deg, red,green);</h4><ul>
+<li>轴被旋转45度的情况</li>
+<li>45度</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052154063.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h4 id="6-示例代码"><a href="#6-示例代码" class="headerlink" title="6.示例代码"></a>6.示例代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;<br>&lt;html lang=&quot;en&quot;&gt;<br>&lt;head&gt;<br>    &lt;meta charset=&quot;UTF-8&quot;&gt;<br>    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br>    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>    &lt;title&gt;Document&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br><br>    &lt;div id=&quot;div1&quot;&gt;<br>        div1<br>    &lt;/div&gt;<br>    &lt;div id=&quot;div2&quot;&gt;<br>        div2<br>    &lt;/div&gt;<br>    &lt;div id=&quot;div3&quot;&gt;<br>        div3<br>    &lt;/div&gt;<br>    &lt;div id=&quot;div4&quot;&gt;<br>        div4<br>    &lt;/div&gt;<br>    &lt;div id=&quot;div5&quot;&gt;<br>        div5<br>    &lt;/div&gt;<br>    &lt;style&gt;<br>        #div1,#div2,#div3,#div4,#div5&#123;<br>            float: left;<br>            width: 200px;<br>            height: 200px;<br>            margin: 10px 5px;<br>        &#125;<br>        /* 指定渐变线，默认是to bottom */<br>        /* to top, to bottom, to left 和 to right <br>        这些值会被转换成角度 0 度、180 度、270 度和 90 度。<br>        其余值会被转换为一个以向顶部中央方向为起点顺时针旋转的角度。渐变线的结束点与其起点中心对称。 */<br>        #div1&#123;<br>            /* 等同于linear-gradient(to bottom,red,green),轴旋转了180度 */<br>            background-image:linear-gradient(red, green);<br>        &#125;<br>        #div2&#123;<br>            /* 轴旋转了0度 */<br>            background-image: linear-gradient(to top,red,green);<br>        &#125;<br>        #div3&#123;<br>            /* 轴旋转了270度 */<br>            background-image: linear-gradient(to left,red,green);<br>        &#125;<br>        #div4&#123;<br>            /* 轴旋转了90度 */<br>            background-image: linear-gradient(to right, red,green);<br>        &#125;<br>        #div5&#123;<br>            /* 轴被旋转45度的情况 */<br>            background-image: linear-gradient(45deg, red,green);<br>        &#125;<br>    &lt;/style&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="linear-gradient颜色绘制参数理解"><a href="#linear-gradient颜色绘制参数理解" class="headerlink" title="linear-gradient颜色绘制参数理解"></a>linear-gradient颜色绘制参数理解</h3><ul>
+<li>就是渐变轴上颜色分布情况,和ps有些类似</li>
+</ul>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><ul>
+<li>linear-gradient(0deg, blue, green 40%, red);</li>
+<li>从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束</li>
+<li>演示结构图</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052215664.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<ul>
+<li>效果图</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207052215031.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<h2 id="13-vant表单验证实现邮箱为空提示信息1-格式不正确提示信息2"><a href="#13-vant表单验证实现邮箱为空提示信息1-格式不正确提示信息2" class="headerlink" title="13.vant表单验证实现邮箱为空提示信息1,格式不正确提示信息2"></a>13.vant表单验证实现邮箱为空提示信息1,格式不正确提示信息2</h2><ul>
+<li>看代码就可以,在配置<code>rules</code>的时候,传入多个配置对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;van-field<br>             autocomplete<br>             v-model=<span class="hljs-string">&quot;email&quot;</span><br>             type=<span class="hljs-string">&quot;text&quot;</span><br>             label=<span class="hljs-string">&quot;电子邮箱&quot;</span><br>             name=<span class="hljs-string">&quot;pattern&quot;</span><br>             placeholder=<span class="hljs-string">&quot;请输入邮件&quot;</span><br>             :rules=<span class="hljs-string">&quot;[</span><br><span class="hljs-string">			//为空提示这个</span><br><span class="hljs-string">             &#123; required: true, message: &#x27;请填写您的邮箱！&#x27; &#125;,		   //正则出错提示这个</span><br><span class="hljs-string">             &#123; pattern: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.)&#123;1,63&#125;[a-z0-9]+$/, message: &#x27;邮箱格式错误！&#x27;&#125;]&quot;</span> /&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="14-vant组件库Toast轻提示全局注册没有用并且样式丢失了"><a href="#14-vant组件库Toast轻提示全局注册没有用并且样式丢失了" class="headerlink" title="14.vant组件库Toast轻提示全局注册没有用并且样式丢失了"></a>14.vant组件库Toast轻提示全局注册没有用并且样式丢失了</h2><ul>
+<li><p>解决:原来的全局注册换成哪里用到就引入</p>
+<ul>
+<li><code>import &#123;Toast&#125; from &quot;vant&quot;;</code></li>
+</ul>
+</li>
+<li><p>样式丢失错误</p>
+</li>
+<li><p><strong>解决错误</strong></p>
+<ul>
+<li>引入样式,我们需要使用哪个组件，就引入哪个组件样式即可，比如我们只使用按钮组件，则只需要引入按钮样式，如下:</li>
+<li><code>import &#39;vant/lib/toast/style&#39;</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207010917925.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<ul>
+<li>样式引入参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46309087/article/details/109502043">@vue解决vant组件样式失效问题</a></li>
+</ul>
+<h2 id="15-vue3-x组件当中和js当中使用vuex"><a href="#15-vue3-x组件当中和js当中使用vuex" class="headerlink" title="15.vue3.x组件当中和js当中使用vuex"></a>15.vue3.x组件当中和js当中使用vuex</h2><ul>
+<li><p><strong>组件当中</strong>(.vue)</p>
+<ul>
+<li>引入<code>import &#123;useStore&#125; from &quot;Vuex&quot;;</code></li>
+<li>然后调用<code>useStore</code>返回的值相当于vue2.x时候的<code>this.$store</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; useStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vuex&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;HomeView&quot;</span>,<br>  <span class="hljs-attr">components</span>: &#123;&#125;,<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//使用vuex仓库,等同于vue时候的this.$store</span><br>    <span class="hljs-keyword">const</span> store = <span class="hljs-title function_">useStore</span>();<br>    <span class="hljs-comment">//获取 Authorization 当中的值</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(store.<span class="hljs-property">state</span>.<span class="hljs-property">Authorization</span>);<br>    <span class="hljs-keyword">return</span> &#123;<br><br>    &#125;;<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>js当中使用</strong></p>
+<ul>
+<li>首先引入<code>import store from &quot;@store/index.js&quot;</code></li>
+<li>然后这个<code>store</code>相当于vue2时候的的<code>this.$store</code>了</li>
+</ul>
+</li>
+</ul>
+<h2 id="16-vant的Toast-轻提示-设置不自动关闭-后面手动关闭"><a href="#16-vant的Toast-轻提示-设置不自动关闭-后面手动关闭" class="headerlink" title="16.vant的Toast(轻提示)设置不自动关闭,后面手动关闭"></a>16.vant的Toast(轻提示)设置不自动关闭,后面手动关闭</h2><ul>
+<li>vant的回答解决办法 <a target="_blank" rel="noopener" href="https://github.com/youzan/vant/issues/2117">@地址</a> 也就下面这种方法</li>
+<li>通过设置配置对象当中的<code>duration:0</code> 即可</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Toast</span>.<span class="hljs-title function_">loading</span>(&#123;<span class="hljs-attr">message</span>:<span class="hljs-string">&quot;正在加载...&quot;</span>,<span class="hljs-attr">forbidClick</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">duration</span>:<span class="hljs-number">0</span>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>然后后面可以<strong>调用</strong><code>Toast.clear()</code><strong>来关闭提示</strong></li>
+</ul>
+<h2 id="17-window-localStorage-getItem获取不到指定的key值-返回的是null而不是undefined"><a href="#17-window-localStorage-getItem获取不到指定的key值-返回的是null而不是undefined" class="headerlink" title="17.window.localStorage.getItem获取不到指定的key值,返回的是null而不是undefined"></a>17.window.localStorage.getItem获取不到指定的key值,返回的是null而不是undefined</h2><h2 id="18-vue3使用keep-alive路由缓存保活"><a href="#18-vue3使用keep-alive路由缓存保活" class="headerlink" title="18.vue3使用keep-alive路由缓存保活"></a>18.vue3使用keep-alive路由缓存保活</h2><h3 id="添加路由缓存-x2F-保活"><a href="#添加路由缓存-x2F-保活" class="headerlink" title="添加路由缓存&#x2F;保活"></a>添加路由缓存&#x2F;保活</h3><ul>
+<li>1.在需要缓存的路由组件添加元信息</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> routes = [<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;home&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">HomeView</span><br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Home&quot;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">Home</span>,<br>    <span class="hljs-attr">meta</span>: &#123;<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;梦洁小站-图书兄弟&quot;</span>,<br>      <span class="hljs-attr">keepAlive</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 组件需要缓存</span><br>    &#125;,<br>  &#125;,<br>]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>2.<code>App.vue</code>原来的<code>&lt;router-view&gt;&lt;/router-view&gt;</code>删除</li>
+<li>3.<code>App.vue</code>更换为如下代码的路由组件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;router-view v-slot=<span class="hljs-string">&quot;&#123; Component &#125;&quot;</span>&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">transition</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-comment">&lt;!-- includeList变量需要通过setup返回 --&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">keep-alive</span> <span class="hljs-attr">:include</span>=<span class="hljs-string">&quot;includeList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;Component&quot;</span>&gt;</span></span><br><span class="language-xml">	<span class="hljs-tag">&lt;<span class="hljs-name">component</span> <span class="hljs-attr">:is</span>=<span class="hljs-string">&quot;Component&quot;</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">keep-alive</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">transition</span>&gt;</span></span><br>&lt;/router-view&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>4.<strong>App.vue组件当中添加如下内容</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; onMounted, toRefs, reactive, watch &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><span class="hljs-keyword">import</span> &#123;useRoute&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;App&quot;</span>,<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>();<br>    <span class="hljs-comment">//设置需要缓存的路由组件</span><br>    <span class="hljs-keyword">const</span> state = <span class="hljs-title function_">reactive</span>(&#123;<br>      <span class="hljs-attr">includeList</span>: [],<br>    &#125;);<br>    <span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-comment">//监视路由的改变,如果改变了,则添加进入路由组件</span><br>    <span class="hljs-title function_">watch</span>(<span class="hljs-function">() =&gt;</span> route,<span class="hljs-function">(<span class="hljs-params">newVal,oldVal</span>)=&gt;</span>&#123;<br>        <span class="hljs-comment">//读取当前路由组件的元数据,看是否有KeepAlive并且为true</span><br>        <span class="hljs-comment">//并且在缓存列表includeList当中不存在当前组件才添加进入缓存组件</span><br>      <span class="hljs-keyword">if</span>(newVal.<span class="hljs-property">meta</span>.<span class="hljs-property">keepAlive</span> &amp;&amp; state.<span class="hljs-property">includeList</span>.<span class="hljs-title function_">indexOf</span>(newVal.<span class="hljs-property">name</span>) === -<span class="hljs-number">1</span>)&#123;<br>          state.<span class="hljs-property">includeList</span>.<span class="hljs-title function_">push</span>(newVal.<span class="hljs-property">name</span>);<br>      &#125;<br>    &#125;,&#123;<span class="hljs-attr">deep</span>:<span class="hljs-literal">true</span>&#125;) <span class="hljs-comment">// 开启深度监听,不然没有效果</span><br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-comment">//提供给`router-view`组件使用变量名</span><br>      ...<span class="hljs-title function_">toRefs</span>(state),<br>    &#125;;<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用失效的问题"><a href="#使用失效的问题" class="headerlink" title="使用失效的问题"></a>使用失效的问题</h3><ul>
+<li><p>我发现是vue-router当中<code>index.js</code>当中的<code>name属性</code>和<code>vue组件当中的name值</code><strong>不匹配导致的,改为相同就可以</strong></p>
+</li>
+<li><p>还有就是,name属性名称第一个字母大写…(为了迎合组件当中name属性的写法)之前我一直小写的</p>
+</li>
+<li><p>其他失效可以看看这个博客 <a target="_blank" rel="noopener" href="https://blog.csdn.net/Jeason_KK/article/details/123663766">@vue 的 keep-alive include 属性不生效问题</a></p>
+</li>
+</ul>
+<h2 id="19-vue3项目本地热更新时报错TypeError-parentComponent-ctx-deactivate-is-not-a-function"><a href="#19-vue3项目本地热更新时报错TypeError-parentComponent-ctx-deactivate-is-not-a-function" class="headerlink" title="19.vue3项目本地热更新时报错TypeError: parentComponent.ctx.deactivate is not a function"></a>19.vue3项目本地热更新时报错TypeError: parentComponent.ctx.deactivate is not a function</h2><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041900520.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="报错信息"></p>
+<ul>
+<li><p><strong>解决方法: 在keep-alive、component上设置key进行排序(即加个key)</strong></p>
+</li>
+<li><p>改之前的代码会报这个错</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;router-view v-slot=<span class="hljs-string">&quot;&#123; Component &#125;&quot;</span>&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">transition</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">keep-alive</span> <span class="hljs-attr">:include</span>=<span class="hljs-string">&quot;includeList&quot;</span> &gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">component</span> <span class="hljs-attr">:is</span>=<span class="hljs-string">&quot;Component&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">keep-alive</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">transition</span>&gt;</span></span><br>&lt;/router-view&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>改之后,添加key</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;router-view v-slot=<span class="hljs-string">&quot;&#123; Component &#125;&quot;</span>&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">transition</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">keep-alive</span> <span class="hljs-attr">:include</span>=<span class="hljs-string">&quot;includeList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;Component&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">component</span> <span class="hljs-attr">:is</span>=<span class="hljs-string">&quot;Component&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">keep-alive</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">transition</span>&gt;</span></span><br>&lt;/router-view&gt;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/HTML/" class="category-chain-item">HTML</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/HTML/javscript/" class="category-chain-item">javscript</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/HTML/javscript/vue/" class="category-chain-item">vue</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/vue/">#vue</a>
+      
+        <a href="/tags/%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F/">#图书兄弟</a>
+      
+        <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">#移动端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</div>
+      <div>https://dreamlove.top/2022/07/05/前端/vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>梦洁</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月5日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 梦洁">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E7%A7%BB%E5%8A%A8%E7%AB%AFvue3.x%E9%A1%B9%E7%9B%AE/" title="图书兄弟移动端vue3.x项目(含在线演示)">
+                        <span class="hidden-mobile">图书兄弟移动端vue3.x项目(含在线演示)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"dWbiG8k2NUT3aoDdj5tC8hdS-gzGzoHsz","appKey":"1r8r0sThPYhRi7BB8Ja54BPE","path":"window.location.pathname","placeholder":"<(￣︶￣)↗[GO!] 来个评论吧~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="HTML"
+        id="heading-4c4ad5fca2e7a3f74dbb1ced00381aa4" role="tab" data-toggle="collapse" href="#collapse-4c4ad5fca2e7a3f74dbb1ced00381aa4"
+        aria-expanded="true"
+      >
+        HTML
+        <span class="list-group-count">(30)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4c4ad5fca2e7a3f74dbb1ced00381aa4"
+           role="tabpanel" aria-labelledby="heading-4c4ad5fca2e7a3f74dbb1ced00381aa4">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="css"
+        id="heading-c7a628cba22e28eb17b5f5c6ae2a266a" role="tab" data-toggle="collapse" href="#collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+        aria-expanded="false"
+      >
+        css
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c7a628cba22e28eb17b5f5c6ae2a266a"
+           role="tabpanel" aria-labelledby="heading-c7a628cba22e28eb17b5f5c6ae2a266a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%9D%97%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%B8%83%E5%B1%80%E5%92%8C%E5%BC%B9%E6%80%A7%E7%9B%92/" title="盒子模型及块元素水平垂直定位和绝对元素的定位布局和弹性盒"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">盒子模型及块元素水平垂直定位和绝对元素的定位布局和弹性盒</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
+        id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
+        aria-expanded="true"
+      >
+        javscript
+        <span class="list-group-count">(29)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ef149587124f3e10cde7322bbd9d3f01"
+           role="tabpanel" aria-labelledby="heading-ef149587124f3e10cde7322bbd9d3f01">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/22/%E5%89%8D%E7%AB%AF/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" title="ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/23/%E5%89%8D%E7%AB%AF/ProcessOn/" title="ProcessOn的官网(less+jquery实现三端)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ProcessOn的官网(less+jquery实现三端)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="canvas基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">canvas基本使用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/30/%E5%89%8D%E7%AB%AF/element-ui%E5%BD%93%E4%B8%ADpagination%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%80%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%95%B0%E9%87%8F(page-size)%E5%90%8E%E9%A1%B5%E7%A0%81%E6%B2%A1%E6%9C%89%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96/" title="element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" title="js当中的图片懒加载,懒加载的一些概念和相关知识点"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">js当中的图片懒加载,懒加载的一些概念和相关知识点</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/03/15/%E5%89%8D%E7%AB%AF/nth-of-type%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" title="nth-of-type选择器使用的一个坑"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">nth-of-type选择器使用的一个坑</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/%E5%BC%82%E6%AD%A5%E8%B7%AF%E7%94%B1,%E5%B8%B8%E9%87%8F%E8%B7%AF%E7%94%B1,%E4%BB%BB%E6%84%8F%E8%B7%AF%E7%94%B1/" title="vue-admin-template里面的异步路由,常量路由,任意路由的添加,记录笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue-admin-template里面的异步路由,常量路由,任意路由的添加,记录笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浅拷贝深拷贝和个人一些新理解(非普遍的理解)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/23/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%89%8D%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E5%92%8Crem,vm%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9A%84%E5%A4%8D%E4%B9%A0/" title="移动端前端的适配和rem,vm其他的一些的复习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">移动端前端的适配和rem,vm其他的一些的复习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/08/%E5%89%8D%E7%AB%AF/%E8%AE%B0%E5%BD%95%E4%B8%8Bbilibili(b%E7%AB%99)%E5%B0%8F%E7%81%AB%E7%AE%AD%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%88%92%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="记录下bilibili(b站)小火箭页面上划动画效果的实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">记录下bilibili(b站)小火箭页面上划动画效果的实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/02/28/%E5%89%8D%E7%AB%AF/%E8%BF%AD%E4%BB%A3%E5%99%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E5%BD%93%E4%B8%ADthis%E6%8C%87%E5%90%91/" title="迭代器自定义数据输出当中this指向"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">迭代器自定义数据输出当中this指向</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/03/31/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/" title="防抖节流的使用和封装成函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">防抖节流的使用和封装成函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/04/%E5%89%8D%E7%AB%AF/%E9%BB%98%E8%AE%A4%E6%9A%B4%E9%9C%B2,%E5%88%86%E5%88%AB%E6%9A%B4%E9%9C%B2,%E6%95%B4%E4%BD%93%E6%9A%B4%E9%9C%B2/" title="默认暴露,分别暴露,整体暴露的再次学习及常用知识"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">默认暴露,分别暴露,整体暴露的再次学习及常用知识</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="echarts"
+        id="heading-3e0d2ecce056064524069b105211665f" role="tab" data-toggle="collapse" href="#collapse-3e0d2ecce056064524069b105211665f"
+        aria-expanded="false"
+      >
+        echarts
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-3e0d2ecce056064524069b105211665f"
+           role="tabpanel" aria-labelledby="heading-3e0d2ecce056064524069b105211665f">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/Echarts%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Echarts图表的基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Echarts图表的基本使用</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="socket"
+        id="heading-61f2529360aec54f5dc9804b842cf3fa" role="tab" data-toggle="collapse" href="#collapse-61f2529360aec54f5dc9804b842cf3fa"
+        aria-expanded="false"
+      >
+        socket
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-61f2529360aec54f5dc9804b842cf3fa"
+           role="tabpanel" aria-labelledby="heading-61f2529360aec54f5dc9804b842cf3fa">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="express"
+        id="heading-4ca65a8bdbeae8b6ee400801a8a8f812" role="tab" data-toggle="collapse" href="#collapse-4ca65a8bdbeae8b6ee400801a8a8f812"
+        aria-expanded="false"
+      >
+        express
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4ca65a8bdbeae8b6ee400801a8a8f812"
+           role="tabpanel" aria-labelledby="heading-4ca65a8bdbeae8b6ee400801a8a8f812">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/31/%E5%89%8D%E7%AB%AF/express+socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A4/" title="express+socket简易聊天室"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">express+socket简易聊天室</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="typescript"
+        id="heading-1e35bcba2dba1089c7bd0805d4517c8f" role="tab" data-toggle="collapse" href="#collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+        aria-expanded="false"
+      >
+        typescript
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+           role="tabpanel" aria-labelledby="heading-1e35bcba2dba1089c7bd0805d4517c8f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/06/05/%E5%89%8D%E7%AB%AF/Typescript%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="Typescript的学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typescript的学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/03/%E5%89%8D%E7%AB%AF/typescript%E5%AE%8C%E6%88%90%E7%9A%84%E8%B4%AA%E5%90%83%E8%9B%87/" title="typescript完成的贪吃蛇前端小游戏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">typescript完成的贪吃蛇前端小游戏</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="true"
+      >
+        vue
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue-admin%E7%AE%A1%E7%90%86%E6%A8%A1%E6%9D%BFnpm%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%90%8Enpm%20run%20de%E6%8F%90%E7%A4%BA%E4%BE%9D%E8%B5%96core-js,@babel%E7%AD%89%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/23/%E5%89%8D%E7%AB%AF/vue3.0%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="vue3.0的学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue3.0的学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/vue3.x%E9%A1%B9%E7%9B%AE%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E9%A1%B9%E7%9B%AE%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/22/%E5%89%8D%E7%AB%AF/vue%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E5%A4%8D%E4%B9%A0/" title="vue一些比较重要知识点的复习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue一些比较重要知识点的复习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E7%A7%BB%E5%8A%A8%E7%AB%AFvue3.x%E9%A1%B9%E7%9B%AE/" title="图书兄弟移动端vue3.x项目(含在线演示)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">图书兄弟移动端vue3.x项目(含在线演示)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/%E5%B0%9A%E5%93%81%E6%B1%87Vue%E9%A1%B9%E7%9B%AE%20%E5%89%8D%E5%8F%B0+%E5%90%8E%E5%8F%B0%E5%AE%8C%E6%88%90%E5%93%81%E6%BA%90%E7%A0%81(%E5%90%AB%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA)/" title="尚品汇Vue项目 前台+后台完成品源码(含在线演示)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">尚品汇Vue项目 前台+后台完成品源码(含在线演示)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E5%86%8D%E6%AC%A1(%E6%B7%B1%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9FDOM%E4%BA%8B%E4%BB%B6)/" title="深入自定义事件和原生DOM事件($attr等)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">深入自定义事件和原生DOM事件($attr等)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/" title="移动端适配vue小练习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">移动端适配vue小练习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="webpack"
+        id="heading-424516ca53b4ad4bef37ed04f8795a88" role="tab" data-toggle="collapse" href="#collapse-424516ca53b4ad4bef37ed04f8795a88"
+        aria-expanded="false"
+      >
+        webpack
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-424516ca53b4ad4bef37ed04f8795a88"
+           role="tabpanel" aria-labelledby="heading-424516ca53b4ad4bef37ed04f8795a88">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/28/%E5%89%8D%E7%AB%AF/webpack%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="webpack构建工具的学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">webpack构建工具的学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="javscript"
+        id="heading-ef149587124f3e10cde7322bbd9d3f01" role="tab" data-toggle="collapse" href="#collapse-ef149587124f3e10cde7322bbd9d3f01"
+        aria-expanded="true"
+      >
+        javscript
+        <span class="list-group-count">(29)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ef149587124f3e10cde7322bbd9d3f01"
+           role="tabpanel" aria-labelledby="heading-ef149587124f3e10cde7322bbd9d3f01">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/22/%E5%89%8D%E7%AB%AF/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" title="ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ES5当中var只有全局作用域和函数作用域,注意变量提升在var中的坑</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/23/%E5%89%8D%E7%AB%AF/ProcessOn/" title="ProcessOn的官网(less+jquery实现三端)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ProcessOn的官网(less+jquery实现三端)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/13/%E5%89%8D%E7%AB%AF/canvas%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="canvas基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">canvas基本使用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/04/30/%E5%89%8D%E7%AB%AF/element-ui%E5%BD%93%E4%B8%ADpagination%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%80%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%95%B0%E9%87%8F(page-size)%E5%90%8E%E9%A1%B5%E7%A0%81%E6%B2%A1%E6%9C%89%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96/" title="element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">element-ui分页器设置每一页显示数量(page-size)后页码没有发生变化原因与解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/03/24/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86/" title="js当中的图片懒加载,懒加载的一些概念和相关知识点"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">js当中的图片懒加载,懒加载的一些概念和相关知识点</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/03/15/%E5%89%8D%E7%AB%AF/nth-of-type%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" title="nth-of-type选择器使用的一个坑"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">nth-of-type选择器使用的一个坑</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/%E5%BC%82%E6%AD%A5%E8%B7%AF%E7%94%B1,%E5%B8%B8%E9%87%8F%E8%B7%AF%E7%94%B1,%E4%BB%BB%E6%84%8F%E8%B7%AF%E7%94%B1/" title="vue-admin-template里面的异步路由,常量路由,任意路由的添加,记录笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue-admin-template里面的异步路由,常量路由,任意路由的添加,记录笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="浅拷贝深拷贝和个人一些新理解(非普遍的理解)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浅拷贝深拷贝和个人一些新理解(非普遍的理解)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/23/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%89%8D%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E5%92%8Crem,vm%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9A%84%E5%A4%8D%E4%B9%A0/" title="移动端前端的适配和rem,vm其他的一些的复习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">移动端前端的适配和rem,vm其他的一些的复习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/08/%E5%89%8D%E7%AB%AF/%E8%AE%B0%E5%BD%95%E4%B8%8Bbilibili(b%E7%AB%99)%E5%B0%8F%E7%81%AB%E7%AE%AD%E9%A1%B5%E9%9D%A2%E4%B8%8A%E5%88%92%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="记录下bilibili(b站)小火箭页面上划动画效果的实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">记录下bilibili(b站)小火箭页面上划动画效果的实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/02/28/%E5%89%8D%E7%AB%AF/%E8%BF%AD%E4%BB%A3%E5%99%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E5%BD%93%E4%B8%ADthis%E6%8C%87%E5%90%91/" title="迭代器自定义数据输出当中this指向"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">迭代器自定义数据输出当中this指向</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/03/31/%E5%B7%A5%E5%85%B7%E5%BA%93%E7%AC%94%E8%AE%B0/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/" title="防抖节流的使用和封装成函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">防抖节流的使用和封装成函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/04/%E5%89%8D%E7%AB%AF/%E9%BB%98%E8%AE%A4%E6%9A%B4%E9%9C%B2,%E5%88%86%E5%88%AB%E6%9A%B4%E9%9C%B2,%E6%95%B4%E4%BD%93%E6%9A%B4%E9%9C%B2/" title="默认暴露,分别暴露,整体暴露的再次学习及常用知识"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">默认暴露,分别暴露,整体暴露的再次学习及常用知识</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="echarts"
+        id="heading-3e0d2ecce056064524069b105211665f" role="tab" data-toggle="collapse" href="#collapse-3e0d2ecce056064524069b105211665f"
+        aria-expanded="false"
+      >
+        echarts
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-3e0d2ecce056064524069b105211665f"
+           role="tabpanel" aria-labelledby="heading-3e0d2ecce056064524069b105211665f">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="false"
+      >
+        vue
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/Echarts%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Echarts图表的基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Echarts图表的基本使用</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="socket"
+        id="heading-61f2529360aec54f5dc9804b842cf3fa" role="tab" data-toggle="collapse" href="#collapse-61f2529360aec54f5dc9804b842cf3fa"
+        aria-expanded="false"
+      >
+        socket
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-61f2529360aec54f5dc9804b842cf3fa"
+           role="tabpanel" aria-labelledby="heading-61f2529360aec54f5dc9804b842cf3fa">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="express"
+        id="heading-4ca65a8bdbeae8b6ee400801a8a8f812" role="tab" data-toggle="collapse" href="#collapse-4ca65a8bdbeae8b6ee400801a8a8f812"
+        aria-expanded="false"
+      >
+        express
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4ca65a8bdbeae8b6ee400801a8a8f812"
+           role="tabpanel" aria-labelledby="heading-4ca65a8bdbeae8b6ee400801a8a8f812">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/03/31/%E5%89%8D%E7%AB%AF/express+socket%E7%AE%80%E6%98%93%E8%81%8A%E5%A4%A9%E5%AE%A4/" title="express+socket简易聊天室"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">express+socket简易聊天室</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="typescript"
+        id="heading-1e35bcba2dba1089c7bd0805d4517c8f" role="tab" data-toggle="collapse" href="#collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+        aria-expanded="false"
+      >
+        typescript
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1e35bcba2dba1089c7bd0805d4517c8f"
+           role="tabpanel" aria-labelledby="heading-1e35bcba2dba1089c7bd0805d4517c8f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/06/05/%E5%89%8D%E7%AB%AF/Typescript%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="Typescript的学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typescript的学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/03/%E5%89%8D%E7%AB%AF/typescript%E5%AE%8C%E6%88%90%E7%9A%84%E8%B4%AA%E5%90%83%E8%9B%87/" title="typescript完成的贪吃蛇前端小游戏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">typescript完成的贪吃蛇前端小游戏</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="true"
+      >
+        vue
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue-admin%E7%AE%A1%E7%90%86%E6%A8%A1%E6%9D%BFnpm%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%90%8Enpm%20run%20de%E6%8F%90%E7%A4%BA%E4%BE%9D%E8%B5%96core-js,@babel%E7%AD%89%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/23/%E5%89%8D%E7%AB%AF/vue3.0%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="vue3.0的学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue3.0的学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/vue3.x%E9%A1%B9%E7%9B%AE%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E9%A1%B9%E7%9B%AE%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/22/%E5%89%8D%E7%AB%AF/vue%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E5%A4%8D%E4%B9%A0/" title="vue一些比较重要知识点的复习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue一些比较重要知识点的复习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E7%A7%BB%E5%8A%A8%E7%AB%AFvue3.x%E9%A1%B9%E7%9B%AE/" title="图书兄弟移动端vue3.x项目(含在线演示)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">图书兄弟移动端vue3.x项目(含在线演示)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/%E5%B0%9A%E5%93%81%E6%B1%87Vue%E9%A1%B9%E7%9B%AE%20%E5%89%8D%E5%8F%B0+%E5%90%8E%E5%8F%B0%E5%AE%8C%E6%88%90%E5%93%81%E6%BA%90%E7%A0%81(%E5%90%AB%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA)/" title="尚品汇Vue项目 前台+后台完成品源码(含在线演示)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">尚品汇Vue项目 前台+后台完成品源码(含在线演示)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E5%86%8D%E6%AC%A1(%E6%B7%B1%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9FDOM%E4%BA%8B%E4%BB%B6)/" title="深入自定义事件和原生DOM事件($attr等)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">深入自定义事件和原生DOM事件($attr等)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/" title="移动端适配vue小练习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">移动端适配vue小练习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="webpack"
+        id="heading-424516ca53b4ad4bef37ed04f8795a88" role="tab" data-toggle="collapse" href="#collapse-424516ca53b4ad4bef37ed04f8795a88"
+        aria-expanded="false"
+      >
+        webpack
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-424516ca53b4ad4bef37ed04f8795a88"
+           role="tabpanel" aria-labelledby="heading-424516ca53b4ad4bef37ed04f8795a88">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/28/%E5%89%8D%E7%AB%AF/webpack%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="webpack构建工具的学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">webpack构建工具的学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="vue"
+        id="heading-951c1f757a9f918f0624cd5cb90b890d" role="tab" data-toggle="collapse" href="#collapse-951c1f757a9f918f0624cd5cb90b890d"
+        aria-expanded="true"
+      >
+        vue
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-951c1f757a9f918f0624cd5cb90b890d"
+           role="tabpanel" aria-labelledby="heading-951c1f757a9f918f0624cd5cb90b890d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue-admin%E7%AE%A1%E7%90%86%E6%A8%A1%E6%9D%BFnpm%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%90%8Enpm%20run%20de%E6%8F%90%E7%A4%BA%E4%BE%9D%E8%B5%96core-js,@babel%E7%AD%89%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue-admin管理模板npm安装依赖后npm run de提示依赖core-js,@babel等报错的解决办法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/23/%E5%89%8D%E7%AB%AF/vue3.0%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="vue3.0的学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue3.0的学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/vue3.x%E9%A1%B9%E7%9B%AE%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E9%A1%B9%E7%9B%AE%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/22/%E5%89%8D%E7%AB%AF/vue%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E5%A4%8D%E4%B9%A0/" title="vue一些比较重要知识点的复习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue一些比较重要知识点的复习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/21/%E5%89%8D%E7%AB%AF/vue%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue后台的一个项目遇到的一些问题和解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue后台的一个项目遇到的一些问题和解决办法的记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/vue%E5%BD%93%E4%B8%ADaddRoutes%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E7%99%BD%E5%B1%8F%E8%A7%A3%E5%86%B3%E5%92%8Cnext(),next()%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB/" title="vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue当中addRoutes动态添加路由白屏解决和next(),next(&#34;/&#34;)的一些区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/20/%E5%89%8D%E7%AB%AF/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%BF%AB%E9%80%9F%E7%89%88/" title="vue源码分析-快速版(DMQ的MVVM为例)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue源码分析-快速版(DMQ的MVVM为例)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E7%A7%BB%E5%8A%A8%E7%AB%AFvue3.x%E9%A1%B9%E7%9B%AE/" title="图书兄弟移动端vue3.x项目(含在线演示)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">图书兄弟移动端vue3.x项目(含在线演示)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/16/%E5%89%8D%E7%AB%AF/%E5%B0%9A%E5%93%81%E6%B1%87Vue%E9%A1%B9%E7%9B%AE%20%E5%89%8D%E5%8F%B0+%E5%90%8E%E5%8F%B0%E5%AE%8C%E6%88%90%E5%93%81%E6%BA%90%E7%A0%81(%E5%90%AB%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA)/" title="尚品汇Vue项目 前台+后台完成品源码(含在线演示)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">尚品汇Vue项目 前台+后台完成品源码(含在线演示)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/06/%E5%89%8D%E7%AB%AF/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E5%86%8D%E6%AC%A1(%E6%B7%B1%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9FDOM%E4%BA%8B%E4%BB%B6)/" title="深入自定义事件和原生DOM事件($attr等)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">深入自定义事件和原生DOM事件($attr等)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/05/24/%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvue%E5%B0%8F%E7%BB%83%E4%B9%A0/" title="移动端适配vue小练习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">移动端适配vue小练习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2022003323号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36072102000155"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>赣公网安备 36072102000155号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

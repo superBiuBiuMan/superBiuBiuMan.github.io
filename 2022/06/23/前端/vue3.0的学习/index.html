@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          39k 字
+          40k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          328 分钟
+          334 分钟
         
       </span>
     
@@ -466,13 +466,28 @@
 <li><code>const 代理对象 = reactive(源对象) </code><strong>源对象接收一个对象或者数组</strong></li>
 </ul>
 <h4 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点:"></a>注意点:</h4><ul>
-<li>通过<code>reactive</code>函数处理的源对象,不管是何种方式的添加,删除,数据都是响应式的</li>
-<li>比方说vue2.x给<strong>对象</strong>添加一个数据要是响应式,必须要通过<code>this.$set</code>或者<code>Vue.set</code>来实现),vue3.0却不用</li>
-<li>比方说vue2.x对<strong>数组</strong>进行修改,添加,只能使用vue重写的那几个方法,但是vue3.x当中,通过<code>reactive</code>操作的,可以通过下标来操作数组,vue3.0操作过后数组依旧是响应式数据</li>
-<li>reactive定义的响应式数据是“<strong>深层次的</strong>”,不管有多少层,都是默认全部处理为响应式</li>
-<li>内部基于 ES6 的 <code>Proxy</code> 实现，通过代理对象操作源对象内部数据进行操作。</li>
+<li><p>通过<code>reactive</code>函数处理的源对象,不管是何种方式的添加,删除,数据都是响应式的</p>
+<ul>
+<li><strong>reactive定义的数组或者对象，不能直接对整体进行赋值修改，否则定义的数据将失去响应性!!!!!</strong></li>
+</ul>
+</li>
+<li><p>比方说vue2.x给<strong>对象</strong>添加一个数据要是响应式,必须要通过<code>this.$set</code>或者<code>Vue.set</code>来实现),vue3.0却不用</p>
+</li>
+<li><p>比方说vue2.x对<strong>数组</strong>进行修改,添加,只能使用vue重写的那几个方法,但是vue3.x当中,通过<code>reactive</code>操作的,可以通过下标来操作数组,vue3.0操作过后数组依旧是响应式数据</p>
+</li>
+<li><p>reactive定义的响应式数据是“<strong>深层次的</strong>”,不管有多少层,都是默认全部处理为响应式</p>
+</li>
+<li><p>内部基于 ES6 的 <code>Proxy</code> 实现，通过代理对象操作源对象内部数据进行操作。</p>
+</li>
 </ul>
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; reactive, ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;App&quot;</span>,<br>  <span class="hljs-attr">components</span>: &#123;&#125;,<br>  <span class="hljs-comment">// setup是新增的一个配置项,为一个函数,数据,方法,什么的都可以写在这里面</span><br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//ref对基本数据类型的处理</span><br>    <span class="hljs-keyword">let</span> name = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;李白&quot;</span>);<br>    <span class="hljs-keyword">let</span> age = <span class="hljs-title function_">ref</span>(<span class="hljs-number">1000</span>);<br>    <span class="hljs-comment">// let test = reactive(&quot;我是基本数据类型&quot;);</span><br>    <span class="hljs-comment">//通过reactive函数实现对象的响应式数据</span><br>    <span class="hljs-keyword">let</span> job = <span class="hljs-title function_">reactive</span>(&#123;<br>      <span class="hljs-attr">type</span>:<span class="hljs-string">&quot;前端工程师&quot;</span>,<br>      <span class="hljs-attr">salary</span>:<span class="hljs-string">&quot;10K&quot;</span>,<br>      <span class="hljs-attr">address</span>:<span class="hljs-string">&quot;尚硅谷&quot;</span>,<br>      <span class="hljs-attr">hobby</span>:[<span class="hljs-string">&quot;吃饭&quot;</span>,<span class="hljs-string">&quot;睡觉&quot;</span>,<span class="hljs-string">&quot;打豆豆&quot;</span>]<br>    &#125;)<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">changeValue</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-comment">//改变ref当中的基本数据类型</span><br>      name.<span class="hljs-property">value</span> = <span class="hljs-string">&quot;李黑&quot;</span>;<br>      age.<span class="hljs-property">value</span> = <span class="hljs-number">2000</span>;<br><br>      <span class="hljs-comment">//改变reactive的值</span><br>      job.<span class="hljs-property">type</span> = <span class="hljs-string">&quot;高级工程师&quot;</span><br>      job.<span class="hljs-property">salary</span> = <span class="hljs-string">&quot;30K&quot;</span><br>      job.<span class="hljs-property">address</span> = <span class="hljs-string">&quot;苹果&quot;</span><br>      job.<span class="hljs-property">hobby</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">&quot;吃零食&quot;</span>;<span class="hljs-comment">//vue3是可以这样子做的</span><br>    &#125; <br><br>    <span class="hljs-comment">//需要返回一个对象,对象当中的属性和方法,均可以在模板当中直接使用</span><br>    <span class="hljs-keyword">return</span> &#123;<br>      name,<br>      age,<br>      changeValue,<br>      job,<br>    &#125;;<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="失去响应式示例"><a href="#失去响应式示例" class="headerlink" title="失去响应式示例"></a>失去响应式示例</h4><ul>
+<li>当经过一秒后,页面显示的内容并没有被改变!</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid red&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span></span><br><span class="language-xml">    &#123;&#123; banner &#125;&#125;</span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; reactive, onMounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;HomeView&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">components</span>: &#123;&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//预先定义一个数据填充占位</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">var</span> banner = <span class="hljs-title function_">reactive</span>(&#123;&#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        banner = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;李白&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;18&quot;</span> &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;修改值完成&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">      &#125;, <span class="hljs-number">2000</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      banner,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+
 
 <h3 id="6-reactive对比ref"><a href="#6-reactive对比ref" class="headerlink" title="6.reactive对比ref"></a>6.reactive对比ref</h3><ul>
 <li>从定义数据角度对比：<ul>
@@ -1218,7 +1233,7 @@
         aria-expanded="true"
       >
         HTML
-        <span class="list-group-count">(29)</span>
+        <span class="list-group-count">(30)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1282,7 +1297,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(28)</span>
+        <span class="list-group-count">(29)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1608,7 +1623,7 @@
         aria-expanded="true"
       >
         vue
-        <span class="list-group-count">(10)</span>
+        <span class="list-group-count">(11)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1635,6 +1650,15 @@
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">vue3.0的学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/vue3.x%E9%A1%B9%E7%9B%AE%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E9%A1%B9%E7%9B%AE%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</span>
         </a>
       
     
@@ -1771,7 +1795,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(28)</span>
+        <span class="list-group-count">(29)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -2097,7 +2121,7 @@
         aria-expanded="true"
       >
         vue
-        <span class="list-group-count">(10)</span>
+        <span class="list-group-count">(11)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -2124,6 +2148,15 @@
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">vue3.0的学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/vue3.x%E9%A1%B9%E7%9B%AE%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E9%A1%B9%E7%9B%AE%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</span>
         </a>
       
     
@@ -2256,7 +2289,7 @@
         aria-expanded="true"
       >
         vue
-        <span class="list-group-count">(10)</span>
+        <span class="list-group-count">(11)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -2283,6 +2316,15 @@
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">vue3.0的学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/05/%E5%89%8D%E7%AB%AF/vue3.x%E9%A1%B9%E7%9B%AE%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E9%A1%B9%E7%9B%AE%E4%B8%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E7%9A%84%E8%AE%B0%E5%BD%95/" title="vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vue3.x项目图书兄弟项目上遇到的问题及解决办法的记录</span>
         </a>
       
     
