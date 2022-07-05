@@ -4,6 +4,68 @@
   
   
   <entry>
+    <title>图书兄弟移动端vue3.x项目(含在线演示)</title>
+    <link href="/2022/07/05/%E5%89%8D%E7%AB%AF/%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E7%A7%BB%E5%8A%A8%E7%AB%AFvue3.x%E9%A1%B9%E7%9B%AE/"/>
+    <url>/2022/07/05/%E5%89%8D%E7%AB%AF/%E5%9B%BE%E4%B9%A6%E5%85%84%E5%BC%9F%E7%A7%BB%E5%8A%A8%E7%AB%AFvue3.x%E9%A1%B9%E7%9B%AE/</url>
+    
+    <content type="html"><![CDATA[<h2 id="EWSHOP图书兄弟介绍"><a href="#EWSHOP图书兄弟介绍" class="headerlink" title="EWSHOP图书兄弟介绍"></a>EWSHOP图书兄弟介绍</h2><ul><li>使用Vue3全家桶及vant组件库实现移动端有关图书的商品展示，订单支付，地址管理，个人订单信息等功能的实现<ul><li>路由守卫基本都加了~</li></ul></li><li>下载地址<ul><li><a href="https://github.com/superBiuBiuMan/ewShop_mobileWeb">github下载</a></li><li><a href="https://gitee.com/superBiuBiu/ewShop_mobileWeb">gitee下载</a></li></ul></li><li><strong>在线演示</strong><ul><li><a href="http://82.156.205.62:8084/">http://82.156.205.62:8084/</a></li></ul></li><li>其他要点<ul><li>也欢迎大家来我博客看看,博客地址<a href="https://www.dreamlove.top/">https://www.dreamlove.top/</a></li><li>支付宝沙箱版下载<ul><li><a href="https://wwi.lanzoup.com/iD6mk07cuoxc">蓝奏云下载</a></li></ul></li><li>项目运行在iPhone6&#x2F;7&#x2F;8即<code>375*667</code>页面在<strong>效果更佳</strong></li><li>具体项目API<ul><li><a href="https://www.showdoc.com.cn/1207745568269674?page_id=6090123481636428">项目API地址</a></li></ul></li></ul></li></ul><h2 id="截图演示"><a href="#截图演示" class="headerlink" title="截图演示"></a>截图演示</h2><h4 id="主页部分"><a href="#主页部分" class="headerlink" title="主页部分"></a>主页部分</h4><ul><li>&#x2F;</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051100946.png"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051100684.png"></p><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul><li>&#x2F;category</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051100570.png"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051100083.png"></p><h4 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h4><ul><li>&#x2F;shopcart</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051100478.png"></p><ul><li>购物车为空</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051100320.png"></p><h4 id="个人中心"><a href="#个人中心" class="headerlink" title="个人中心"></a>个人中心</h4><ul><li>&#x2F;user</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041925236.png"></p><h4 id="订单管理"><a href="#订单管理" class="headerlink" title="订单管理"></a>订单管理</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041925652.png"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041930792.png"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041930145.png"></p><h4 id="订单详情"><a href="#订单详情" class="headerlink" title="订单详情"></a>订单详情</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041928141.png"></p><h4 id="订单支付"><a href="#订单支付" class="headerlink" title="订单支付"></a>订单支付</h4><ul><li>由于接口原因,只有支付宝,还有就是,如果想弄那个跳转的,弄下也简单</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041927509.png"></p><h4 id="地址管理"><a href="#地址管理" class="headerlink" title="地址管理"></a>地址管理</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041928662.png"></p><h4 id="新增地址"><a href="#新增地址" class="headerlink" title="新增地址"></a>新增地址</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041928878.png"></p><h4 id="编辑地址"><a href="#编辑地址" class="headerlink" title="编辑地址"></a>编辑地址</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041929841.png"></p><h4 id="关于我们"><a href="#关于我们" class="headerlink" title="关于我们"></a>关于我们</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207041930774.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>HTML</category>
+      
+      <category>javscript</category>
+      
+      <category>vue</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vue</tag>
+      
+      <tag>图书兄弟</tag>
+      
+      <tag>移动端</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>图标库网站-汇集优秀的图标,插画等</title>
+    <link href="/2022/07/04/%E5%B7%A5%E5%85%B7/%E5%9B%BE%E6%A0%87%E5%BA%93%E7%BD%91%E7%AB%99-%E6%B1%87%E9%9B%86%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E6%A0%87,%E6%8F%92%E7%94%BB%E7%AD%89/"/>
+    <url>/2022/07/04/%E5%B7%A5%E5%85%B7/%E5%9B%BE%E6%A0%87%E5%BA%93%E7%BD%91%E7%AB%99-%E6%B1%87%E9%9B%86%E4%BC%98%E7%A7%80%E7%9A%84%E5%9B%BE%E6%A0%87,%E6%8F%92%E7%94%BB%E7%AD%89/</url>
+    
+    <content type="html"><![CDATA[<ul><li>转载自微信公众号**@喂鱼小思考**</li></ul><p>当你想打开阿里的iconfont想找点图标时，却看到这句话：</p><p><strong>💣iconfont系统升级维护中，给您带来不便，敬请谅解！</strong> </p><p>你肯定：</p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114847.png"></p><p>特喵的！作为一个互联网熟知的图标库，居然还整这？</p><hr><p>🌟<strong>不过不用担心！我带着16个精品icon库来救急啦～</strong> </p><p>昨天中午已经发在DY，小伙伴反应都很不错</p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114342.png"><br><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115770.png"></p><p>🔺<strong>illust</strong>(<strong>个人添加,个人推荐,我喜欢里面的插画</strong>~)</p><p>不过貌似需要科学上网~</p><p>链接🔗：<a href="https://zh-tw.ac-illust.com/">https://zh-tw.ac-illust.com/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051112112.png"></p><p>🔺<strong>IconPark</strong><br>字节跳动商业化CUX设计团队精心打造的致力于图标应用规范化、统一化，提供丰富多样的高质量图标内容</p><p>链接🔗：<a href="https://iconpark.oceanengine.com/official">https://iconpark.oceanengine.com/official</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114803.png"></p><hr><p>🔺<strong>Feather</strong><br>简单漂亮的开源图标</p><p>链接🔗：<a href="https://feathericons.com/">https://feathericons.com/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114845.png"></p><hr><p>🔺<strong>3DICONS</strong></p><p>制作精美的开源 3D 图标100% 免费用于商业和个人用途</p><p>链接🔗：<a href="https://3dicons.co/">https://3dicons.co/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114362.png"></p><hr><p>🔺**Heroicons<br>**</p><p>精美的手工 SVG 图标-230个</p><p>链接🔗：<a href="https://heroicons.com/">https://heroicons.com/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114058.png"></p><hr><p>🔺**Tabler Icons<br>**</p><p>1400+icon</p><p>链接🔗：<a href="https://tablericons.com/">https://tablericons.com/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114101.png"></p><hr><p>🔺**Iconoir<br>**</p><p>1000+icon</p><p>链接🔗：<a href="https://iconoir.com/">https://iconoir.com/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114211.png"></p><hr><p>🔺**Halloween<br>**</p><p>🎃 万圣节3D图标</p><p>链接🔗：<a href="https://halloween.wannathis.one/#do">https://halloween.wannathis.one/#do</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051114215.png"></p><hr><p>🔺**Undesign<br>**</p><p>为制造商、开发人员和设计师收集免费的设计工具和资源</p><p>链接🔗：<a href="https://undesign.learn.uno/">https://undesign.learn.uno/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115218.png"></p><hr><p>🔺<strong>イラストセンター</strong></p><p>日本免费商用插图网站，风格萌</p><p>链接🔗：<a href="https://illustcenter.com/">https://illustcenter.com/</a></p><p><img src="/%E5%9B%BE%E6%A0%87%E5%BA%93.assets/jtSqL8.png"></p><hr><p>🔺**Game-Icons<br>**</p><p>免费游戏图标</p><p>链接🔗：<a href="https://game-icons.net/">https://game-icons.net/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115480.png"></p><hr><p>🔺**Orioniconliblrary<br>**</p><p>适用于的 Web、iOS、Android 和设计项目的 8613 专业和免费 SVG 图标</p><p>链接🔗：<a href="https://orioniconlibrary.com/all-icons">https://orioniconlibrary.com/all-icons</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115730.png"></p><hr><p>🔺**Iconhub<br>**</p><p>可调节类型大小粗细</p><p>链接🔗：<a href="https://iconhub.io/">https://iconhub.io/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115104.png"></p><hr><p>🔺**css.gg<br>**</p><p>免费开源</p><p>链接🔗：<a href="https://css.gg/app">https://css.gg/app</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115390.png"></p><hr><p>🔺**Ionicons<br>**</p><p>高级设计的图标，用于 Web、iOS、Android 和桌面应用程序。支持 SVG 和网络字体</p><p>链接🔗：<a href="https://ionic.io/ionicons">https://ionic.io/ionicons</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115290.png"></p><hr><p>🔺**Basicons<br>**</p><p>产品设计和开发的基本图标</p><p>链接🔗：<a href="https://basicons.xyz/">https://basicons.xyz/</a></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207051115576.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>工具</tag>
+      
+      <tag>图标库</tag>
+      
+      <tag>插画库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>江西财经大学智慧江财登录分析</title>
     <link href="/2022/06/27/NodeJs/%E6%B1%9F%E8%A5%BF%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E6%99%BA%E6%85%A7%E6%B1%9F%E8%B4%A2%E7%99%BB%E5%BD%95%E5%88%86%E6%9E%90/"/>
     <url>/2022/06/27/NodeJs/%E6%B1%9F%E8%A5%BF%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E6%99%BA%E6%85%A7%E6%B1%9F%E8%B4%A2%E7%99%BB%E5%BD%95%E5%88%86%E6%9E%90/</url>
@@ -101,9 +163,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -161,9 +223,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -194,9 +256,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -227,9 +289,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -318,9 +380,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -349,9 +411,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -382,9 +444,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -415,9 +477,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -504,9 +566,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -566,9 +628,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -632,9 +694,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>echarts</tag>
       
@@ -663,9 +725,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -758,9 +820,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>canvas</tag>
       
@@ -798,11 +860,11 @@
   
   
   <entry>
-    <title>今日刷题-微任务和宏任务</title>
-    <link href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/"/>
-    <url>/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/</url>
+    <title>前端真题刷题-注意基础知识不要忘了基本原理</title>
+    <link href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"/>
+    <url>/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
     
-    <content type="html"><![CDATA[<h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">执行以下程序，输出结果为（）<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><br><span class="hljs-title function_">a</span>();<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">100</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-number">200</span><br><br><span class="hljs-attr">C</span>: 抛出异常<br><br><span class="hljs-attr">D</span>: f <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);&#125;<br></code></pre></td></tr></table></figure><ul><li><p>答案</p><ul><li>C</li></ul></li><li><p>解析</p><ul><li><p>首先注意,函数提升优先级高于变量提升(也就是先函数提升才轮到变量) <del>之前我一直以为是被覆盖….</del></p></li><li><p>所以上面的代码相当于</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><span class="hljs-keyword">var</span> a <br>a = <span class="hljs-number">200</span>;<br>a = <span class="hljs-number">100</span>;<br><span class="hljs-title function_">a</span>();<br><span class="hljs-comment">//所以报错~</span><br></code></pre></td></tr></table></figure></li></ul></li></ul><h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请输入分母:&#x27;</span>)<br><span class="hljs-keyword">try</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  value = <span class="hljs-number">0</span> / num;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;b&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">catch</span>(e)&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;c&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">finally</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;d&#x27;</span>);<br>&#125;<br><span class="hljs-attr">A</span>: a , c , d<br><br><span class="hljs-attr">B</span>: a , b , d<br><br><span class="hljs-attr">C</span>: a , b , c , d<br><br><span class="hljs-attr">D</span>: a , b , c<br></code></pre></td></tr></table></figure><ul><li><p>答案</p><ul><li>B</li></ul></li><li><p>解析</p><ul><li>虽然说0不能做分母,如果做了会报错,在其他语言是这样子的,但是JavaScript不会,因为JavaScript有NaN类型~</li><li>所以 0 &#x2F; 0 &#x3D;&gt; NaN 不会报错,所以不会捕捉到异常</li><li>而 <strong>finally</strong>不管try…catch是成功还是失败都会执行</li></ul></li></ul><h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">let</span> a = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span>)&#125;, <span class="hljs-number">0</span>);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span>);<br><br><span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);<br>    <br>    <span class="hljs-built_in">clearTimeout</span>(a);<br>&#125;);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">5</span>);<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">1</span> , <span class="hljs-number">2</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">B</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">C</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span><br><span class="hljs-attr">D</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span> , <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure><ul><li><p>答案</p><ul><li>C</li></ul></li><li><p>解析</p><ul><li><p>js代码分为同步任务和异步任务,js先执行同步任务后执行任务(比如定时器,promise)</p></li><li><p>并且异步任务分为(微任务和宏任务,优先级为微任务 <strong>&gt;</strong> 宏任务)</p></li><li><p>所以代码先输出1,3,5,然后执行promise,由于promise当中清除了定时器a,所以不会执行定时器了</p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205100901161.png"></p></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html">SVG 有多少种图形对象类型？<br>A: 2<br> <br>B: 3<br><br>C: 5<br><br>D: 7<br><br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs html">以下哪个是 html5 中的 input 类型属性？<br>(1) search<br>(2) datetime<br>(3) week<br>(4) color<br>(5) track<br>(6) placeholder<br><br>A: 1 , 2 , 3 , 4 , 6 <br> <br>B: 1 , 2 , 3 , 4 , 5 <br><br>C: 2 , 3 , 4 , 5 , 6 <br><br>D: 1 , 3 , 4 , 5 , 6 <br><br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">以下哪个不是 HTML5 中使用的媒体元素？<br>A: <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span><br>B: <span class="hljs-tag">&lt;<span class="hljs-name">audio</span>&gt;</span><br>C: <span class="hljs-tag">&lt;<span class="hljs-name">track</span>&gt;</span><br>D: <span class="hljs-tag">&lt;<span class="hljs-name">time</span>&gt;</span><br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">SVG 是什么意思？<br>A: 二级矢量图形<br>B: 可伸缩的垂直图形<br>C: 可伸缩矢量图形<br>D: 三级矢量图形<br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">input 元素的哪个属性将元素的值设置为表示一定范围内的数字？<br>A: range<br>B: email<br>C: file<br>D: data<br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul>]]></content>
     
     
     <categories>
@@ -825,11 +887,11 @@
   
   
   <entry>
-    <title>前端真题刷题-注意基础知识不要忘了基本原理</title>
-    <link href="/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"/>
-    <url>/2022/05/10/%E5%88%B7%E9%A2%98/HTML/%E5%89%8D%E7%AB%AF%E7%9C%9F%E9%A2%98%E5%88%B7-%E6%B3%A8%E6%84%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
+    <title>今日刷题-微任务和宏任务</title>
+    <link href="/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/"/>
+    <url>/2022/05/10/%E5%88%B7%E9%A2%98/JavaScript/2022%E5%B9%B45%E6%9C%8810%E6%97%A5%E5%88%B7%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html">SVG 有多少种图形对象类型？<br>A: 2<br> <br>B: 3<br><br>C: 5<br><br>D: 7<br><br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs html">以下哪个是 html5 中的 input 类型属性？<br>(1) search<br>(2) datetime<br>(3) week<br>(4) color<br>(5) track<br>(6) placeholder<br><br>A: 1 , 2 , 3 , 4 , 6 <br> <br>B: 1 , 2 , 3 , 4 , 5 <br><br>C: 2 , 3 , 4 , 5 , 6 <br><br>D: 1 , 3 , 4 , 5 , 6 <br><br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">以下哪个不是 HTML5 中使用的媒体元素？<br>A: <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span><br>B: <span class="hljs-tag">&lt;<span class="hljs-name">audio</span>&gt;</span><br>C: <span class="hljs-tag">&lt;<span class="hljs-name">track</span>&gt;</span><br>D: <span class="hljs-tag">&lt;<span class="hljs-name">time</span>&gt;</span><br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目4"><a href="#题目4" class="headerlink" title="题目4"></a>题目4</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">SVG 是什么意思？<br>A: 二级矢量图形<br>B: 可伸缩的垂直图形<br>C: 可伸缩矢量图形<br>D: 三级矢量图形<br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul><h3 id="题目5"><a href="#题目5" class="headerlink" title="题目5"></a>题目5</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">input 元素的哪个属性将元素的值设置为表示一定范围内的数字？<br>A: range<br>B: email<br>C: file<br>D: data<br></code></pre></td></tr></table></figure><ul><li>答案</li><li>解析</li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="题目1"><a href="#题目1" class="headerlink" title="题目1"></a>题目1</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">执行以下程序，输出结果为（）<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><br><span class="hljs-title function_">a</span>();<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">100</span><br><br><span class="hljs-attr">B</span>: <span class="hljs-number">200</span><br><br><span class="hljs-attr">C</span>: 抛出异常<br><br><span class="hljs-attr">D</span>: f <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);&#125;<br></code></pre></td></tr></table></figure><ul><li><p>答案</p><ul><li>C</li></ul></li><li><p>解析</p><ul><li><p>首先注意,函数提升优先级高于变量提升(也就是先函数提升才轮到变量) <del>之前我一直以为是被覆盖….</del></p></li><li><p>所以上面的代码相当于</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">200</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><br>&#125;<br><span class="hljs-keyword">var</span> a <br>a = <span class="hljs-number">200</span>;<br>a = <span class="hljs-number">100</span>;<br><span class="hljs-title function_">a</span>();<br><span class="hljs-comment">//所以报错~</span><br></code></pre></td></tr></table></figure></li></ul></li></ul><h3 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请输入分母:&#x27;</span>)<br><span class="hljs-keyword">try</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  value = <span class="hljs-number">0</span> / num;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;b&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">catch</span>(e)&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;c&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">finally</span>&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;d&#x27;</span>);<br>&#125;<br><span class="hljs-attr">A</span>: a , c , d<br><br><span class="hljs-attr">B</span>: a , b , d<br><br><span class="hljs-attr">C</span>: a , b , c , d<br><br><span class="hljs-attr">D</span>: a , b , c<br></code></pre></td></tr></table></figure><ul><li><p>答案</p><ul><li>B</li></ul></li><li><p>解析</p><ul><li>虽然说0不能做分母,如果做了会报错,在其他语言是这样子的,但是JavaScript不会,因为JavaScript有NaN类型~</li><li>所以 0 &#x2F; 0 &#x3D;&gt; NaN 不会报错,所以不会捕捉到异常</li><li>而 <strong>finally</strong>不管try…catch是成功还是失败都会执行</li></ul></li></ul><h3 id="题目3"><a href="#题目3" class="headerlink" title="题目3"></a>题目3</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">let</span> a = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span>)&#125;, <span class="hljs-number">0</span>);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span>);<br><br><span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-number">4</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);<br>    <br>    <span class="hljs-built_in">clearTimeout</span>(a);<br>&#125;);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">5</span>);<br><br><span class="hljs-attr">A</span>: <span class="hljs-number">1</span> , <span class="hljs-number">2</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">B</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">4</span> , <span class="hljs-number">5</span><br><span class="hljs-attr">C</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span><br><span class="hljs-attr">D</span>: <span class="hljs-number">1</span> , <span class="hljs-number">3</span> , <span class="hljs-number">5</span> , <span class="hljs-number">4</span> , <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure><ul><li><p>答案</p><ul><li>C</li></ul></li><li><p>解析</p><ul><li><p>js代码分为同步任务和异步任务,js先执行同步任务后执行任务(比如定时器,promise)</p></li><li><p>并且异步任务分为(微任务和宏任务,优先级为微任务 <strong>&gt;</strong> 宏任务)</p></li><li><p>所以代码先输出1,3,5,然后执行promise,由于promise当中清除了定时器a,所以不会执行定时器了</p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205100901161.png"></p></li></ul></li></ul>]]></content>
     
     
     <categories>
@@ -926,9 +988,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -959,9 +1021,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
