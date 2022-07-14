@@ -27,8 +27,8 @@
 <meta property="article:published_time" content="2022-05-22T02:45:00.000Z">
 <meta property="article:modified_time" content="2022-05-22T02:45:16.000Z">
 <meta property="article:author" content="梦洁">
-<meta property="article:tag" content="HTML">
 <meta property="article:tag" content="javscript">
+<meta property="article:tag" content="HTML">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205221120658.jpg">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          42k 字
+          46k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          349 分钟
+          385 分钟
         
       </span>
     
@@ -486,11 +486,35 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;my-component&#x27;</span>, &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-comment">// 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)</span><br>    <span class="hljs-attr">propA</span>: <span class="hljs-title class_">Number</span>,<br>    <span class="hljs-comment">// 多个可能的类型</span><br>    <span class="hljs-attr">propB</span>: [<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Number</span>],<br>    <span class="hljs-comment">// 必填的字符串</span><br>    <span class="hljs-attr">propC</span>: &#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,<br>      <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span><br>    &#125;,<br>    <span class="hljs-comment">// 带有默认值的数字</span><br>    <span class="hljs-attr">propD</span>: &#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,<br>      <span class="hljs-attr">default</span>: <span class="hljs-number">100</span><br>    &#125;,<br>    <span class="hljs-comment">// 带有默认值的对象</span><br>    <span class="hljs-attr">propE</span>: &#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,<br>      <span class="hljs-comment">// 对象或数组默认值必须从一个工厂函数获取</span><br>      <span class="hljs-attr">default</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;hello&#x27;</span> &#125;<br>      &#125;<br>    &#125;,<br>    <span class="hljs-comment">// 自定义验证函数</span><br>    <span class="hljs-attr">propF</span>: &#123;<br>      <span class="hljs-attr">validator</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) &#123;<br>        <span class="hljs-comment">// 这个值必须匹配下列字符串中的一个</span><br>        <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;success&#x27;</span>, <span class="hljs-string">&#x27;warning&#x27;</span>, <span class="hljs-string">&#x27;danger&#x27;</span>].<span class="hljs-title function_">indexOf</span>(value) !== -<span class="hljs-number">1</span><br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 
+<h5 id="props通信变量注意点"><a href="#props通信变量注意点" class="headerlink" title="props通信变量注意点"></a>props通信变量注意点</h5><ul>
+<li>prop的大小写<ul>
+<li>调用组件时Prop使用驼峰式，props选项声明中需要全部小写</li>
+<li>props中命名采用驼峰式，在调用组件的标签中使用短横线分割命名方式命名属性</li>
+</ul>
+</li>
+<li>官网说明<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-props.html">@地址</a></li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207081427880.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<p>也就是说,会把传入的props转化为小写,比如如下例子-采用了驼峰命名方式</p>
+<ul>
+<li>这里使用了驼峰命名<code>clickAmount</code>传递了属性</li>
+<li>那么vue会自动将其全部转化为小写(其实不管你有没有驼峰命名,vue都会将其转化为小写~),然后接受的时候<strong>如果使用相同的名字去接收</strong>,<strong>会接收失败</strong>!!!!!!!!!!!!!!!</li>
+<li>所以不能驼峰,如果确实想,就需要使用<code>kebab-case (短横线分隔命名) 命名</code>去传递参数了,然后接收的时候就需要使用驼峰接收了</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">my-component</span> </span><br><span class="hljs-tag">				<span class="hljs-attr">message</span>=<span class="hljs-string">&#x27;理想是人生的太阳&#x27;</span> </span><br><span class="hljs-tag">				<span class="hljs-attr">v-bind:msg</span>=<span class="hljs-string">&quot;msg&quot;</span> </span><br><span class="hljs-tag">				<span class="hljs-attr">myTitle</span>=<span class="hljs-string">&quot;诗与远方&quot;</span></span><br><span class="hljs-tag">     //  这里使用了驼峰命名</span><br><span class="hljs-tag">                <span class="hljs-attr">clickAmount</span>=<span class="hljs-string">&quot;1000&quot;</span> </span><br><span class="hljs-tag">				<span class="hljs-attr">my-name</span>=<span class="hljs-string">&quot;自定义属性&quot;</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">my-component</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span><br><span class="language-xml"><span class="language-handlebars">			Vue.component(&#x27;my-component&#x27;,&#123;</span></span><br><span class="language-xml"><span class="language-handlebars">                //接收的时候就需要全部改为小写,因为</span></span><br><span class="language-xml"><span class="language-handlebars">				props:[&#x27;message&#x27;,&#x27;msg&#x27;,&#x27;mytitle&#x27;,&#x27;myName&#x27;,&#x27;clickamount&#x27;],</span></span><br><span class="language-xml"><span class="language-handlebars">				template:`<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">msg</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">message</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">mytitle</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">myName</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">clickamount</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">						<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">				`,</span></span><br><span class="language-xml"><span class="language-handlebars">			&#125;)</span></span><br><span class="language-xml"><span class="language-handlebars">			var vm = new Vue(&#123;</span></span><br><span class="language-xml"><span class="language-handlebars">				el:&#x27;#box&#x27;,</span></span><br><span class="language-xml"><span class="language-handlebars">				data:&#123;</span></span><br><span class="language-xml"><span class="language-handlebars">					msg:&#x27;父组件数据&#x27;</span></span><br><span class="language-xml"><span class="language-handlebars">				&#125;</span></span><br><span class="language-xml"><span class="language-handlebars">			&#125;);</span></span><br><span class="language-xml"><span class="language-handlebars">		</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<code>kebab-case (短横线分隔命名) 命名传递</code>,并使用驼峰命名接收</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">my-component</span> </span><br><span class="hljs-tag">				<span class="hljs-attr">message</span>=<span class="hljs-string">&#x27;理想是人生的太阳&#x27;</span> </span><br><span class="hljs-tag">				<span class="hljs-attr">v-bind:msg</span>=<span class="hljs-string">&quot;msg&quot;</span> </span><br><span class="hljs-tag">				<span class="hljs-attr">myTitle</span>=<span class="hljs-string">&quot;诗与远方&quot;</span></span><br><span class="hljs-tag">        // <span class="hljs-attr">kebab-case</span> (短横线分隔命名) 命名传递</span><br><span class="hljs-tag">                <span class="hljs-attr">click-amount</span>=<span class="hljs-string">&quot;1000&quot;</span></span><br><span class="hljs-tag">				<span class="hljs-attr">my-name</span>=<span class="hljs-string">&quot;自定义属性&quot;</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">my-component</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span><br><span class="language-xml"><span class="language-handlebars">			Vue.component(&#x27;my-component&#x27;,&#123;</span></span><br><span class="language-xml"><span class="language-handlebars">                //  驼峰命名接收   clickAmount</span></span><br><span class="language-xml"><span class="language-handlebars">				props:[&#x27;message&#x27;,&#x27;msg&#x27;,&#x27;mytitle&#x27;,&#x27;myName&#x27;,&#x27;clickAmount&#x27;],</span></span><br><span class="language-xml"><span class="language-handlebars">				template:`<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">msg</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">message</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">mytitle</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">myName</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">							<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">clickAmount</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">						<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="language-xml"><span class="language-handlebars">				`,</span></span><br><span class="language-xml"><span class="language-handlebars">			&#125;)</span></span><br><span class="language-xml"><span class="language-handlebars">			var vm = new Vue(&#123;</span></span><br><span class="language-xml"><span class="language-handlebars">				el:&#x27;#box&#x27;,</span></span><br><span class="language-xml"><span class="language-handlebars">				data:&#123;</span></span><br><span class="language-xml"><span class="language-handlebars">					msg:&#x27;父组件数据&#x27;</span></span><br><span class="language-xml"><span class="language-handlebars">				&#125;</span></span><br><span class="language-xml"><span class="language-handlebars">			&#125;);</span></span><br><span class="language-xml"><span class="language-handlebars">		</span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+
+
 <h4 id="自定义事件通信-官网API"><a href="#自定义事件通信-官网API" class="headerlink" title="自定义事件通信(官网API)"></a>自定义事件通信(<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">官网API</a>)</h4><h5 id="知道自定义事件和系统事件-原生事件-的区别"><a href="#知道自定义事件和系统事件-原生事件-的区别" class="headerlink" title="知道自定义事件和系统事件(原生事件)的区别"></a>知道自定义事件和系统事件(原生事件)的区别</h5><ul>
 <li>自定义事件(<strong>事件类型自己定义</strong>,回调函数自己定义)</li>
 <li>系统事件(原生事件) (<strong>事件类型系统定义</strong>,回调函数自己定义)</li>
 </ul>
-<h5 id="绑定自定义事件"><a href="#绑定自定义事件" class="headerlink" title="绑定自定义事件"></a>绑定自定义事件</h5><ul>
+<h5 id="绑定和触发自定义事件"><a href="#绑定和触发自定义事件" class="headerlink" title="绑定和触发自定义事件"></a>绑定和触发自定义事件</h5><ul>
 <li>关键用法是<code>$on</code> 和<code>$emit</code><ul>
 <li><code>$on(参数1,参数2)</code><ul>
 <li>参数1为绑定的事件名称(用于后面$emit触发)</li>
@@ -566,8 +590,34 @@
 <h4 id="pubsub-js通信"><a href="#pubsub-js通信" class="headerlink" title="pubsub-js通信"></a>pubsub-js通信</h4><h5 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h5><ul>
 <li>首先要安装<code>npm install pubsub-js</code></li>
 <li>然后用到的地方都导入<code>import PubSub from &quot;pubsub-js&quot;</code>,当然,你也可以全局使用捆绑在原型上,比如<code>import PubSub from &#39;pubsub-js&#39;; Vue.prototype.PubSub = PubSub;</code></li>
+<li>一句话说清楚添加订阅和发布订阅<ul>
+<li>需要数据的成为<strong>订阅者</strong>,传送数据的成为<strong>发布者</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="绑定事件的应用-炸弹"><a href="#绑定事件的应用-炸弹" class="headerlink" title="绑定事件的应用(炸弹)"></a>绑定事件的应用(炸弹)</h5><ul>
+<li>事件名</li>
+<li>事件的回调函数</li>
+<li>声明事件对象参数</li>
+<li><strong>获取数据</strong>的一方</li>
+<li>对比其他<ul>
+<li>PubSub:<strong>订阅者</strong></li>
+<li>Vue: <code>$on()</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="触发事件-告诉炸弹是否引爆"><a href="#触发事件-告诉炸弹是否引爆" class="headerlink" title="触发事件(告诉炸弹是否引爆)"></a>触发事件(告诉炸弹是否引爆)</h5><ul>
+<li>事件名</li>
+<li>传入事件对象</li>
+<li><strong>提供数据</strong>的一方</li>
+<li>对比其他<ul>
+<li>1.PubSub:<strong>发布</strong></li>
+<li>2.Vue: <code>$emit</code></li>
+</ul>
+</li>
 </ul>
 <h5 id="添加订阅-类似于-on"><a href="#添加订阅-类似于-on" class="headerlink" title="添加订阅(类似于$on)"></a>添加订阅(类似于$on)</h5><p>PubSub.subscribe(“发布消息的名称”,回调函数)</p>
+<p>​	简单理解为PubSub.subscribe(“要订阅的公众号”,回调函数)</p>
 <p><strong>注意</strong>: </p>
 <ul>
 <li>回调函数会传入二个参数<ul>
@@ -575,10 +625,15 @@
 <li>第二个参数即为发布订阅传递过来的消息</li>
 </ul>
 </li>
+<li>注意:<ul>
+<li>回调函数当中的第一个参数不管用不用,都需要进行占位</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//Two.vue</span><br>&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid blue&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Two-测试pubsub-js<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">    &#123;&#123; content &#125;&#125;</span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> <span class="hljs-title class_">PubSub</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;pubsub-js&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">//添加订阅(类似于$on),消息名称为&#x27;tellMeSome&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title class_">PubSub</span>.<span class="hljs-title function_">subscribe</span>(<span class="hljs-string">&quot;tellMeSome&quot;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">tell</span>);</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">//回调函数,第一个参数必须要写,否者第二个传递过来的参数接收不到</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">tell</span>(<span class="hljs-params">msg, content</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(msg); <span class="hljs-comment">//输出tellMeSome</span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;有人告诉了我&quot;</span>, content);</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">content</span> = content;</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><br></code></pre></td></tr></table></figure>
 
 <h5 id="发布订阅-类似于-emit"><a href="#发布订阅-类似于-emit" class="headerlink" title="发布订阅(类似于$emit)"></a>发布订阅(类似于$emit)</h5><p>PubSub.publish(“发布消息的名称”,传递的参数)</p>
+<p>​	简单理解为PubSub.subscribe(“公众号名称”,”传输给用户的文章”)</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//One.vue</span><br>&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border:1px solid red&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>One-测试pubsub-js<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;itellyou&quot;</span>&gt;</span>单击我告诉Two<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> <span class="hljs-title class_">PubSub</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;pubsub-js&quot;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;One&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">itellyou</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">       <span class="hljs-comment">//发布订阅,并传入数据&#x27;Two你好,我是One,来测试pubsub的&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-title class_">PubSub</span>.<span class="hljs-title function_">publish</span>(<span class="hljs-string">&quot;tellMeSome&quot;</span>, <span class="hljs-string">&quot;Two你好,我是One,来测试pubsub的&quot;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;less&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
 
 <h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><p>单击后显示文字,传递信息成功</p>
@@ -1054,8 +1109,27 @@
 <p>分支</p>
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs abnf">//放在created<br><span class="hljs-attribute">created</span> <span class="hljs-operator">=</span>&gt; API请求 <span class="hljs-operator">=</span>&gt; 获取数据 <span class="hljs-operator">=</span>&gt; 组件重新渲染<br><br>           <span class="hljs-operator">=</span>&gt; mounted <span class="hljs-operator">=</span>&gt; 组件首次渲染<br>//放在mounted<br><span class="hljs-attribute">created</span> <span class="hljs-operator">=</span>&gt; mounted <span class="hljs-operator">=</span>&gt;  组件首次渲染 <span class="hljs-operator">=</span>&gt; API请求 <span class="hljs-operator">=</span>&gt; 获取到数据 <span class="hljs-operator">=</span>&gt; 组件重新渲染<br><br></code></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="其他一些问题"><a href="#其他一些问题" class="headerlink" title="其他一些问题"></a>其他一些问题</h3><p><strong>v.for为什么要用key</strong></p>
-<p>简单点说就是可以在后期dom发生变化的时候准确识别元素并更新,<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mmsmd/p/15214100.html">具体可以看看这位博主写的</a></p>
+<h3 id="其他一些问题"><a href="#其他一些问题" class="headerlink" title="其他一些问题"></a>其他一些问题</h3><h4 id="v-for为什么要用key"><a href="#v-for为什么要用key" class="headerlink" title="v.for为什么要用key"></a>v.for为什么要用key</h4><p>简单点说就是可以在后期dom发生变化的时候准确识别元素并更新,<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mmsmd/p/15214100.html">具体可以看看这位博主写的</a></p>
+<h4 id="Vue-component第一个参数命名规则"><a href="#Vue-component第一个参数命名规则" class="headerlink" title="Vue.component第一个参数命名规则"></a>Vue.component第一个参数命名规则</h4><ul>
+<li><p>说通俗点就是,使用Vue.componet有多个单词,注册和使用都使用短横线!!!</p>
+</li>
+<li><p>组件命名方式：驼峰式，短横线</p>
+</li>
+<li><p><strong>注册组件</strong>使用<strong>驼峰式命名</strong>时,使用的时候必须要使用<strong>短横线</strong>对驼峰进行分割</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">shop-center</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">shop-center</span>&gt;</span></span><br>        &lt;!-- <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">shopCenter</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">shopCenter</span>&gt;</span></span> 错误的 --&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">Vue.component(&quot;shopCenter&quot;,&#123;</span><br><span class="language-xml">	template:`</span><br><span class="language-xml">		<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">			<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">				<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span></span><br><span class="language-xml">					<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://dreamlove.top/img/favicon.png&quot;</span>/&gt;</span></span><br><span class="language-xml">				<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span><br><span class="language-xml">			<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">			<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">				<span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;detail&quot;</span>&gt;</span></span><br><span class="language-xml">					<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>手机名称<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">					<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:gray&quot;</span>&gt;</span>手机价格<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">				<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span><br><span class="language-xml">			<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">		 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">	`,</span><br><span class="language-xml"></span><br><span class="language-xml">&#125;);</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>注册组件</strong>使用<strong>短横命名</strong>时,使用的时候必须要使用<strong>短横线</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">shop-center</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">shop-center</span>&gt;</span></span><br>&lt;!-- <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">shopCenter</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">shopCenter</span>&gt;</span></span> 错误的 --&gt;<br>&lt;/div&gt;<br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;shop-center&quot;</span>,&#123;<br>	<span class="hljs-attr">template</span>:<span class="hljs-string">`</span><br><span class="hljs-string">		&lt;div&gt;</span><br><span class="hljs-string">			&lt;div&gt;</span><br><span class="hljs-string">				&lt;slot&gt;</span><br><span class="hljs-string">					&lt;img src=&quot;https://dreamlove.top/img/favicon.png&quot;/&gt;</span><br><span class="hljs-string">				&lt;/slot&gt;</span><br><span class="hljs-string">			&lt;/div&gt;</span><br><span class="hljs-string">			&lt;div&gt;</span><br><span class="hljs-string">				&lt;slot name=&quot;detail&quot;&gt;</span><br><span class="hljs-string">					&lt;h1&gt;手机名称&lt;/h1&gt;</span><br><span class="hljs-string">					&lt;h2 style=&quot;color:gray&quot;&gt;手机价格&lt;/h2&gt;</span><br><span class="hljs-string">				&lt;/slot&gt;</span><br><span class="hljs-string">			&lt;/div&gt;</span><br><span class="hljs-string">		 &lt;/div&gt;</span><br><span class="hljs-string">	`</span>,<br><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>驼峰和短横</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//驼峰式</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;myComponent&#x27;</span>,&#123;<br>	<span class="hljs-attr">template</span>:<span class="hljs-string">&#x27;&lt;h4&gt;组件命名&lt;/h4&gt;&#x27;</span><br>&#125;);<br><span class="hljs-comment">//短横线</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;my-component1&#x27;</span>,&#123;<br>	<span class="hljs-attr">template</span>:<span class="hljs-string">&#x27;&lt;h4&gt;组件命名&lt;/h4&gt;&#x27;</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -1103,9 +1177,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/HTML/">#HTML</a>
-      
         <a href="/tags/javscript/">#javscript</a>
+      
+        <a href="/tags/HTML/">#HTML</a>
       
         <a href="/tags/vue/">#vue</a>
       
@@ -1239,7 +1313,7 @@
         aria-expanded="true"
       >
         HTML
-        <span class="list-group-count">(30)</span>
+        <span class="list-group-count">(32)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1303,7 +1377,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(29)</span>
+        <span class="list-group-count">(31)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1774,6 +1848,52 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">webpack构建工具的学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="wechat"
+        id="heading-855a3b1b5f04a16bb093201a1e8c4910" role="tab" data-toggle="collapse" href="#collapse-855a3b1b5f04a16bb093201a1e8c4910"
+        aria-expanded="false"
+      >
+        wechat
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-855a3b1b5f04a16bb093201a1e8c4910"
+           role="tabpanel" aria-labelledby="heading-855a3b1b5f04a16bb093201a1e8c4910">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/07/14/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%92%8C%E9%A1%B9%E7%9B%AE%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" title="微信小程序相关知识点和云音乐项目制作遇到的问题及解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序相关知识点和云音乐项目制作遇到的问题及解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/13/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90,%E4%BA%91%E9%9F%B3%E4%B9%90/" title="微信小程序项目之网易云音乐,云音乐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序项目之网易云音乐,云音乐</span>
         </a>
       
     
@@ -1801,7 +1921,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(29)</span>
+        <span class="list-group-count">(31)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -2272,6 +2392,52 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">webpack构建工具的学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="wechat"
+        id="heading-855a3b1b5f04a16bb093201a1e8c4910" role="tab" data-toggle="collapse" href="#collapse-855a3b1b5f04a16bb093201a1e8c4910"
+        aria-expanded="false"
+      >
+        wechat
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-855a3b1b5f04a16bb093201a1e8c4910"
+           role="tabpanel" aria-labelledby="heading-855a3b1b5f04a16bb093201a1e8c4910">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/07/14/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%92%8C%E9%A1%B9%E7%9B%AE%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" title="微信小程序相关知识点和云音乐项目制作遇到的问题及解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序相关知识点和云音乐项目制作遇到的问题及解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/13/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90,%E4%BA%91%E9%9F%B3%E4%B9%90/" title="微信小程序项目之网易云音乐,云音乐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序项目之网易云音乐,云音乐</span>
         </a>
       
     

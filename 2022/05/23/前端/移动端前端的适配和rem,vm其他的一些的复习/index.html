@@ -27,8 +27,8 @@
 <meta property="article:published_time" content="2022-05-23T02:38:00.000Z">
 <meta property="article:modified_time" content="2022-05-23T10:57:16.000Z">
 <meta property="article:author" content="梦洁">
-<meta property="article:tag" content="HTML">
 <meta property="article:tag" content="javscript">
+<meta property="article:tag" content="HTML">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242024668.jpg">
@@ -280,7 +280,7 @@
         
         
         
-          135 分钟
+          137 分钟
         
       </span>
     
@@ -356,9 +356,8 @@
 </li>
 <li><p>css像素</p>
 <ul>
-<li><p>又称： 逻辑像素，css像素是一个抽象的长度单位，单位也是px，它是为 Web 开发者创造的，用来精确的度量Web 页面上的内容大小。我们在编写css、js、less中所使用的都是css像素（可以理解为：“程序员像素”）；</p>
-<p>思考：我代码中所写的1px（css像素），到了屏幕上到底对应几个物理像素呢？是1个css像素就对应1个物理像素(“发光的灯泡”)吗？要探讨这个对应关系，就要学习接下来的新概念：设备独立像素。</p>
-</li>
+<li>又称： 逻辑像素，css像素是一个抽象的长度单位，单位也是px，它是为 Web 开发者创造的，用来精确的度量Web 页面上的内容大小。我们在编写css、js、less中所使用的都是css像素（可以理解为：“程序员像素”）；</li>
+<li>思考：我代码中所写的1px（css像素），到了屏幕上到底对应几个物理像素呢？是1个css像素就对应1个物理像素(“发光的灯泡”)吗？要探讨这个对应关系，就要学习接下来的新概念：设备独立像素。</li>
 </ul>
 </li>
 <li><p>设备独立像素</p>
@@ -375,7 +374,15 @@
 </ul>
 <p><strong>设备独立像素与css像素关系</strong></p>
 <ul>
-<li>在无缩放的情况下(标准情况): <strong>1css像素 &#x3D; 1设备独立像素</strong></li>
+<li><p>在无缩放的情况下(标准情况): <strong>1css像素 &#x3D; 1设备独立像素</strong> </p>
+<ul>
+<li>在dpr为2的开启下,设置css像素为<code>width:100px;height:100px</code>.那么对应的设备独立像素就是<code>width:100px;height;100px</code>,对应的物理像素就是<code>width:200px;height:200px</code></li>
+</ul>
+</li>
+<li><p>css像素和设备独立像素永远是1:1的关闭(而css像素和物理像素-也就是我们常说的分辨率,就是1:n的关系了,n为像素比dpr)</p>
+</li>
+<li><p>可以简单理解为css像素不可以直接显示在屏幕下方,而是会通过dpr转换后进行显示,转换过程中的中间量就是设备独立像素</p>
+</li>
 </ul>
 <p><strong>像素比</strong></p>
 <p>像素比(dpr):单一方向上设备的<strong>物理像素</strong>和设备独立像素的比例</p>
@@ -819,9 +826,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/HTML/">#HTML</a>
-      
         <a href="/tags/javscript/">#javscript</a>
+      
+        <a href="/tags/HTML/">#HTML</a>
       
         <a href="/tags/vue/">#vue</a>
       
@@ -955,7 +962,7 @@
         aria-expanded="true"
       >
         HTML
-        <span class="list-group-count">(30)</span>
+        <span class="list-group-count">(32)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1019,7 +1026,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(29)</span>
+        <span class="list-group-count">(31)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1490,6 +1497,52 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">webpack构建工具的学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="wechat"
+        id="heading-855a3b1b5f04a16bb093201a1e8c4910" role="tab" data-toggle="collapse" href="#collapse-855a3b1b5f04a16bb093201a1e8c4910"
+        aria-expanded="false"
+      >
+        wechat
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-855a3b1b5f04a16bb093201a1e8c4910"
+           role="tabpanel" aria-labelledby="heading-855a3b1b5f04a16bb093201a1e8c4910">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/07/14/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%92%8C%E9%A1%B9%E7%9B%AE%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" title="微信小程序相关知识点和云音乐项目制作遇到的问题及解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序相关知识点和云音乐项目制作遇到的问题及解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/13/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90,%E4%BA%91%E9%9F%B3%E4%B9%90/" title="微信小程序项目之网易云音乐,云音乐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序项目之网易云音乐,云音乐</span>
         </a>
       
     
@@ -1517,7 +1570,7 @@
         aria-expanded="true"
       >
         javscript
-        <span class="list-group-count">(29)</span>
+        <span class="list-group-count">(31)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -1988,6 +2041,52 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">webpack构建工具的学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="wechat"
+        id="heading-855a3b1b5f04a16bb093201a1e8c4910" role="tab" data-toggle="collapse" href="#collapse-855a3b1b5f04a16bb093201a1e8c4910"
+        aria-expanded="false"
+      >
+        wechat
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-855a3b1b5f04a16bb093201a1e8c4910"
+           role="tabpanel" aria-labelledby="heading-855a3b1b5f04a16bb093201a1e8c4910">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/07/14/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%92%8C%E9%A1%B9%E7%9B%AE%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/" title="微信小程序相关知识点和云音乐项目制作遇到的问题及解决"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序相关知识点和云音乐项目制作遇到的问题及解决</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/07/13/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90,%E4%BA%91%E9%9F%B3%E4%B9%90/" title="微信小程序项目之网易云音乐,云音乐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信小程序项目之网易云音乐,云音乐</span>
         </a>
       
     
