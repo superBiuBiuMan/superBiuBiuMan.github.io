@@ -41,7 +41,7 @@
     <link href="/2022/07/13/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90,%E4%BA%91%E9%9F%B3%E4%B9%90/"/>
     <url>/2022/07/13/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90,%E4%BA%91%E9%9F%B3%E4%B9%90/</url>
     
-    <content type="html"><![CDATA[<h2 id="微信小程序之网易云音乐的实现-云音乐"><a href="#微信小程序之网易云音乐的实现-云音乐" class="headerlink" title="微信小程序之网易云音乐的实现-云音乐"></a>微信小程序之网易云音乐的实现-云音乐</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><ul><li><p>基本功能都实现了,音乐的上一首下一首播放等,顺便把进度条的拖动播放写了下</p></li><li><p>主页的<strong>每日推荐界面</strong>写了 ,登录通过账号密码登录<del>(你也可以自己加一个验证码或者邮箱登录</del>)</p></li><li><p>基于iPhone6(375*667分辨率)开发,后面一些计算都是通过获取当前屏幕下的尺寸来计算的,但是不保证在其他分辨率下是否完好(我已经尽力了~)</p></li><li><p>下载地址</p><ul><li>github地址: <a href="https://github.com/superBiuBiuMan/Wechat_NetEase_CloudMusic">https://github.com/superBiuBiuMan/Wechat_NetEase_CloudMusic</a></li><li>gitee地址: <a href="https://gitee.com/superBiuBiu/Wechat_NetEase_CloudMusic">https://gitee.com/superBiuBiu/Wechat_NetEase_CloudMusic</a></li></ul></li><li><p>遇到的问题和解决办法</p><ul><li><a href="https://dreamlove.top/2022/07/14/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%92%8C%E9%A1%B9%E7%9B%AE%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/">单击我跳转</a></li></ul></li><li><p>更改自己的API地址</p><ul><li><p>虽然目前我这服务器的可以用,但是服务器会有过期的一天</p></li><li><p>项目使用  <a href="https://neteasecloudmusicapi.vercel.app/#/">@网易云音乐 NodeJS 版 API</a></p></li><li><p>可以去<a href="https://github.com/Binaryify/NeteaseCloudMusicApi">github地址</a>下载后台,然后安装依赖包并修改<code>/utils/config.js</code>文件</p></li><li><p>如果是自己电脑搭建API服务器,将<code>host</code>配置项修改为如下,因为此API服务器默认使用3000端口(但需要注意的是,如果自己电脑不是公网ip,在手机上调试可能需要内网穿透)</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br><span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,<br>&#125;<br></code></pre></td></tr></table></figure></li></ul></li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207122116971.png" alt="修改如下"></p><h3 id="项目预览"><a href="#项目预览" class="headerlink" title="项目预览"></a>项目预览</h3><h4 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207122121528.png" alt="首页"></p><h4 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130945090.png"></p><h4 id="搜索界面"><a href="#搜索界面" class="headerlink" title="搜索界面"></a>搜索界面</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130944036.png" alt="搜索界面"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130945602.png"></p><h4 id="每日推荐"><a href="#每日推荐" class="headerlink" title="每日推荐"></a>每日推荐</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207122122553.png" alt="每日推荐"></p><h4 id="个人中心"><a href="#个人中心" class="headerlink" title="个人中心"></a>个人中心</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130945056.png" alt="个人中心"></p><h4 id="登录界面"><a href="#登录界面" class="headerlink" title="登录界面"></a>登录界面</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130946748.png" alt="登录界面"></p><h4 id="播放音乐界面"><a href="#播放音乐界面" class="headerlink" title="播放音乐界面"></a>播放音乐界面</h4><ul><li>动态图</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207131001281.gif"></p><ul><li>静态图</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130959508.png" alt="静态图1"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130958551.png" alt="静态图2"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="微信小程序之网易云音乐的实现-云音乐"><a href="#微信小程序之网易云音乐的实现-云音乐" class="headerlink" title="微信小程序之网易云音乐的实现-云音乐"></a>微信小程序之网易云音乐的实现-云音乐</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><ul><li><p>基本功能都实现了,音乐的上一首下一首播放等,顺便把进度条的拖动播放写了下</p></li><li><p>主页的<strong>每日推荐界面</strong>写了 ,登录通过账号密码登录<del>(你也可以自己加一个验证码或者邮箱登录</del>)</p></li><li><p>基于iPhone6(375*667分辨率)开发,后面一些计算都是通过获取当前屏幕下的尺寸来计算的,但是不保证在其他分辨率下是否完好(我已经尽力了~)</p></li><li><p>下载地址</p><ul><li>github地址: <a href="https://github.com/superBiuBiuMan/Wechat_NetEase_CloudMusic">https://github.com/superBiuBiuMan/Wechat_NetEase_CloudMusic</a></li><li>gitee地址: <a href="https://gitee.com/superBiuBiu/Wechat_NetEase_CloudMusic">https://gitee.com/superBiuBiu/Wechat_NetEase_CloudMusic</a></li></ul></li><li><p>遇到的问题和解决办法</p><ul><li><a href="https://dreamlove.top/2022/07/14/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%92%8C%E9%A1%B9%E7%9B%AE%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3/">单击我跳转</a></li></ul></li><li><p>API地址(自己服务器的~)</p><ul><li><a href="https://cloudmusic.dreamlove.top/">https://cloudmusic.dreamlove.top/</a></li></ul></li><li><p>更改自己的API地址</p><ul><li><p>虽然目前我这服务器的可以用,但是服务器会有过期的一天</p></li><li><p>项目使用  <a href="https://neteasecloudmusicapi.vercel.app/#/">@网易云音乐 NodeJS 版 API</a></p></li><li><p>可以去<a href="https://github.com/Binaryify/NeteaseCloudMusicApi">github地址</a>下载后台,然后安装依赖包并修改<code>/utils/config.js</code>文件</p></li><li><p>如果是自己电脑搭建API服务器,将<code>host</code>配置项修改为如下,因为此API服务器默认使用3000端口(但需要注意的是,如果自己电脑不是公网ip,在手机上调试可能需要内网穿透)</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br><span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,<br>&#125;<br></code></pre></td></tr></table></figure></li></ul></li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207122116971.png" alt="修改如下"></p><h3 id="项目预览"><a href="#项目预览" class="headerlink" title="项目预览"></a>项目预览</h3><h4 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207122121528.png" alt="首页"></p><h4 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130945090.png"></p><h4 id="搜索界面"><a href="#搜索界面" class="headerlink" title="搜索界面"></a>搜索界面</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130944036.png" alt="搜索界面"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130945602.png"></p><h4 id="每日推荐"><a href="#每日推荐" class="headerlink" title="每日推荐"></a>每日推荐</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207122122553.png" alt="每日推荐"></p><h4 id="个人中心"><a href="#个人中心" class="headerlink" title="个人中心"></a>个人中心</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130945056.png" alt="个人中心"></p><h4 id="登录界面"><a href="#登录界面" class="headerlink" title="登录界面"></a>登录界面</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130946748.png" alt="登录界面"></p><h4 id="播放音乐界面"><a href="#播放音乐界面" class="headerlink" title="播放音乐界面"></a>播放音乐界面</h4><ul><li>动态图</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207131001281.gif"></p><ul><li>静态图</li></ul><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130959508.png" alt="静态图1"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207130958551.png" alt="静态图2"></p>]]></content>
     
     
     <categories>
@@ -62,6 +62,37 @@
       <tag>微信小程序</tag>
       
       <tag>小程序</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>影视节前端网站,,以前东拼西凑的,前端课程设计应该可以吧</title>
+    <link href="/2022/07/12/%E5%89%8D%E7%AB%AF/%E5%BD%B1%E8%A7%86%E8%8A%82%E5%89%8D%E7%AB%AF%E7%BD%91%E7%AB%99,,%E4%BB%A5%E5%89%8D%E4%B8%9C%E6%8B%BC%E8%A5%BF%E5%87%91%E7%9A%84,%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E5%BA%94%E8%AF%A5%E5%8F%AF%E4%BB%A5%E5%90%A7/"/>
+    <url>/2022/07/12/%E5%89%8D%E7%AB%AF/%E5%BD%B1%E8%A7%86%E8%8A%82%E5%89%8D%E7%AB%AF%E7%BD%91%E7%AB%99,,%E4%BB%A5%E5%89%8D%E4%B8%9C%E6%8B%BC%E8%A5%BF%E5%87%91%E7%9A%84,%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E5%BA%94%E8%AF%A5%E5%8F%AF%E4%BB%A5%E5%90%A7/</url>
+    
+    <content type="html"><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul><li>很久以前为了应付课程设计的作业…</li><li>在线演示<ul><li><a href="https://video-show.netlify.app/">https://video-show.netlify.app/</a></li></ul></li><li>下载地址<ul><li>github:<a href="https://github.com/superBiuBiuMan/film_videoShow_website">https://github.com/superBiuBiuMan/film_videoShow_website</a></li><li>gitee:<a href="https://gitee.com/superBiuBiu/film_videoShow_website">https://gitee.com/superBiuBiu/film_videoShow_website</a></li></ul></li></ul><h3 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h3><h4 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h4><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150843823.png" style="zoom:80%;" /><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150846968.png"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150843960.png"></p><h4 id="影片展示"><a href="#影片展示" class="headerlink" title="影片展示"></a>影片展示</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150844523.png"></p><h4 id="优秀演员"><a href="#优秀演员" class="headerlink" title="优秀演员"></a>优秀演员</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150844601.png"></p><h4 id="获奖名单"><a href="#获奖名单" class="headerlink" title="获奖名单"></a>获奖名单</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150845085.png"></p><h4 id="奖项介绍"><a href="#奖项介绍" class="headerlink" title="奖项介绍"></a>奖项介绍</h4><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150845149.png"></p><p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207150845926.png"></p><h3 id="舔狗日志-填充字段"><a href="#舔狗日志-填充字段" class="headerlink" title="舔狗日志(填充字段)"></a>舔狗日志(填充字段)</h3><p><strong>舔狗日记7月15日 晴</strong></p><p>今天我还是照常给你发消息，汇报日常工作，你终于回了我四个字：“嗯嗯，好的”你开始愿意敷衍我了，我太感动了受宠若惊。我愿意天天给你发消息。就算你天天骂我，我也不觉得烦。</p><p><strong>舔狗日记 7月14日 阴</strong></p><p>你昨天晚上又没会我的消息，在我孜孜不倦的骚扰下，你终于舍得回我了，你说“滚”，这其中一定有什么含义，我想了很久，滚是三点水，这代表你对我的思念也如滚滚流水一样汹涌，我感动哭了，不知道你现在在干嘛，我很想你。</p><p><strong>舔狗日记 7月13日 雨</strong></p><p>你说你想买口红，今天我去了叔叔的口罩厂做了一天的打包。拿到了两百块钱，加上我这几天省下的钱刚好能给你买一根小金条。即没有给我自己剩下一分钱，但你不用担心，因为厂里包吃包住。对了打包的时候，满脑子都是你，想着你哪天突然就接受我的橄榄枝了呢。而且今天我很棒呢，主管表扬我很能干，其实也有你的功劳啦，是你给了我无穷的力量。今天我比昨天多想你一点，比明天少想你一点。</p><p><strong>舔狗日记 7月13日 晴</strong></p><p>你说你想买AJ，今天我去了叔叔的口罩厂做了一天的打包。拿到了两百块钱，加上我这几天省下的钱刚好能给你买一个鞋盒。即没有给我自己剩下一分钱，但你不用担心，因为厂里包吃包住。对了打包的时候，满脑子都是你，想着你哪天突然就接受我的橄榄枝了呢。而且今天我很棒呢，主管表扬我很能干，其实也有你的功劳啦，是你给了我无穷的力量。今天我比昨天多想你一点，比明天少想你一点。</p><p><strong>舔狗日记 7月12日 阴</strong></p><p>听说你想要一套化妆品，我算了算，明天我去公司里面扫一天厕所，就可以拿到200块钱，再加上我上个月攒下来的零花钱，刚好给你买一套迪奥。</p><p><strong>保安日志 7月11日 晴</strong></p><p>在我入职保安的那天，队长问我：你知道你要保护谁嘛？</p><p>我嘴上说的是业主，心里却是你。over</p><p><strong>舔狗反击日记 7月10日 晴</strong></p><p>今天我对她说：我想问一下，爱奇艺会员，你有吗？</p><p>她没发现是“我爱你”的藏头诗，还骂我穷鬼，让我滚。滚就滚，我看不了青春有你，我的青春也没有你。</p><p><strong>舔狗日记 7月9日</strong></p><p>昨晚你和朋友大佬一晚上游戏，你破天荒的给我看了你的战绩，虽然我看不懂但我相信你一定是最厉害的，最棒的！我给你发了好多消息夸你，告诉你我多崇拜你，你回了我一句：啥b</p><p>我翻来覆去思考这是什么意思？sh-a傻，噢你的意思是说我傻，那b就是baby的意思了吧，原来你是在叫我傻宝，这么宠溺的语气，我竟一时不相信，其实你也是喜欢我的对吧</p><p><strong>女王日记 7月8日</strong></p><p>昨晚本王和朋友打了一晚上游戏，我破天荒的的给17号舔狗看了战绩，虽然他看不懂但是他相信本王一定是最厉害的，最棒的！他给本王发了好多消息，告诉我有多崇拜我，我回了他一句“啥b”。并不是因为什么，只是刚刚男神给我打电话，叫我去宾馆。哎一晚上整的我死去活来，第二天就给他打电话叫他来接我，才发现他竟然改了ID，“我是你的啥b啊”</p><p><strong>舔狗日记 7月7日 天气晴</strong></p><p>今天表白被拒绝了，她对我说能不能脱下裤子撒泼尿照照自己，当我脱下裤子，她咽了口水，说我们可以试一下。</p><p><em>声明：摘录于网络，如有不当之处，侵删</em></p><p><strong>舔狗日记 7月6日 暴雨</strong></p><p>刚从派出所出来，原因前几天14号情人节，我想送你礼物，我去偷东西的时候被抓了，我本来想反抗，警察说了一句老实点别动，我立刻就放弃了反抗，因为我记得你说过，你喜欢老实人。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>HTML</category>
+      
+      <category>javscript</category>
+      
+      <category>css</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>javscript</tag>
+      
+      <tag>jQuery</tag>
       
     </tags>
     
@@ -262,9 +293,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -322,9 +353,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -355,9 +386,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -388,9 +419,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -479,9 +510,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -510,9 +541,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -543,9 +574,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -576,9 +607,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -665,9 +696,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -727,9 +758,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -793,9 +824,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>echarts</tag>
       
@@ -824,9 +855,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>vue</tag>
       
@@ -919,9 +950,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>canvas</tag>
       
@@ -1087,9 +1118,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
@@ -1120,9 +1151,9 @@
     
     <tags>
       
-      <tag>javscript</tag>
-      
       <tag>HTML</tag>
+      
+      <tag>javscript</tag>
       
       <tag>ES6</tag>
       
