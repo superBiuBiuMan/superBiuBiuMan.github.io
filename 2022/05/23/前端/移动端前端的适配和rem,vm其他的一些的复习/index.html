@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205242024668.jpg">
 <meta property="article:published_time" content="2022-05-23T02:38:00.000Z">
-<meta property="article:modified_time" content="2022-05-23T10:57:16.000Z">
+<meta property="article:modified_time" content="2022-07-16T10:57:16.000Z">
 <meta property="article:author" content="梦洁">
 <meta property="article:tag" content="HTML">
 <meta property="article:tag" content="javscript">
@@ -269,7 +269,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          17k 字
         
       </span>
     
@@ -280,7 +280,7 @@
         
         
         
-          137 分钟
+          139 分钟
         
       </span>
     
@@ -333,7 +333,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年5月23日 晚上
+                    本文最后更新于：2022年7月16日 晚上
                   
                 
               </p>
@@ -494,7 +494,7 @@
 <h5 id="2-视觉视口"><a href="#2-视觉视口" class="headerlink" title="2.视觉视口"></a>2.视觉视口</h5><p>​	<strong>视觉视口就是用户可见的区域</strong>，它的绝对宽度永远和设备屏幕一样宽，但是这个宽度里所包含的css像素值是变化的，例如：一般手机会将980个css像素放入视觉视口中，而ipad Pro会将1024个css像素放入视觉视口中。</p>
 <p>​	移动端获取视觉视口方式：<code>window.innerWidth</code>，不过在Android2、Opera mini 、UC8 中无法正确获取。（一般不通过代码看视觉视口）</p>
 <p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202205230821772.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
-<h5 id="理想视口标准"><a href="#理想视口标准" class="headerlink" title="理想视口标准"></a>理想视口标准</h5><p>与<strong>屏幕（设备独立像素）等宽的布局视口</strong>，称之为理想视口，所以也可以说理想视口是一种标准：让布局视口宽度 与 屏幕等宽（设备独立像素），靠meta标签实现。</p>
+<h5 id="理想视口标准"><a href="#理想视口标准" class="headerlink" title="理想视口标准"></a>理想视口标准</h5><p>与<strong>屏幕（设备独立像素）等宽的布局视口</strong>，称之为理想视口，所以也可以说理想视口是一种标准：让布局视口宽度 与 屏幕等宽（设备独立像素），靠<code>meta标签</code>实现。</p>
 <p>理想视口的特点：</p>
 <blockquote>
 <ul>
@@ -504,7 +504,7 @@
 </ul>
 </blockquote>
 <p>设置理想视口的具体方法：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width&quot;</span>/&gt;</span><br>也可以<br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width,initial-scale=1.0&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>总结</strong></p>
 <p>不写<code>meta</code>标签（不符合理想视口标准）：</p>
@@ -537,6 +537,23 @@
 </li>
 </ol>
 </blockquote>
+<h4 id="布局视口-视觉视口-理想视口总结和区别"><a href="#布局视口-视觉视口-理想视口总结和区别" class="headerlink" title="布局视口,视觉视口,理想视口总结和区别"></a>布局视口,视觉视口,理想视口总结和区别</h4><ul>
+<li>布局视口<ul>
+<li>将一个网页按照比例压缩为980px,用户可以看到这个网页的全部</li>
+</ul>
+</li>
+<li>视觉视口<ul>
+<li>对网页不进行压缩,用户可以看到网页的部分内容,但是可以滚动条来滑动</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202207171115456.png" srcset="https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/loading.gif" lazyload></p>
+<ul>
+<li>理想视口<ul>
+<li>布局视口 &#x3D; 视觉视口,当前用的最多的</li>
+</ul>
+</li>
+</ul>
 <h3 id="缩放和放大"><a href="#缩放和放大" class="headerlink" title="缩放和放大"></a>缩放和放大</h3><h4 id="PC端的"><a href="#PC端的" class="headerlink" title="PC端的"></a>PC端的</h4><p>放大的时候</p>
 <ul>
 <li>视口变小(可以理解为在聚焦,所以视口变小了)</li>
